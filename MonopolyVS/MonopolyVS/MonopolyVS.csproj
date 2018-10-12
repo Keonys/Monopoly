@@ -63,12 +63,20 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Modeles\Banque.cs" />
+    <Compile Include="Modeles\Carte.cs" />
+    <Compile Include="Modeles\Case.cs" />
+    <Compile Include="Modeles\Des.cs" />
+    <Compile Include="Modeles\Gestion.cs" />
+    <Compile Include="Modeles\Joueur.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modeles\Prison.cs" />
+    <Compile Include="Modeles\Propriete.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
