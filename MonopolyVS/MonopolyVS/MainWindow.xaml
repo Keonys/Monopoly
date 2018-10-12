@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="541.698" Width="2180.566">
     <Grid>
-
+        <TextBlock x:Name="TextBlockConsole" HorizontalAlignment="Left" Margin="1008,247,0,0" TextWrapping="Wrap" Text="TEST A LA CON" VerticalAlignment="Top" Height="255" Width="1155" FontSize="24" Background="#FF124E06" Foreground="#FFDDD019" FontFamily="Lucida Console"/>
+        <Button x:Name="ButtonLanceDes" Content="Lancer les Dés" HorizontalAlignment="Left" Margin="1409,100,0,0" VerticalAlignment="Top" Width="354" Height="70" FontSize="48"/>
     </Grid>
 </Window>
