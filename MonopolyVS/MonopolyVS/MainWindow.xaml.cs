@@ -20,9 +20,18 @@ namespace MonopolyVS
     /// </summary>
     public partial class MainWindow : Window
     {
+        Modeles.Des Des = new Modeles.Des();
+
         public MainWindow()
         {
             InitializeComponent();
+            
+        }
+
+        private void ButtonLanceDes_Click(object sender, RoutedEventArgs e)
+        {
+            Des.Lancer()
+            TextBlockConsole.Text = Convert.ToString(Des.RecuperePremier()) + "\n" + Convert.ToString(Des.RecupereDeuxieme());
         }
     }
 }

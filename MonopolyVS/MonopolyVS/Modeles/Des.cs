@@ -17,8 +17,9 @@ namespace MonopolyVS.Modeles
         /// <summary>
         /// Methode permettant de lancer les 2 dés, ne retourne aucune valeur.
         /// </summary>
-        void Lancer()
+        public void Lancer()
         {
+
             iPremier = alea.Next(1, 13);
             iDeuxieme = alea.Next(1, 13);
         }
@@ -27,7 +28,7 @@ namespace MonopolyVS.Modeles
         /// Permet de récupérer la valeur du premier dé
         /// </summary>
         /// <returns>Valeur du 1er dé sous forme de int.</returns>
-        int RecuperePremier()
+        public int RecuperePremier()
         {
             return iPremier;
         }
@@ -36,7 +37,7 @@ namespace MonopolyVS.Modeles
         /// Permet de récupérer la valeur du deuxième dé.
         /// </summary>
         /// <returns>Valeur du 2eme dé sous forme de int.</returns>
-        int RecupereDeuxieme()
+        public int RecupereDeuxieme()
         {
             return iDeuxieme;
         }
@@ -45,7 +46,7 @@ namespace MonopolyVS.Modeles
         /// Permet de savoir si les deux dés ont la même valeur.
         /// </summary>
         /// <returns></returns>
-        bool EstDouble()
+        public bool EstDouble()
         {
             if (iPremier == iDeuxieme)
                 return true;
