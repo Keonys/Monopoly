@@ -1,13 +1,17 @@
-﻿<Window x:Class="MonopolyVS.MainWindow"
+﻿<Window x:Name="FenetrePrincipale" x:Class="MonopolyVS.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MonopolyVS"
         mc:Ignorable="d"
-        Title="MainWindow" Height="541.698" Width="2180.566">
+        Title="MainWindow" Height="720" Width="1280">
     <Grid>
-        <TextBlock x:Name="TextBlockConsole" HorizontalAlignment="Left" Margin="1008,247,0,0" TextWrapping="Wrap" Text="TEST A LA CON" VerticalAlignment="Top" Height="255" Width="1155" FontSize="24" Background="#FF124E06" Foreground="#FFDDD019" FontFamily="Lucida Console"/>
-        <Button x:Name="ButtonLanceDes" Content="Lancer les Dés" HorizontalAlignment="Left" Margin="1409,100,0,0" VerticalAlignment="Top" Width="354" Height="70" FontSize="48" Click="ButtonLanceDes_Click"/>
+        <Button x:Name="ButtonLanceDes" Content="Lancer les Dés" HorizontalAlignment="Left" Margin="751,170,0,0" VerticalAlignment="Top" Width="354" Height="70" FontSize="48" Click="ButtonLanceDes_Click"/>
+        <TextBox x:Name="TextBoxConsole" HorizontalAlignment="Left" Height="235" Margin="634,425,0,0" TextWrapping="Wrap" Text="TEST A LA CON" VerticalAlignment="Top" Background="#FF124E06" BorderBrush="{x:Null}" FontSize="24" Foreground="#FFDDD019" Width="628">
+            <TextBox.CaretBrush>
+                <ImageBrush/>
+            </TextBox.CaretBrush>
+        </TextBox>
     </Grid>
 </Window>
