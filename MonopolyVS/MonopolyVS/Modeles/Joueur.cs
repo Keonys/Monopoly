@@ -9,11 +9,17 @@ namespace MonopolyVS
 {
     public class Joueur
     {
-        string sNom;
-        int iArgent, iPosition, iNbrDouble, iPeine; //variables pour le solde en banque, la position sur le plateau et le nombre de doublés d'affilée
-        bool bEstEnPrison = false;
-        bool bSonTour = false;
-        List<string> sPatrimoine = new List<string>();  //liste contenant la liste des propriétés acquises par le joueur
+        #region Variables et paramètres
+        //Paramètres
+        public string Nom { get; set; }
+        public int Argent { get; set; }
+        public int Position { get; set; }
+        public List<string> Patrimoine { get; set; } = new List<string>();  //liste contenant la liste des propriétés acquises par le joueur
+
+        int nbrDouble, iPeine; //variables pour le solde en banque, la position sur le plateau et le nombre de doublés d'affilée
+        bool estEnPrison = false;
+        bool sonTour = false;
+        #endregion
 
         /// <summary>
         /// Permet de se déplacacer dans le plateau
@@ -21,7 +27,7 @@ namespace MonopolyVS
         /// <param name="distance">Nombre de case à parcourir</param>
         public void Bouge(int distance)
         {
-            iPosition += distance;
+            Position += distance;
         }
 
         //2 PROCHAINES METHODES PEUT-ETRE A DEPLACER VERS BANQUE
@@ -32,7 +38,7 @@ namespace MonopolyVS
         /// <param name="gains">Argent gagné</param>
         void GagneArgent(int gains)
         {
-            iArgent += gains;
+            Argent += gains;
         }
 
         /// <summary>
@@ -41,7 +47,7 @@ namespace MonopolyVS
         /// <param name="gains">Argent perdu</param>
         void PerdsArgent(int pertes)
         {
-            iArgent -= pertes;
+            Argent -= pertes;
         }
 
         /// <summary>
@@ -52,8 +58,8 @@ namespace MonopolyVS
         {
             //ATTENTION LA METHODE NE CONTIENT EN L'ETAT QUE DES ACTIONS SUR L'OBJET JOUEUR (L'OBJET PROPRIETE RESTE INCHANGE)
             //ATTENTION LES OBJETS CASE ET PROPRIETE N'ETANT PAS CREEES, LE CODE NE COMPILE PAS
-            PerdsArgent(proprieteAchetee.iPrix); //le solde est mis à jour (peut-être à déplacer vers banque ?)
-            sPatrimoine.Add(proprieteAchetee.sNom);//la liste des propriétés est mise à jour
+            PerdsArgent(proprieteAchetee.Prix); //le solde est mis à jour (peut-être à déplacer vers banque ?)
+            Patrimoine.Add(proprieteAchetee.Nom);//la liste des propriétés est mise à jour
             //proprieteAchetee.bEstAchetee = true;
             //proprieteAchetee.sProprietaire = sNom;
         }
@@ -70,31 +76,13 @@ namespace MonopolyVS
         }
 
         /// <summary>
-        /// Indique la position sur le plateau
-        /// </summary>
-        /// <returns>Le numéro de la case du plateau</returns>
-        int RecuperePosition()
-        {
-            return iPosition;
-        }
-
-        /// <summary>
-        /// Montre la liste des propriétés acquises
-        /// </summary>
-        /// <returns>La liste des propriétés du joueur</returns>
-         List<string> RecuperePatrimoine()
-        {
-            return sPatrimoine;
-        }
-
-        /// <summary>
         /// Téléporte le joueur vers la case prison, défini la peine du joueur ainsi que son statut de prisonnier.
         /// </summary>
         void AllerPrison()
         {
-            iPosition = -1; //VALEUR A REMPLACER PAR LE NUMERO DE CASE CORRESPONDANT A LA PRISON
+            Position = -1; //VALEUR A REMPLACER PAR LE NUMERO DE CASE CORRESPONDANT A LA PRISON
             iPeine = 3;
-            bEstEnPrison = true;
+            estEnPrison = true;
         }
     }
 }
