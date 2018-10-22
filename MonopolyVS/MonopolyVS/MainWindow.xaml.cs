@@ -32,8 +32,8 @@ namespace MonopolyVS
         private void ButtonLanceDes_Click(object sender, RoutedEventArgs e)
         {
             Des.Lancer();
-            TextBoxConsole.AppendText("\nLe premier dé affiche un " + Convert.ToString(Des.RecuperePremier()) + "\n");
-            TextBoxConsole.AppendText("Le deuxième dé affiche un " + Convert.ToString(Des.RecupereDeuxieme()) + "\n");
+            TextBoxConsole.AppendText("\nLe premier dé affiche un " + Convert.ToString(Des.Premier) + "\n");
+            TextBoxConsole.AppendText("Le deuxième dé affiche un " + Convert.ToString(Des.Deuxieme) + "\n");
             if (Des.EstDouble() == true)
                 TextBoxConsole.AppendText("Doublé\n");
             TextBoxConsole.ScrollToEnd();
