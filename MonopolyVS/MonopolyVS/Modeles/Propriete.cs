@@ -8,8 +8,8 @@ namespace MonopolyVS.Modeles
 {
     public class Propriete : Case
     {
-        public string sNom;
-        public int iPrix;
+        public string Nom { get; set}
+        public int Prix { get; }
         
     }
 }

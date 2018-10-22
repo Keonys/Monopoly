@@ -8,5 +8,9 @@ namespace MonopolyVS.Modeles
 {
     public class Banque : Joueur
     {
+        int nbrMaison = 32;
+        int nbrHotel = 12;
+
+
     }
 }

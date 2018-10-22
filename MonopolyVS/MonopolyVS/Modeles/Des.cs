@@ -9,8 +9,8 @@ namespace MonopolyVS.Modeles
     public class Des
     {
         //initialisation des variables contenant le résultat des dés
-        int iPremier = -1;
-        int iDeuxieme = -1;
+        public int Premier { get; set; } = -1;
+        public int Deuxieme { get; set; } = -1;
         Random alea = new Random(); //initialisation du générateur de valeurs aléatoires
         
         
@@ -20,26 +20,8 @@ namespace MonopolyVS.Modeles
         public void Lancer()
         {
 
-            iPremier = alea.Next(1, 13);
-            iDeuxieme = alea.Next(1, 13);
-        }
-
-        /// <summary>
-        /// Permet de récupérer la valeur du premier dé
-        /// </summary>
-        /// <returns>Valeur du 1er dé sous forme de int.</returns>
-        public int RecuperePremier()
-        {
-            return iPremier;
-        }
-
-        /// <summary>
-        /// Permet de récupérer la valeur du deuxième dé.
-        /// </summary>
-        /// <returns>Valeur du 2eme dé sous forme de int.</returns>
-        public int RecupereDeuxieme()
-        {
-            return iDeuxieme;
+            Premier = alea.Next(1, 13);
+            Deuxieme = alea.Next(1, 13);
         }
 
         /// <summary>
@@ -48,7 +30,7 @@ namespace MonopolyVS.Modeles
         /// <returns></returns>
         public bool EstDouble()
         {
-            if (iPremier == iDeuxieme)
+            if (Premier == Deuxieme)
                 return true;
             else
                 return false;
