@@ -30,7 +30,7 @@ namespace MonopolyVS
 
         private void ButtonLanceDes_Click(object sender, RoutedEventArgs e)
         {
-            Des.Lancer()
+            Des.Lancer();
             TextBlockConsole.Text = Convert.ToString(Des.RecuperePremier()) + "\n" + Convert.ToString(Des.RecupereDeuxieme());
         }
     }
