@@ -21,11 +21,22 @@ namespace MonopolyVS
     /// </summary>
     public partial class MainWindow : Window
     {
+        Modeles.Des Des = new Modeles.Des();
+
         public MainWindow()
         {
             InitializeComponent();
-            //List<Case> listeCases = new List<Case>();
-            //listeCases.CreationCase();
+            
+        }
+
+        private void ButtonLanceDes_Click(object sender, RoutedEventArgs e)
+        {
+            Des.Lancer();
+            TextBoxConsole.AppendText("\nLe premier dé affiche un " + Convert.ToString(Des.RecuperePremier()) + "\n");
+            TextBoxConsole.AppendText("Le deuxième dé affiche un " + Convert.ToString(Des.RecupereDeuxieme()) + "\n");
+            if (Des.EstDouble() == true)
+                TextBoxConsole.AppendText("Doublé\n");
+            TextBoxConsole.ScrollToEnd();
         }
     }
 }

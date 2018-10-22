@@ -1,4 +1,4 @@
-﻿<Window x:Class="MonopolyVS.MainWindow"
+﻿<Window x:Name="FenetrePrincipale" x:Class="MonopolyVS.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="796.415" Width="1830.754">
     <Grid>
+        <Button x:Name="ButtonLanceDes" Content="Lancer les Dés" HorizontalAlignment="Left" Margin="751,170,0,0" VerticalAlignment="Top" Width="354" Height="70" FontSize="48" Click="ButtonLanceDes_Click"/>
+        <TextBox x:Name="TextBoxConsole" HorizontalAlignment="Left" Height="235" Margin="634,425,0,0" TextWrapping="Wrap" Text="TEST A LA CON" VerticalAlignment="Top" Background="#FF124E06" BorderBrush="{x:Null}" FontSize="24" Foreground="#FFDDD019" Width="628">
+            <TextBox.CaretBrush>
+                <ImageBrush/>
+            </TextBox.CaretBrush>
+        </TextBox>
         <Image x:Name="imgPlateau" HorizontalAlignment="Left" Height="747" Margin="10,10,0,0" VerticalAlignment="Top" Width="897" Source="Images/plateau_monopoly_wow.jpg" Stretch="Fill"/>
         <Rectangle x:Name="caseDepart" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="784,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="123" Visibility="Hidden"/>
         <Rectangle x:Name="caseBrun1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="712,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="72" Visibility="Hidden"/>
