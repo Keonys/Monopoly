@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MonopolyVS"
         mc:Ignorable="d"
-        Title="MainWindow" Height="796.415" Width="1830.754">
+        Title="MainWindow" Height="792" Width="1824">
     <Grid>
-        <Button x:Name="ButtonLanceDes" Content="Lancer les Dés" HorizontalAlignment="Left" Margin="751,170,0,0" VerticalAlignment="Top" Width="354" Height="70" FontSize="48" Click="ButtonLanceDes_Click"/>
-        <TextBox x:Name="TextBoxConsole" HorizontalAlignment="Left" Height="235" Margin="634,425,0,0" TextWrapping="Wrap" Text="TEST A LA CON" VerticalAlignment="Top" Background="#FF124E06" BorderBrush="{x:Null}" FontSize="24" Foreground="#FFDDD019" Width="628">
+        <Button x:Name="btnLanceDes" Content="Lancer les Dés" Margin="972,364,0,0" VerticalAlignment="Top" Height="49" FontSize="24" Click="btnLanceDes_Click" HorizontalAlignment="Left" Width="220"/>
+        <TextBox x:Name="txtboxConsole" HorizontalAlignment="Left" Height="282" Margin="912,475,5,5" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FF124E06" BorderBrush="{x:Null}" FontSize="24" Foreground="#FFDDD019" Width="896">
             <TextBox.CaretBrush>
                 <ImageBrush/>
             </TextBox.CaretBrush>
@@ -74,5 +74,26 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
+        <Label x:Name="lblPion" Content="Choix du Pion :" HorizontalAlignment="Left" Margin="972,41,0,0" VerticalAlignment="Top" Height="43" Width="195" FontSize="24"/>
+        <Button x:Name="btnDk" Click="btnDk_Click" Content="" HorizontalAlignment="Left" Margin="1172,41,0,0" VerticalAlignment="Top" Width="118" Height="98" FontSize="24">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="Images/39px-ClassIcon_deathknight.png"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button x:Name="btnMage" Click="btnMage_Click" Content="" HorizontalAlignment="Left" Margin="1338,41,0,0" VerticalAlignment="Top" Width="118" Height="98" FontSize="24">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="Images/39px-ClassIcon_mage.png"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+
+        <Image Name="image1" HorizontalAlignment="Left" Stretch="Fill" VerticalAlignment="Top" Source="Images/39px-ClassIcon_shaman.png" Height="183" Margin="1364,230,0,0" Width="255"></Image>
+        <Canvas x:Name="BackPanel" Margin="20,67,0,0" Height="317" Width="331">
+            <Rectangle x:Name="selectionRectangle" Stroke="LightBlue" Fill="#220000FF"/>
+        </Canvas>
     </Grid>
 </Window>
