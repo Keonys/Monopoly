@@ -30,35 +30,15 @@ namespace MonopolyVS
             Position += distance;
         }
 
-        //2 PROCHAINES METHODES PEUT-ETRE A DEPLACER VERS BANQUE
-
-        /// <summary>
-        /// Met à jour le solde du joueur lors d'un gain d'argent
-        /// </summary>
-        /// <param name="gains">Argent gagné</param>
-        void GagneArgent(int gains)
-        {
-            Argent += gains;
-        }
-
-        /// <summary>
-        /// Met à jour le solde du joueur lors d'une perte d'argent
-        /// </summary>
-        /// <param name="gains">Argent perdu</param>
-        void PerdsArgent(int pertes)
-        {
-            Argent -= pertes;
-        }
-
         /// <summary>
         /// Permet d'acheter une propriété et l'ajoute au patrimoine
         /// </summary>
         /// <param name="proprieteAchetee">Propriété achetée</param>
-        public void AcheterUnePropriete(Propriete proprieteAchetee)
+        public void AcheterUnePropriete(Propriete proprieteAchetee, Banque banquier)
         {
             //ATTENTION LA METHODE NE CONTIENT EN L'ETAT QUE DES ACTIONS SUR L'OBJET JOUEUR (L'OBJET PROPRIETE RESTE INCHANGE)
             //ATTENTION LES OBJETS CASE ET PROPRIETE N'ETANT PAS CREEES, LE CODE NE COMPILE PAS
-            PerdsArgent(proprieteAchetee.Prix); //le solde est mis à jour (peut-être à déplacer vers banque ?)
+            banquier.PerdsArgent(this, proprieteAchetee.Prix); //le solde est mis à jour (peut-être à déplacer vers banque ?)
             Patrimoine.Add(proprieteAchetee.Nom);//la liste des propriétés est mise à jour
             //proprieteAchetee.bEstAchetee = true;
             //proprieteAchetee.sProprietaire = sNom;

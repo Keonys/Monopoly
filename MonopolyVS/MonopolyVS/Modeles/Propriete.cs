@@ -8,7 +8,7 @@ namespace MonopolyVS.Modeles
 {
     public class Propriete : Case
     {
-        public string Nom { get; set}
+        public string Nom { get; set;}
         public int Prix { get; }
         
     }
