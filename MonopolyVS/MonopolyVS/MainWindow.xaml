@@ -5,8 +5,68 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MonopolyVS"
         mc:Ignorable="d"
-        Title="MainWindow" Height="541.698" Width="2180.566">
+        Title="MainWindow" Height="796.415" Width="1830.754">
     <Grid>
-
+        <Image x:Name="imgPlateau" HorizontalAlignment="Left" Height="747" Margin="10,10,0,0" VerticalAlignment="Top" Width="897" Source="Images/plateau_monopoly_wow.jpg" Stretch="Fill"/>
+        <Rectangle x:Name="caseDepart" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="784,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="123" Visibility="Hidden"/>
+        <Rectangle x:Name="caseBrun1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="712,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="72" Visibility="Hidden"/>
+        <Rectangle x:Name="caseCc1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="640,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="72" Visibility="Hidden"/>
+        <Rectangle x:Name="caseBrun2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="568,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="72" Visibility="Hidden"/>
+        <Rectangle x:Name="caseImpot1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="494,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="74" Visibility="Hidden"/>
+        <Rectangle x:Name="caseDonjon1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="420,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="74" Visibility="Hidden"/>
+        <Rectangle x:Name="caseBleu1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="347,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="73" Visibility="Hidden"/>
+        <Rectangle x:Name="caseChance1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="275,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="72" Visibility="Hidden"/>
+        <Rectangle x:Name="caseBleu2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="203,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="72" Visibility="Hidden"/>
+        <Rectangle x:Name="caseBleu3" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="130,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="73" Visibility="Hidden"/>
+        <Rectangle x:Name="casePrison" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="10,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <Rectangle x:Name="caseRose1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="61" Margin="10,596,0,0" Stroke="Black" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <Rectangle x:Name="caseImpot2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="62" Margin="10,534,0,0" Stroke="Black" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <Rectangle x:Name="caseRose2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="59" Margin="10,475,0,0" Stroke="Black" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <Rectangle x:Name="caseRose3" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="62" Margin="10,413,0,0" Stroke="Black" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <Rectangle x:Name="caseDonjon2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="60" Margin="10,353,0,0" Stroke="Black" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <Rectangle x:Name="caseOrange1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="61" Margin="10,292,0,0" Stroke="Black" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <Rectangle x:Name="caseCc2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="60" Margin="10,232,0,0" Stroke="Black" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <Rectangle x:Name="caseOrange2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="60" Margin="10,172,0,0" Stroke="Black" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <Rectangle x:Name="caseOrange3" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="62" Margin="10,110,0,0" Stroke="Black" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <Rectangle x:Name="caseParc" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <Rectangle x:Name="caseRouge1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="130,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="73" Visibility="Hidden"/>
+        <Rectangle x:Name="caseChance2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="203,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="72" Visibility="Hidden"/>
+        <Rectangle x:Name="caseRouge2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="275,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="72" Visibility="Hidden"/>
+        <Rectangle x:Name="caseRouge3" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="347,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="73" Visibility="Hidden"/>
+        <Rectangle x:Name="caseDonjon3" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="420,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="74" Visibility="Hidden"/>
+        <Rectangle x:Name="caseJaune1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="494,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="74" Visibility="Hidden"/>
+        <Rectangle x:Name="caseJaune2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="568,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="72" Visibility="Hidden"/>
+        <Rectangle x:Name="caseImpot3" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="640,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="72" Visibility="Hidden"/>
+        <Rectangle x:Name="caseJaune3" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="712,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="72" Visibility="Hidden"/>
+        <Rectangle x:Name="casePolice" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="784,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="123" Visibility="Hidden"/>
+        <Rectangle x:Name="caseVert1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="62" Margin="784,110,0,0" Stroke="Black" VerticalAlignment="Top" Width="123" Visibility="Hidden"/>
+        <Rectangle x:Name="caseVert2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="60" Margin="784,172,0,0" Stroke="Black" VerticalAlignment="Top" Width="123" Visibility="Hidden"/>
+        <Rectangle x:Name="caseCc3" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="60" Margin="784,232,0,0" Stroke="Black" VerticalAlignment="Top" Width="123" Visibility="Hidden"/>
+        <Rectangle x:Name="caseVert3" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="61" Margin="784,292,0,0" Stroke="Black" VerticalAlignment="Top" Width="123" Visibility="Hidden"/>
+        <Rectangle x:Name="caseDonjon4" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="60" Margin="784,353,0,0" Stroke="Black" VerticalAlignment="Top" Width="123" Visibility="Hidden"/>
+        <Rectangle x:Name="caseChance3" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="62" Margin="784,413,0,0" Stroke="Black" VerticalAlignment="Top" Width="123" Visibility="Hidden"/>
+        <Rectangle x:Name="caseViolet1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="59" Margin="784,475,0,0" Stroke="Black" VerticalAlignment="Top" Width="123" Visibility="Hidden"/>
+        <Rectangle x:Name="caseImpot4" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="62" Margin="784,534,0,0" Stroke="Black" VerticalAlignment="Top" Width="123" Visibility="Hidden"/>
+        <Rectangle x:Name="caseViolet2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="61" Margin="784,596,0,0" Stroke="Black" VerticalAlignment="Top" Width="123" Visibility="Hidden"/>
+        <Rectangle x:Name="carteChance" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="107" Margin="600,501,0,0" Stroke="Black" VerticalAlignment="Top" Width="143" RenderTransformOrigin="0.504,0.506" Visibility="Hidden">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-44.476"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle x:Name="carteCc" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="102" Margin="172,154,0,0" Stroke="Black" VerticalAlignment="Top" Width="157" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-43.331"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
     </Grid>
 </Window>

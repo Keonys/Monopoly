@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MonopolyVS.Modeles;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace MonopolyVS
         public MainWindow()
         {
             InitializeComponent();
+            //List<Case> listeCases = new List<Case>();
+            //listeCases.CreationCase();
         }
     }
 }

@@ -8,5 +8,12 @@ namespace MonopolyVS.Modeles
 {
     public class Case
     {
+        //string couleur = "";
+        //List<Case> listeCases = new List<Case>();
+
+        //public void CreationCase()
+        //{
+        //    this.listeCases.Add(brun, );
+        //}
     }
 }
