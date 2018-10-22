@@ -8,5 +8,6 @@ namespace MonopolyVS
 {
     public class Joueur
     {
+
     }
 }

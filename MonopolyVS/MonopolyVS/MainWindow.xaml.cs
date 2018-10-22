@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -21,22 +22,31 @@ namespace MonopolyVS
     /// </summary>
     public partial class MainWindow : Window
     {
-        Modeles.Des Des = new Modeles.Des();
+        Des Des = new Des();
 
         public MainWindow()
         {
             InitializeComponent();
-            
         }
 
-        private void ButtonLanceDes_Click(object sender, RoutedEventArgs e)
+        private void btnLanceDes_Click(object sender, RoutedEventArgs e)
         {
             Des.Lancer();
-            TextBoxConsole.AppendText("\nLe premier dé affiche un " + Convert.ToString(Des.RecuperePremier()) + "\n");
-            TextBoxConsole.AppendText("Le deuxième dé affiche un " + Convert.ToString(Des.RecupereDeuxieme()) + "\n");
+            txtboxConsole.AppendText("\nLe premier dé affiche un " + Convert.ToString(Des.RecuperePremier()) + "\n");
+            txtboxConsole.AppendText("Le deuxième dé affiche un " + Convert.ToString(Des.RecupereDeuxieme()) + "\n");
             if (Des.EstDouble() == true)
-                TextBoxConsole.AppendText("Doublé\n");
-            TextBoxConsole.ScrollToEnd();
+                txtboxConsole.AppendText("Doublé\n");
+            txtboxConsole.ScrollToEnd();
+        }
+
+        private void btnDk_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnMage_Click(object sender, RoutedEventArgs e)
+        {
+            // do smt
         }
     }
 }

@@ -102,7 +102,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\39px-ClassIcon_deathknight.png" />
+    <Resource Include="Images\39px-ClassIcon_demon_hunter.png" />
+    <Resource Include="Images\39px-ClassIcon_druid.png" />
+    <Resource Include="Images\39px-ClassIcon_hunter.png" />
+    <Resource Include="Images\39px-ClassIcon_mage.png" />
+    <Resource Include="Images\39px-ClassIcon_monk.png" />
+    <Resource Include="Images\39px-ClassIcon_paladin.png" />
+    <Resource Include="Images\39px-ClassIcon_priest.png" />
+    <Resource Include="Images\39px-ClassIcon_rogue.png" />
+    <Resource Include="Images\39px-ClassIcon_shaman.png" />
+    <Resource Include="Images\39px-ClassIcon_warlock.png" />
+    <Resource Include="Images\39px-ClassIcon_warrior.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\plateau_monopoly_wow.jpg" />
   </ItemGroup>
