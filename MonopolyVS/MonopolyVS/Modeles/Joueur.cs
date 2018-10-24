@@ -1,23 +1,29 @@
-﻿using MonopolyVS.Modeles;
+﻿#region NAMESPACE
+using MonopolyVS.Modeles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+#endregion
 
 namespace MonopolyVS
 {
     public class Joueur
     {
-        #region Variables et paramètres
-        //Paramètres
-        public string Nom { get; set; }
-        public int Argent { get; set; }
+        #region PARAMETRES ET VARIABLES
+        public string Nom { get; }
+        //Solde compte du joueur
+        public double Argent { get; set; }
+        //Position du joueur sur le plateau
         public int Position { get; set; }
-        public List<string> Patrimoine { get; set; } = new List<string>();  //liste contenant la liste des propriétés acquises par le joueur
+        //liste contenant l'ensemble des propriétés acquises par le joueur
+        public List<string> Patrimoine { get; set; } = new List<string>();
 
-        int nbrDouble, iPeine; //variables pour le solde en banque, la position sur le plateau et le nombre de doublés d'affilée
+        //variables pour le nombre de doublés d'affilée et le nombre de tours restant en prison
+        int nbrDouble, iPeine;
         bool estEnPrison = false;
+        //Si c'est le tour du joueur
         bool sonTour = false;
         #endregion
 
@@ -36,13 +42,13 @@ namespace MonopolyVS
         /// <param name="proprieteAchetee">Propriété achetée</param>
         public void AcheterUnePropriete(Propriete proprieteAchetee, Banque banquier)
         {
-            //ATTENTION LA METHODE NE CONTIENT EN L'ETAT QUE DES ACTIONS SUR L'OBJET JOUEUR (L'OBJET PROPRIETE RESTE INCHANGE)
-            //ATTENTION LES OBJETS CASE ET PROPRIETE N'ETANT PAS CREEES, LE CODE NE COMPILE PAS
-            banquier.PerdsArgent(this, proprieteAchetee.Prix); //le solde est mis à jour (peut-être à déplacer vers banque ?)
-            Patrimoine.Add(proprieteAchetee.Nom);//la liste des propriétés est mise à jour
-            //proprieteAchetee.bEstAchetee = true;
-            //proprieteAchetee.sProprietaire = sNom;
+            banquier.PerdsArgent(this, proprieteAchetee.Prix[0]);   //le solde est mis à jour
+            Patrimoine.Add(proprieteAchetee.Nom);   //la liste des propriétés est mise à jour
+            proprieteAchetee.EstAchetee = true; //verrouille l'achat de la case
+            proprieteAchetee.Proprietaire = Nom;    //met à jour le nom du propriétaire dans la case
         }
+
+
 
         //VOIR COMMENT DE DEROULE UNE PARTIE POUR REMPLIR CES 2 METHODES
         void PerdrePartie()
@@ -61,8 +67,8 @@ namespace MonopolyVS
         void AllerPrison()
         {
             Position = -1; //VALEUR A REMPLACER PAR LE NUMERO DE CASE CORRESPONDANT A LA PRISON
-            iPeine = 3;
-            estEnPrison = true;
+            iPeine = 3; //met la peine du joueur à 3 tours
+            estEnPrison = true; //verrouille le joueur dans l'état prisonnier
         }
     }
 }

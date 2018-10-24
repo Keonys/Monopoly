@@ -1,22 +1,27 @@
-﻿using System;
+﻿#region NAMESPACE
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+#endregion
 
 namespace MonopolyVS.Modeles
 {
     public class Banque : Joueur
     {
+        //Nombre maisons et hôtels pour 1 partie
         int nbrMaison = 32;
         int nbrHotel = 12;
+        //Lorsque la banque ne peut plus proposer de maisons, une crise du batiment est déclenchée
+        public bool Crise { get; } = false;
 
         /// <summary>
         /// Met à jour le solde d'un joueur lors d'un gain d'argent
         /// </summary>
         /// <param name="joueur">Joueur gagnant l'argent</param>
         /// <param name="gains">Argent gagné</param>
-        public void GagneArgent(Joueur joueur, int gains)
+        public void GagneArgent(Joueur joueur, double gains)
         {
             joueur.Argent += gains;
         }
@@ -26,12 +31,23 @@ namespace MonopolyVS.Modeles
         /// </summary>
         /// <param name="joueur">Joueur perdant l'argent</param>
         /// <param name="pertes">Argent perdu</param>
-        public void PerdsArgent(Joueur joueur, int pertes)
+        public void PerdsArgent(Joueur joueur, double pertes)
         {
             joueur.Argent -= pertes;
         }
+
+        /// <summary>
+        /// Fait une transaction entre deux joueurs
+        /// </summary>
+        /// <param name="donneur">Joueur débité</param>
+        /// <param name="receveur">Joueur crédité</param>
+        /// <param name="montant">Montant de la transaction</param>
+        public void Transaction(Joueur donneur, Joueur receveur, int montant)
+        {
+            PerdsArgent(donneur, montant);  //mise à jour du solde du joueur débité
+            GagneArgent(receveur, montant); //mise à jour du solde du joueur crédité
+        }
         
-        //2 PROCHAINES METHODES NON FINIES
         /// <summary>
         /// Construit un nombre de maisons sur une case définie et déduit l'argent nécéssaire au joueur à qui appartient la case
         /// </summary>
@@ -40,9 +56,9 @@ namespace MonopolyVS.Modeles
         /// <param name="nombre">Nombre de maisons à construire</param>
         void ConstruireMaison(Joueur nomJoueur, Propriete propriete, int nombre)
         {
-            //PerdsArgent(propriete.PrixMaison * nombre);
-            nbrMaison -= nombre;
-            //propriete.nbrMaison += nombre.
+            PerdsArgent(nomJoueur, propriete.Prix[1] * nombre);   //mise à jour du solde du joueur achetant une maison
+            nbrMaison -= nombre;    //mise à jour du solde de maisons en banque
+            propriete.NbrMaison += nombre;  //construction de la maison sur la case
         }
 
         /// <summary>
@@ -52,11 +68,11 @@ namespace MonopolyVS.Modeles
         /// <param name="propriete">Case où est construit l'hôtel</param>
         void ConstruireHotel(Joueur nomJoueur, Propriete propriete)
         {
-            //PerdsArgent(propriete.PrixHotel * nombre);
-            //propriete.nbrMaison -= 4
-            nbrMaison += 4;
-            nbrHotel -= 1;
-            //propriete.nbrHotel ++;
+            PerdsArgent(nomJoueur, propriete.Prix[2]);  //mise à jour du solde du joueur achetant un hôtel
+            propriete.NbrMaison -= 4;   //echange des maisons pour construire hôtel
+            nbrMaison += 4; //mise à jour du solde de maisons en banque
+            nbrHotel -= 1;  //mise à jour du solde de'hôtels en banque
+            propriete.NbrHotel = true;  //construction de l'hôtel sur la case
         }
 
         /// <summary>
@@ -66,8 +82,8 @@ namespace MonopolyVS.Modeles
         /// <param name="propriete">Case hypothèquée</param>
         void Hypotheque(Joueur joueur, Propriete propriete)
         {
-            //GagneArgent(joueur, propriete.Hypotheque);
-            //propriete.estHypotheque = true;
+            GagneArgent(joueur, propriete.Prix[4]); //mise à jour du solde du joueur qui hypothèque la case
+            propriete.EstHypotheque = true; //verrouillage de la case hypothèquée
         }
 
         /// <summary>
@@ -77,8 +93,8 @@ namespace MonopolyVS.Modeles
         /// <param name="propriete">Case hypothèquée</param>
         void LeverHypotheque(Joueur joueur, Propriete propriete)
         {
-            //PerdsArgent(joueur, (propriete.Hypotheque * 1.1));
-            //propriete.estHypotheque = false;
+            PerdsArgent(joueur, (propriete.Prix[4] * 1.1)); //mise à jour du solde du joueur qui lève hypothèque la case
+            propriete.EstHypotheque = false;    //déverrouillage de la case hypothèquée
         }
     }
 }

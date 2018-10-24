@@ -15,11 +15,11 @@ namespace MonopolyVS.Modeles
         
         
         /// <summary>
-        /// Methode permettant de lancer les 2 dés, ne retourne aucune valeur.
+        /// Lance les 2 dés.
         /// </summary>
         public void Lancer()
         {
-
+            //donne une valeur aleatoire entre 1 et 12 pour les deux dés
             Premier = alea.Next(1, 13);
             Deuxieme = alea.Next(1, 13);
         }
@@ -27,9 +27,10 @@ namespace MonopolyVS.Modeles
         /// <summary>
         /// Permet de savoir si les deux dés ont la même valeur.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Si doublé ou pas</returns>
         public bool EstDouble()
         {
+            //vérifie si les deux dés ont la même valeur
             if (Premier == Deuxieme)
                 return true;
             else
