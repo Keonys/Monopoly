@@ -10,6 +10,5 @@ namespace MonopolyVS.Modeles
     {
         public string Nom { get; set;}
         public int Prix { get; }
-        
     }
 }

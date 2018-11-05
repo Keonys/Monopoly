@@ -9,14 +9,13 @@ namespace MonopolyVS
 {
     public class Joueur
     {
-        #region Variables et paramètres
-        //Paramètres
+        #region Variables et propriétés
         public string Nom { get; set; }
         public int Argent { get; set; }
         public int Position { get; set; }
         public List<string> Patrimoine { get; set; } = new List<string>();  //liste contenant la liste des propriétés acquises par le joueur
 
-        int nbrDouble, iPeine; //variables pour le solde en banque, la position sur le plateau et le nombre de doublés d'affilée
+        int nbrDouble, peine; //variables pour le solde en banque, la position sur le plateau et le nombre de doublés d'affilée
         bool estEnPrison = false;
         bool sonTour = false;
         #endregion
@@ -61,7 +60,7 @@ namespace MonopolyVS
         void AllerPrison()
         {
             Position = -1; //VALEUR A REMPLACER PAR LE NUMERO DE CASE CORRESPONDANT A LA PRISON
-            iPeine = 3;
+            peine = 3;
             estEnPrison = true;
         }
     }
