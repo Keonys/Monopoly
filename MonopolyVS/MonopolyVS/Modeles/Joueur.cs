@@ -12,7 +12,7 @@ namespace MonopolyVS
     public class Joueur
     {
         #region PARAMETRES ET VARIABLES
-        public string Nom { get; }
+        public string Nom { get; set; }
         //Solde compte du joueur
         public double Argent { get; set; }
         //Position du joueur sur le plateau

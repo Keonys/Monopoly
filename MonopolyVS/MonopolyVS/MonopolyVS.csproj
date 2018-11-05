@@ -119,5 +119,9 @@
   <ItemGroup>
     <Resource Include="Images\plateau_monopoly_wow.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\39px-ClassIcon_deathknightFOND.png" />
+    <Resource Include="Images\39px-ClassIcon_mageFOND.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

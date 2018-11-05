@@ -25,10 +25,14 @@ namespace MonopolyVS
     public partial class MainWindow : Window
     {
         Des Des = new Des();
+        Joueur J1 = new Joueur();
+        Joueur J2 = new Joueur();
 
         public MainWindow()
         {
             InitializeComponent();
+            btnLanceDes.Visibility = Visibility.Hidden;
+            txtboxConsole.AppendText("Le joueur 1 choisit son pion : " + "\n");
         }
 
         private void btnLanceDes_Click(object sender, RoutedEventArgs e)
@@ -44,12 +48,39 @@ namespace MonopolyVS
 
         private void btnDk_Click(object sender, RoutedEventArgs e)
         {
+            if (pion1.Fill == null)
+            {
+                pion1.Fill = new ImageBrush(new BitmapImage(new Uri(@"E:\ProjetMonopoly\Monopoly\MonopolyVS\MonopolyVS\Images\39px-ClassIcon_deathknightFOND.png", UriKind.Relative)));
+                txtboxConsole.AppendText("Vous avez choisi le chevalier de la mort." + "\n");
+                txtboxConsole.AppendText("Le joueur 2 choisit son pion : " + "\n");
+            }
+            else if (pion2.Fill == null)
+            {
+                pion2.Fill = new ImageBrush(new BitmapImage(new Uri(@"E:\ProjetMonopoly\Monopoly\MonopolyVS\MonopolyVS\Images\39px-ClassIcon_deathknightFOND.png", UriKind.Relative)));
+                txtboxConsole.AppendText("Vous avez choisi le chevalier de la mort." + "\n");
+                btnLanceDes.Visibility = Visibility.Visible;
+            }
+                
 
         }
 
         private void btnMage_Click(object sender, RoutedEventArgs e)
         {
-            // do smt
+            if (pion1.Fill == null)
+            {
+                pion1.Fill = new ImageBrush(new BitmapImage(new Uri(@"E:\ProjetMonopoly\Monopoly\MonopolyVS\MonopolyVS\Images\39px-ClassIcon_mageFOND.png", UriKind.Relative)));
+                txtboxConsole.AppendText("Vous avez choisi le mage." + "\n");
+                txtboxConsole.AppendText("Le joueur 2 choisit son pion : " + "\n");
+            }
+                
+
+            else if (pion2.Fill == null)
+            {
+                pion2.Fill = new ImageBrush(new BitmapImage(new Uri(@"E:\ProjetMonopoly\Monopoly\MonopolyVS\MonopolyVS\Images\39px-ClassIcon_mageFOND.png", UriKind.Relative)));
+                txtboxConsole.AppendText("Vous avez choisi le mage." + "\n");
+                btnLanceDes.Visibility = Visibility.Visible;
+            }
+                
         }
     }
 }
