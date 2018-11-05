@@ -17,12 +17,14 @@ namespace MonopolyVS
         public double Argent { get; set; }
         //Position du joueur sur le plateau
         public int Position { get; set; }
+        //le nombre de tours restant en prison
+        public int Peine { get; set; }
+        public bool EstEnPrison = false;
         //liste contenant l'ensemble des propriétés acquises par le joueur
         public List<string> Patrimoine { get; set; } = new List<string>();
 
-        //variables pour le nombre de doublés d'affilée et le nombre de tours restant en prison
-        int nbrDouble, iPeine;
-        bool estEnPrison = false;
+        //variables pour le nombre de doublés d'affilée
+        int nbrDouble;
         //Si c'est le tour du joueur
         bool sonTour = false;
         #endregion
@@ -59,16 +61,6 @@ namespace MonopolyVS
         void GagnerPartie()
         {
 
-        }
-
-        /// <summary>
-        /// Téléporte le joueur vers la case prison, défini la peine du joueur ainsi que son statut de prisonnier.
-        /// </summary>
-        void AllerPrison()
-        {
-            Position = -1; //VALEUR A REMPLACER PAR LE NUMERO DE CASE CORRESPONDANT A LA PRISON
-            iPeine = 3; //met la peine du joueur à 3 tours
-            estEnPrison = true; //verrouille le joueur dans l'état prisonnier
         }
     }
 }

@@ -11,6 +11,7 @@ namespace MonopolyVS.Modeles
         //initialisation des variables contenant le résultat des dés
         public int Premier { get; set; } = -1;
         public int Deuxieme { get; set; } = -1;
+        public int Resultat { get; set; }
         Random alea = new Random(); //initialisation du générateur de valeurs aléatoires
         
         
@@ -22,6 +23,7 @@ namespace MonopolyVS.Modeles
             //donne une valeur aleatoire entre 1 et 12 pour les deux dés
             Premier = alea.Next(1, 13);
             Deuxieme = alea.Next(1, 13);
+            Resultat = Premier + Deuxieme;
         }
 
         /// <summary>
