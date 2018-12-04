@@ -1,8 +1,11 @@
-﻿using System;
+﻿#region NAMESPACE
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+#endregion
 
 namespace MonopolyVS.Modeles
 {
@@ -10,14 +13,13 @@ namespace MonopolyVS.Modeles
     {
         List<string> Ordre = new List<string>();
 
-        void DefOrdre(Des des)
+        void DefOrdre(Des des, int nombreJoueurs)
         {
+            Window DemandeNom = new Window();
             //DEFINI L'ORDRE DES JOUEURS
-            List<int> tri = new List<int>();
-            for(int i = 0; i < Ordre.Count; i++)
+            for (int i=0; i<nombreJoueurs; i++)
             {
-                des.Lancer();
-                tri[i] = des.Premier + des.Deuxieme;
+                
             }
         }
     }
