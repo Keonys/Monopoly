@@ -20,9 +20,9 @@ namespace MonopolyVS.Modeles
         /// </summary>
         public void Lancer()
         {
-            //donne une valeur aleatoire entre 1 et 12 pour les deux dés
-            Premier = alea.Next(1, 13);
-            Deuxieme = alea.Next(1, 13);
+            //donne une valeur aleatoire entre 1 et 6 pour les deux dés
+            Premier = alea.Next(1, 7);
+            Deuxieme = alea.Next(1, 7);
             Resultat = Premier + Deuxieme;
         }
 

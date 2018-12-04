@@ -11,7 +11,7 @@ namespace MonopolyVS
 {
     public class Joueur
     {
-        #region PARAMETRES ET VARIABLES
+        #region Propriétés et variables
         public string Nom { get; set; }
         //Solde compte du joueur
         public double Argent { get; set; }
@@ -22,11 +22,10 @@ namespace MonopolyVS
         public bool EstEnPrison = false;
         //liste contenant l'ensemble des propriétés acquises par le joueur
         public List<string> Patrimoine { get; set; } = new List<string>();
-
         //variables pour le nombre de doublés d'affilée
-        int nbrDouble;
+        public int nbrDouble = 0;
         //Si c'est le tour du joueur
-        bool sonTour = false;
+        public bool sonTour = false;
         #endregion
 
         /// <summary>
