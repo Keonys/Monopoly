@@ -5,14 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MonopolyVS"
         mc:Ignorable="d"
-        Title="MainWindow" Height="792" Width="1824">
+        Title="MainWindow" Height="792" Width="1824"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
-        <Button x:Name="btnLanceDes" Content="Lancer les Dés" Margin="972,198,0,0" VerticalAlignment="Top" Height="49" FontSize="24" Click="btnLanceDes_Click" HorizontalAlignment="Left" Width="220"/>
+        <!--Visuel n'étant pas sur l'image-->
+        <Button x:Name="btnLanceDes" Content="Lancer les Dés" Margin="972,172,0,0" VerticalAlignment="Top" Height="49" FontSize="24" Click="btnLanceDes_Click" HorizontalAlignment="Left" Width="220"/>
         <TextBox x:Name="txtboxConsole" HorizontalAlignment="Left" Height="282" Margin="912,475,5,5" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FF124E06" BorderBrush="{x:Null}" FontSize="24" Foreground="#FFDDD019" Width="896">
             <TextBox.CaretBrush>
                 <ImageBrush/>
             </TextBox.CaretBrush>
         </TextBox>
+        <Label x:Name="lblPion" Content="Choix du Pion :" HorizontalAlignment="Left" Margin="972,18,0,0" VerticalAlignment="Top" Height="43" Width="195" FontSize="24"/>
+        <Button x:Name="btnDk" Click="btnDk_Click" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="102" Height="90" FontSize="24" Margin="1172,20,0,0">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="Images/39px-ClassIcon_deathknight.png"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button x:Name="btnMage" Click="btnMage_Click" Content="" HorizontalAlignment="Left" Margin="1298,18,0,0" VerticalAlignment="Top" Width="118" Height="98" FontSize="24">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="Images/39px-ClassIcon_mage.png"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        
+        <!--Visuel de l'image et sur l'image-->
         <Image x:Name="imgPlateau" HorizontalAlignment="Left" Height="747" Margin="10,10,0,0" VerticalAlignment="Top" Width="897" Source="Images/plateau_monopoly_wow.jpg" Stretch="Fill"/>
         <Rectangle x:Name="caseDepart" HorizontalAlignment="Left" Height="100" Margin="784,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="123"/>
         <Rectangle x:Name="caseBrun1" HorizontalAlignment="Left" Height="100" Margin="712,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="72"/>
@@ -74,23 +93,6 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Label x:Name="lblPion" Content="Choix du Pion :" HorizontalAlignment="Left" Margin="972,41,0,0" VerticalAlignment="Top" Height="43" Width="195" FontSize="24"/>
-        <Button x:Name="btnDk" Click="btnDk_Click" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="102" Height="90" FontSize="24" Margin="1192,49,0,0">
-            <Button.Template>
-                <ControlTemplate>
-                    <Image Source="Images/39px-ClassIcon_deathknight.png"/>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
-        <Button x:Name="btnMage" Click="btnMage_Click" Content="" HorizontalAlignment="Left" Margin="1338,41,0,0" VerticalAlignment="Top" Width="118" Height="98" FontSize="24">
-            <Button.Template>
-                <ControlTemplate>
-                    <Image Source="Images/39px-ClassIcon_mage.png"/>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
-        <Rectangle x:Name="pion1" HorizontalAlignment="Left" Height="32" Margin="813,678,0,0" VerticalAlignment="Top" Width="35" RadiusY="8.933" RadiusX="8.933"/>
-        <Rectangle x:Name="pion2" HorizontalAlignment="Left" Height="32" Margin="848,695,0,0" VerticalAlignment="Top" Width="35" RadiusY="11.333" RadiusX="11.333"/>
         <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="712,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
         <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="730,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
         <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="748,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
@@ -696,5 +698,11 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
+
+        <!--Gestion du pion / joueur-->
+        <Canvas>
+            <Rectangle Canvas.Left="0" Canvas.Top="0" Canvas.ZIndex="1" x:Name="pion1" HorizontalAlignment="Left" Height="32" Margin="808,683,0,0" VerticalAlignment="Top" Width="35" RadiusY="8.933" RadiusX="8.933"/>
+            <Rectangle Canvas.Left="0" Canvas.Top="0" x:Name="pion2" HorizontalAlignment="Left" Height="32" Margin="848,695,0,0" VerticalAlignment="Top" Width="35" RadiusY="11.333" RadiusX="11.333"/>
+        </Canvas>
     </Grid>
 </Window>
