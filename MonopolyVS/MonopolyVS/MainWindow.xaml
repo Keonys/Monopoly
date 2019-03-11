@@ -5,75 +5,83 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MonopolyVS"
         mc:Ignorable="d"
-        Title="MainWindow" Height="792" Width="1824"
+        Title="Monopoly World of Warcraft" Height="792" Width="1824"
         WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="37*"/>
+            <ColumnDefinition Width="12*"/>
+            <ColumnDefinition Width="115*"/>
+            <ColumnDefinition Width="801*"/>
+            <ColumnDefinition Width="289*"/>
+            <ColumnDefinition Width="564*"/>
+        </Grid.ColumnDefinitions>
         <!--Visuel n'étant pas sur l'image-->
-        <Button x:Name="btnLanceDes" Content="Lancer les Dés" Margin="972,172,0,0" VerticalAlignment="Top" Height="49" FontSize="24" Click="btnLanceDes_Click" HorizontalAlignment="Left" Width="220"/>
-        <TextBox x:Name="txtboxConsole" HorizontalAlignment="Left" Height="282" Margin="912,475,5,5" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FF124E06" BorderBrush="{x:Null}" FontSize="24" Foreground="#FFDDD019" Width="896">
+        <Button x:Name="btnLanceDes" Content="Lancer les Dés" Margin="7.2,172,0,0" VerticalAlignment="Top" Height="49" FontSize="24" Click="btnLanceDes_Click" HorizontalAlignment="Left" Width="220" Grid.Column="4"/>
+        <TextBox x:Name="txtboxConsole" HorizontalAlignment="Left" Height="282" Margin="748.4,475,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FF124E06" BorderBrush="{x:Null}" FontSize="24" Foreground="#FFDDD019" Width="896" Grid.ColumnSpan="3" Grid.Column="3">
             <TextBox.CaretBrush>
                 <ImageBrush/>
             </TextBox.CaretBrush>
         </TextBox>
-        <Label x:Name="lblPion" Content="Choix du Pion :" HorizontalAlignment="Left" Margin="972,18,0,0" VerticalAlignment="Top" Height="43" Width="195" FontSize="24"/>
-        <Button x:Name="btnDk" Click="btnDk_Click" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="102" Height="90" FontSize="24" Margin="1172,20,0,0">
+        <Label x:Name="lblPion" Content="Choix du Pion :" HorizontalAlignment="Left" Margin="7.2,18,0,0" VerticalAlignment="Top" Height="43" Width="195" FontSize="24" Grid.Column="4"/>
+        <Button x:Name="btnDk" Click="btnDk_Click" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="102" Height="90" FontSize="24" Margin="207.2,20,0,0" Grid.ColumnSpan="2" Grid.Column="4">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="Images/39px-ClassIcon_deathknight.png"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="btnMage" Click="btnMage_Click" Content="" HorizontalAlignment="Left" Margin="1298,18,0,0" VerticalAlignment="Top" Width="118" Height="98" FontSize="24">
+        <Button x:Name="btnMage" Click="btnMage_Click" Content="" HorizontalAlignment="Left" Margin="44.4,18,0,0" VerticalAlignment="Top" Width="118" Height="98" FontSize="24" Grid.Column="5">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="Images/39px-ClassIcon_mage.png"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        
+
         <!--Visuel de l'image et sur l'image-->
-        <Image x:Name="imgPlateau" HorizontalAlignment="Left" Height="747" Margin="10,10,0,0" VerticalAlignment="Top" Width="897" Source="Images/plateau_monopoly_wow.jpg" Stretch="Fill"/>
-        <Rectangle x:Name="caseDepart" HorizontalAlignment="Left" Height="100" Margin="784,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="123"/>
-        <Rectangle x:Name="caseBrun1" HorizontalAlignment="Left" Height="100" Margin="712,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="72"/>
-        <Rectangle x:Name="caseCc1" HorizontalAlignment="Left" Height="100" Margin="640,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="72"/>
-        <Rectangle x:Name="caseBrun2" HorizontalAlignment="Left" Height="100" Margin="568,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="72"/>
-        <Rectangle x:Name="caseImpot1" HorizontalAlignment="Left" Height="100" Margin="494,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="74"/>
-        <Rectangle x:Name="caseDonjon1" HorizontalAlignment="Left" Height="100" Margin="420,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="74"/>
-        <Rectangle x:Name="caseBleu1" HorizontalAlignment="Left" Height="100" Margin="347,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="73"/>
-        <Rectangle x:Name="caseChance1" HorizontalAlignment="Left" Height="100" Margin="275,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="72"/>
-        <Rectangle x:Name="caseBleu2" HorizontalAlignment="Left" Height="100" Margin="203,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="72"/>
-        <Rectangle x:Name="caseBleu3" HorizontalAlignment="Left" Height="100" Margin="130,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="73"/>
-        <Rectangle x:Name="casePrison" HorizontalAlignment="Left" Height="100" Margin="10,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="120"/>
-        <Rectangle x:Name="caseRose1" HorizontalAlignment="Left" Height="61" Margin="10,596,0,0" Stroke="Black" VerticalAlignment="Top" Width="120"/>
-        <Rectangle x:Name="caseImpot2" HorizontalAlignment="Left" Height="62" Margin="10,534,0,0" Stroke="Black" VerticalAlignment="Top" Width="120"/>
-        <Rectangle x:Name="caseRose2" HorizontalAlignment="Left" Height="59" Margin="10,475,0,0" Stroke="Black" VerticalAlignment="Top" Width="120"/>
-        <Rectangle x:Name="caseRose3" HorizontalAlignment="Left" Height="62" Margin="10,413,0,0" Stroke="Black" VerticalAlignment="Top" Width="120"/>
-        <Rectangle x:Name="caseDonjon2" HorizontalAlignment="Left" Height="60" Margin="10,353,0,0" Stroke="Black" VerticalAlignment="Top" Width="120"/>
-        <Rectangle x:Name="caseOrange1" HorizontalAlignment="Left" Height="61" Margin="10,292,0,0" Stroke="Black" VerticalAlignment="Top" Width="120"/>
-        <Rectangle x:Name="caseCc2" HorizontalAlignment="Left" Height="60" Margin="10,232,0,0" Stroke="Black" VerticalAlignment="Top" Width="120"/>
-        <Rectangle x:Name="caseOrange2" HorizontalAlignment="Left" Height="60" Margin="10,172,0,0" Stroke="Black" VerticalAlignment="Top" Width="120"/>
-        <Rectangle x:Name="caseOrange3" HorizontalAlignment="Left" Height="62" Margin="10,110,0,0" Stroke="Black" VerticalAlignment="Top" Width="120"/>
-        <Rectangle x:Name="caseParc" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="120"/>
-        <Rectangle x:Name="caseRouge1" HorizontalAlignment="Left" Height="100" Margin="130,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="73"/>
-        <Rectangle x:Name="caseChance2" HorizontalAlignment="Left" Height="100" Margin="203,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="72"/>
-        <Rectangle x:Name="caseRouge2" HorizontalAlignment="Left" Height="100" Margin="275,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="72"/>
-        <Rectangle x:Name="caseRouge3" HorizontalAlignment="Left" Height="100" Margin="347,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="73"/>
-        <Rectangle x:Name="caseDonjon3" HorizontalAlignment="Left" Height="100" Margin="420,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="74"/>
-        <Rectangle x:Name="caseJaune1" HorizontalAlignment="Left" Height="100" Margin="494,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="74"/>
-        <Rectangle x:Name="caseJaune2" HorizontalAlignment="Left" Height="100" Margin="568,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="72"/>
-        <Rectangle x:Name="caseImpot3" HorizontalAlignment="Left" Height="100" Margin="640,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="72"/>
-        <Rectangle x:Name="caseJaune3" HorizontalAlignment="Left" Height="100" Margin="712,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="72"/>
-        <Rectangle x:Name="casePolice" HorizontalAlignment="Left" Height="100" Margin="784,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="123"/>
-        <Rectangle x:Name="caseVert1" HorizontalAlignment="Left" Height="62" Margin="784,110,0,0" Stroke="Black" VerticalAlignment="Top" Width="123"/>
-        <Rectangle x:Name="caseVert2" HorizontalAlignment="Left" Height="60" Margin="784,172,0,0" Stroke="Black" VerticalAlignment="Top" Width="123"/>
-        <Rectangle x:Name="caseCc3" HorizontalAlignment="Left" Height="60" Margin="784,232,0,0" Stroke="Black" VerticalAlignment="Top" Width="123"/>
-        <Rectangle x:Name="caseVert3" HorizontalAlignment="Left" Height="61" Margin="784,292,0,0" Stroke="Black" VerticalAlignment="Top" Width="123"/>
-        <Rectangle x:Name="caseDonjon4" HorizontalAlignment="Left" Height="60" Margin="784,353,0,0" Stroke="Black" VerticalAlignment="Top" Width="123"/>
-        <Rectangle x:Name="caseChance3" HorizontalAlignment="Left" Height="62" Margin="784,413,0,0" Stroke="Black" VerticalAlignment="Top" Width="123"/>
-        <Rectangle x:Name="caseViolet1" HorizontalAlignment="Left" Height="59" Margin="784,475,0,0" Stroke="Black" VerticalAlignment="Top" Width="123"/>
-        <Rectangle x:Name="caseImpot4" HorizontalAlignment="Left" Height="62" Margin="784,534,0,0" Stroke="Black" VerticalAlignment="Top" Width="123"/>
-        <Rectangle x:Name="caseViolet2" HorizontalAlignment="Left" Height="61" Margin="784,596,0,0" Stroke="Black" VerticalAlignment="Top" Width="123"/>
-        <Rectangle x:Name="carteChance" HorizontalAlignment="Left" Height="102" Margin="601,507,0,0" Stroke="Black" VerticalAlignment="Top" Width="143" RenderTransformOrigin="0.504,0.506">
+        <Image x:Name="imgPlateau" HorizontalAlignment="Left" Height="747" Margin="10,10,0,0" VerticalAlignment="Top" Width="897" Source="Images/plateau_monopoly_wow.jpg" Stretch="Fill" Grid.ColumnSpan="4"/>
+        <Rectangle x:Name="caseDepart" HorizontalAlignment="Left" Height="100" Margin="620.4,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="123" Grid.Column="3"/>
+        <Rectangle x:Name="caseBrun1" HorizontalAlignment="Left" Height="100" Margin="548.4,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="72" Grid.Column="3"/>
+        <Rectangle x:Name="caseCc1" HorizontalAlignment="Left" Height="100" Margin="476.4,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="72" Grid.Column="3"/>
+        <Rectangle x:Name="caseBrun2" HorizontalAlignment="Left" Height="100" Margin="404.4,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="72" Grid.Column="3"/>
+        <Rectangle x:Name="caseImpot1" HorizontalAlignment="Left" Height="100" Margin="330.4,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="74" Grid.Column="3"/>
+        <Rectangle x:Name="caseDonjon1" HorizontalAlignment="Left" Height="100" Margin="256.4,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="74" Grid.Column="3"/>
+        <Rectangle x:Name="caseBleu1" HorizontalAlignment="Left" Height="100" Margin="183.4,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="73" Grid.Column="3"/>
+        <Rectangle x:Name="caseChance1" HorizontalAlignment="Left" Height="100" Margin="111.4,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="72" Grid.Column="3"/>
+        <Rectangle x:Name="caseBleu2" HorizontalAlignment="Left" Height="100" Margin="39.4,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="72" Grid.Column="3"/>
+        <Rectangle x:Name="caseBleu3" HorizontalAlignment="Left" Height="100" Margin="81.2,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="73" Grid.Column="2" Grid.ColumnSpan="2"/>
+        <Rectangle x:Name="casePrison" HorizontalAlignment="Left" Height="100" Margin="10,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="3"/>
+        <Rectangle x:Name="caseRose1" HorizontalAlignment="Left" Height="61" Margin="10,596,0,0" Stroke="Black" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="3"/>
+        <Rectangle x:Name="caseImpot2" HorizontalAlignment="Left" Height="62" Margin="10,534,0,0" Stroke="Black" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="3"/>
+        <Rectangle x:Name="caseRose2" HorizontalAlignment="Left" Height="59" Margin="10,475,0,0" Stroke="Black" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="3"/>
+        <Rectangle x:Name="caseRose3" HorizontalAlignment="Left" Height="62" Margin="10,413,0,0" Stroke="Black" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="3"/>
+        <Rectangle x:Name="caseDonjon2" HorizontalAlignment="Left" Height="60" Margin="10,353,0,0" Stroke="Black" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="3"/>
+        <Rectangle x:Name="caseOrange1" HorizontalAlignment="Left" Height="61" Margin="10,292,0,0" Stroke="Black" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="3"/>
+        <Rectangle x:Name="caseCc2" HorizontalAlignment="Left" Height="60" Margin="10,232,0,0" Stroke="Black" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="3"/>
+        <Rectangle x:Name="caseOrange2" HorizontalAlignment="Left" Height="60" Margin="10,172,0,0" Stroke="Black" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="3"/>
+        <Rectangle x:Name="caseOrange3" HorizontalAlignment="Left" Height="62" Margin="10,110,0,0" Stroke="Black" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="3"/>
+        <Rectangle x:Name="caseParc" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="3"/>
+        <Rectangle x:Name="caseRouge1" HorizontalAlignment="Left" Height="100" Margin="81.2,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="73" Grid.Column="2" Grid.ColumnSpan="2"/>
+        <Rectangle x:Name="caseChance2" HorizontalAlignment="Left" Height="100" Margin="39.4,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="72" Grid.Column="3"/>
+        <Rectangle x:Name="caseRouge2" HorizontalAlignment="Left" Height="100" Margin="111.4,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="72" Grid.Column="3"/>
+        <Rectangle x:Name="caseRouge3" HorizontalAlignment="Left" Height="100" Margin="183.4,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="73" Grid.Column="3"/>
+        <Rectangle x:Name="caseDonjon3" HorizontalAlignment="Left" Height="100" Margin="256.4,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="74" Grid.Column="3"/>
+        <Rectangle x:Name="caseJaune1" HorizontalAlignment="Left" Height="100" Margin="330.4,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="74" Grid.Column="3"/>
+        <Rectangle x:Name="caseJaune2" HorizontalAlignment="Left" Height="100" Margin="404.4,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="72" Grid.Column="3"/>
+        <Rectangle x:Name="caseImpot3" HorizontalAlignment="Left" Height="100" Margin="476.4,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="72" Grid.Column="3"/>
+        <Rectangle x:Name="caseJaune3" HorizontalAlignment="Left" Height="100" Margin="548.4,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="72" Grid.Column="3"/>
+        <Rectangle x:Name="casePolice" HorizontalAlignment="Left" Height="100" Margin="620.4,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="123" Grid.Column="3"/>
+        <Rectangle x:Name="caseVert1" HorizontalAlignment="Left" Height="62" Margin="620.4,110,0,0" Stroke="Black" VerticalAlignment="Top" Width="123" Grid.Column="3"/>
+        <Rectangle x:Name="caseVert2" HorizontalAlignment="Left" Height="60" Margin="620.4,172,0,0" Stroke="Black" VerticalAlignment="Top" Width="123" Grid.Column="3"/>
+        <Rectangle x:Name="caseCc3" HorizontalAlignment="Left" Height="60" Margin="620.4,232,0,0" Stroke="Black" VerticalAlignment="Top" Width="123" Grid.Column="3"/>
+        <Rectangle x:Name="caseVert3" HorizontalAlignment="Left" Height="61" Margin="620.4,292,0,0" Stroke="Black" VerticalAlignment="Top" Width="123" Grid.Column="3"/>
+        <Rectangle x:Name="caseDonjon4" HorizontalAlignment="Left" Height="60" Margin="620.4,353,0,0" Stroke="Black" VerticalAlignment="Top" Width="123" Grid.Column="3"/>
+        <Rectangle x:Name="caseChance3" HorizontalAlignment="Left" Height="62" Margin="620.4,413,0,0" Stroke="Black" VerticalAlignment="Top" Width="123" Grid.Column="3"/>
+        <Rectangle x:Name="caseViolet1" HorizontalAlignment="Left" Height="59" Margin="620.4,475,0,0" Stroke="Black" VerticalAlignment="Top" Width="123" Grid.Column="3"/>
+        <Rectangle x:Name="caseImpot4" HorizontalAlignment="Left" Height="62" Margin="620.4,534,0,0" Stroke="Black" VerticalAlignment="Top" Width="123" Grid.Column="3"/>
+        <Rectangle x:Name="caseViolet2" HorizontalAlignment="Left" Height="61" Margin="620.4,596,0,0" Stroke="Black" VerticalAlignment="Top" Width="123" Grid.Column="3"/>
+        <Rectangle x:Name="carteChance" HorizontalAlignment="Left" Height="102" Margin="437.4,507,0,0" Stroke="Black" VerticalAlignment="Top" Width="143" RenderTransformOrigin="0.504,0.506" Grid.Column="3">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -83,7 +91,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle x:Name="carteCc" HorizontalAlignment="Left" Height="97" Margin="173,158,0,0" Stroke="Black" VerticalAlignment="Top" Width="146" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="carteCc" HorizontalAlignment="Left" Height="97" Margin="9.4,158,0,0" Stroke="Black" VerticalAlignment="Top" Width="146" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -93,27 +101,27 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="712,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="730,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="748,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="766,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="568,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="586,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="604,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="622,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="348,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="366,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="384,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="402,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="203,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="221,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="239,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="257,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="130,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="148,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="166,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="184,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,595,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="548.4,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="566.4,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="584.4,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="602.4,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="404.4,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="422.4,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="440.4,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="458.4,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="184.4,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="202.4,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="220.4,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="238.4,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="39.4,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="57.4,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="75.4,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="93.4,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="81.2,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="2"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="99.2,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="2" Grid.ColumnSpan="2"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="2.4,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="20.4,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="58.2,595,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -123,7 +131,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,608,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="58.2,608,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -133,7 +141,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,621,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="58.2,621,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -143,7 +151,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,636,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="58.2,636,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -153,7 +161,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,475,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="58.2,475,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -163,7 +171,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,488,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="58.2,488,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -173,7 +181,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,501,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="58.2,501,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -183,7 +191,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,514,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="58.2,514,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -193,7 +201,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,414,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="58.2,414,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -203,7 +211,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,429,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="58.2,429,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -213,7 +221,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,441,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="58.2,441,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -223,7 +231,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,454,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="58.2,454,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -233,7 +241,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,293,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="58.2,293,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -243,7 +251,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,306,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="58.2,306,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -253,7 +261,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,318,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="58.2,318,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -263,7 +271,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,333,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="58.2,333,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -273,7 +281,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,172,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="58.2,172,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -283,7 +291,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,186,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="58.2,186,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -293,7 +301,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,198,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="58.2,198,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -303,7 +311,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,211,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="58.2,211,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -313,7 +321,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,111,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="58.2,111,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -323,7 +331,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,125,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="58.2,125,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -333,7 +341,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,138,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="58.2,138,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -343,7 +351,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,151,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="58.2,151,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -353,31 +361,31 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="185,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="167,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="149,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="131,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="329,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="311,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="293,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="275,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="402,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="384,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="366,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="348,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="548,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="530,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="512,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="494,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="622,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="604,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="586,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="568,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="766,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="748,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="730,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="712,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,152,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="21.4,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="3.4,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="100.2,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="2" Grid.ColumnSpan="2"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="82.2,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="2"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="165.4,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="147.4,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="129.4,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="111.4,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="238.4,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="220.4,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="202.4,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="184.4,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="384.4,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="366.4,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="348.4,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="330.4,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="458.4,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="440.4,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="422.4,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="404.4,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="602.4,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="584.4,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="566.4,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="548.4,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="625.4,152,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -387,7 +395,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,138,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="625.4,138,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -397,7 +405,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,123,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="625.4,123,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -407,7 +415,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,109,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="625.4,109,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -417,7 +425,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,212,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="625.4,212,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -427,7 +435,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,198,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="625.4,198,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -437,7 +445,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,185,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="625.4,185,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -447,7 +455,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,172,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="625.4,172,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -457,7 +465,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,332,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="625.4,332,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -467,7 +475,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,319,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="625.4,319,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -477,7 +485,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,304,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="625.4,304,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -487,7 +495,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,292,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="625.4,292,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -497,7 +505,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,514,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="625.4,514,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -507,7 +515,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,501,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="625.4,501,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -517,7 +525,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,489,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="625.4,489,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -527,7 +535,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,475,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="625.4,475,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -537,7 +545,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="790,637,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="626.4,637,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -547,7 +555,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="790,625,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="626.4,625,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -557,7 +565,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="790,611,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="626.4,611,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -567,7 +575,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="790,596,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="626.4,596,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -577,12 +585,12 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="717,652,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="573,652,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="352,652,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="208,652,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="135,652,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="93,615,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="553.4,652,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="409.4,652,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="188.4,652,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="44.4,652,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="86.2,652,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" Grid.Column="2" Grid.ColumnSpan="2"/>
+        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="44.2,615,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -592,7 +600,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="92,495,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="43.2,495,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -602,7 +610,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="92,434,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="43.2,434,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -612,7 +620,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="92,312,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="43.2,312,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -622,7 +630,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="92,191,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="43.2,191,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -632,7 +640,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="92,130,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="43.2,130,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -642,13 +650,13 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="135,97,0,0" Stroke="Black" VerticalAlignment="Top" Width="63" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="280,97,0,0" Stroke="Black" VerticalAlignment="Top" Width="63" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="352,97,0,0" Stroke="Black" VerticalAlignment="Top" Width="63" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="499,97,0,0" Stroke="Black" VerticalAlignment="Top" Width="63" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="573,97,0,0" Stroke="Black" VerticalAlignment="Top" Width="63" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="717,97,0,0" Stroke="Black" VerticalAlignment="Top" Width="63" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="758,130,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="86.2,97,0,0" Stroke="Black" VerticalAlignment="Top" Width="63" RadiusY="6.7" RadiusX="6.7" Grid.Column="2" Grid.ColumnSpan="2"/>
+        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="116.4,97,0,0" Stroke="Black" VerticalAlignment="Top" Width="63" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="188.4,97,0,0" Stroke="Black" VerticalAlignment="Top" Width="63" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="335.4,97,0,0" Stroke="Black" VerticalAlignment="Top" Width="63" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="409.4,97,0,0" Stroke="Black" VerticalAlignment="Top" Width="63" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="553.4,97,0,0" Stroke="Black" VerticalAlignment="Top" Width="63" RadiusY="6.7" RadiusX="6.7" Grid.Column="3"/>
+        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="594.4,130,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -658,7 +666,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="758,192,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="594.4,192,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -668,7 +676,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="760,311,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="596.4,311,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -678,7 +686,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="760,494,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="596.4,494,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -688,7 +696,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="760,616,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="596.4,616,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -700,7 +708,7 @@
         </Rectangle>
 
         <!--Gestion du pion / joueur-->
-        <Canvas>
+        <Canvas Grid.ColumnSpan="6" Margin="0,0,-0.4,0.4">
             <Rectangle Canvas.Left="0" Canvas.Top="0" Canvas.ZIndex="1" x:Name="pion1" HorizontalAlignment="Left" Height="32" Margin="808,683,0,0" VerticalAlignment="Top" Width="35" RadiusY="8.933" RadiusX="8.933"/>
             <Rectangle Canvas.Left="0" Canvas.Top="0" x:Name="pion2" HorizontalAlignment="Left" Height="32" Margin="848,695,0,0" VerticalAlignment="Top" Width="35" RadiusY="11.333" RadiusX="11.333"/>
         </Canvas>

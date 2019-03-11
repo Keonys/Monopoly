@@ -31,6 +31,9 @@ namespace MonopolyVS
         public MainWindow()
         {
             InitializeComponent();
+            this.Visibility = Visibility.Hidden;
+            FormulaireJoueur Menu = new FormulaireJoueur();
+            Menu.Show();
             btnLanceDes.Visibility = Visibility.Hidden;
             J1.sonTour = true;
             J2.sonTour = false;
@@ -329,7 +332,7 @@ namespace MonopolyVS
                 btnDk.Visibility = Visibility.Hidden;
                 btnMage.Visibility = Visibility.Hidden;
                 lblPion.Visibility = Visibility.Hidden;
-            }  
+            }
         }
     }
 }

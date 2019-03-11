@@ -34,6 +34,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -71,7 +75,7 @@
     <Compile Include="Modeles\Carte.cs" />
     <Compile Include="Modeles\Case.cs" />
     <Compile Include="Modeles\Des.cs" />
-    <Compile Include="Modeles\FormulaireJoueur.xaml.cs">
+    <Compile Include="FormulaireJoueur.xaml.cs">
       <DependentUpon>FormulaireJoueur.xaml</DependentUpon>
     </Compile>
     <Compile Include="Modeles\Gestion.cs" />
@@ -80,7 +84,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Modeles\FormulaireJoueur.xaml">
+    <Page Include="FormulaireJoueur.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -133,6 +137,9 @@
   <ItemGroup>
     <Resource Include="Images\39px-ClassIcon_deathknightFOND.png" />
     <Resource Include="Images\39px-ClassIcon_mageFOND.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\logo_MonoWoW.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
