@@ -8,14 +8,6 @@
         Title="Monopoly World of Warcraft" Height="792" Width="1824"
         WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="37*"/>
-            <ColumnDefinition Width="12*"/>
-            <ColumnDefinition Width="115*"/>
-            <ColumnDefinition Width="801*"/>
-            <ColumnDefinition Width="289*"/>
-            <ColumnDefinition Width="564*"/>
-        </Grid.ColumnDefinitions>
         <!--Visuel n'étant pas sur l'image-->
         <Button x:Name="btnLanceDes" Content="Lancer les Dés" Margin="972,172,0,0" VerticalAlignment="Top" Height="49" FontSize="24" Click="btnLanceDes_Click" HorizontalAlignment="Left" Width="220"/>
         <TextBox x:Name="txtboxConsole" HorizontalAlignment="Left" Height="282" Margin="912,475,5,5" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FF124E06" BorderBrush="{x:Null}" FontSize="24" Foreground="#FFDDD019" Width="896">

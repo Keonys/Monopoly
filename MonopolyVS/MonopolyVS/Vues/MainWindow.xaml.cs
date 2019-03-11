@@ -28,6 +28,9 @@ namespace MonopolyVS
         public MainWindow()
         {
             InitializeComponent();
+            this.Visibility = Visibility.Hidden;
+            FormulaireJoueur Menu = new FormulaireJoueur();
+            Menu.Show();
         }
 
         #region Events
