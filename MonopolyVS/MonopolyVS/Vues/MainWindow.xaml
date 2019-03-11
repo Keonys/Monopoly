@@ -19,20 +19,20 @@
         <Button x:Name="btnDk" Click="btnDk_Click" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="102" Height="90" FontSize="24" Margin="1172,20,0,0">
             <Button.Template>
                 <ControlTemplate>
-                    <Image Source="Images/39px-ClassIcon_deathknight.png"/>
+                    <Image Source="/Images/39px-ClassIcon_deathknight.png"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
         <Button x:Name="btnMage" Click="btnMage_Click" Content="" HorizontalAlignment="Left" Margin="1298,18,0,0" VerticalAlignment="Top" Width="118" Height="98" FontSize="24">
             <Button.Template>
                 <ControlTemplate>
-                    <Image Source="Images/39px-ClassIcon_mage.png"/>
+                    <Image Source="/Images/39px-ClassIcon_mage.png"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
         
         <!--Visuel de l'image et sur l'image-->
-        <Image x:Name="imgPlateau" HorizontalAlignment="Left" Height="747" Margin="10,10,0,0" VerticalAlignment="Top" Width="897" Source="Images/plateau_monopoly_wow.jpg" Stretch="Fill"/>
+        <Image x:Name="imgPlateau" HorizontalAlignment="Left" Height="747" Margin="10,10,0,0" VerticalAlignment="Top" Width="897" Source="/Images/plateau_monopoly_wow.jpg" Stretch="Fill"/>
         <Rectangle x:Name="caseDepart" HorizontalAlignment="Left" Height="100" Margin="784,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="123"/>
         <Rectangle x:Name="caseBrun1" HorizontalAlignment="Left" Height="100" Margin="712,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="72"/>
         <Rectangle x:Name="caseCc1" HorizontalAlignment="Left" Height="100" Margin="640,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="72"/>

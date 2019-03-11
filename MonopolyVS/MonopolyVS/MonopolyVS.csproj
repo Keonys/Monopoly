@@ -59,7 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Vues\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -67,20 +67,21 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controleurs\Controleur.cs" />
     <Compile Include="Modeles\Banque.cs" />
     <Compile Include="Modeles\Carte.cs" />
     <Compile Include="Modeles\Case.cs" />
     <Compile Include="Modeles\Des.cs" />
-    <Compile Include="Modeles\FormulaireJoueur.xaml.cs">
+    <Compile Include="Vues\FormulaireJoueur.xaml.cs">
       <DependentUpon>FormulaireJoueur.xaml</DependentUpon>
     </Compile>
     <Compile Include="Modeles\Gestion.cs" />
     <Compile Include="Modeles\Joueur.cs" />
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Vues\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Modeles\FormulaireJoueur.xaml">
+    <Page Include="Vues\FormulaireJoueur.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -134,5 +135,6 @@
     <Resource Include="Images\39px-ClassIcon_deathknightFOND.png" />
     <Resource Include="Images\39px-ClassIcon_mageFOND.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
