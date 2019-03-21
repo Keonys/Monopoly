@@ -9,28 +9,31 @@
         WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
         <!--Visuel n'étant pas sur l'image-->
-        <Button x:Name="btnLanceDes" Content="Lancer les Dés" Margin="972,172,0,0" VerticalAlignment="Top" Height="49" FontSize="24" Click="btnLanceDes_Click" HorizontalAlignment="Left" Width="220"/>
-        <TextBox x:Name="txtboxConsole" HorizontalAlignment="Left" Height="282" Margin="912,475,5,5" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FF124E06" BorderBrush="{x:Null}" FontSize="24" Foreground="#FFDDD019" Width="896">
+        <Label x:Name="lblTour" Content="Tour :" HorizontalAlignment="Left" Margin="939,20,0,0" VerticalAlignment="Top" Height="43" Width="91" FontSize="24"/>
+        <Label x:Name="lblNomJoueur" Content="JOUEUR" HorizontalAlignment="Left" Margin="1030,20,0,0" VerticalAlignment="Top" Height="43" Width="417" FontSize="24"/>
+        <Button x:Name="btnLanceDes" Content="Lancer les Dés" Click="btnLanceDes_Click" VerticalAlignment="Top" Height="50" FontSize="24" HorizontalAlignment="Left" Width="469" Canvas.Left="1004" Canvas.Top="167" Margin="939,69,0,0"/>
+        <Button x:Name="btnTour" Content="Choix du Tour" Click="BtnTour_Click" Margin="1006,63,0,0" VerticalAlignment="Top" Height="49" FontSize="24" HorizontalAlignment="Left" Width="246"/>
+        <TextBox x:Name="txtboxConsole" HorizontalAlignment="Left" Height="282" Margin="912,475,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FF124E06" BorderBrush="{x:Null}" FontSize="24" Foreground="#FFDDD019" Width="611">
             <TextBox.CaretBrush>
                 <ImageBrush/>
             </TextBox.CaretBrush>
         </TextBox>
-        <Label x:Name="lblPion" Content="Choix du Pion :" HorizontalAlignment="Left" Margin="972,18,0,0" VerticalAlignment="Top" Height="43" Width="195" FontSize="24"/>
-        <Button x:Name="btnDk" Click="btnDk_Click" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="102" Height="90" FontSize="24" Margin="1172,20,0,0">
+        <Label x:Name="lblPion" Content="Choix du Pion :" HorizontalAlignment="Left" Margin="939,172,0,0" VerticalAlignment="Top" Height="43" Width="195" FontSize="24"/>
+        <Button x:Name="btnDk" Click="btnDk_Click" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="102" Height="98" FontSize="24" Margin="939,232,0,0">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="/Images/39px-ClassIcon_deathknight.png"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="btnMage" Click="btnMage_Click" Content="" HorizontalAlignment="Left" Margin="1298,18,0,0" VerticalAlignment="Top" Width="118" Height="98" FontSize="24">
+        <Button x:Name="btnMage" Click="btnMage_Click" Content="" HorizontalAlignment="Left" Margin="1070,232,0,0" VerticalAlignment="Top" Width="118" Height="98" FontSize="24">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="/Images/39px-ClassIcon_mage.png"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        
+
         <!--Visuel de l'image et sur l'image-->
         <Image x:Name="imgPlateau" HorizontalAlignment="Left" Height="747" Margin="10,10,0,0" VerticalAlignment="Top" Width="897" Source="/Images/plateau_monopoly_wow.jpg" Stretch="Fill"/>
         <Rectangle x:Name="caseDepart" HorizontalAlignment="Left" Height="100" Margin="784,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="123"/>
@@ -93,27 +96,28 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="712,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="730,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="748,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="766,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="568,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="586,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="604,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="622,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="348,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="366,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="384,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="402,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="203,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="221,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="239,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="257,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="130,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="148,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="166,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="184,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,595,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <!--Nom : MaisonNUMERODECASE_NUMEROMAISON-->
+        <Rectangle x:Name="Maison1_1" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="712,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison1_2" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="730,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison1_3" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="748,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison1_4" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="766,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison3_1" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="568,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison3_2" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="586,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison3_3" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="604,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison3_4" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="622,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison6_1" Fill="Green" Height="22" Margin="348,657,1451.6,0" Stroke="Black" VerticalAlignment="Top" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison6_2" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="366,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison6_3" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="384,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison6_4" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="402,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison8_1" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="203,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison8_2" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="221,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison8_3" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="239,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison8_4" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="257,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison9_1" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="130,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison9_2" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="148,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison9_3" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="166,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison9_4" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="184,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison11_1" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,595,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -123,7 +127,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="58.2,608,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
+        <Rectangle x:Name="Maison11_2" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,609,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -133,7 +137,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="58.2,621,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
+        <Rectangle x:Name="Maison11_3" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,622,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -143,7 +147,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="58.2,636,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5" Grid.Column="2">
+        <Rectangle x:Name="Maison11_4" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,637,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -153,7 +157,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,475,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison13_1" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,475,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -163,7 +167,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,488,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison13_2" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,488,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -173,7 +177,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,501,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison13_3" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,501,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -183,7 +187,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,514,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison13_4" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,514,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -193,7 +197,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,414,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison14_1" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,414,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -203,7 +207,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,429,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison14_2" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,429,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -213,7 +217,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,441,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison14_3" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,441,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -223,7 +227,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,454,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison14_4" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,454,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -233,7 +237,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,293,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison16_1" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,293,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -243,7 +247,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,306,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison16_2" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,306,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -253,7 +257,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,318,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison16_3" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,318,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -263,7 +267,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,333,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison16_4" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,333,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -273,7 +277,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,172,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison18_1" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,172,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -283,7 +287,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,186,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison18_2" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,186,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -293,7 +297,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,198,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison18_3" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,198,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -303,7 +307,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,211,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison18_4" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,211,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -313,7 +317,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,111,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison19_1" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,111,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -323,7 +327,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,125,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison19_2" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,125,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -333,7 +337,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,138,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison19_3" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,138,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -343,7 +347,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,151,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison19_4" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="107,151,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -353,31 +357,31 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="185,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="167,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="149,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="131,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="329,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="311,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="293,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="275,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="402,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="384,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="366,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="348,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="548,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="530,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="512,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="494,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="622,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="604,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="586,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="568,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="766,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="748,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="730,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="712,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,152,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison21_1" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="185,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison21_2" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="167,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison21_3" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="149,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison21_4" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="131,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison23_1" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="329,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison23_2" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="311,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison23_3" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="293,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison23_4" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="275,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison24_1" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="402,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison24_2" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="384,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison24_3" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="366,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison24_4" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="348,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison26_1" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="548,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison26_2" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="530,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison26_3" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="512,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison26_4" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="494,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison27_1" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="622,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison27_2" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="604,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison27_3" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="586,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison27_4" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="568,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison29_1" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="766,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison29_2" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="748,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison29_3" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="730,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison29_4" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="712,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison31_1" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,152,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -387,7 +391,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,138,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison31_2" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,138,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -397,7 +401,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,123,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison31_3" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,123,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -407,7 +411,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,109,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison31_4" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,109,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -417,7 +421,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,212,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison32_1" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,212,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -427,7 +431,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,198,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison32_2" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,198,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -437,7 +441,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,185,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison32_3" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,185,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -447,7 +451,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,172,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison32_4" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,172,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -457,7 +461,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,332,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison34_1" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,332,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -467,7 +471,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,319,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison34_2" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,319,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -477,7 +481,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,304,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison34_3" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,304,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -487,7 +491,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,292,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison34_4" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,292,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -497,7 +501,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,514,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison37_1" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,514,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -507,7 +511,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,501,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison37_2" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,501,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -517,7 +521,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,489,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison37_3" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,489,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -527,7 +531,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,475,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison37_4" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="789,475,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -537,7 +541,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="790,637,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison39_1" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="790,637,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -547,7 +551,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="790,625,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison39_2" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="790,625,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -557,7 +561,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="790,611,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison39_3" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="790,611,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -567,7 +571,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Green" HorizontalAlignment="Left" Height="22" Margin="790,596,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Maison39_4" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="790,596,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -577,12 +581,13 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="717,652,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="573,652,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="352,652,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="208,652,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="135,652,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="93,615,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <!--HotelCASE-->
+        <Rectangle x:Name="Hotel1" Fill="Red" HorizontalAlignment="Left" Height="22" Margin="717,652,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Hotel3" Fill="Red" HorizontalAlignment="Left" Height="22" Margin="573,652,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Hotel6" Fill="Red" HorizontalAlignment="Left" Height="22" Margin="352,652,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Hotel8" Fill="Red" HorizontalAlignment="Left" Height="22" Margin="208,652,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Hotel9" Fill="Red" HorizontalAlignment="Left" Height="22" Margin="135,652,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Hotel11" Fill="Red" HorizontalAlignment="Left" Height="22" Margin="93,615,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -592,7 +597,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="92,495,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Hotel13" Fill="Red" HorizontalAlignment="Left" Height="22" Margin="92,495,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -602,7 +607,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="92,434,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Hotel14" Fill="Red" HorizontalAlignment="Left" Height="22" Margin="92,434,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -612,7 +617,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="92,312,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Hotel16" Fill="Red" HorizontalAlignment="Left" Height="22" Margin="92,312,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -622,7 +627,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="92,191,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Hotel18" Fill="Red" HorizontalAlignment="Left" Height="22" Margin="92,191,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -632,7 +637,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="92,130,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Hotel19" Fill="Red" HorizontalAlignment="Left" Height="22" Margin="92,130,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -642,13 +647,13 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="135,97,0,0" Stroke="Black" VerticalAlignment="Top" Width="63" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="280,97,0,0" Stroke="Black" VerticalAlignment="Top" Width="63" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="352,97,0,0" Stroke="Black" VerticalAlignment="Top" Width="63" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="499,97,0,0" Stroke="Black" VerticalAlignment="Top" Width="63" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="573,97,0,0" Stroke="Black" VerticalAlignment="Top" Width="63" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="717,97,0,0" Stroke="Black" VerticalAlignment="Top" Width="63" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="758,130,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Hotel21" Fill="Red" HorizontalAlignment="Left" Height="22" Margin="135,97,0,0" Stroke="Black" VerticalAlignment="Top" Width="63" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Hotel23" Fill="Red" HorizontalAlignment="Left" Height="22" Margin="280,97,0,0" Stroke="Black" VerticalAlignment="Top" Width="63" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Hotel24" Fill="Red" HorizontalAlignment="Left" Height="22" Margin="352,97,0,0" Stroke="Black" VerticalAlignment="Top" Width="63" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Hotel26" Fill="Red" HorizontalAlignment="Left" Height="22" Margin="499,97,0,0" Stroke="Black" VerticalAlignment="Top" Width="63" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Hotel27" Fill="Red" HorizontalAlignment="Left" Height="22" Margin="573,97,0,0" Stroke="Black" VerticalAlignment="Top" Width="63" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Hotel29" Fill="Red" HorizontalAlignment="Left" Height="22" Margin="717,97,0,0" Stroke="Black" VerticalAlignment="Top" Width="63" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Hotel31" Fill="Red" HorizontalAlignment="Left" Height="22" Margin="758,130,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -658,7 +663,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="758,192,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Hotel32" Fill="Red" HorizontalAlignment="Left" Height="22" Margin="758,192,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -668,7 +673,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="760,311,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Hotel34" Fill="Red" HorizontalAlignment="Left" Height="22" Margin="760,311,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -678,7 +683,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="760,494,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Hotel37" Fill="Red" HorizontalAlignment="Left" Height="22" Margin="760,494,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -688,7 +693,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle Fill="Red" HorizontalAlignment="Left" Height="22" Margin="760,616,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
+        <Rectangle x:Name="Hotel39" Fill="Red" HorizontalAlignment="Left" Height="22" Margin="760,616,0,0" Stroke="Black" VerticalAlignment="Top" Width="62" RadiusY="6.7" RadiusX="6.7" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -700,9 +705,10 @@
         </Rectangle>
 
         <!--Gestion du pion / joueur-->
-        <Canvas>
+        <Canvas Margin="0,0,-0.4,0.4">
             <Rectangle Canvas.Left="0" Canvas.Top="0" Canvas.ZIndex="1" x:Name="pion1" HorizontalAlignment="Left" Height="32" Margin="808,683,0,0" VerticalAlignment="Top" Width="35" RadiusY="8.933" RadiusX="8.933"/>
             <Rectangle Canvas.Left="0" Canvas.Top="0" x:Name="pion2" HorizontalAlignment="Left" Height="32" Margin="848,695,0,0" VerticalAlignment="Top" Width="35" RadiusY="11.333" RadiusX="11.333"/>
+            <Label x:Name="lblArgent" Content="Argent :" HorizontalAlignment="Left" VerticalAlignment="Top" Height="43" Width="195" FontSize="24" Canvas.Left="940" Canvas.Top="130"/>
         </Canvas>
     </Grid>
 </Window>

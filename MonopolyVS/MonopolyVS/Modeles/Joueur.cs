@@ -52,6 +52,11 @@ namespace MonopolyVS
         public int Numero { get; set; }
 
         /// <summary>
+        /// Nombre de tour passé en prison
+        /// </summary>
+        public int nbrTourPrison = 0;
+
+        /// <summary>
         /// Indique si le joueur est en prison
         /// </summary>
         public bool EstEnPrison = false;
@@ -62,14 +67,14 @@ namespace MonopolyVS
         public int nbrDouble = 0;
 
         /// <summary>
-        /// Indique le tour du joueur
+        /// Indique si le joueur vient de faire un doublé
         /// </summary>
-        public bool sonTour = false;
+        public bool estDouble = false;
 
         /// <summary>
         /// Indique le tour du joueur
         /// </summary>
-        public Rectangle Pion;
+        public bool sonTour = false;
 
         #endregion
 
@@ -99,40 +104,43 @@ namespace MonopolyVS
         #region Méthodes
 
         /// <summary>
-        /// Système de changement de tour (notamment pour les doublés)
+        /// Termine le tour du joueur puis le change
         /// </summary>
-        /// <param name="joue"></param>
-        /// <param name="jouepas"></param>
-        public void configureJoueur(Joueur joue, Joueur jouepas)
+        /// <param name="listeJoueurs"></param>
+        /// <param name="nbrMax"></param>
+        /// <param name="lblNomJoueur"></param>
+        public void finTour(List<Joueur> listeJoueurs, int nbrMax, Label lblNomJoueur)
         {
-            jouepas.nbrDouble = 0;
-
-            if (Des.EstDouble() && joue.nbrDouble == 0)
+            foreach(Joueur j in listeJoueurs)
             {
-                joue.nbrDouble += 1;
-                joue.sonTour = true;
-                jouepas.sonTour = false;
-            }
-            else if (Des.EstDouble())
-            {
-                joue.sonTour = true;
-                jouepas.sonTour = false;
-            }
-            else
-            {
-                joue.sonTour = false;
-                jouepas.sonTour = true;
+                if (j.sonTour == true)
+                {
+                    if(j.Numero == nbrMax)
+                        changeTour(listeJoueurs, 0, lblNomJoueur);
+                    else
+                        changeTour(listeJoueurs, j.Numero, lblNomJoueur);
+                    break;
+                }
             }
         }
 
         /// <summary>
-        /// Déplacement du joueur
+        /// Change le tour des joueurs
         /// </summary>
-        /// <param name="resultat"></param>
-        /// <returns></returns>
-        public int Deplacement(int resultat)
+        /// <param name="nbr">Numero du Joueur</param>
+        public void changeTour(List<Joueur> listeJoueurs, int nbr, Label lblNomJoueur)
         {
-            return 0;
+            nbr++;
+            foreach(Joueur j in listeJoueurs)
+            {
+                if (j.Numero == nbr)
+                {
+                    j.sonTour = true;
+                    lblNomJoueur.Content = j.Nom;
+                }
+                else
+                    j.sonTour = false;
+            }
         }
 
         /// <summary>
@@ -205,6 +213,7 @@ namespace MonopolyVS
                     setValueCanvas(0.0, -685.0, j, pion1, pion2);
                     break;
                 case (10):
+                    //CASE VISITE PRISON
                     setValueCanvas(0.0, -795.0, j, pion1, pion2);
                     setValueCanvas(26.0, -770.0, j, pion1, pion2);
                     break;
@@ -325,6 +334,7 @@ namespace MonopolyVS
                     setValueCanvas(-74.0, 4.0, j, pion1, pion2);
                     break;
                 case (40):
+                    //CASE PRISON
                     setValueCanvas(-21.0, -757.0, j, pion1, pion2);
                     setValueCanvas(-3.0, -757.0, j, pion1, pion2);
                     break;
