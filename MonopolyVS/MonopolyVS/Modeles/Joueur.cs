@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Shapes;
 #endregion
 
@@ -15,6 +16,7 @@ namespace MonopolyVS
     {
         #region Objets
 
+        Banque Banque = new Banque();
         Des Des = new Des();
 
         #endregion
@@ -44,7 +46,7 @@ namespace MonopolyVS
         /// <summary>
         /// Listes des propriétés du joueur
         /// </summary>
-        public List<string> Patrimoine { get; set; } = new List<string>();
+        public List<Propriete> Patrimoine { get; set; } = new List<Propriete>();
 
         /// <summary>
         /// Numéro du joueur
@@ -92,11 +94,12 @@ namespace MonopolyVS
         /// Constructeur du Joueur
         /// </summary>
         /// <param name="pion"></param>
-        public Joueur(int numero, string nom, int position)
+        public Joueur(int numero, string nom, int position, int argent)
         {
             Numero = numero;
             Nom = nom;
             Position = position;
+            Argent = argent;
         }
 
         #endregion
@@ -109,16 +112,16 @@ namespace MonopolyVS
         /// <param name="listeJoueurs"></param>
         /// <param name="nbrMax"></param>
         /// <param name="lblNomJoueur"></param>
-        public void finTour(List<Joueur> listeJoueurs, int nbrMax, Label lblNomJoueur)
+        public void finTour(List<Joueur> listeJoueurs, int nbrMax, System.Windows.Controls.Label lblNomJoueur, System.Windows.Controls.Label lblArgentJoueur)
         {
             foreach(Joueur j in listeJoueurs)
             {
                 if (j.sonTour == true)
                 {
                     if(j.Numero == nbrMax)
-                        changeTour(listeJoueurs, 0, lblNomJoueur);
+                        changeTour(listeJoueurs, 0, lblNomJoueur, lblArgentJoueur);
                     else
-                        changeTour(listeJoueurs, j.Numero, lblNomJoueur);
+                        changeTour(listeJoueurs, j.Numero, lblNomJoueur, lblArgentJoueur);
                     break;
                 }
             }
@@ -128,7 +131,7 @@ namespace MonopolyVS
         /// Change le tour des joueurs
         /// </summary>
         /// <param name="nbr">Numero du Joueur</param>
-        public void changeTour(List<Joueur> listeJoueurs, int nbr, Label lblNomJoueur)
+        public void changeTour(List<Joueur> listeJoueurs, int nbr, System.Windows.Controls.Label lblNomJoueur, System.Windows.Controls.Label lblArgentJoueur)
         {
             nbr++;
             foreach(Joueur j in listeJoueurs)
@@ -137,6 +140,8 @@ namespace MonopolyVS
                 {
                     j.sonTour = true;
                     lblNomJoueur.Content = j.Nom;
+                    //TODOCORENTIN Utiliser fonction "GagnerArgent"
+                    lblArgentJoueur.Content = j.Argent;
                 }
                 else
                     j.sonTour = false;
@@ -173,12 +178,27 @@ namespace MonopolyVS
             switch (position)
             {
                 case (0):
+                    //Case départ -- +200€ ; l'ajout des 200€ est géré au moment du passage sur la case dans Controleur.Move()
                     setValueCanvas(0.0, 0.0, j, pion1, pion2);
                     setValueCanvas(0.0, 0.0, j, pion1, pion2);
                     break;
                 case (1):
+                    //Cross Roads -- Propriété de 60€
                     setValueCanvas(0.0, -95.0, j, pion1, pion2);
                     setValueCanvas(0.0, -100.0, j, pion1, pion2);
+
+                    
+
+                    DialogResult dialogResult = MessageBox.Show("Sure", "Some Title", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        //do something
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        //do something else
+                    }
+
                     break;
                 case (2):
                     setValueCanvas(0.0, -165.0, j, pion1, pion2);
@@ -349,10 +369,10 @@ namespace MonopolyVS
         /// <param name="proprieteAchetee">Propriété achetée</param>
         public void AcheterUnePropriete(Propriete proprieteAchetee, Banque banquier)
         {
-            banquier.PerdsArgent(this, proprieteAchetee.Prix[0]);   //le solde est mis à jour
-            Patrimoine.Add(proprieteAchetee.Nom);   //la liste des propriétés est mise à jour
-            proprieteAchetee.EstAchetee = true; //verrouille l'achat de la case
-            proprieteAchetee.Proprietaire = Nom;    //met à jour le nom du propriétaire dans la case
+            //banquier.PerdsArgent(this, proprieteAchetee.Prix[0]);   //le solde est mis à jour
+            //Patrimoine.Add(proprieteAchetee.Nom);   //la liste des propriétés est mise à jour
+            //proprieteAchetee.EstAchetee = true; //verrouille l'achat de la case
+            //proprieteAchetee.Proprietaire = Nom;    //met à jour le nom du propriétaire dans la case
         }
 
         //TODOLORENZO VOIR COMMENT CE DEROULE UNE PARTIE POUR REMPLIR CES 2 METHODES

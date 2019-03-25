@@ -42,7 +42,8 @@ namespace MonopolyVS
         /// </summary>
         private void prepareInvisible()
         {
-            c.prepareInvisible(lblTour, lblNomJoueur, lblPion, btnDk, btnMage, btnLanceDes);
+            c.prepareInvisible(lblTour, lblNomJoueur, lblPion, btnDk, btnMage, btnLanceDes, lblArgent, lblArgentJoueur, btnListe1, btnListe2
+                , btnListe3, btnListe4);
         }
 
         /// <summary>
@@ -55,22 +56,24 @@ namespace MonopolyVS
 
         private void btnLanceDes_Click(object sender, RoutedEventArgs e)
         {
-            c.clicBtnLanceDes(txtboxConsole, pion1, pion2, lblNomJoueur);
+            c.clicBtnLanceDes(txtboxConsole, pion1, pion2, lblNomJoueur, lblArgentJoueur);
         }
 
         private void btnDk_Click(object sender, RoutedEventArgs e)
         {
-            c.clicbtnDk(pion1, pion2, txtboxConsole, btnDk, lblPion, btnLanceDes, lblNomJoueur);
+            c.clicbtnDk(pion1, pion2, txtboxConsole, btnDk, lblPion, btnLanceDes, lblNomJoueur, lblArgent, lblArgentJoueur, btnListe1, btnListe2
+                , btnListe3, btnListe4);
         }
  
         private void btnMage_Click(object sender, RoutedEventArgs e)
         {
-            c.clicbtnMage(pion1, pion2, txtboxConsole, btnMage, lblPion, btnLanceDes, lblNomJoueur);
+            c.clicbtnMage(pion1, pion2, txtboxConsole, btnMage, lblPion, btnLanceDes, lblNomJoueur, lblArgent, lblArgentJoueur, btnListe1, btnListe2
+                , btnListe3, btnListe4);
         }
 
         private void BtnTour_Click(object sender, RoutedEventArgs e)
         {
-            c.clicbtnTour(txtboxConsole, btnTour, lblTour, lblNomJoueur, lblPion, btnDk, btnMage);
+            c.clicbtnTour(txtboxConsole, btnTour, lblTour, lblNomJoueur, lblPion, btnDk, btnMage, lblArgentJoueur);
         }
 
         #endregion Events

@@ -9,6 +9,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Xml.Linq;
+using System.Xml;
 
 namespace MonopolyVS.Controleurs
 {
@@ -21,6 +23,11 @@ namespace MonopolyVS.Controleurs
         /// </summary>
         List<Joueur> listeJoueurs = new List<Joueur>();
 
+        /// <summary>
+        /// Liste des propriete
+        /// </summary>
+        List<Propriete> listePropriete = new List<Propriete>();
+
         //TODOLORENZO nbrJoueur à mettre en dynamique ci-dessous
         int nbrJoueurs = 2;
 
@@ -29,6 +36,37 @@ namespace MonopolyVS.Controleurs
         #endregion
 
         #region Méthodes
+
+        /// <summary>
+        /// Ajoute les propriete du XML dans la listePropriete
+        /// </summary>
+        public void initPropriete()
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load("..\\..\\..\\MonopolyVS\\XML\\Propriete.xml");
+            XmlNodeList nodeList = doc.SelectNodes("//Propriete");
+            foreach (XmlNode node in nodeList)
+            {
+                double[] loyer =
+                {
+                    int.Parse(node.Attributes["prix0"].Value),
+                    int.Parse(node.Attributes["prix1"].Value),
+                    int.Parse(node.Attributes["prix2"].Value),
+                    int.Parse(node.Attributes["prix3"].Value),
+                    int.Parse(node.Attributes["prix4"].Value),
+                    int.Parse(node.Attributes["prix5"].Value)
+                };
+                
+                new Propriete(
+                    int.Parse(node.Attributes["numero"].Value),
+                    node.Attributes["nom"].Value,
+                    node.Attributes["couleur"].Value,
+                    int.Parse(node.Attributes["terrain"].Value),
+                    int.Parse(node.Attributes["maison"].Value),
+                    loyer
+                    );
+            }
+        }
 
         /// <summary>
         /// Ajoute le nombre de joueur voulu à la listeJoueurs
@@ -43,11 +81,11 @@ namespace MonopolyVS.Controleurs
             {
                 if (i == 0)
                 {
-                    listeJoueurs.Add(new Joueur(1, "Corentin", 0));
+                    listeJoueurs.Add(new Joueur(1, "Corentin", 0, 1500));
                 }
                 else
                 {
-                    listeJoueurs.Add(new Joueur(2, "Lorenzo", 0));
+                    listeJoueurs.Add(new Joueur(2, "Lorenzo", 0, 1500));
                 }
             }
         }
@@ -55,7 +93,8 @@ namespace MonopolyVS.Controleurs
         /// <summary>
         /// Rend invisible certaines partie de la fenêtre
         /// </summary>
-        public void prepareInvisible(Label lblTour, Label lblNomJoueur, Label lblPion, Button btnDk, Button btnMage, Button btnLanceDes)
+        public void prepareInvisible(Label lblTour, Label lblNomJoueur, Label lblPion, Button btnDk, Button btnMage, 
+            Button btnLanceDes, Label lblArgent, Label lblArgentJoueur, Button btnListe1, Button btnListe2, Button btnListe3, Button btnListe4)
         {
             lblTour.Visibility = Visibility.Hidden;
             lblNomJoueur.Visibility = Visibility.Hidden;
@@ -63,6 +102,12 @@ namespace MonopolyVS.Controleurs
             btnDk.Visibility = Visibility.Hidden;
             btnMage.Visibility = Visibility.Hidden;
             btnLanceDes.Visibility = Visibility.Hidden;
+            lblArgent.Visibility = Visibility.Hidden;
+            lblArgentJoueur.Visibility = Visibility.Hidden;
+            btnListe1.Visibility = Visibility.Hidden;
+            btnListe2.Visibility = Visibility.Hidden;
+            btnListe3.Visibility = Visibility.Hidden;
+            btnListe4.Visibility = Visibility.Hidden;
         }
 
         /// <summary>
@@ -84,9 +129,11 @@ namespace MonopolyVS.Controleurs
         /// Evénement lors du clic sur btnTour
         /// </summary>
         public void clicbtnTour(TextBox textBox, Button btnTour, Label lblTour, Label lblNomJoueur, Label lblPion, 
-            Button btnDk, Button btnMage)
+            Button btnDk, Button btnMage, Label lblArgentJoueur)
         {
+            //Initialisation des Joueurs et des Propriétés
             AddJoueurs(nbrJoueurs);
+            initPropriete();
 
             int i = 1;
             List<Joueur> listeJoueursTampon = new List<Joueur>();
@@ -112,9 +159,15 @@ namespace MonopolyVS.Controleurs
             foreach(Joueur j in listeJoueurs)
             {
                 if(j.Numero == 1)
-                    j.changeTour(listeJoueurs, 0, lblNomJoueur);
+                    j.changeTour(listeJoueurs, 0, lblNomJoueur, lblArgentJoueur);
             }
-
+            int iii = 0;
+            foreach(Propriete p in listePropriete)
+            {
+                textBox.AppendText("Propriete : " + p.Numero + p.Nom + "\n");
+                iii++;
+            }
+            textBox.AppendText(i.ToString());
             btnTour.Visibility = Visibility.Hidden;
             lblTour.Visibility = Visibility.Visible;
             lblNomJoueur.Visibility = Visibility.Visible;
@@ -127,7 +180,7 @@ namespace MonopolyVS.Controleurs
         /// Evénement lors du clic sur le btnLanceDes
         /// </summary>
         /// <param name="txtboxConsole"></param>
-        public void clicBtnLanceDes(TextBox txtboxConsole, Rectangle pion1, Rectangle pion2, Label lblNomJoueur)
+        public void clicBtnLanceDes(TextBox txtboxConsole, Rectangle pion1, Rectangle pion2, Label lblNomJoueur, Label lblArgentJoueur)
         {
             int resultat = 0;
             int position = 0;
@@ -178,11 +231,13 @@ namespace MonopolyVS.Controleurs
                     position = j.Position;
                     j.Placement(position, j, pion1, pion2);
 
+                    lblArgentJoueur.Content = j.Argent;
+
                     if (j.estDouble)
                         break;
                     else
                     {
-                        j.finTour(listeJoueurs, nbrJoueurs, lblNomJoueur);
+                        j.finTour(listeJoueurs, nbrJoueurs, lblNomJoueur, lblArgentJoueur);
                         break;
                     }
                 }
@@ -220,17 +275,39 @@ namespace MonopolyVS.Controleurs
             }
             else if(position > 39 && j.EstEnPrison == false)
             {
+                txtboxConsole.AppendText(j.Nom + " gagne 200€. \n");
                 position -= 40;
+                j.Argent += 200;
             }
 
             return position;
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public void listeVisibility(Button btnLanceDes, Label lblArgent, Label lblArgentJoueur, Button btnListe1, Button btnListe2
+            , Button btnListe3, Button btnListe4, Label lblPion)
+        {
+            btnLanceDes.Visibility = Visibility.Visible;
+            lblArgent.Visibility = Visibility.Visible;
+            lblArgentJoueur.Visibility = Visibility.Visible;
+            if (nbrJoueurs >= 1)
+                btnListe1.Visibility = Visibility.Visible;
+            if (nbrJoueurs >= 2)
+                btnListe2.Visibility = Visibility.Visible;
+            if (nbrJoueurs >= 3)
+                btnListe3.Visibility = Visibility.Visible;
+            if (nbrJoueurs >= 4)
+                btnListe4.Visibility = Visibility.Visible;
+            lblPion.Content = "Listes : ";
+        }
+
+        /// <summary>
         /// Evénement lors du clic sur btnDk
         /// </summary>
         public void clicbtnDk(Rectangle pion1, Rectangle pion2, TextBox txtboxConsole, Button btnDk, Label lblPion, Button btnLanceDes,
-            Label lblNomJoueur)
+            Label lblNomJoueur, Label lblArgent, Label lblArgentJoueur, Button btnListe1, Button btnListe2, Button btnListe3, Button btnListe4)
         {
             foreach(Joueur j in listeJoueurs)
             {
@@ -242,7 +319,7 @@ namespace MonopolyVS.Controleurs
                         pion1.Fill = new ImageBrush(new BitmapImage(new Uri(@"..\..\Images\39px-ClassIcon_deathknightFOND.png", UriKind.Relative)));
                         txtboxConsole.AppendText(j.Nom + " a choisi le chevalier de la mort." + "\n");
                         txtboxConsole.AppendText("Le joueur 2 choisit son pion : " + "\n");
-                        j.finTour(listeJoueurs, nbrJoueurs, lblNomJoueur);
+                        j.finTour(listeJoueurs, nbrJoueurs, lblNomJoueur, lblArgentJoueur);
                         btnDk.Visibility = Visibility.Hidden;
                         break;
                     }
@@ -250,9 +327,8 @@ namespace MonopolyVS.Controleurs
                     {
                         pion2.Fill = new ImageBrush(new BitmapImage(new Uri(@"..\..\Images\39px-ClassIcon_deathknightFOND.png", UriKind.Relative)));
                         txtboxConsole.AppendText(j.Nom + " a choisi le chevalier de la mort." + "\n");
-                        btnLanceDes.Visibility = Visibility.Visible;
-                        lblPion.Visibility = Visibility.Hidden;
-                        j.finTour(listeJoueurs, nbrJoueurs, lblNomJoueur);
+                        listeVisibility(btnLanceDes, lblArgent, lblArgentJoueur, btnListe1, btnListe2, btnListe3, btnListe4, lblPion);
+                        j.finTour(listeJoueurs, nbrJoueurs, lblNomJoueur, lblArgentJoueur);
                         btnDk.Visibility = Visibility.Hidden;
                         break;
                     }
@@ -264,7 +340,7 @@ namespace MonopolyVS.Controleurs
         /// Evénement lors du clic sur btnMage
         /// </summary>
         public void clicbtnMage(Rectangle pion1, Rectangle pion2, TextBox txtboxConsole, Button btnMage, Label lblPion, Button btnLanceDes, 
-            Label lblNomJoueur)
+            Label lblNomJoueur, Label lblArgent, Label lblArgentJoueur, Button btnListe1, Button btnListe2, Button btnListe3, Button btnListe4)
         {
             foreach (Joueur j in listeJoueurs)
             {
@@ -276,7 +352,7 @@ namespace MonopolyVS.Controleurs
                         pion1.Fill = new ImageBrush(new BitmapImage(new Uri(@"..\..\Images\39px-ClassIcon_mageFOND.png", UriKind.Relative)));
                         txtboxConsole.AppendText(j.Nom + " a choisi le mage." + "\n");
                         txtboxConsole.AppendText("Le joueur 2 choisit son pion : " + "\n");
-                        j.finTour(listeJoueurs, nbrJoueurs, lblNomJoueur);
+                        j.finTour(listeJoueurs, nbrJoueurs, lblNomJoueur, lblArgentJoueur);
                         btnMage.Visibility = Visibility.Hidden;
                         break;
                     }
@@ -284,9 +360,8 @@ namespace MonopolyVS.Controleurs
                     {
                         pion2.Fill = new ImageBrush(new BitmapImage(new Uri(@"..\..\Images\39px-ClassIcon_mageFOND.png", UriKind.Relative)));
                         txtboxConsole.AppendText(j.Nom + " a choisi le mage." + "\n");
-                        btnLanceDes.Visibility = Visibility.Visible;
-                        lblPion.Visibility = Visibility.Hidden;
-                        j.finTour(listeJoueurs, nbrJoueurs, lblNomJoueur);
+                        listeVisibility(btnLanceDes, lblArgent, lblArgentJoueur, btnListe1, btnListe2, btnListe3, btnListe4, lblPion);
+                        j.finTour(listeJoueurs, nbrJoueurs, lblNomJoueur, lblArgentJoueur);
                         btnMage.Visibility = Visibility.Hidden;
                         break;
                     }

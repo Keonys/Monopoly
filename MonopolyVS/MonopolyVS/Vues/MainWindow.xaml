@@ -5,15 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MonopolyVS"
         mc:Ignorable="d"
-        Title="Monopoly World of Warcraft" Height="792" Width="1824"
+        Title="Monopoly World of Warcraft" Height="792" Width="1540.8"
         WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
         <!--Visuel n'étant pas sur l'image-->
         <Label x:Name="lblTour" Content="Tour :" HorizontalAlignment="Left" Margin="939,20,0,0" VerticalAlignment="Top" Height="43" Width="91" FontSize="24"/>
-        <Label x:Name="lblNomJoueur" Content="JOUEUR" HorizontalAlignment="Left" Margin="1030,20,0,0" VerticalAlignment="Top" Height="43" Width="417" FontSize="24"/>
+        <Label x:Name="lblNomJoueur" Content="JOUEUR" HorizontalAlignment="Left" Margin="1034,20,0,0" VerticalAlignment="Top" Height="43" Width="417" FontSize="24"/>
+        <Label x:Name="lblArgent" Content="Argent :    €" HorizontalAlignment="Left" Margin="939,129,0,0" VerticalAlignment="Top" Height="43" Width="131" FontSize="24"/>
+        <Label x:Name="lblArgentJoueur" Content="ARGENTJOUEUR" HorizontalAlignment="Left" Margin="1070,129,0,0" VerticalAlignment="Top" Height="43" Width="195" FontSize="24"/>
         <Button x:Name="btnLanceDes" Content="Lancer les Dés" Click="btnLanceDes_Click" VerticalAlignment="Top" Height="50" FontSize="24" HorizontalAlignment="Left" Width="469" Canvas.Left="1004" Canvas.Top="167" Margin="939,69,0,0"/>
         <Button x:Name="btnTour" Content="Choix du Tour" Click="BtnTour_Click" Margin="1006,63,0,0" VerticalAlignment="Top" Height="49" FontSize="24" HorizontalAlignment="Left" Width="246"/>
-        <TextBox x:Name="txtboxConsole" HorizontalAlignment="Left" Height="282" Margin="912,475,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FF124E06" BorderBrush="{x:Null}" FontSize="24" Foreground="#FFDDD019" Width="611">
+        <Button x:Name="btnListe1" Content="LISTEJ1" Margin="942,220,0,0" VerticalAlignment="Top" Height="49" FontSize="24" HorizontalAlignment="Left" Width="246"/>
+        <Button x:Name="btnListe2" Content="LISTEJ2" Margin="1231,220,0,0" VerticalAlignment="Top" Height="49" FontSize="24" HorizontalAlignment="Left" Width="246"/>
+        <Button x:Name="btnListe3" Content="LISTEJ3" Margin="942,292,0,0" VerticalAlignment="Top" Height="49" FontSize="24" HorizontalAlignment="Left" Width="246"/>
+        <Button x:Name="btnListe4" Content="LISTEJ4" Margin="1231,292,0,0" VerticalAlignment="Top" Height="49" FontSize="24" HorizontalAlignment="Left" Width="246"/>
+        <TextBox x:Name="txtboxConsole" HorizontalAlignment="Left" Height="223" Margin="912,534,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FF124E06" BorderBrush="{x:Null}" FontSize="24" Foreground="#FFDDD019" Width="611">
             <TextBox.CaretBrush>
                 <ImageBrush/>
             </TextBox.CaretBrush>
@@ -105,7 +111,7 @@
         <Rectangle x:Name="Maison3_2" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="586,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
         <Rectangle x:Name="Maison3_3" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="604,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
         <Rectangle x:Name="Maison3_4" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="622,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
-        <Rectangle x:Name="Maison6_1" Fill="Green" Height="22" Margin="348,657,1451.6,0" Stroke="Black" VerticalAlignment="Top" RadiusY="6.7" RadiusX="6.7"/>
+        <Rectangle x:Name="Maison6_1" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="348,657,0,0" Stroke="Black" VerticalAlignment="Top" RadiusY="6.7" RadiusX="6.7" Width="18"/>
         <Rectangle x:Name="Maison6_2" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="366,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
         <Rectangle x:Name="Maison6_3" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="384,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
         <Rectangle x:Name="Maison6_4" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="402,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
@@ -705,10 +711,9 @@
         </Rectangle>
 
         <!--Gestion du pion / joueur-->
-        <Canvas Margin="0,0,-0.4,0.4">
+        <Canvas Margin="0,0,28.6,0.4">
             <Rectangle Canvas.Left="0" Canvas.Top="0" Canvas.ZIndex="1" x:Name="pion1" HorizontalAlignment="Left" Height="32" Margin="808,683,0,0" VerticalAlignment="Top" Width="35" RadiusY="8.933" RadiusX="8.933"/>
             <Rectangle Canvas.Left="0" Canvas.Top="0" x:Name="pion2" HorizontalAlignment="Left" Height="32" Margin="848,695,0,0" VerticalAlignment="Top" Width="35" RadiusY="11.333" RadiusX="11.333"/>
-            <Label x:Name="lblArgent" Content="Argent :" HorizontalAlignment="Left" VerticalAlignment="Top" Height="43" Width="195" FontSize="24" Canvas.Left="940" Canvas.Top="130"/>
         </Canvas>
     </Grid>
 </Window>
