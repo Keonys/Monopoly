@@ -15,7 +15,7 @@
         <TabControl x:Name="TabMenuPrinc" HorizontalAlignment="Left" Height="671" VerticalAlignment="Top" Width="985" Margin="0,-22,-0.2,-0.2" Grid.ColumnSpan="2" IsSynchronizedWithCurrentItem="False" SelectionChanged="TabControl_SelectionChanged" BorderBrush="White">
             <TabItem x:Name="TabMenu" Header="TabItem" Visibility="Hidden">
                 <Grid Background="White">
-                    <Image x:Name="ImageLogo" VerticalAlignment="Top" Source="/Images/logo_MonoWoW.png" Margin="0,0,13.4,0"/>
+                    <Image x:Name="ImageLogo" VerticalAlignment="Top" Source="/Images/logo_MonoWoW.png" Margin="0" HorizontalAlignment="Center"/>
                     <Button x:Name="ButtonValider" Content="JOUER" VerticalAlignment="Bottom" Click="ButtonValider_Click" HorizontalAlignment="Center" Width="500" Height="70" FontSize="36" Margin="0,0,0,100"/>
                 </Grid>
             </TabItem>
