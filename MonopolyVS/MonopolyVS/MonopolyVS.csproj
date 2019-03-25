@@ -142,5 +142,10 @@
   <ItemGroup>
     <Resource Include="Images\logo_MonoWoW.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="XML\Propriete.xml">
+      <SubType>Designer</SubType>
+    </Resource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

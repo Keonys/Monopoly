@@ -10,22 +10,49 @@ namespace MonopolyVS.Modeles
 {
     public class Propriete : Case
     {
-        #region PARAMETRES ET VARIABLES
+        #region Propriétés et variables
+
+        public int Numero { get; set; }
         public string Nom { get; set; }
         //Type de case (Gare, rue ...)
         public string Type { get; }
         //Couleur case (si rue)
         public string Couleur { get; }
         public bool EstAchetee { get; set; } = false;
-        //Nom du joueur qui a acquis la case
-        public string Proprietaire { get; set; } = String.Empty;
+        //Joueur qui a acquis la case
+        public Joueur Proprietaire { get; set; }
         public bool EstHypotheque { get; set; } = false;
-        //Prix d'achat de la case [0], des maisons [1], des hôtels[2], du loyer[3]. Indique aussi le montant de l'hypothèque [4]
-        public double[] Prix { get; } = new double[5];
+        //Loyer du terrain [0], des maisons [1-2-3-4], de l'hôtel [5]
+        public double[] Loyer { get; } = new double[6];
+        //Prix du Terrain
+        public int PrixTerrain { get; } = 0;
+        //Prix de chaque maison et d'un hotel
+        public int PrixMaison { get; } = 0;
+        //TODOCORENTIN LOYER + HYPOTHEQUE A AJOUTER
         //Nombre maisons sur case
         public int NbrMaison { get; set; } = 0;
         //Nombre hôtel sur case (0 ou 1)
         public bool NbrHotel { get; set; } = false;
+
+        #endregion
+
+        #region Constructeurs
+
+        public Propriete()
+        {
+
+        }
+
+        public Propriete(int numero, string nom, string couleur, int prixTerrain, int prixMaison, double[] loyer)
+        {
+            Numero = numero;
+            Nom = nom;
+            Couleur = couleur;
+            PrixTerrain = prixTerrain;
+            PrixMaison = prixMaison;
+            Loyer = loyer;
+        }
+
         #endregion
     }
 }
