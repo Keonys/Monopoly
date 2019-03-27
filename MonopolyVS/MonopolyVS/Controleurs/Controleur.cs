@@ -122,9 +122,9 @@ namespace MonopolyVS.Controleurs
             for (int i = 1; i <= 2; i++)
             {
                 if (i==1)
-                    listeJoueurs.Add(new Joueur(i, joueur1, 0, 1500));
+                    listeJoueurs.Add(new Joueur(i, joueur1, 0, 1500, j1));
                 if (i == 2)
-                    listeJoueurs.Add(new Joueur(i, joueur2, 0, 1500));
+                    listeJoueurs.Add(new Joueur(i, joueur2, 0, 1500, j2));
             }
         }
 
@@ -139,11 +139,11 @@ namespace MonopolyVS.Controleurs
             for (int i = 1; i <= 3; i++)
             {
                 if (i == 1)
-                    listeJoueurs.Add(new Joueur(i, joueur1, 0, 1500));
+                    listeJoueurs.Add(new Joueur(i, joueur1, 0, 1500, j1));
                 if (i == 2)
-                    listeJoueurs.Add(new Joueur(i, joueur2, 0, 1500));
+                    listeJoueurs.Add(new Joueur(i, joueur2, 0, 1500, j2));
                 if (i == 3)
-                    listeJoueurs.Add(new Joueur(i, joueur3, 0, 1500));
+                    listeJoueurs.Add(new Joueur(i, joueur3, 0, 1500, j3));
             }
         }
         /// <summary>
@@ -158,13 +158,13 @@ namespace MonopolyVS.Controleurs
             for (int i = 1; i <= 3; i++)
             {
                 if (i == 1)
-                    listeJoueurs.Add(new Joueur(i, joueur1, 0, 1500));
+                    listeJoueurs.Add(new Joueur(i, joueur1, 0, 1500, j1));
                 if (i == 2)
-                    listeJoueurs.Add(new Joueur(i, joueur2, 0, 1500));
+                    listeJoueurs.Add(new Joueur(i, joueur2, 0, 1500, j2));
                 if (i == 3)
-                    listeJoueurs.Add(new Joueur(i, joueur3, 0, 1500));
+                    listeJoueurs.Add(new Joueur(i, joueur3, 0, 1500, j3));
                 if (i == 4)
-                    listeJoueurs.Add(new Joueur(i, joueur4, 0, 1500));
+                    listeJoueurs.Add(new Joueur(i, joueur4, 0, 1500, j4));
             }
         }
         #endregion

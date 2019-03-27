@@ -229,20 +229,20 @@ namespace MonopolyVS.Modeles
             {
                 if (ComboIcones4.SelectedIndex >= 0 && TextBoxNom4.Text != "")
                 {
-                    control.AddJoueurs(TextBoxNom1.Text, TextBoxNom2.Text, TextBoxNom3.Text, TextBoxNom4.Text);
+                    control.AddJoueurs(TextBoxNom1.Text, ImageIcone, TextBoxNom2.Text, ImageIcone2, TextBoxNom3.Text, ImageIcone3, TextBoxNom4.Text, ImageIcone4);
                     pretAJouer = true;
                     FormulaireJoueur1.Close();
                 }
                 else
                 {
-                    control.AddJoueurs(TextBoxNom1.Text, TextBoxNom2.Text, TextBoxNom3.Text);
+                    control.AddJoueurs(TextBoxNom1.Text, ImageIcone, TextBoxNom2.Text, ImageIcone2, TextBoxNom3.Text, ImageIcone3);
                     pretAJouer = true;
                     FormulaireJoueur1.Close();
                 }
             }
             else
             {
-                control.AddJoueurs(TextBoxNom1.Text, TextBoxNom2.Text);
+                control.AddJoueurs(TextBoxNom1.Text, ImageIcone, TextBoxNom2.Text, ImageIcone2);
                 pretAJouer = true;
                 FormulaireJoueur1.Close();
             }
