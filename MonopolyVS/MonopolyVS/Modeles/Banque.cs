@@ -12,8 +12,8 @@ namespace MonopolyVS.Modeles
     {
 
         //Nombre maisons et hôtels pour 1 partie
-        int nbrMaison = 32;
-        int nbrHotel = 12;
+        //int nbrMaison = 32;
+        //int nbrHotel = 12;
         //Lorsque la banque ne peut plus proposer de maisons, une crise du batiment est déclenchée
         public static bool Crise { get; } = false;
 

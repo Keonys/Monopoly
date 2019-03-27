@@ -28,10 +28,11 @@ namespace MonopolyVS.Controleurs
         /// </summary>
         List<Propriete> listePropriete = new List<Propriete>();
 
-        //TODOLORENZO nbrJoueur à mettre en dynamique ci-dessous
-        int nbrJoueurs = 2;
-
         Des Des = new Des();
+
+        //TODOLORENZO nbrJoueur à mettre en dynamique ci-dessous 
+        //(L APPLI NE FONCTIONNE QUE POUR 2 JOUEURS POUR LE MOMENT, et un joueur ne peut pas jouer seul)
+        int nbrJoueurs = 2;
 
         #endregion
 
@@ -43,7 +44,7 @@ namespace MonopolyVS.Controleurs
         public void initPropriete()
         {
             XmlDocument doc = new XmlDocument();
-            doc.Load("..\\..\\..\\MonopolyVS\\XML\\Propriete.xml");
+            doc.Load("../../XML/Propriete.xml");
             XmlNodeList nodeList = doc.SelectNodes("//Propriete");
             foreach (XmlNode node in nodeList)
             {
@@ -57,14 +58,14 @@ namespace MonopolyVS.Controleurs
                     int.Parse(node.Attributes["prix5"].Value)
                 };
                 
-                new Propriete(
+                listePropriete.Add(new Propriete(
                     int.Parse(node.Attributes["numero"].Value),
                     node.Attributes["nom"].Value,
                     node.Attributes["couleur"].Value,
                     int.Parse(node.Attributes["terrain"].Value),
                     int.Parse(node.Attributes["maison"].Value),
                     loyer
-                    );
+                    ));
             }
         }
 
@@ -91,10 +92,11 @@ namespace MonopolyVS.Controleurs
         }
 
         /// <summary>
-        /// Rend invisible certaines partie de la fenêtre
+        /// Initialise l'application
         /// </summary>
-        public void prepareInvisible(Label lblTour, Label lblNomJoueur, Label lblPion, Button btnDk, Button btnMage, 
-            Button btnLanceDes, Label lblArgent, Label lblArgentJoueur, Button btnListe1, Button btnListe2, Button btnListe3, Button btnListe4)
+        public void initAppli(Label lblTour, Label lblNomJoueur, Label lblPion, Button btnDk, Button btnMage, 
+            Button btnLanceDes, Label lblArgent, Label lblArgentJoueur, Button btnListe1, Button btnListe2, 
+            Button btnListe3, Button btnListe4)
         {
             lblTour.Visibility = Visibility.Hidden;
             lblNomJoueur.Visibility = Visibility.Hidden;
@@ -108,6 +110,24 @@ namespace MonopolyVS.Controleurs
             btnListe2.Visibility = Visibility.Hidden;
             btnListe3.Visibility = Visibility.Hidden;
             btnListe4.Visibility = Visibility.Hidden;
+        }
+
+        /// <summary>
+        /// Affiche la liste de propriété du Joueur 1
+        /// </summary>
+        public void clicListe1(ListBox listboxBien)
+        {
+            Joueur j = listeJoueurs[0];
+            j.afficheProp(listboxBien);
+        }
+
+        /// <summary>
+        /// Affiche la liste de propriété du Joueur 2
+        /// </summary>
+        public void clicListe2(ListBox listboxBien)
+        {
+            Joueur j = listeJoueurs[1];
+            j.afficheProp(listboxBien);
         }
 
         /// <summary>
@@ -129,7 +149,7 @@ namespace MonopolyVS.Controleurs
         /// Evénement lors du clic sur btnTour
         /// </summary>
         public void clicbtnTour(TextBox textBox, Button btnTour, Label lblTour, Label lblNomJoueur, Label lblPion, 
-            Button btnDk, Button btnMage, Label lblArgentJoueur)
+            Button btnDk, Button btnMage, Label lblArgentJoueur, Button btnListe1, Button btnListe2)
         {
             //Initialisation des Joueurs et des Propriétés
             AddJoueurs(nbrJoueurs);
@@ -161,13 +181,12 @@ namespace MonopolyVS.Controleurs
                 if(j.Numero == 1)
                     j.changeTour(listeJoueurs, 0, lblNomJoueur, lblArgentJoueur);
             }
-            int iii = 0;
-            foreach(Propriete p in listePropriete)
-            {
-                textBox.AppendText("Propriete : " + p.Numero + p.Nom + "\n");
-                iii++;
-            }
-            textBox.AppendText(i.ToString());
+
+            Joueur jo = listeJoueurs[0];
+            btnListe1.Content = "Liste de " + jo.Nom;
+            jo = listeJoueurs[1];
+            btnListe2.Content = "Liste de " + jo.Nom;
+
             btnTour.Visibility = Visibility.Hidden;
             lblTour.Visibility = Visibility.Visible;
             lblNomJoueur.Visibility = Visibility.Visible;
@@ -180,7 +199,8 @@ namespace MonopolyVS.Controleurs
         /// Evénement lors du clic sur le btnLanceDes
         /// </summary>
         /// <param name="txtboxConsole"></param>
-        public void clicBtnLanceDes(TextBox txtboxConsole, Rectangle pion1, Rectangle pion2, Label lblNomJoueur, Label lblArgentJoueur)
+        public void clicBtnLanceDes(TextBox txtboxConsole, Rectangle pion1, Rectangle pion2, Label lblNomJoueur, 
+            Label lblArgentJoueur, List<Case> listeCases)
         {
             int resultat = 0;
             int position = 0;
@@ -217,6 +237,23 @@ namespace MonopolyVS.Controleurs
                         j.estDouble = false;
                         j.nbrDouble = 0;
                         j.nbrTourPrison++;
+
+                        System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.MessageBox.Show(
+                            "Voulez-vous verser un pot de vin de 50€ pour sortir du champ de bataille ?",
+                            "Champ de Bataille", System.Windows.Forms.MessageBoxButtons.YesNo);
+                        if (dialogResult == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            txtboxConsole.AppendText("Doublé, vous pouvez sortir de prison et rejouer !\n");
+                            txtboxConsole.AppendText(j.Nom + " avance de : " + resultat + " cases. \n");
+                            j.estDouble = true;
+                            j.nbrDouble++;
+                            j.Argent -= 50;
+                        }
+                        else if (dialogResult == System.Windows.Forms.DialogResult.No)
+                        {
+                            txtboxConsole.AppendText(j.Nom + " a choisi de rester ce battre ! \n");
+                            resultat = 0;
+                        }
                     }
                     else
                     {
@@ -229,7 +266,7 @@ namespace MonopolyVS.Controleurs
 
                     j.Position = Move(position, j, resultat, txtboxConsole);
                     position = j.Position;
-                    j.Placement(position, j, pion1, pion2);
+                    j.Placement(position, j, pion1, pion2, listePropriete, txtboxConsole, listeCases);
 
                     lblArgentJoueur.Content = j.Argent;
 
@@ -266,8 +303,8 @@ namespace MonopolyVS.Controleurs
             }
             else if(j.nbrDouble >= 3)
             {
-                txtboxConsole.AppendText("C'est votre 3ème double ! Direction la prison, vous pourrez retenter un double au prochain tour," +
-                    " pour sortir de prison. \n");
+                txtboxConsole.AppendText("C'est votre 3ème double ! Direction le champ de bataille, vous pourrez retenter un double au prochain tour," +
+                    " pour sortir du champ de bataille. \n");
                 position = 40;
                 j.EstEnPrison = true;
                 j.nbrDouble = 0;

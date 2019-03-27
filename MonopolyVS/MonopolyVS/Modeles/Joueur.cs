@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Shapes;
@@ -18,6 +19,8 @@ namespace MonopolyVS
 
         Banque Banque = new Banque();
         Des Des = new Des();
+        bool donjon = false;
+        bool prop = false;
 
         #endregion
 
@@ -77,6 +80,11 @@ namespace MonopolyVS
         /// Indique le tour du joueur
         /// </summary>
         public bool sonTour = false;
+
+        /// <summary>
+        /// Indique le nbr de donjons en possession du joueur
+        /// </summary>
+        public int nbrDonjons = 0;
 
         #endregion
 
@@ -149,6 +157,57 @@ namespace MonopolyVS
         }
 
         /// <summary>
+        /// Affiche les propriétés dans la liste du plateau
+        /// </summary>
+        public void afficheProp(System.Windows.Controls.ListBox listboxBien)
+        {
+            listboxBien.Items.Clear();
+            listboxBien.Items.Add("Patrimoine de " + this.Nom + " : \n");
+
+            //Donjons
+            foreach (Propriete p in this.Patrimoine)
+            {
+                if (p.Couleur == "Donjon")
+                    donjon = true;
+            }
+            if (donjon)
+            {
+                listboxBien.Items.Add("Donjons : \n");
+            }
+            foreach (Propriete p in this.Patrimoine)
+            {
+                if (p.Couleur == "Donjon")
+                {
+                    listboxBien.Items.Add(p.Nom + " \n");
+                }
+            }
+
+            //Propriétés
+            foreach (Propriete p in this.Patrimoine)
+            {
+                if (p.Couleur != "Donjon")
+                    prop = true;
+            }
+            if (prop)
+            {
+                listboxBien.Items.Add("Propriétés : \n");
+            }
+            foreach (Propriete p in this.Patrimoine)
+            {
+                if (p.Couleur != "Donjon")
+                {
+                    listboxBien.Items.Add(p.Nom + " \n");
+                }
+            }
+
+            if (!donjon && !prop)
+                listboxBien.Items.Add("Pas de Propriétés ! \n");
+
+            donjon = false;
+            prop = false;
+        }
+
+        /// <summary>
         /// Affecte des coordonnées aux pions
         /// </summary>
         /// <param name="top1"></param>
@@ -173,8 +232,15 @@ namespace MonopolyVS
         /// Place le pion sur la bonne case, grâce au positionnement du canvas
         /// </summary>
         /// <param name="position">Case où ce trouve le pion à la fin du tour</param>
-        public void Placement(int position, Joueur j, Rectangle pion1, Rectangle pion2)
+        public void Placement(int position, Joueur j, Rectangle pion1, Rectangle pion2, 
+            List<Propriete> listePropriete, System.Windows.Controls.TextBox txtboxConsole, List<Case> listeCases)
         {
+            int couleur = 0;
+            int couleurTotal = 0;
+            bool maison = true;
+            bool hotel = true;
+            Propriete p = listePropriete[position];
+
             switch (position)
             {
                 case (0):
@@ -183,178 +249,263 @@ namespace MonopolyVS
                     setValueCanvas(0.0, 0.0, j, pion1, pion2);
                     break;
                 case (1):
-                    //Cross Roads -- Propriété de 60€
+                    //Cross Roads
                     setValueCanvas(0.0, -95.0, j, pion1, pion2);
                     setValueCanvas(0.0, -100.0, j, pion1, pion2);
-
-                    
-
-                    DialogResult dialogResult = MessageBox.Show("Sure", "Some Title", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        //do something
-                    }
-                    else if (dialogResult == DialogResult.No)
-                    {
-                        //do something else
-                    }
-
+                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configMaison(listeCases);
                     break;
                 case (2):
+                    //Coffre
                     setValueCanvas(0.0, -165.0, j, pion1, pion2);
                     setValueCanvas(0.0, -175.0, j, pion1, pion2);
                     break;
                 case (3):
+                    //Goldshire
                     setValueCanvas(0.0, -239.0, j, pion1, pion2);
                     setValueCanvas(0.0, -244.0, j, pion1, pion2);
+                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configMaison(listeCases);
                     break;
                 case (4):
+                    //Impot -- -200€
                     setValueCanvas(0.0, -314.0, j, pion1, pion2);
                     setValueCanvas(0.0, -319.0, j, pion1, pion2);
+                    j.Argent -= 200;
+                    txtboxConsole.AppendText(j.Nom + " paie 200€ à l'entraîneur. \n");
                     break;
                 case (5):
+                    //Donjon -- -200€
                     setValueCanvas(0.0, -387.0, j, pion1, pion2);
                     setValueCanvas(0.0, -392.0, j, pion1, pion2);
+                    p.configDonjon(j, txtboxConsole);
                     break;
                 case (6):
+                    //Auberdine
                     setValueCanvas(0.0, -461.0, j, pion1, pion2);
                     setValueCanvas(0.0, -466.0, j, pion1, pion2);
+                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configMaison(listeCases);
                     break;
                 case (7):
+                    //Chance
                     setValueCanvas(0.0, -532.0, j, pion1, pion2);
                     setValueCanvas(0.0, -537.0, j, pion1, pion2);
                     break;
                 case (8):
+                    //Senuin
                     setValueCanvas(0.0, -606.0, j, pion1, pion2);
                     setValueCanvas(0.0, -611.0, j, pion1, pion2);
+                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configMaison(listeCases);
                     break;
                 case (9):
+                    //Ambermill
                     setValueCanvas(0.0, -680.0, j, pion1, pion2);
                     setValueCanvas(0.0, -685.0, j, pion1, pion2);
+                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configMaison(listeCases);
                     break;
                 case (10):
-                    //CASE VISITE PRISON
+                    //Visite Prison
                     setValueCanvas(0.0, -795.0, j, pion1, pion2);
                     setValueCanvas(26.0, -770.0, j, pion1, pion2);
                     break;
                 case (11):
+                    //Nighthaven
                     setValueCanvas(-83.0, -777.0, j, pion1, pion2);
                     setValueCanvas(-74.0, -782.0, j, pion1, pion2);
+                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configMaison(listeCases);
                     break;
                 case (12):
+                    //Impot -- -150€
                     setValueCanvas(-143.0, -777.0, j, pion1, pion2);
                     setValueCanvas(-134.0, -782.0, j, pion1, pion2);
+                    j.Argent -= 150;
+                    txtboxConsole.AppendText(j.Nom + " doit 150€ au service postal. \n");
                     break;
                 case (13):
+                    //Freewind Post
                     setValueCanvas(-203.0, -777.0, j, pion1, pion2);
                     setValueCanvas(-194.0, -782.0, j, pion1, pion2);
+                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configMaison(listeCases);
                     break;
                 case (14):
+                    //Astranaar
                     setValueCanvas(-263.0, -777.0, j, pion1, pion2);
                     setValueCanvas(-254.0, -782.0, j, pion1, pion2);
+                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configMaison(listeCases);
                     break;
                 case (15):
+                    //Donjon -- 200€
                     setValueCanvas(-323.0, -777.0, j, pion1, pion2);
                     setValueCanvas(-314.0, -782.0, j, pion1, pion2);
+                    p.configDonjon(j, txtboxConsole);
                     break;
                 case (16):
+                    //Booty Bay
                     setValueCanvas(-383.0, -777.0, j, pion1, pion2);
                     setValueCanvas(-374.0, -782.0, j, pion1, pion2);
+                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configMaison(listeCases);
                     break;
                 case (17):
+                    //Coffre
                     setValueCanvas(-443.0, -777.0, j, pion1, pion2);
                     setValueCanvas(-434.0, -782.0, j, pion1, pion2);
                     break;
                 case (18):
+                    //Tarren Mill
                     setValueCanvas(-503.0, -777.0, j, pion1, pion2);
                     setValueCanvas(-494.0, -782.0, j, pion1, pion2);
+                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configMaison(listeCases);
                     break;
                 case (19):
+                    //Southshore
                     setValueCanvas(-563.0, -777.0, j, pion1, pion2);
                     setValueCanvas(-554.0, -782.0, j, pion1, pion2);
+                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configMaison(listeCases);
                     break;
                 case (20):
+                    //Gardien des Esprits
                     setValueCanvas(-655.0, -777.0, j, pion1, pion2);
                     setValueCanvas(-645.0, -782.0, j, pion1, pion2);
                     break;
                 case (21):
+                    //Gadgetzan
                     setValueCanvas(-655.0, -680.0, j, pion1, pion2);
                     setValueCanvas(-645.0, -685.0, j, pion1, pion2);
+                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configMaison(listeCases);
                     break;
                 case (22):
+                    //Chance
                     setValueCanvas(-655.0, -606.0, j, pion1, pion2);
                     setValueCanvas(-645.0, -611.0, j, pion1, pion2);
                     break;
                 case (23):
+                    //Camp Mojache
                     setValueCanvas(-655.0, -532.0, j, pion1, pion2);
                     setValueCanvas(-645.0, -537.0, j, pion1, pion2);
+                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configMaison(listeCases);
                     break;
                 case (24):
+                    //Aerie Peak
                     setValueCanvas(-655.0, -461.0, j, pion1, pion2);
                     setValueCanvas(-645.0, -466.0, j, pion1, pion2);
+                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configMaison(listeCases);
                     break;
                 case (25):
+                    //Donjon -- 200€
                     setValueCanvas(-655.0, -387.0, j, pion1, pion2);
                     setValueCanvas(-645.0, -392.0, j, pion1, pion2);
+                    p.configDonjon(j, txtboxConsole);
                     break;
                 case (26):
+                    //Everlook
                     setValueCanvas(-655.0, -314.0, j, pion1, pion2);
                     setValueCanvas(-645.0, -319.0, j, pion1, pion2);
+                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configMaison(listeCases);
                     break;
                 case (27):
+                    //Lights Hope Chapel
                     setValueCanvas(-655.0, -239.0, j, pion1, pion2);
                     setValueCanvas(-645.0, -244.0, j, pion1, pion2);
+                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configMaison(listeCases);
                     break;
                 case (28):
+                    //Impot -- 150€
                     setValueCanvas(-655.0, -165.0, j, pion1, pion2);
                     setValueCanvas(-645.0, -175.0, j, pion1, pion2);
+                    j.Argent -= 150;
+                    txtboxConsole.AppendText(j.Nom + " paie 150€ de barbier. Superbe barbe ! \n");
                     break;
                 case (29):
+                    //Stormwind City
                     setValueCanvas(-655.0, -95.0, j, pion1, pion2);
                     setValueCanvas(-645.0, -100.0, j, pion1, pion2);
+                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configMaison(listeCases);
                     break;
                 case (30):
+                    //Vers la Prison
                     setValueCanvas(-655.0, 0.0, j, pion1, pion2);
                     setValueCanvas(-645.0, 0.0, j, pion1, pion2);
+                    this.Position = 40;
+                    this.Placement(40, j, pion1, pion2, listePropriete, txtboxConsole, listeCases);
+                    j.EstEnPrison = true;
+                    txtboxConsole.AppendText(j.Nom + " rentre sur le champ de bataille ! \n");
                     break;
                 case (31):
+                    //Thunderbluff
                     setValueCanvas(-563.0, 10.0, j, pion1, pion2);
                     setValueCanvas(-554.0, 4.0, j, pion1, pion2);
+                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configMaison(listeCases);
                     break;
                 case (32):
+                    //Ironforge
                     setValueCanvas(-503.0, 10.0, j, pion1, pion2);
                     setValueCanvas(-494.0, 4.0, j, pion1, pion2);
+                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configMaison(listeCases);
                     break;
                 case (33):
+                    //Coffre
                     setValueCanvas(-443.0, 10.0, j, pion1, pion2);
                     setValueCanvas(-494.0, 4.0, j, pion1, pion2);
                     break;
                 case (34):
+                    //Dalaran
                     setValueCanvas(-383.0, 10.0, j, pion1, pion2);
                     setValueCanvas(-374.0, 4.0, j, pion1, pion2);
+                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configMaison(listeCases);
                     break;
                 case (35):
+                    //Donjon -- 200€
                     setValueCanvas(-323.0, 10.0, j, pion1, pion2);
                     setValueCanvas(-314.0, 4.0, j, pion1, pion2);
+                    p.configDonjon(j, txtboxConsole);
                     break;
                 case (36):
+                    //Chance
                     setValueCanvas(-263.0, 10.0, j, pion1, pion2);
                     setValueCanvas(-254.0, 4.0, j, pion1, pion2);
                     break;
                 case (37):
+                    //Orgrimmar
                     setValueCanvas(-203.0, 10.0, j, pion1, pion2);
                     setValueCanvas(-194.0, 4.0, j, pion1, pion2);
+                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configMaison(listeCases);
                     break;
                 case (38):
+                    //Impot -- 200€
                     setValueCanvas(-143.0, 10.0, j, pion1, pion2);
                     setValueCanvas(-134.0, 4.0, j, pion1, pion2);
+                    j.Argent -= 200;
+                    txtboxConsole.AppendText(j.Nom + " répare son équipement pour 200€. \n");
                     break;
                 case (39):
+                    //Darnassus
                     setValueCanvas(-83.0, 10.0, j, pion1, pion2);
                     setValueCanvas(-74.0, 4.0, j, pion1, pion2);
+                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configMaison(listeCases);
                     break;
                 case (40):
-                    //CASE PRISON
+                    //Prison -- 50€ pour sortir de la prison
+                    //Cela est géré dans le Controleur clicbtnlancedes
                     setValueCanvas(-21.0, -757.0, j, pion1, pion2);
                     setValueCanvas(-3.0, -757.0, j, pion1, pion2);
                     break;
