@@ -171,12 +171,12 @@ namespace MonopolyVS.Controleurs
         /// </summary>
         public void afficheFormulaire(MainWindow m)
         {
-            FormulaireJoueur Menu = new FormulaireJoueur();
+            FormulaireJoueur Menu = new FormulaireJoueur(m);
 
             m.Visibility = Visibility.Hidden;
             Menu.Show();
         }
-
+        
         /// <summary>
         /// Evénement lors du clic sur btnTour
         /// </summary>

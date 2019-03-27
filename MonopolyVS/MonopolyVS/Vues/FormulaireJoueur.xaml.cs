@@ -23,10 +23,13 @@ namespace MonopolyVS.Modeles
     public partial class FormulaireJoueur : Window
     {
         bool pretAJouer = false;
+        MainWindow Principal;
+
         Controleur control = new Controleur();
-        public FormulaireJoueur()
+        public FormulaireJoueur(MainWindow m)
         {
             InitializeComponent();
+            Principal = m;
         }
 
         private void ButtonEntrer_Click_1(object sender, RoutedEventArgs e)
@@ -39,11 +42,11 @@ namespace MonopolyVS.Modeles
 
         private void FormulaireJoueur1_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (pretAJouer == true)
+            if (pretAJouer == false)
             {
-                control.prepareVisible();
+                System.Windows.Application.Current.Shutdown();
             }
-            else System.Windows.Application.Current.Shutdown();
+            else Principal.Visibility = Visibility.Visible;
         }
 
         #region JOUEUR1
@@ -227,17 +230,20 @@ namespace MonopolyVS.Modeles
                 if (ComboIcones4.SelectedIndex >= 0 && TextBoxNom4.Text != "")
                 {
                     control.AddJoueurs(TextBoxNom1.Text, TextBoxNom2.Text, TextBoxNom3.Text, TextBoxNom4.Text);
+                    pretAJouer = true;
                     FormulaireJoueur1.Close();
                 }
                 else
                 {
                     control.AddJoueurs(TextBoxNom1.Text, TextBoxNom2.Text, TextBoxNom3.Text);
+                    pretAJouer = true;
                     FormulaireJoueur1.Close();
                 }
             }
             else
             {
                 control.AddJoueurs(TextBoxNom1.Text, TextBoxNom2.Text);
+                pretAJouer = true;
                 FormulaireJoueur1.Close();
             }
         }
