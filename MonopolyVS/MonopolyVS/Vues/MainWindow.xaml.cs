@@ -32,7 +32,7 @@ namespace MonopolyVS
             InitializeComponent();
             //TODOLORENZO la fonction prepareVisible() sera à mettre dans la fonction de ton bouton "jouer"
             prepareInvisible();
-            //afficheFormulaire();
+            afficheFormulaire();
         }
 
         #region Events
