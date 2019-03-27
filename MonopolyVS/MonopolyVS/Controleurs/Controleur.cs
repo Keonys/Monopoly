@@ -405,7 +405,6 @@ namespace MonopolyVS.Controleurs
                 }
             }
         }
-
         #endregion
     }
 }
