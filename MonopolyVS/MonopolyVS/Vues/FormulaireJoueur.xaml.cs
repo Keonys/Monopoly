@@ -46,7 +46,8 @@ namespace MonopolyVS.Modeles
             if (ComboIcones2.SelectedIndex >= 0
                && TextBoxNom1.Text != "" && TextBoxNom2.Text != "")
                 ButtonValider.IsEnabled = true;
-            
+            else ButtonValider.IsEnabled = false;
+
             switch (ComboIcones1.SelectedIndex)
             {
                 //CASE Death Knight
@@ -69,9 +70,21 @@ namespace MonopolyVS.Modeles
             if (ComboIcones1.SelectedIndex >= 0 && ComboIcones2.SelectedIndex >= 0
                && TextBoxNom1.Text != "" && TextBoxNom2.Text != "")
                 ButtonValider.IsEnabled = true;
+            else ButtonValider.IsEnabled = false;
 
             if (TextBoxNom1.Text != "")
             {
+                if (TextBoxNom3.Text != "")
+                {
+                    ComboIcones3.IsEnabled = true;
+                    TextBoxNom3.IsEnabled = true;
+                }
+                if (TextBoxNom4.Text != "")
+                {
+                    ComboIcones4.IsEnabled = true;
+                    TextBoxNom4.IsEnabled = true;
+                }
+
                 ComboIcones2.IsEnabled = true;
                 TextBoxNom2.IsEnabled = true;
             }
@@ -79,6 +92,10 @@ namespace MonopolyVS.Modeles
             {
                 ComboIcones2.IsEnabled = false;
                 TextBoxNom2.IsEnabled = false;
+                ComboIcones3.IsEnabled = false;
+                TextBoxNom3.IsEnabled = false;
+                ComboIcones4.IsEnabled = false;
+                TextBoxNom4.IsEnabled = false;
             }
         }
         #endregion
@@ -88,6 +105,7 @@ namespace MonopolyVS.Modeles
         {
             if (TextBoxNom1.Text != "" && TextBoxNom2.Text != "")
                 ButtonValider.IsEnabled = true;
+            else ButtonValider.IsEnabled = false;
 
             switch (ComboIcones2.SelectedIndex)
             {
@@ -111,9 +129,16 @@ namespace MonopolyVS.Modeles
             if (ComboIcones1.SelectedIndex >= 0 && ComboIcones2.SelectedIndex >= 0
                && TextBoxNom1.Text != "" && TextBoxNom2.Text != "")
                 ButtonValider.IsEnabled = true;
+            else ButtonValider.IsEnabled = false;
 
-            if (TextBoxNom2.Text != "")
+            if (TextBoxNom2.Text != "" && TextBoxNom1.Text != "")
             {
+                if (TextBoxNom4.Text != "")
+                {
+                    ComboIcones4.IsEnabled = true;
+                    TextBoxNom4.IsEnabled = true;
+                }
+
                 ComboIcones3.IsEnabled = true;
                 TextBoxNom3.IsEnabled = true;
             }
@@ -121,6 +146,8 @@ namespace MonopolyVS.Modeles
             {
                 ComboIcones3.IsEnabled = false;
                 TextBoxNom3.IsEnabled = false;
+                ComboIcones4.IsEnabled = false;
+                TextBoxNom4.IsEnabled = false;
             }
         }
         #endregion
