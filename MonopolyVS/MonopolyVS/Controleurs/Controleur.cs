@@ -111,27 +111,63 @@ namespace MonopolyVS.Controleurs
             }
         }
 
+        #region METHODE AddJoueurs
         /// <summary>
-        /// Ajoute le nombre de joueur voulu à la listeJoueurs
+        /// Ajoute les joueurs a la liste des joueurs
         /// </summary>
-        /// <param name="nbrJoueur"></param>
-        public void AddJoueurs(int nbrJoueur, Rectangle pion1, Rectangle pion2)
+        /// <param name="joueur1"></param>
+        /// <param name="joueur2"></param>
+        public void AddJoueurs(string joueur1, Rectangle j1, string joueur2, Rectangle j2)
         {
-            //TODOLORENZO Remplacer tout ce qui concerne le nom, par la propriété de Lorenzo dans cette fonction
-            //(remplacer le contenu du for par : listeJoueurs.Add(new Joueur(Numero, Nom, Position)));
-
-            for (int i = 0; i < nbrJoueur; i++)
+            for (int i = 1; i <= 2; i++)
             {
-                if (i == 0)
-                {
-                    listeJoueurs.Add(new Joueur(1, "Corentin", 0, 1500, pion1));
-                }
-                else
-                {
-                    listeJoueurs.Add(new Joueur(2, "Lorenzo", 0, 1500, pion2));
-                }
+                if (i==1)
+                    listeJoueurs.Add(new Joueur(i, joueur1, 0, 1500));
+                if (i == 2)
+                    listeJoueurs.Add(new Joueur(i, joueur2, 0, 1500));
             }
         }
+
+        /// <summary>
+        /// Ajoute les joueurs a la liste des joueurs
+        /// </summary>
+        /// <param name="joueur1"></param>
+        /// <param name="joueur2"></param>
+        /// <param name="joueur3"></param>
+        public void AddJoueurs(string joueur1, Rectangle j1, string joueur2, Rectangle j2, string joueur3, Rectangle j3)
+        {
+            for (int i = 1; i <= 3; i++)
+            {
+                if (i == 1)
+                    listeJoueurs.Add(new Joueur(i, joueur1, 0, 1500));
+                if (i == 2)
+                    listeJoueurs.Add(new Joueur(i, joueur2, 0, 1500));
+                if (i == 3)
+                    listeJoueurs.Add(new Joueur(i, joueur3, 0, 1500));
+            }
+        }
+        /// <summary>
+        /// Ajoute les joueurs a la liste des joueurs
+        /// </summary>
+        /// <param name="joueur1"></param>
+        /// <param name="joueur2"></param>
+        /// <param name="joueur3"></param>
+        /// <param name="joueur4"></param>
+        public void AddJoueurs(string joueur1, Rectangle j1, string joueur2, Rectangle j2, string joueur3, Rectangle j3, string joueur4, Rectangle j4)
+        {
+            for (int i = 1; i <= 3; i++)
+            {
+                if (i == 1)
+                    listeJoueurs.Add(new Joueur(i, joueur1, 0, 1500));
+                if (i == 2)
+                    listeJoueurs.Add(new Joueur(i, joueur2, 0, 1500));
+                if (i == 3)
+                    listeJoueurs.Add(new Joueur(i, joueur3, 0, 1500));
+                if (i == 4)
+                    listeJoueurs.Add(new Joueur(i, joueur4, 0, 1500));
+            }
+        }
+        #endregion
 
         /// <summary>
         /// Initialise l'application
@@ -181,10 +217,6 @@ namespace MonopolyVS.Controleurs
 
             m.Visibility = Visibility.Hidden;
             Menu.Show();
-
-            //TODOLORENZO Alors normalement dans ta fenêtre y a un bouton "jouer" qui va emmener à la fenêtre principale (avec le plateau)
-            //Du coup le but serais que : Au moment où le joueur clique sur "Jouer", la méthode "AddJoueur" est lancée
-            //Pour le moment je fais ça à la main dans le MainWindow.xaml.cs
         }
 
         /// <summary>
@@ -195,7 +227,8 @@ namespace MonopolyVS.Controleurs
             Rectangle pion1, Rectangle pion2)
         {
             //Initialisation des Joueurs et des Propriétés
-            AddJoueurs(nbrJoueurs, pion1, pion2);
+            //ATTENTION LA METHODE EN DESSOUS NE FONCTIONNERA PLUS AVEC CES ARGUMENTS
+            //AddJoueurs(nbrJoueurs, pion1, pion2);
             initPropriete();
             initCarte();
 
