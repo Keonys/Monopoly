@@ -38,9 +38,10 @@ namespace MonopolyVS
         public MainWindow()
         {
             InitializeComponent();
-            //TODOLORENZO la fonction prepareVisible() sera à mettre dans la fonction de ton bouton "jouer"
-            prepareInvisible();
+            //TODOLORENZO le contenu de la fonction initAppli() sera à mettre dans la fonction de ton bouton "jouer"
+            initAppli();
             afficheFormulaire();
+            
         }
 
         #region Events
@@ -50,7 +51,7 @@ namespace MonopolyVS
         /// </summary>
         private void prepareInvisible()
         {
-            c.prepareInvisible(lblTour, lblNomJoueur, lblPion, btnDk, btnMage, btnLanceDes, lblArgent, lblArgentJoueur, btnListe1, btnListe2
+            c.initAppli(lblTour, lblNomJoueur, lblPion, btnDk, btnMage, btnLanceDes, lblArgent, lblArgentJoueur, btnListe1, btnListe2
                 , btnListe3, btnListe4);
         }
 
