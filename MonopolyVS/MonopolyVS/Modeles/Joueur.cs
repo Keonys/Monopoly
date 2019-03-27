@@ -86,6 +86,17 @@ namespace MonopolyVS
         /// </summary>
         public int nbrDonjons = 0;
 
+        /// <summary>
+        /// Indique le nombre de carte de sortie possédé par le joueur 
+        /// (il y en a 2 dans le jeu, une dans les cartes chance et une dans les cartes caisse de communautée)
+        /// </summary>
+        public int Sortie = 0;
+
+        /// <summary>
+        /// Pion du Joueur
+        /// </summary>
+        public Rectangle Pion;
+
         #endregion
 
         #region Constructeurs
@@ -102,12 +113,13 @@ namespace MonopolyVS
         /// Constructeur du Joueur
         /// </summary>
         /// <param name="pion"></param>
-        public Joueur(int numero, string nom, int position, int argent)
+        public Joueur(int numero, string nom, int position, int argent, Rectangle pion)
         {
             Numero = numero;
             Nom = nom;
             Position = position;
             Argent = argent;
+            Pion = pion;
         }
 
         #endregion
@@ -120,16 +132,17 @@ namespace MonopolyVS
         /// <param name="listeJoueurs"></param>
         /// <param name="nbrMax"></param>
         /// <param name="lblNomJoueur"></param>
-        public void finTour(List<Joueur> listeJoueurs, int nbrMax, System.Windows.Controls.Label lblNomJoueur, System.Windows.Controls.Label lblArgentJoueur)
+        public void finTour(List<Joueur> listeJoueurs, int nbrMax, System.Windows.Controls.Label lblNomJoueur,
+            System.Windows.Controls.Label lblArgentJoueur, Image imgSortie)
         {
             foreach(Joueur j in listeJoueurs)
             {
                 if (j.sonTour == true)
                 {
                     if(j.Numero == nbrMax)
-                        changeTour(listeJoueurs, 0, lblNomJoueur, lblArgentJoueur);
+                        changeTour(listeJoueurs, 0, lblNomJoueur, lblArgentJoueur, imgSortie);
                     else
-                        changeTour(listeJoueurs, j.Numero, lblNomJoueur, lblArgentJoueur);
+                        changeTour(listeJoueurs, j.Numero, lblNomJoueur, lblArgentJoueur, imgSortie);
                     break;
                 }
             }
@@ -139,7 +152,8 @@ namespace MonopolyVS
         /// Change le tour des joueurs
         /// </summary>
         /// <param name="nbr">Numero du Joueur</param>
-        public void changeTour(List<Joueur> listeJoueurs, int nbr, System.Windows.Controls.Label lblNomJoueur, System.Windows.Controls.Label lblArgentJoueur)
+        public void changeTour(List<Joueur> listeJoueurs, int nbr, System.Windows.Controls.Label lblNomJoueur,
+            System.Windows.Controls.Label lblArgentJoueur, Image imgSortie)
         {
             nbr++;
             foreach(Joueur j in listeJoueurs)
@@ -150,6 +164,10 @@ namespace MonopolyVS
                     lblNomJoueur.Content = j.Nom;
                     //TODOCORENTIN Utiliser fonction "GagnerArgent"
                     lblArgentJoueur.Content = j.Argent;
+                    if (j.Sortie > 0)
+                        imgSortie.Visibility = Visibility.Visible;
+                    else
+                        imgSortie.Visibility = Visibility.Hidden;
                 }
                 else
                     j.sonTour = false;
@@ -232,14 +250,15 @@ namespace MonopolyVS
         /// Place le pion sur la bonne case, grâce au positionnement du canvas
         /// </summary>
         /// <param name="position">Case où ce trouve le pion à la fin du tour</param>
-        public void Placement(int position, Joueur j, Rectangle pion1, Rectangle pion2, 
-            List<Propriete> listePropriete, System.Windows.Controls.TextBox txtboxConsole, List<Case> listeCases)
+        public void Placement(int position, Joueur j, Rectangle pion1, Rectangle pion2, List<Propriete> listePropriete,
+            System.Windows.Controls.TextBox txtboxConsole, List<Case> listeCases, List<Carte> listeChance, Image imgSortie, List<Carte> listeCaisse)
         {
             int couleur = 0;
             int couleurTotal = 0;
             bool maison = true;
             bool hotel = true;
             Propriete p = listePropriete[position];
+            Carte c = new Carte();
 
             switch (position)
             {
@@ -259,6 +278,7 @@ namespace MonopolyVS
                     //Coffre
                     setValueCanvas(0.0, -165.0, j, pion1, pion2);
                     setValueCanvas(0.0, -175.0, j, pion1, pion2);
+                    c.piocheCaisse(imgSortie, j, listeChance, txtboxConsole, pion1, pion2, listePropriete, listeCases, listeCaisse);
                     break;
                 case (3):
                     //Goldshire
@@ -291,6 +311,7 @@ namespace MonopolyVS
                     //Chance
                     setValueCanvas(0.0, -532.0, j, pion1, pion2);
                     setValueCanvas(0.0, -537.0, j, pion1, pion2);
+                    c.piocheChance(imgSortie, j, listeChance, txtboxConsole, pion1, pion2, listePropriete, listeCases, listeCaisse);
                     break;
                 case (8):
                     //Senuin
@@ -307,7 +328,7 @@ namespace MonopolyVS
                     p.configMaison(listeCases);
                     break;
                 case (10):
-                    //Visite Prison
+                    //Visite Prison -- ne ce passe rien
                     setValueCanvas(0.0, -795.0, j, pion1, pion2);
                     setValueCanvas(26.0, -770.0, j, pion1, pion2);
                     break;
@@ -356,6 +377,7 @@ namespace MonopolyVS
                     //Coffre
                     setValueCanvas(-443.0, -777.0, j, pion1, pion2);
                     setValueCanvas(-434.0, -782.0, j, pion1, pion2);
+                    c.piocheCaisse(imgSortie, j, listeChance, txtboxConsole, pion1, pion2, listePropriete, listeCases, listeCaisse);
                     break;
                 case (18):
                     //Tarren Mill
@@ -372,7 +394,7 @@ namespace MonopolyVS
                     p.configMaison(listeCases);
                     break;
                 case (20):
-                    //Gardien des Esprits
+                    //Gardien des Esprits -- ne ce passe rien
                     setValueCanvas(-655.0, -777.0, j, pion1, pion2);
                     setValueCanvas(-645.0, -782.0, j, pion1, pion2);
                     break;
@@ -387,6 +409,7 @@ namespace MonopolyVS
                     //Chance
                     setValueCanvas(-655.0, -606.0, j, pion1, pion2);
                     setValueCanvas(-645.0, -611.0, j, pion1, pion2);
+                    c.piocheChance(imgSortie, j, listeChance, txtboxConsole, pion1, pion2, listePropriete, listeCases, listeCaisse);
                     break;
                 case (23):
                     //Camp Mojache
@@ -441,7 +464,7 @@ namespace MonopolyVS
                     setValueCanvas(-655.0, 0.0, j, pion1, pion2);
                     setValueCanvas(-645.0, 0.0, j, pion1, pion2);
                     this.Position = 40;
-                    this.Placement(40, j, pion1, pion2, listePropriete, txtboxConsole, listeCases);
+                    this.Placement(40, j, pion1, pion2, listePropriete, txtboxConsole, listeCases, listeChance, imgSortie, listeCaisse);
                     j.EstEnPrison = true;
                     txtboxConsole.AppendText(j.Nom + " rentre sur le champ de bataille ! \n");
                     break;
@@ -463,6 +486,7 @@ namespace MonopolyVS
                     //Coffre
                     setValueCanvas(-443.0, 10.0, j, pion1, pion2);
                     setValueCanvas(-494.0, 4.0, j, pion1, pion2);
+                    c.piocheCaisse(imgSortie, j, listeChance, txtboxConsole, pion1, pion2, listePropriete, listeCases, listeCaisse);
                     break;
                 case (34):
                     //Dalaran
@@ -481,6 +505,7 @@ namespace MonopolyVS
                     //Chance
                     setValueCanvas(-263.0, 10.0, j, pion1, pion2);
                     setValueCanvas(-254.0, 4.0, j, pion1, pion2);
+                    c.piocheChance(imgSortie, j, listeChance, txtboxConsole, pion1, pion2, listePropriete, listeCases, listeCaisse);
                     break;
                 case (37):
                     //Orgrimmar

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Caisses>
+  <!--L'id commence à 17 car c'est la suite des cartes chance (Chance.xml)-->
+  <Caisse id="17" type="Prison" valeur="0" contenu="Sylvanas vous a croisé, elle vous emmène sur le champ de bataille."></Caisse>
+  <Caisse id="18" type="Sortie" valeur="0" contenu="Apparemment les jetons WoW ne servent pas qu'à gagner des PO, vous pouvez le réutiliser pour sortir de prison. (La carte s'affiche à droite de votre nom, elle vous aidera à sortir du champ de bataille.)"></Caisse>
+  <Caisse id="19" type="Ajout" valeur="50" contenu="Vous pariez 50PO dans un Duel contre Maurice le borgne. Gagnez 50PO."></Caisse>
+  <Caisse id="20" type="Ajout" valeur="100" contenu="Le Roi Anduin verse une prime à ses sujets. Gagnez 100PO."></Caisse>
+  <Caisse id="21" type="Ajout" valeur="3" contenu="Vous avez vaincu le grand Lardeur après moulte péripéties, vous récupérez la récompense de la quête. Gagnez 3PO. (Oui, vous êtes mal payé ...)"></Caisse>
+  <Caisse id="22" type="Ajout" valeur="500" contenu="Vous vendez un Brutosaure, une monture très cher. Gagnez 500PO."></Caisse>
+  <Caisse id="23" type="Ajout" valeur="50" contenu="Vous gagnez un jet de besoin. Gagnez 50PO."></Caisse>
+  <Caisse id="24" type="Ajout" valeur="10" contenu="Tel un rapia, vous repassez tout le donjon en revue pour trouver de l'argent. Gagnez 10PO."></Caisse>
+  <Caisse id="25" type="Ajout" valeur="20" contenu="Quota de bienveillance ! Vous aidez un nouveau joueur, il vous donne 20PO."></Caisse>
+  <Caisse id="26" type="Perte" valeur="50" contenu="Vous pariez 50PO dans un Duel, c'est compliqué de gagner quand on est borgne ... Perdez 50PO."></Caisse>
+  <Caisse id="27" type="Perte" valeur="200" contenu="C'est la guerre ... Vous préparez votre matériel, cela n'est pas gratuit. Perdez 200PO."></Caisse>
+  <Caisse id="28" type="Perte" valeur="5" contenu="Vous payez l'hôtel des ventes, rien ne s'est vendu ... Payez 5PO."></Caisse>
+  <Caisse id="29" type="Perte" valeur="100" contenu="Après des heures à farmer des minerais vous ... UNE DECONNEXION !? Vous perdez 100PO (et vos minerais)."></Caisse>
+  <Caisse id="30" type="Perte" valeur="10" contenu="Vous dépannez un guildmate. Perdez 10PO."></Caisse>
+  <Caisse id="31" type="Perte" valeur="20" contenu="WOW ERROR ! Perdez les 20PO que vous veniez de loot."></Caisse>
+  <Caisse id="32" type="Perte" valeur="1000" contenu="MALEDICTION !!! Gul'Dan vous a maudit, vous perdez 1000PO."></Caisse>
+</Caisses>

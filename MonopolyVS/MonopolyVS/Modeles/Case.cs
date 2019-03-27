@@ -16,6 +16,7 @@ namespace MonopolyVS.Modeles
         public Rectangle Maison4;
         public Rectangle NomHotel;
 
+
         public Case()
         {
 

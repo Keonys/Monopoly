@@ -55,24 +55,25 @@ namespace MonopolyVS
 
         private void btnLanceDes_Click(object sender, RoutedEventArgs e)
         {
-            c.clicBtnLanceDes(txtboxConsole, pion1, pion2, lblNomJoueur, lblArgentJoueur, listeCases);
+            c.clicBtnLanceDes(txtboxConsole, pion1, pion2, lblNomJoueur, lblArgentJoueur, listeCases, imgSortie);
         }
 
         private void btnDk_Click(object sender, RoutedEventArgs e)
         {
             c.clicbtnDk(pion1, pion2, txtboxConsole, btnDk, lblPion, btnLanceDes, lblNomJoueur, lblArgent, lblArgentJoueur, btnListe1, btnListe2
-                , btnListe3, btnListe4);
+                , btnListe3, btnListe4, imgSortie);
         }
  
         private void btnMage_Click(object sender, RoutedEventArgs e)
         {
             c.clicbtnMage(pion1, pion2, txtboxConsole, btnMage, lblPion, btnLanceDes, lblNomJoueur, lblArgent, lblArgentJoueur, btnListe1, btnListe2
-                , btnListe3, btnListe4);
+                , btnListe3, btnListe4, imgSortie);
         }
 
         private void BtnTour_Click(object sender, RoutedEventArgs e)
         {
-            c.clicbtnTour(txtboxConsole, btnTour, lblTour, lblNomJoueur, lblPion, btnDk, btnMage, lblArgentJoueur, btnListe1, btnListe2);
+            c.clicbtnTour(txtboxConsole, btnTour, lblTour, lblNomJoueur, lblPion, btnDk, btnMage, lblArgentJoueur, btnListe1, btnListe2,
+                imgSortie, pion1, pion2);
         }
 
         private void BtnListe1_Click(object sender, RoutedEventArgs e)
@@ -124,6 +125,8 @@ namespace MonopolyVS
                 c.Maison4.Visibility = Visibility.Hidden;
                 c.NomHotel.Visibility = Visibility.Hidden;
             }
+
+            imgSortie.Visibility = Visibility.Hidden;
         }
 
         #endregion Events

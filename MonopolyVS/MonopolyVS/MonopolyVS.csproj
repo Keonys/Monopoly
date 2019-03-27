@@ -152,5 +152,13 @@
       <SubType>Designer</SubType>
     </Resource>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Jeton-Wow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="XML\Caisse.xml">
+      <SubType>Designer</SubType>
+    </Resource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

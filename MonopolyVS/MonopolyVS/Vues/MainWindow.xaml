@@ -9,12 +9,17 @@
         WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
         <!--Visuel n'étant pas sur l'image-->
+        <Image x:Name="imgSortie" Margin="1372,34,92.4,665.4" Source="/MonopolyVS;component/Images/Jeton-Wow.png" Opacity="0.995">
+            <Image.Effect>
+                <DropShadowEffect/>
+            </Image.Effect>
+        </Image>
         <ListBox x:Name="listboxBien" Margin="926,353,31.4,251.4" FontSize="14"/>
         <Label x:Name="lblTour" Content="Tour :" HorizontalAlignment="Left" Margin="939,20,0,0" VerticalAlignment="Top" Height="43" Width="91" FontSize="24"/>
-        <Label x:Name="lblNomJoueur" Content="JOUEUR" HorizontalAlignment="Left" Margin="1034,20,0,0" VerticalAlignment="Top" Height="43" Width="417" FontSize="24"/>
+        <Label x:Name="lblNomJoueur" Content="JOUEUR" HorizontalAlignment="Left" Margin="1034,20,0,0" VerticalAlignment="Top" Height="43" Width="317" FontSize="24"/>
         <Label x:Name="lblArgent" Content="Argent :    €" HorizontalAlignment="Left" Margin="939,129,0,0" VerticalAlignment="Top" Height="43" Width="131" FontSize="24"/>
         <Label x:Name="lblArgentJoueur" Content="ARGENTJOUEUR" HorizontalAlignment="Left" Margin="1070,129,0,0" VerticalAlignment="Top" Height="43" Width="195" FontSize="24"/>
-        <Button x:Name="btnLanceDes" Content="Lancer les Dés" Click="btnLanceDes_Click" VerticalAlignment="Top" Height="50" FontSize="24" HorizontalAlignment="Left" Width="469" Canvas.Left="1004" Canvas.Top="167" Margin="939,69,0,0"/>
+        <Button x:Name="btnLanceDes" Content="Lancer les Dés" Click="btnLanceDes_Click" VerticalAlignment="Top" Height="50" FontSize="24" HorizontalAlignment="Left" Width="420" Canvas.Left="1004" Canvas.Top="167" Margin="939,69,0,0"/>
         <Button x:Name="btnTour" Content="Choix du Tour" Click="BtnTour_Click" Margin="1006,63,0,0" VerticalAlignment="Top" Height="49" FontSize="24" HorizontalAlignment="Left" Width="246"/>
         <Button x:Name="btnListe1" Content="LISTEJ1" Margin="942,220,0,0" VerticalAlignment="Top" Height="49" FontSize="24" HorizontalAlignment="Left" Width="246" Click="BtnListe1_Click"/>
         <Button x:Name="btnListe2" Content="LISTEJ2" Margin="1231,220,0,0" VerticalAlignment="Top" Height="49" FontSize="24" HorizontalAlignment="Left" Width="246" Click="BtnListe2_Click"/>

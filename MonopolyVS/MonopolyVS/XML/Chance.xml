@@ -1,5 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Chances>
-  <!--A finir-->
-  <Chance id="1" type="ajout" valeur="100"></Chance>
+  <Chance id="1" type="Prison" valeur="0" contenu="UN NAIN !!! Suivez le jusqu'au champ de bataille."></Chance>
+  <Chance id="2" type="Sortie" valeur="0" contenu="Pierre de Foyer : Sortez du champ de bataille. (La carte s'affiche à droite de votre nom, elle vous aidera à sortir du champ de bataille.)"></Chance>
+  <Chance id="3" type="Ajout" valeur="200" contenu="Votre mascotte s'est bien vendue à l'Hôtel des Ventes. Gagnez 200PO."></Chance>
+  <Chance id="4" type="Ajout" valeur="1" contenu="Vous avez vendu une étoffe de lin à l'Hôtel des Ventes. Gagnez 1PO."></Chance>
+  <Chance id="5" type="Ajout" valeur="300" contenu="Vous dévalisez la Banque de Guilde. Vous gagnez 300PO (et vous êtes haïs par votre Guilde, bravo)."></Chance>
+  <Chance id="6" type="Ajout" valeur="10" contenu="Très beau loot cette vache ! Gagnez 10PO."></Chance>
+  <Chance id="7" type="Ajout" valeur="100" contenu="Mandier dans la capitale était une bonne stratégie. Gagnez 100PO."></Chance>
+  <Chance id="8" type="Ajout" valeur="50" contenu="Un Coffre ! Gagnez 50PO."></Chance>
+  <Chance id="9" type="Ajout" valeur="10" contenu="Vous vendez les items inutile de votre sac ... Gagnez 10PO."></Chance>
+  <Chance id="10" type="Perte" valeur="500" contenu="Vous achetez la nouvelle monture à la mode, le Brutosaure. Perdez 500PO."></Chance>
+  <Chance id="11" type="Perte" valeur="100" contenu="Encore une elfette mandiant dans la capitale ... Vous lui offrez 100PO."></Chance>
+  <Chance id="12" type="Perte" valeur="200" contenu="Vous préparez le raid de mercredi et vous perdez 200PO en compo."></Chance>
+  <Chance id="13" type="Perte" valeur="10" contenu="De nouvelles épaulières ! Vous payez 10PO d'enchantement, bravo."></Chance>
+  <Chance id="14" type="Perte" valeur="10" contenu="Vous êtes laid (pas autant qu'un gnome, mais tout de même), vous vous payez une nouvelle transmo pour 10PO."></Chance>
+  <Chance id="15" type="Perte" valeur="50" contenu="Le maître de vol vous demande de payer la taxe. Perdez 50PO."></Chance>
+  <Chance id="16" type="Ajout" valeur="1000" contenu="JOKER !!! VOUS GAGNEZ 1000PO ! (Vous venez de mettre 25€ dans le jeu pour acheter un jeton WOW, puis vous le revendez, félicitations.)"></Chance>
 </Chances>
