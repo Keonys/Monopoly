@@ -38,9 +38,9 @@ namespace MonopolyVS
         public MainWindow()
         {
             InitializeComponent();
-            //TODOLORENZO le contenu de la fonction initAppli() sera à mettre dans la fonction de ton bouton "jouer"
-            initAppli();
-            //afficheFormulaire();
+            //TODOLORENZO la fonction prepareVisible() sera à mettre dans la fonction de ton bouton "jouer"
+            prepareInvisible();
+            afficheFormulaire();
         }
 
         #region Events

@@ -6,17 +6,18 @@
         xmlns:local="clr-namespace:MonopolyVS.Modeles"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Name="FormulaireJoueur1" x:Class="MonopolyVS.Modeles.FormulaireJoueur"
         mc:Ignorable="d"
-        Title="Monopoly World of Warcraft" Height="678.548" Width="991.56" ShowInTaskbar="False" Closing="FormulaireJoueur1_Closing">
+        Title="Monopoly World of Warcraft" Height="678.548" Width="991.56" Closing="FormulaireJoueur1_Closing" WindowState="Maximized">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="499*"/>
+            <ColumnDefinition Width="67*"/>
+            <ColumnDefinition Width="432*"/>
             <ColumnDefinition Width="486*"/>
         </Grid.ColumnDefinitions>
-        <TabControl x:Name="TabMenuPrinc" HorizontalAlignment="Left" Height="671" VerticalAlignment="Top" Width="985" Margin="0,-22,-0.2,-0.2" Grid.ColumnSpan="2" IsSynchronizedWithCurrentItem="False" SelectionChanged="TabControl_SelectionChanged" BorderBrush="White">
+        <TabControl x:Name="TabMenuPrinc" HorizontalAlignment="Center" Height="671" VerticalAlignment="Top" Width="985" Margin="2,0" Grid.ColumnSpan="3" IsSynchronizedWithCurrentItem="False" BorderBrush="White">
             <TabItem x:Name="TabMenu" Header="TabItem" Visibility="Hidden">
                 <Grid Background="White">
                     <Image x:Name="ImageLogo" VerticalAlignment="Top" Source="/Images/logo_MonoWoW.png" Margin="0" HorizontalAlignment="Center"/>
-                    <Button x:Name="ButtonValider" Content="JOUER" VerticalAlignment="Bottom" Click="ButtonValider_Click" HorizontalAlignment="Center" Width="500" Height="70" FontSize="36" Margin="0,0,0,100"/>
+                    <Button x:Name="ButtonEntrer" Content="JOUER" VerticalAlignment="Bottom" Click="ButtonEntrer_Click_1" HorizontalAlignment="Center" Width="500" Height="70" FontSize="36" Margin="0,0,0,100"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="TabUser" Header="TabItem" Visibility="Hidden">
@@ -28,8 +29,8 @@
                 </TabItem.Background>
                 <Grid Background="White">
                     <Label x:Name="LabelNom" Content="Entrez les noms des joueur :" HorizontalAlignment="Center" Height="59.512" Width="450" FontFamily="Matura MT Script Capitals" FontSize="36" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="-208.8,0,-208.8,-59.512"/>
-                    <TextBox x:Name="TextBoxNom1" HorizontalAlignment="Center" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" VerticalContentAlignment="Center" FontSize="20" Margin="150,80,0,0" FontFamily="Matura MT Script Capitals"/>
-                    <ComboBox x:Name="ComboIcones1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Margin="0,80,500,0" Height="50" FontFamily="Matura MT Script Capitals" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                    <TextBox x:Name="TextBoxNom1" HorizontalAlignment="Center" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" VerticalContentAlignment="Center" FontSize="20" Margin="150,80,0,0" FontFamily="Matura MT Script Capitals" TextChanged="TextBoxNom1_TextChanged"/>
+                    <ComboBox x:Name="ComboIcones1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Margin="0,80,500,0" Height="50" FontFamily="Matura MT Script Capitals" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectionChanged="ComboIcones1_SelectionChanged">
                         <ComboBoxItem x:Name="DeathKnight" Content="Death Knight"/>
                         <ComboBoxItem x:Name="DemonHunter" Content="Demon Hunter"/>
                         <ComboBoxItem x:Name="Druid" Content="Druid"/>
@@ -43,9 +44,9 @@
                         <ComboBoxItem x:Name="Warlock" Content="Warlock"/>
                         <ComboBoxItem x:Name="Warrior" Content="Warrior"/>
                     </ComboBox>
-                    <Image x:Name="ImageIcone" Margin="570,80,0,0" Width="50" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                    <TextBox x:Name="TextBoxNom2" HorizontalAlignment="Center" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" VerticalContentAlignment="Center" FontSize="20" Margin="150,140,0,0" IsEnabled="False" FontFamily="Matura MT Script Capitals"/>
-                    <ComboBox x:Name="ComboIcones2" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Margin="0,140,500,0" Height="50" FontFamily="Matura MT Script Capitals" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsEnabled="False">
+                    <Rectangle x:Name="ImageIcone" Margin="670,80,0,0" Width="50" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    <TextBox x:Name="TextBoxNom2" HorizontalAlignment="Center" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" VerticalContentAlignment="Center" FontSize="20" Margin="150,140,0,0" IsEnabled="False" FontFamily="Matura MT Script Capitals" TextChanged="TextBoxNom2_TextChanged"/>
+                    <ComboBox x:Name="ComboIcones2" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Margin="0,140,500,0" Height="50" FontFamily="Matura MT Script Capitals" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsEnabled="False" SelectionChanged="ComboIcones2_SelectionChanged_1">
                         <ComboBoxItem x:Name="DeathKnight1" Content="Death Knight"/>
                         <ComboBoxItem x:Name="DemonHunter1" Content="Demon Hunter"/>
                         <ComboBoxItem x:Name="Druid1" Content="Druid"/>
@@ -59,13 +60,9 @@
                         <ComboBoxItem x:Name="Warlock1" Content="Warlock"/>
                         <ComboBoxItem x:Name="Warrior1" Content="Warrior"/>
                     </ComboBox>
-                    <Label x:Name="LabelIcone2" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="797,140,0,0" Width="50" Height="50">
-                        <Label.Background>
-                            <ImageBrush/>
-                        </Label.Background>
-                    </Label>
-                    <TextBox x:Name="TextBoxNom3" HorizontalAlignment="Center" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" VerticalContentAlignment="Center" FontSize="20" Margin="150,200,0,0" IsEnabled="False" FontFamily="Matura MT Script Capitals"/>
-                    <ComboBox x:Name="ComboIcones3" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Margin="0,200,500,0" Height="50" FontFamily="Matura MT Script Capitals" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsEnabled="False">
+                    <Rectangle x:Name="ImageIcone2" Margin="670,140,0,0" Width="50" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    <TextBox x:Name="TextBoxNom3" HorizontalAlignment="Center" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" VerticalContentAlignment="Center" FontSize="20" Margin="150,200,0,0" IsEnabled="False" FontFamily="Matura MT Script Capitals" TextChanged="TextBoxNom3_TextChanged"/>
+                    <ComboBox x:Name="ComboIcones3" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Margin="0,200,500,0" Height="50" FontFamily="Matura MT Script Capitals" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsEnabled="False" SelectionChanged="ComboIcones3_SelectionChanged">
                         <ComboBoxItem x:Name="DeathKnight2" Content="Death Knight"/>
                         <ComboBoxItem x:Name="DemonHunter2" Content="Demon Hunter"/>
                         <ComboBoxItem x:Name="Druid2" Content="Druid"/>
@@ -79,13 +76,9 @@
                         <ComboBoxItem x:Name="Warlock2" Content="Warlock"/>
                         <ComboBoxItem x:Name="Warrior2" Content="Warrior"/>
                     </ComboBox>
-                    <Label x:Name="LabelIcone3" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="797,200,0,0" Width="50" Height="50">
-                        <Label.Background>
-                            <ImageBrush/>
-                        </Label.Background>
-                    </Label>
+                    <Rectangle x:Name="ImageIcone3" Margin="670,200,0,0" Width="50" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                     <TextBox x:Name="TextBoxNom4" HorizontalAlignment="Center" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" VerticalContentAlignment="Center" FontSize="20" Margin="150,260,0,0" FontFamily="Matura MT Script Capitals" IsEnabled="False"/>
-                    <ComboBox x:Name="ComboIcones4" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Height="50" FontFamily="Matura MT Script Capitals" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,260,500,0" IsEnabled="False">
+                    <ComboBox x:Name="ComboIcones4" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Height="50" FontFamily="Matura MT Script Capitals" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,260,500,0" IsEnabled="False" SelectionChanged="ComboIcones4_SelectionChanged">
                         <ComboBoxItem x:Name="DeathKnight3" Content="Death Knight"/>
                         <ComboBoxItem x:Name="DemonHunter3" Content="Demon Hunter"/>
                         <ComboBoxItem x:Name="Druid3" Content="Druid"/>
@@ -100,11 +93,9 @@
                         <ComboBoxItem x:Name="Warrior3" Content="Warrior"/>
                         <System:String>Button</System:String>
                     </ComboBox>
-                    <Label x:Name="LabelIcone4" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="797,260,0,0" Width="50" Height="50">
-                        <Label.Background>
-                            <ImageBrush/>
-                        </Label.Background>
-                    </Label>
+                    <Rectangle x:Name="ImageIcone4" Margin="670,260,0,0" Width="50" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    <Label x:Name="LabelJetons" HorizontalAlignment="Center" FontFamily="Matura MT Script Capitals" FontSize="36" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="0,0,0,95" Width="600" Height="300" IsHitTestVisible="False" Visibility="Hidden"/>
+                    <Button x:Name="ButtonValider" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="250" Height="50" Margin="0,0,0,50" Content="Valider" FontSize="36" Click="Valider_Click" IsEnabled="False"/>
                 </Grid>
             </TabItem>
         </TabControl>
