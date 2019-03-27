@@ -717,7 +717,7 @@
         </Rectangle>
 
         <!--Gestion du pion / joueur-->
-        <Canvas Margin="0,0,0.4,0.4">
+        <Canvas Margin="0,0,28.4,0.4" Grid.ColumnSpan="4">
             <Rectangle Canvas.Left="0" Canvas.Top="0" Canvas.ZIndex="1" x:Name="pion1" HorizontalAlignment="Left" Height="32" Margin="808,683,0,0" VerticalAlignment="Top" Width="35" RadiusY="8.933" RadiusX="8.933"/>
             <Rectangle Canvas.Left="0" Canvas.Top="0" x:Name="pion2" HorizontalAlignment="Left" Height="32" Margin="848,695,0,0" VerticalAlignment="Top" Width="35" RadiusY="11.333" RadiusX="11.333"/>
         </Canvas>

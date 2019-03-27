@@ -46,6 +46,15 @@ namespace MonopolyVS
         #region Events
 
         /// <summary>
+        /// Rend invisible certaines partie de la fenêtre
+        /// </summary>
+        private void prepareInvisible()
+        {
+            c.prepareInvisible(lblTour, lblNomJoueur, lblPion, btnDk, btnMage, btnLanceDes, lblArgent, lblArgentJoueur, btnListe1, btnListe2
+                , btnListe3, btnListe4);
+        }
+
+        /// <summary>
         /// Affichage de l'écran d'accueil (avant l'affichage du plateau)
         /// </summary>
         private void afficheFormulaire()
