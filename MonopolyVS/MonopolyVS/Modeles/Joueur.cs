@@ -97,6 +97,11 @@ namespace MonopolyVS
         /// </summary>
         public Rectangle Pion;
 
+        /// <summary>
+        /// Bouton affichant la liste de propriété d'un joueur dans l'appli
+        /// </summary>
+        //public System.Windows.Controls.Button BtnListe;
+
         #endregion
 
         #region Constructeurs

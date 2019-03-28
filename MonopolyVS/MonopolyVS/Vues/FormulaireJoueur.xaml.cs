@@ -25,6 +25,7 @@ namespace MonopolyVS.Modeles
         bool pretAJouer = false;
         MainWindow Principal;
         Controleur control = new Controleur();
+        //TODOCORENTIN Créer les pion ici (les 4 pions, et oui)
         
         public FormulaireJoueur(MainWindow m, Controleur c)
         {
@@ -230,20 +231,20 @@ namespace MonopolyVS.Modeles
             {
                 if (ComboIcones4.SelectedIndex >= 0 && TextBoxNom4.Text != "")
                 {
-                    control.AddJoueurs(TextBoxNom1.Text, ImageIcone, TextBoxNom2.Text, ImageIcone2, TextBoxNom3.Text, ImageIcone3, TextBoxNom4.Text, ImageIcone4);
+                    control.AddJoueurs(TextBoxNom1.Text, ImageIcone, TextBoxNom2.Text, ImageIcone2, TextBoxNom3.Text, ImageIcone3, TextBoxNom4.Text, ImageIcone4, 4);
                     pretAJouer = true;
                     FormulaireJoueur1.Close();
                 }
                 else
                 {
-                    control.AddJoueurs(TextBoxNom1.Text, ImageIcone, TextBoxNom2.Text, ImageIcone2, TextBoxNom3.Text, ImageIcone3);
+                    control.AddJoueurs(TextBoxNom1.Text, ImageIcone, TextBoxNom2.Text, ImageIcone2, TextBoxNom3.Text, ImageIcone3, TextBoxNom4.Text, ImageIcone4, 3);
                     pretAJouer = true;
                     FormulaireJoueur1.Close();
                 }
             }
             else
             {
-                control.AddJoueurs(TextBoxNom1.Text, ImageIcone, TextBoxNom2.Text, ImageIcone2);
+                control.AddJoueurs(TextBoxNom1.Text, ImageIcone, TextBoxNom2.Text, ImageIcone2, TextBoxNom3.Text, ImageIcone3, TextBoxNom4.Text, ImageIcone4, 2);
                 pretAJouer = true;
                 FormulaireJoueur1.Close();
             }

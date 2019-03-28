@@ -110,46 +110,7 @@ namespace MonopolyVS.Controleurs
                     ));
             }
         }
-
-        #region METHODE AddJoueurs
-        /// <summary>
-        /// Ajoute les joueurs a la liste des joueurs
-        /// </summary>
-        /// <param name="joueur1"></param>
-        /// <param name="joueur2"></param>
-        public void AddJoueurs(string joueur1, Rectangle j1, string joueur2, Rectangle j2)
-        {
-            nbrJoueurs = 2;
-
-            for (int i = 1; i <= 2; i++)
-            {
-                if (i == 1)
-                    listeJoueurs.Add(new Joueur(i, joueur1, 0, 1500, j1));
-                if (i == 2)
-                    listeJoueurs.Add(new Joueur(i, joueur2, 0, 1500, j2));
-            }
-        }
-
-        /// <summary>
-        /// Ajoute les joueurs a la liste des joueurs
-        /// </summary>
-        /// <param name="joueur1"></param>
-        /// <param name="joueur2"></param>
-        /// <param name="joueur3"></param>
-        public void AddJoueurs(string joueur1, Rectangle j1, string joueur2, Rectangle j2, string joueur3, Rectangle j3)
-        {
-            nbrJoueurs = 3;
-
-            for (int i = 1; i <= 3; i++)
-            {
-                if (i == 1)
-                    listeJoueurs.Add(new Joueur(i, joueur1, 0, 1500, j1));
-                if (i == 2)
-                    listeJoueurs.Add(new Joueur(i, joueur2, 0, 1500, j2));
-                if (i == 3)
-                    listeJoueurs.Add(new Joueur(i, joueur3, 0, 1500, j3));
-            }
-        }
+       
         /// <summary>
         /// Ajoute les joueurs a la liste des joueurs
         /// </summary>
@@ -157,23 +118,48 @@ namespace MonopolyVS.Controleurs
         /// <param name="joueur2"></param>
         /// <param name="joueur3"></param>
         /// <param name="joueur4"></param>
-        public void AddJoueurs(string joueur1, Rectangle j1, string joueur2, Rectangle j2, string joueur3, Rectangle j3, string joueur4, Rectangle j4)
+        public void AddJoueurs(string joueur1, Rectangle j1, string joueur2, Rectangle j2, string joueur3, Rectangle j3,
+            string joueur4, Rectangle j4, int nbrJ)
         {
-            nbrJoueurs = 4;
+            nbrJoueurs = nbrJ;
 
-            for (int i = 1; i <= 3; i++)
+            switch(nbrJ)
             {
-                if (i == 1)
-                    listeJoueurs.Add(new Joueur(i, joueur1, 0, 1500, j1));
-                if (i == 2)
-                    listeJoueurs.Add(new Joueur(i, joueur2, 0, 1500, j2));
-                if (i == 3)
-                    listeJoueurs.Add(new Joueur(i, joueur3, 0, 1500, j3));
-                if (i == 4)
-                    listeJoueurs.Add(new Joueur(i, joueur4, 0, 1500, j4));
+                case (2):
+                    for (int i = 1; i <= 2; i++)
+                    {
+                        if (i == 1)
+                            listeJoueurs.Add(new Joueur(i, joueur1, 0, 1500, j1));
+                        if (i == 2)
+                            listeJoueurs.Add(new Joueur(i, joueur2, 0, 1500, j2));
+                    }
+                    break;
+                case (3):
+                    for (int i = 1; i <= 3; i++)
+                    {
+                        if (i == 1)
+                            listeJoueurs.Add(new Joueur(i, joueur1, 0, 1500, j1));
+                        if (i == 2)
+                            listeJoueurs.Add(new Joueur(i, joueur2, 0, 1500, j2));
+                        if (i == 3)
+                            listeJoueurs.Add(new Joueur(i, joueur3, 0, 1500, j3));
+                    }
+                    break;
+                case (4):
+                    for (int i = 1; i <= 3; i++)
+                    {
+                        if (i == 1)
+                            listeJoueurs.Add(new Joueur(i, joueur1, 0, 1500, j1));
+                        if (i == 2)
+                            listeJoueurs.Add(new Joueur(i, joueur2, 0, 1500, j2));
+                        if (i == 3)
+                            listeJoueurs.Add(new Joueur(i, joueur3, 0, 1500, j3));
+                        if (i == 4)
+                            listeJoueurs.Add(new Joueur(i, joueur4, 0, 1500, j4));
+                    }
+                    break;
             }
         }
-        #endregion
 
         /// <summary>
         /// Initialise l'application
@@ -229,7 +215,7 @@ namespace MonopolyVS.Controleurs
         /// Evénement lors du clic sur btnTour
         /// </summary>
         public void clicbtnTour(TextBox textBox, Button btnTour, Label lblTour, Label lblNomJoueur, Label lblPion, 
-            Button btnDk, Button btnMage, Label lblArgentJoueur, Button btnListe1, Button btnListe2, Image imgSortie, 
+            Button btnDk, Button btnMage, Label lblArgentJoueur, Button btnListe1, Button btnListe2, Button btnListe3, Button btnListe4, Image imgSortie, 
             Rectangle pion1, Rectangle pion2)
         {
             //Initialisation des Joueurs et des Propriétés
@@ -265,11 +251,7 @@ namespace MonopolyVS.Controleurs
                     j.changeTour(listeJoueurs, 0, lblNomJoueur, lblArgentJoueur, imgSortie);
             }
 
-            //nombtnliste
-            Joueur jo = listeJoueurs[0];
-            btnListe1.Content = "Liste de " + jo.Nom;
-            jo = listeJoueurs[1];
-            btnListe2.Content = "Liste de " + jo.Nom;
+            nomBtnListe(listeJoueurs, btnListe1, btnListe2, btnListe3, btnListe4);
 
             btnTour.Visibility = Visibility.Hidden;
             lblTour.Visibility = Visibility.Visible;
@@ -291,19 +273,14 @@ namespace MonopolyVS.Controleurs
             foreach(Joueur j in listeJoueurs)
             {
                 jo = listeJoueurs[j.Numero - 1];
-                
-            }
-
-            if(nbrJoueurs == 2)
-            {
-                Joueur jodqds = listeJoueurs[0];
-                btnListe1.Content = "Liste de " + jo.Nom;
-                jo = listeJoueurs[1];
-                btnListe2.Content = "Liste de " + jo.Nom;
-            }
-            if(nbrJoueurs == 3)
-            {
-
+                if(j.Numero == 1)
+                    btnListe1.Content = "Liste de " + jo.Nom;
+                if (j.Numero == 2)
+                    btnListe2.Content = "Liste de " + jo.Nom;
+                if (j.Numero == 3)
+                    btnListe3.Content = "Liste de " + jo.Nom;
+                if (j.Numero == 4)
+                    btnListe4.Content = "Liste de " + jo.Nom;
             }
         }
 
