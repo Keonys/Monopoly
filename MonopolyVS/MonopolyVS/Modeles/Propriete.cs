@@ -90,16 +90,23 @@ namespace MonopolyVS.Modeles
 
         #region Méthodes
 
+        /*public void AfficheAppartenance(Joueur acheteur, Propriete caseAchetee)
+        {
+
+        }*/
+
         /// <summary>
-        /// Configuration d'un donjon
+        /// Permet a un joueur d'acheter (ou pas) un Donjon
         /// </summary>
         public void configDonjon(Joueur j, System.Windows.Controls.TextBox txtboxConsole)
         {
             if (this.Proprietaire == null)
             {
+                //Affiche boite de dialogue demande si le joueur souhaite achetert le donjon
                 DialogResult dialogResult = System.Windows.Forms.MessageBox.Show("Voulez-vous acheter le donjon : " + this.Nom + " ?", "Achat de Donjon", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
+                    //CAS ACCEPTE ACHAT
                     txtboxConsole.AppendText(j.Nom + " a acheté le donjon : " + this.Nom + ". \n");
                     j.nbrDonjons++;
                     j.Argent -= this.PrixTerrain;
@@ -108,6 +115,7 @@ namespace MonopolyVS.Modeles
                 }
                 else if (dialogResult == DialogResult.No)
                 {
+                    //CAS REFUS ACHAT
                     txtboxConsole.AppendText(j.Nom + " a choisi de ne pas acheter le donjon : " + this.Nom + ". \n");
                 }
             }
