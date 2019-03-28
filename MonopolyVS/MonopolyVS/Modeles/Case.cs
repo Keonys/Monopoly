@@ -15,6 +15,7 @@ namespace MonopolyVS.Modeles
         public Rectangle Maison3;
         public Rectangle Maison4;
         public Rectangle NomHotel;
+        public Rectangle RectAppart;
 
 
         public Case()
@@ -22,7 +23,13 @@ namespace MonopolyVS.Modeles
 
         }
 
-        public Case(int numero, Rectangle maison1, Rectangle maison2, Rectangle maison3, Rectangle maison4, Rectangle hotel)
+        public Case(int numero, Rectangle rectAppart)
+        {
+            Num = numero;
+            RectAppart = rectAppart;
+        }
+
+        public Case(int numero, Rectangle maison1, Rectangle maison2, Rectangle maison3, Rectangle maison4, Rectangle hotel, Rectangle rectAppart)
         {
             Num = numero;
             Maison1 = maison1;
@@ -30,6 +37,7 @@ namespace MonopolyVS.Modeles
             Maison3 = maison3;
             Maison4 = maison4;
             NomHotel = hotel;
+            RectAppart = rectAppart;
         }
     }
 }
