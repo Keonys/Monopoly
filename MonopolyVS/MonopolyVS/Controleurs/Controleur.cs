@@ -119,9 +119,11 @@ namespace MonopolyVS.Controleurs
         /// <param name="joueur2"></param>
         public void AddJoueurs(string joueur1, Rectangle j1, string joueur2, Rectangle j2)
         {
+            nbrJoueurs = 2;
+
             for (int i = 1; i <= 2; i++)
             {
-                if (i==1)
+                if (i == 1)
                     listeJoueurs.Add(new Joueur(i, joueur1, 0, 1500, j1));
                 if (i == 2)
                     listeJoueurs.Add(new Joueur(i, joueur2, 0, 1500, j2));
@@ -136,6 +138,8 @@ namespace MonopolyVS.Controleurs
         /// <param name="joueur3"></param>
         public void AddJoueurs(string joueur1, Rectangle j1, string joueur2, Rectangle j2, string joueur3, Rectangle j3)
         {
+            nbrJoueurs = 3;
+
             for (int i = 1; i <= 3; i++)
             {
                 if (i == 1)
@@ -155,6 +159,8 @@ namespace MonopolyVS.Controleurs
         /// <param name="joueur4"></param>
         public void AddJoueurs(string joueur1, Rectangle j1, string joueur2, Rectangle j2, string joueur3, Rectangle j3, string joueur4, Rectangle j4)
         {
+            nbrJoueurs = 4;
+
             for (int i = 1; i <= 3; i++)
             {
                 if (i == 1)
@@ -213,7 +219,7 @@ namespace MonopolyVS.Controleurs
         /// </summary>
         public void afficheFormulaire(MainWindow m)
         {
-            FormulaireJoueur Menu = new FormulaireJoueur(m);
+            FormulaireJoueur Menu = new FormulaireJoueur(m, this);
 
             m.Visibility = Visibility.Hidden;
             Menu.Show();
@@ -259,6 +265,7 @@ namespace MonopolyVS.Controleurs
                     j.changeTour(listeJoueurs, 0, lblNomJoueur, lblArgentJoueur, imgSortie);
             }
 
+            //nombtnliste
             Joueur jo = listeJoueurs[0];
             btnListe1.Content = "Liste de " + jo.Nom;
             jo = listeJoueurs[1];
@@ -270,6 +277,34 @@ namespace MonopolyVS.Controleurs
             lblPion.Visibility = Visibility.Visible;
             btnDk.Visibility = Visibility.Visible;
             btnMage.Visibility = Visibility.Visible;
+        }
+
+        /// <summary>
+        /// Nomme les boutons btnListe
+        /// </summary>
+        /// <param name="jo"></param>
+        /// <param name="listeJoueurs"></param>
+        public void nomBtnListe(List<Joueur> listeJoueurs, Button btnListe1, Button btnListe2, Button btnListe3, Button btnListe4)
+        {
+            Joueur jo = new Joueur();
+
+            foreach(Joueur j in listeJoueurs)
+            {
+                jo = listeJoueurs[j.Numero - 1];
+                
+            }
+
+            if(nbrJoueurs == 2)
+            {
+                Joueur jodqds = listeJoueurs[0];
+                btnListe1.Content = "Liste de " + jo.Nom;
+                jo = listeJoueurs[1];
+                btnListe2.Content = "Liste de " + jo.Nom;
+            }
+            if(nbrJoueurs == 3)
+            {
+
+            }
         }
 
         /// <summary>

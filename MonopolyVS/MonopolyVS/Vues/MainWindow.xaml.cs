@@ -41,7 +41,6 @@ namespace MonopolyVS
             //TODOLORENZO le contenu de la fonction initAppli() sera à mettre dans la fonction de ton bouton "jouer"
             initAppli();
             afficheFormulaire();
-            
         }
 
         #region Events
@@ -96,6 +95,8 @@ namespace MonopolyVS
             c.clicListe2(listboxBien);
         }
 
+        #endregion Events
+
         /// <summary>
         /// Initalise l'appli
         /// </summary>
@@ -138,7 +139,5 @@ namespace MonopolyVS
 
             imgSortie.Visibility = Visibility.Hidden;
         }
-
-        #endregion Events
     }
 }

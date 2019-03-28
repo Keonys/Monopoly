@@ -24,12 +24,13 @@ namespace MonopolyVS.Modeles
     {
         bool pretAJouer = false;
         MainWindow Principal;
-
         Controleur control = new Controleur();
-        public FormulaireJoueur(MainWindow m)
+        
+        public FormulaireJoueur(MainWindow m, Controleur c)
         {
             InitializeComponent();
             Principal = m;
+            control = c;
         }
 
         private void ButtonEntrer_Click_1(object sender, RoutedEventArgs e)
@@ -42,9 +43,10 @@ namespace MonopolyVS.Modeles
 
         private void FormulaireJoueur1_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            
             if (pretAJouer == false)
             {
-                System.Windows.Application.Current.Shutdown();
+                Application.Current.Shutdown();
             }
             else Principal.Visibility = Visibility.Visible;
         }
@@ -52,8 +54,7 @@ namespace MonopolyVS.Modeles
         #region JOUEUR1
         private void ComboIcones1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (ComboIcones2.SelectedIndex >= 0
-               && TextBoxNom1.Text != "" && TextBoxNom2.Text != "")
+            if (ComboIcones2.SelectedIndex >= 0 && TextBoxNom1.Text != "" && TextBoxNom2.Text != "")
                 ButtonValider.IsEnabled = true;
             else ButtonValider.IsEnabled = false;
 
