@@ -115,12 +115,12 @@ namespace MonopolyVS.Controleurs
         /// <summary>
         /// Ajoute les joueurs a la liste des joueurs
         /// </summary>
-        /// <param name="joueur1"></param>
-        /// <param name="joueur2"></param>
+        /// <param name="joueur1">Nom joueur 1</param>
+        /// <param name="j1">Image jeton joueur 1</param>
+        /// <param name="joueur2">Nom joueur 2</param>
+        /// <param name="j2">Image jeton joueur 2</param>
         public void AddJoueurs(string joueur1, Rectangle j1, string joueur2, Rectangle j2)
         {
-            nbrJoueurs = 2;
-
             for (int i = 1; i <= 2; i++)
             {
                 if (i == 1)
@@ -133,13 +133,14 @@ namespace MonopolyVS.Controleurs
         /// <summary>
         /// Ajoute les joueurs a la liste des joueurs
         /// </summary>
-        /// <param name="joueur1"></param>
-        /// <param name="joueur2"></param>
-        /// <param name="joueur3"></param>
+        /// <param name="joueur1">Nom joueur 1</param>
+        /// <param name="j1">Image jeton joueur 1</param>
+        /// <param name="joueur2">Nom joueur 2</param>
+        /// <param name="j2">Image jeton joueur 2</param>
+        /// <param name="joueur3">Nom joueur 3</param>
+        /// <param name="j3">Image jeton joueur 3</param>
         public void AddJoueurs(string joueur1, Rectangle j1, string joueur2, Rectangle j2, string joueur3, Rectangle j3)
         {
-            nbrJoueurs = 3;
-
             for (int i = 1; i <= 3; i++)
             {
                 if (i == 1)
@@ -153,14 +154,16 @@ namespace MonopolyVS.Controleurs
         /// <summary>
         /// Ajoute les joueurs a la liste des joueurs
         /// </summary>
-        /// <param name="joueur1"></param>
-        /// <param name="joueur2"></param>
-        /// <param name="joueur3"></param>
-        /// <param name="joueur4"></param>
+        /// <param name="joueur1">Nom joueur 1</param>
+        /// <param name="j1">Image jeton joueur 1</param>
+        /// <param name="joueur2">Nom joueur 2</param>
+        /// <param name="j2">Image jeton joueur 2</param>
+        /// <param name="joueur3">Nom joueur 3</param>
+        /// <param name="j3">Image jeton joueur 3</param>
+        /// <param name="joueur4">Nom joueur 4</param>
+        /// <param name="j4">Image jeton joueur 4</param>
         public void AddJoueurs(string joueur1, Rectangle j1, string joueur2, Rectangle j2, string joueur3, Rectangle j3, string joueur4, Rectangle j4)
         {
-            nbrJoueurs = 4;
-
             for (int i = 1; i <= 3; i++)
             {
                 if (i == 1)
