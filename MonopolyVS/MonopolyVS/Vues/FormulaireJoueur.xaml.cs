@@ -39,7 +39,7 @@ namespace MonopolyVS.Modeles
             //Lors du click sur le bouton jouer, le logo disparais et laisse place au choix du nom des joueurs ainsi que leurs pions
             TabMenuPrinc.SelectedItem = TabUser;
             TextBoxNom1.IsEnabled = true;
-            LabelJetons.Content = "Veuillez sélectionner des jetons" + "\n" + "différents pour chaques joueurs.";
+            LabelJetons.Content = "Veuillez sélectionner des jetons" + "\n" + "et des noms différents pour" + "\n" + "chaques joueurs.";
         }
 
         private void FormulaireJoueur1_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -221,32 +221,59 @@ namespace MonopolyVS.Modeles
 
         private void Valider_Click(object sender, RoutedEventArgs e)
         {
+            //Check si jeton est selectionné quand nom joueur 3 entré
             if (ComboIcones3.SelectedIndex < 0 && TextBoxNom3.Text != "")
                 LabelJetons.Visibility = Visibility.Visible;
 
+            //Check si jeton est selectionné quand nom joueur 4 entré
             if (ComboIcones4.SelectedIndex < 0 && TextBoxNom4.Text != "")
                 LabelJetons.Visibility = Visibility.Visible;
-
+            
             if (ComboIcones3.SelectedIndex >= 0 && TextBoxNom3.Text != "")
             {
                 if (ComboIcones4.SelectedIndex >= 0 && TextBoxNom4.Text != "")
                 {
-                    control.AddJoueurs(TextBoxNom1.Text, ImageIcone, TextBoxNom2.Text, ImageIcone2, TextBoxNom3.Text, ImageIcone3, TextBoxNom4.Text, ImageIcone4, 4);
-                    pretAJouer = true;
-                    FormulaireJoueur1.Close();
+                    //Check si tout les 4 joueurs ont des jetons & noms différents
+                    if (ComboIcones1.SelectedIndex == ComboIcones2.SelectedIndex || ComboIcones1.SelectedIndex == ComboIcones3.SelectedIndex
+                        || ComboIcones1.SelectedIndex == ComboIcones4.SelectedIndex || ComboIcones2.SelectedIndex == ComboIcones3.SelectedIndex
+                        || ComboIcones2.SelectedIndex == ComboIcones4.SelectedIndex || ComboIcones3.SelectedIndex == ComboIcones4.SelectedIndex
+                        || TextBoxNom1.Text == TextBoxNom2.Text || TextBoxNom1.Text == TextBoxNom3.Text
+                        || TextBoxNom1.Text == TextBoxNom4.Text || TextBoxNom2.Text == TextBoxNom3.Text
+                        || TextBoxNom2.Text == TextBoxNom4.Text || TextBoxNom3.Text == TextBoxNom4.Text)
+                        LabelJetons.Visibility = Visibility.Visible;
+                    else
+                    {
+                        control.AddJoueurs(TextBoxNom1.Text, ImageIcone, TextBoxNom2.Text, ImageIcone2, TextBoxNom3.Text, ImageIcone3, TextBoxNom4.Text, ImageIcone4, 4);
+                        pretAJouer = true;
+                        FormulaireJoueur1.Close();
+                    }
                 }
                 else
                 {
-                    control.AddJoueurs(TextBoxNom1.Text, ImageIcone, TextBoxNom2.Text, ImageIcone2, TextBoxNom3.Text, ImageIcone3, TextBoxNom4.Text, ImageIcone4, 3);
-                    pretAJouer = true;
-                    FormulaireJoueur1.Close();
+                    //Check si tout les 3 joueurs ont des jetons & noms différents
+                    if (ComboIcones1.SelectedIndex == ComboIcones2.SelectedIndex || ComboIcones1.SelectedIndex == ComboIcones3.SelectedIndex
+                        || ComboIcones2.SelectedIndex == ComboIcones3.SelectedIndex
+                        || TextBoxNom1.Text == TextBoxNom2.Text || TextBoxNom1.Text == TextBoxNom3.Text || TextBoxNom2.Text == TextBoxNom3.Text)
+                        LabelJetons.Visibility = Visibility.Visible;
+                    else
+                    {
+                        control.AddJoueurs(TextBoxNom1.Text, ImageIcone, TextBoxNom2.Text, ImageIcone2, TextBoxNom3.Text, ImageIcone3, TextBoxNom4.Text, ImageIcone4, 3);
+                        pretAJouer = true;
+                        FormulaireJoueur1.Close();
+                    }
                 }
             }
             else
             {
-                control.AddJoueurs(TextBoxNom1.Text, ImageIcone, TextBoxNom2.Text, ImageIcone2, TextBoxNom3.Text, ImageIcone3, TextBoxNom4.Text, ImageIcone4, 2);
-                pretAJouer = true;
-                FormulaireJoueur1.Close();
+                //Check si les 2 joueurs ont des jetons & noms différents
+                if (ComboIcones1.SelectedIndex == ComboIcones2.SelectedIndex || TextBoxNom1.Text == TextBoxNom2.Text)
+                    LabelJetons.Visibility = Visibility.Visible;
+                else
+                {
+                    control.AddJoueurs(TextBoxNom1.Text, ImageIcone, TextBoxNom2.Text, ImageIcone2, TextBoxNom3.Text, ImageIcone3, TextBoxNom4.Text, ImageIcone4, 2);
+                    pretAJouer = true;
+                    FormulaireJoueur1.Close();
+                }
             }
         }
 
