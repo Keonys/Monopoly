@@ -38,6 +38,11 @@ namespace MonopolyVS.Controleurs
         /// </summary>
         List<Carte> listeCaisse = new List<Carte>();
 
+        /// <summary>
+        /// Liste des cases du plateau
+        /// </summary>
+        public List<Case> listeCases;
+
         Des Des = new Des();
 
         //TODOLORENZO nbrJoueur à mettre en dynamique ci-dessous 
@@ -82,7 +87,8 @@ namespace MonopolyVS.Controleurs
                     double.Parse(node.Attributes["XJ3"].Value),
                     double.Parse(node.Attributes["YJ3"].Value),
                     double.Parse(node.Attributes["XJ4"].Value),
-                    double.Parse(node.Attributes["YJ4"].Value)
+                    double.Parse(node.Attributes["YJ4"].Value),
+                    this
                     ));
             }
         }
@@ -415,8 +421,9 @@ namespace MonopolyVS.Controleurs
         /// </summary>
         /// <param name="txtboxConsole"></param>
         public void clicBtnLanceDes(TextBox txtboxConsole, Rectangle pion1, Rectangle pion2, Label lblNomJoueur, 
-            Label lblArgentJoueur, List<Case> listeCases, Image imgSortie)
+            Label lblArgentJoueur, List<Case> Cases, Image imgSortie)
         {
+            this.listeCases = Cases;
             int resultat = 0;
             int position = 0;
 
@@ -557,6 +564,10 @@ namespace MonopolyVS.Controleurs
             return position;
         }
 
+        public void afficheAppartenance(List<Case> aAfficher, List<Case> surPlateau)
+        {
+            surPlateau = aAfficher;
+        }
         #endregion
     }
 }

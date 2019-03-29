@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 #endregion
 
@@ -16,7 +18,7 @@ namespace MonopolyVS.Modeles
         #region Propriétés et variables
 
         /// <summary>
-        /// Numero de la Propriete
+        /// Position sur plateau
         /// </summary>
         public int Numero { get; set; }
 
@@ -65,6 +67,8 @@ namespace MonopolyVS.Modeles
         /// </summary>
         public bool Hotel { get; set; } = false;
 
+        Controleurs.Controleur controleur;
+
         //Toutes les coordonnées du joueur sur la case
         public double XJ1 { get; set; } = 0.0;
         public double YJ1 { get; set; } = 0.0;
@@ -87,7 +91,7 @@ namespace MonopolyVS.Modeles
         }
 
         public Propriete(int numero, string nom, string couleur, int prixTerrain, int prixMaison, double[] loyer, double xJ1, double yJ1, double xJ2, double yJ2, double xJ3,
-            double yJ3, double xJ4, double yJ4)
+            double yJ3, double xJ4, double yJ4, Controleurs.Controleur c)
         {
             Numero = numero;
             Nom = nom;
@@ -95,6 +99,7 @@ namespace MonopolyVS.Modeles
             PrixTerrain = prixTerrain;
             PrixMaison = prixMaison;
             Loyer = loyer;
+            controleur = c;
             XJ1 = xJ1;
             YJ1 = yJ1;
             XJ2 = xJ2;
@@ -169,9 +174,66 @@ namespace MonopolyVS.Modeles
                     j.Argent -= this.PrixTerrain;
                     this.Proprietaire = j;
                     j.Patrimoine.Add(this);
-                    foreach (Case ca in j.Patrimoine)
+                    
+                    foreach (Case ca in controleur.listeCases)
                     {
-                        //switch (j.)
+                        if (ca.Num == Numero)
+                        {
+                            switch (j.NumClasse)
+                            {
+                                //CASE DeathKnight
+                                case 0:
+                                    ca.RectAppart.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_deathknight.png", UriKind.Relative)));
+                                    break;
+                                //CASE DemonHunter
+                                case 1:
+                                    ca.RectAppart.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_demon_hunter.png", UriKind.Relative)));
+                                    break;
+                                //CASE Druid
+                                case 2:
+                                    ca.RectAppart.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_druid.png", UriKind.Relative)));
+                                    break;
+                                //CASE Hunter
+                                case 3:
+                                    ca.RectAppart.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_hunter.png", UriKind.Relative)));
+                                    break;
+                                //CASE Mage
+                                case 4:
+                                    ca.RectAppart.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_mage.png", UriKind.Relative)));
+                                    break;
+                                //CASE Monk
+                                case 5:
+                                    ca.RectAppart.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_monk.png", UriKind.Relative)));
+                                    break;
+                                //CASE Paladin
+                                case 6:
+                                    ca.RectAppart.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_paladin.png", UriKind.Relative)));
+                                    break;
+                                //CASE Priest
+                                case 7:
+                                    ca.RectAppart.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_priest.png", UriKind.Relative)));
+                                    break;
+                                //CASE Rogue
+                                case 8:
+                                    ca.RectAppart.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_rogue.png", UriKind.Relative)));
+                                    break;
+                                //CASE Shaman
+                                case 9:
+                                    ca.RectAppart.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_shaman.png", UriKind.Relative)));
+                                    break;
+                                //CASE Warlock
+                                case 10:
+                                    ca.RectAppart.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_warlock.png", UriKind.Relative)));
+                                    break;
+                                //CASE Warrior
+                                case 11:
+                                    ca.RectAppart.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_warrior.png", UriKind.Relative)));
+                                    break;
+                                default:
+                                    ca.RectAppart.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/vide.png", UriKind.Relative)));
+                                    break;
+                            }
+                        }
                     }
                 }
                 else if (dialogResult == DialogResult.No)
@@ -213,19 +275,82 @@ namespace MonopolyVS.Modeles
                 if (prop.Couleur == this.Couleur && this.NbrMaison > prop.NbrMaison)
                     maison = false;
             }
-
+            //ACHAT DE PROPRIETE
             if (this.Proprietaire == null)
             {
                 DialogResult dialogResult = System.Windows.Forms.MessageBox.Show("Voulez-vous acheter " + this.Nom + " ?", "Achat de Propriété", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
+                    //CAS ACCEPTE ACHAT
                     txtboxConsole.AppendText(j.Nom + " a acheté " + this.Nom + ". \n");
                     this.Proprietaire = j;
                     j.Patrimoine.Add(this);
                     j.Argent -= this.PrixTerrain;
+
+                    foreach (Case ca in controleur.listeCases)
+                    {
+                        if (ca.Num == Numero)
+                        {
+                            switch (j.NumClasse)
+                            {
+                                //CASE DeathKnight
+                                case 0:
+                                    ca.RectAppart.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_deathknight.png", UriKind.Relative)));
+                                    break;
+                                //CASE DemonHunter
+                                case 1:
+                                    ca.RectAppart.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_demon_hunter.png", UriKind.Relative)));
+                                    break;
+                                //CASE Druid
+                                case 2:
+                                    ca.RectAppart.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_druid.png", UriKind.Relative)));
+                                    break;
+                                //CASE Hunter
+                                case 3:
+                                    ca.RectAppart.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_hunter.png", UriKind.Relative)));
+                                    break;
+                                //CASE Mage
+                                case 4:
+                                    ca.RectAppart.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_mage.png", UriKind.Relative)));
+                                    break;
+                                //CASE Monk
+                                case 5:
+                                    ca.RectAppart.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_monk.png", UriKind.Relative)));
+                                    break;
+                                //CASE Paladin
+                                case 6:
+                                    ca.RectAppart.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_paladin.png", UriKind.Relative)));
+                                    break;
+                                //CASE Priest
+                                case 7:
+                                    ca.RectAppart.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_priest.png", UriKind.Relative)));
+                                    break;
+                                //CASE Rogue
+                                case 8:
+                                    ca.RectAppart.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_rogue.png", UriKind.Relative)));
+                                    break;
+                                //CASE Shaman
+                                case 9:
+                                    ca.RectAppart.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_shaman.png", UriKind.Relative)));
+                                    break;
+                                //CASE Warlock
+                                case 10:
+                                    ca.RectAppart.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_warlock.png", UriKind.Relative)));
+                                    break;
+                                //CASE Warrior
+                                case 11:
+                                    ca.RectAppart.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_warrior.png", UriKind.Relative)));
+                                    break;
+                                default:
+                                    ca.RectAppart.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/vide.png", UriKind.Relative)));
+                                    break;
+                            }
+                        }
+                    }
                 }
                 else if (dialogResult == DialogResult.No)
                 {
+                    //CAS REFUS ACHAT
                     txtboxConsole.AppendText(j.Nom + " a choisi de ne pas acheter " + this.Nom + ". \n");
                     //TODOCORENTIN Vente aux enchères à créer
                 }

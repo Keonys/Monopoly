@@ -70,6 +70,7 @@ namespace MonopolyVS
         {
             c.clicbtnTour(txtboxConsole, btnTour, lblTour, lblNomJoueur, lblPion, lblArgentJoueur,
                 btnListe1, btnListe2, btnListe3, btnListe4, imgSortie, pion1, pion2, pion3, pion4, btnLanceDes, lblArgent);
+            c.afficheAppartenance(listeCases, c.listeCases);
         }
 
         private void BtnListe1_Click(object sender, RoutedEventArgs e)
