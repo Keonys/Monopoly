@@ -119,7 +119,12 @@ namespace MonopolyVS
         /// <summary>
         /// Constructeur du Joueur
         /// </summary>
-        /// <param name="pion"></param>
+        /// <param name="numero">Numero du joueur</param>
+        /// <param name="nom">Nom du joueur</param>
+        /// <param name="position">Position du joueur sur le plateau</param>
+        /// <param name="argent">Argent de base sur le compte du joueur</param>
+        /// <param name="pion">Pion du plateau avec lequel le joueur est lié</param>
+        /// <param name="ComboIcones">Selection du type de jeton</param>
         public Joueur(int numero, string nom, int position, int argent, Rectangle pion, System.Windows.Controls.ComboBox ComboIcones)
         {
             Numero = numero;
@@ -526,9 +531,9 @@ namespace MonopolyVS
         public void AcheterUnePropriete(Propriete proprieteAchetee, Banque banquier)
         {
             //banquier.PerdsArgent(this, proprieteAchetee.Prix[0]);   //le solde est mis à jour
-            //Patrimoine.Add(proprieteAchetee.Nom);   //la liste des propriétés est mise à jour
-            //proprieteAchetee.EstAchetee = true; //verrouille l'achat de la case
-            //proprieteAchetee.Proprietaire = Nom;    //met à jour le nom du propriétaire dans la case
+            //Patrimoine.Add(proprieteAchetee.Nom);                   //la liste des propriétés est mise à jour
+            //proprieteAchetee.EstAchetee = true;                     //verrouille l'achat de la case
+            //proprieteAchetee.Proprietaire = Nom;                    //met à jour le nom du propriétaire dans la case
         }
 
         //TODOLORENZO VOIR COMMENT CE DEROULE UNE PARTIE POUR REMPLIR CES 2 METHODES

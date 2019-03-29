@@ -169,6 +169,10 @@ namespace MonopolyVS.Modeles
                     j.Argent -= this.PrixTerrain;
                     this.Proprietaire = j;
                     j.Patrimoine.Add(this);
+                    foreach (Case ca in j.Patrimoine)
+                    {
+                        //switch (j.)
+                    }
                 }
                 else if (dialogResult == DialogResult.No)
                 {
