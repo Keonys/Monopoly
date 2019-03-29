@@ -23,28 +23,14 @@
         <Button x:Name="btnTour" Content="Choix du Tour" Click="BtnTour_Click" Margin="1006,63,0,0" VerticalAlignment="Top" Height="49" FontSize="24" HorizontalAlignment="Left" Width="246"/>
         <Button x:Name="btnListe1" Content="LISTEJ1" Margin="942,220,0,0" VerticalAlignment="Top" Height="49" FontSize="24" HorizontalAlignment="Left" Width="246" Click="BtnListe1_Click"/>
         <Button x:Name="btnListe2" Content="LISTEJ2" Margin="1231,220,0,0" VerticalAlignment="Top" Height="49" FontSize="24" HorizontalAlignment="Left" Width="246" Click="BtnListe2_Click"/>
-        <Button x:Name="btnListe3" Content="LISTEJ3" Margin="942,292,0,0" VerticalAlignment="Top" Height="49" FontSize="24" HorizontalAlignment="Left" Width="246"/>
-        <Button x:Name="btnListe4" Content="LISTEJ4" Margin="1231,292,0,0" VerticalAlignment="Top" Height="49" FontSize="24" HorizontalAlignment="Left" Width="246"/>
+        <Button x:Name="btnListe3" Content="LISTEJ3" Margin="942,292,0,0" VerticalAlignment="Top" Height="49" FontSize="24" HorizontalAlignment="Left" Width="246" Click="BtnListe3_Click"/>
+        <Button x:Name="btnListe4" Content="LISTEJ4" Margin="1231,292,0,0" VerticalAlignment="Top" Height="49" FontSize="24" HorizontalAlignment="Left" Width="246" Click="BtnListe4_Click"/>
         <TextBox x:Name="txtboxConsole" HorizontalAlignment="Left" Height="223" Margin="912,534,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FF124E06" BorderBrush="{x:Null}" FontSize="24" Foreground="#FFDDD019" Width="611">
             <TextBox.CaretBrush>
                 <ImageBrush/>
             </TextBox.CaretBrush>
         </TextBox>
-        <Label x:Name="lblPion" Content="Choix du Pion :" HorizontalAlignment="Left" Margin="939,172,0,0" VerticalAlignment="Top" Height="43" Width="195" FontSize="24"/>
-        <Button x:Name="btnDk" Click="btnDk_Click" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="102" Height="98" FontSize="24" Margin="939,232,0,0">
-            <Button.Template>
-                <ControlTemplate>
-                    <Image Source="/Images/39px-ClassIcon_deathknight.png"/>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
-        <Button x:Name="btnMage" Click="btnMage_Click" Content="" HorizontalAlignment="Left" Margin="1070,232,0,0" VerticalAlignment="Top" Width="118" Height="98" FontSize="24">
-            <Button.Template>
-                <ControlTemplate>
-                    <Image Source="/Images/39px-ClassIcon_mage.png"/>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
+        <Label x:Name="lblPion" Content="Listes :" HorizontalAlignment="Left" Margin="939,172,0,0" VerticalAlignment="Top" Height="43" Width="195" FontSize="24"/>
 
         <!--Visuel de l'image et sur l'image-->
         <Image x:Name="imgPlateau" HorizontalAlignment="Left" Height="747" Margin="10,10,0,0" VerticalAlignment="Top" Width="897" Source="/Images/plateau_monopoly_wow.jpg" Stretch="Fill"/>
@@ -717,9 +703,11 @@
         </Rectangle>
 
         <!--Gestion du pion / joueur-->
-        <Canvas Margin="0,0,28.4,0.4" Grid.ColumnSpan="4">
-            <Rectangle Canvas.Left="0" Canvas.Top="0" Canvas.ZIndex="1" x:Name="pion1" HorizontalAlignment="Left" Height="32" Margin="808,683,0,0" VerticalAlignment="Top" Width="35" RadiusY="8.933" RadiusX="8.933"/>
-            <Rectangle Canvas.Left="0" Canvas.Top="0" x:Name="pion2" HorizontalAlignment="Left" Height="32" Margin="848,695,0,0" VerticalAlignment="Top" Width="35" RadiusY="11.333" RadiusX="11.333"/>
+        <Canvas Margin="0,0,0.4,0.4">
+            <Rectangle Canvas.Left="803" Canvas.Top="683" Canvas.ZIndex="1" x:Name="pion1" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="35" RadiusY="8.933" RadiusX="8.933"/>
+            <Rectangle Canvas.Left="843" Canvas.Top="683" x:Name="pion2" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="35" RadiusY="11.333" RadiusX="11.333" Panel.ZIndex="1"/>
+            <Rectangle Canvas.Left="808" Canvas.Top="715" Panel.ZIndex="1" x:Name="pion3" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="35" RadiusY="8.933" RadiusX="8.933"/>
+            <Rectangle Canvas.Left="843" Canvas.Top="715" Panel.ZIndex="1" x:Name="pion4" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="35" RadiusY="8.933" RadiusX="8.933"/>
         </Canvas>
     </Grid>
 </Window>

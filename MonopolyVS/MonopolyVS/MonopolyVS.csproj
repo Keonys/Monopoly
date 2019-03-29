@@ -163,5 +163,35 @@
   <ItemGroup>
     <Resource Include="Images\vide.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\39px-ClassIcon_priestFOND.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\39px-ClassIcon_rogueFOND.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\39px-ClassIcon_demon_hunterFOND.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\39px-ClassIcon_druidFOND.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\39px-ClassIcon_hunterFOND.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\39px-ClassIcon_monkFOND.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\39px-ClassIcon_paladinFOND.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\39px-ClassIcon_shamanFOND.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\39px-ClassIcon_warlockFOND.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\39px-ClassIcon_warriorFOND.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

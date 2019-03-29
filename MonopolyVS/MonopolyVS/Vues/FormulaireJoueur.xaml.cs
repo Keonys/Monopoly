@@ -26,12 +26,20 @@ namespace MonopolyVS.Modeles
         MainWindow Principal;
         Controleur control = new Controleur();
         //TODOCORENTIN Créer les pion ici (les 4 pions, et oui)
-        
-        public FormulaireJoueur(MainWindow m, Controleur c)
+        Rectangle pion1 = new Rectangle();
+        Rectangle pion2 = new Rectangle();
+        Rectangle pion3 = new Rectangle();
+        Rectangle pion4 = new Rectangle();
+
+        public FormulaireJoueur(MainWindow m, Controleur c, Rectangle Pion1, Rectangle Pion2, Rectangle Pion3, Rectangle Pion4)
         {
             InitializeComponent();
             Principal = m;
             control = c;
+            pion1 = Pion1;
+            pion2 = Pion2;
+            pion3 = Pion3;
+            pion4 = Pion4;
         }
 
         private void ButtonEntrer_Click_1(object sender, RoutedEventArgs e)
@@ -59,21 +67,8 @@ namespace MonopolyVS.Modeles
                 ButtonValider.IsEnabled = true;
             else ButtonValider.IsEnabled = false;
 
-            switch (ComboIcones1.SelectedIndex)
-            {
-                //CASE Death Knight
-                case 0:
-                    ImageIcone.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_deathknight.png", UriKind.Relative)));
-                    break;
-                //CASE Mage
-                case 4:
-                    ImageIcone.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_Mage.png", UriKind.Relative)));
-                    break;
-
-                default:
-                    ImageIcone.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/vide.png", UriKind.Relative)));
-                    break;
-            }
+            //Affiche le Pion de la classe selectionné
+            control.choixPion(ComboIcones1, ImageIcone);
         }
 
         private void TextBoxNom1_TextChanged(object sender, TextChangedEventArgs e)
@@ -118,21 +113,8 @@ namespace MonopolyVS.Modeles
                 ButtonValider.IsEnabled = true;
             else ButtonValider.IsEnabled = false;
 
-            switch (ComboIcones2.SelectedIndex)
-            {
-                //CASE Death Knight
-                case 0:
-                    ImageIcone2.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_deathknight.png", UriKind.Relative)));
-                    break;
-                //CASE Mage
-                case 4:
-                    ImageIcone2.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_Mage.png", UriKind.Relative)));
-                    break;
-
-                default:
-                    ImageIcone2.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/vide.png", UriKind.Relative)));
-                    break;
-            }
+            //Affiche le Pion de la classe selectionné
+            control.choixPion(ComboIcones2, ImageIcone2);
         }
         
         private void TextBoxNom2_TextChanged(object sender, TextChangedEventArgs e)
@@ -166,21 +148,8 @@ namespace MonopolyVS.Modeles
         #region JOUEUR3
         private void ComboIcones3_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            switch (ComboIcones3.SelectedIndex)
-            {
-                //CASE Death Knight
-                case 0:
-                    ImageIcone3.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_deathknight.png", UriKind.Relative)));
-                    break;
-                //CASE Mage
-                case 4:
-                    ImageIcone3.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_Mage.png", UriKind.Relative)));
-                    break;
-
-                default:
-                    ImageIcone3.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/vide.png", UriKind.Relative)));
-                    break;
-            }
+            //Affiche le Pion de la classe selectionné
+            control.choixPion(ComboIcones3, ImageIcone3);
         }
 
         private void TextBoxNom3_TextChanged(object sender, TextChangedEventArgs e)
@@ -201,21 +170,8 @@ namespace MonopolyVS.Modeles
         #region JOUEUR4
         private void ComboIcones4_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            switch (ComboIcones4.SelectedIndex)
-            {
-                //CASE Death Knight
-                case 0:
-                    ImageIcone4.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_deathknight.png", UriKind.Relative)));
-                    break;
-                //CASE Mage
-                case 4:
-                    ImageIcone4.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_Mage.png", UriKind.Relative)));
-                    break;
-
-                default:
-                    ImageIcone4.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/vide.png", UriKind.Relative)));
-                    break;
-            }
+            //Affiche le Pion de la classe selectionné
+            control.choixPion(ComboIcones4, ImageIcone4);
         }
         #endregion
 
@@ -243,7 +199,8 @@ namespace MonopolyVS.Modeles
                         LabelJetons.Visibility = Visibility.Visible;
                     else
                     {
-                        control.AddJoueurs(TextBoxNom1.Text, ImageIcone, TextBoxNom2.Text, ImageIcone2, TextBoxNom3.Text, ImageIcone3, TextBoxNom4.Text, ImageIcone4, 4);
+                        control.AddJoueurs(TextBoxNom1.Text, TextBoxNom2.Text, TextBoxNom3.Text, TextBoxNom4.Text, 4,
+                            pion1, pion2, pion3, pion4, ComboIcones1, ComboIcones2, ComboIcones3, ComboIcones4);
                         pretAJouer = true;
                         FormulaireJoueur1.Close();
                     }
@@ -257,7 +214,8 @@ namespace MonopolyVS.Modeles
                         LabelJetons.Visibility = Visibility.Visible;
                     else
                     {
-                        control.AddJoueurs(TextBoxNom1.Text, ImageIcone, TextBoxNom2.Text, ImageIcone2, TextBoxNom3.Text, ImageIcone3, TextBoxNom4.Text, ImageIcone4, 3);
+                        control.AddJoueurs(TextBoxNom1.Text, TextBoxNom2.Text, TextBoxNom3.Text, TextBoxNom4.Text, 3,
+                            pion1, pion2, pion3, pion4, ComboIcones1, ComboIcones2, ComboIcones3, ComboIcones4);
                         pretAJouer = true;
                         FormulaireJoueur1.Close();
                     }
@@ -270,7 +228,8 @@ namespace MonopolyVS.Modeles
                     LabelJetons.Visibility = Visibility.Visible;
                 else
                 {
-                    control.AddJoueurs(TextBoxNom1.Text, ImageIcone, TextBoxNom2.Text, ImageIcone2, TextBoxNom3.Text, ImageIcone3, TextBoxNom4.Text, ImageIcone4, 2);
+                    control.AddJoueurs(TextBoxNom1.Text, TextBoxNom2.Text, TextBoxNom3.Text, TextBoxNom4.Text, 2,
+                        pion1, pion2, pion3, pion4, ComboIcones1, ComboIcones2, ComboIcones3, ComboIcones4);
                     pretAJouer = true;
                     FormulaireJoueur1.Close();
                 }

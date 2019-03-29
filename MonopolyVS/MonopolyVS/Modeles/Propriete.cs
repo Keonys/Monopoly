@@ -65,6 +65,16 @@ namespace MonopolyVS.Modeles
         /// </summary>
         public bool Hotel { get; set; } = false;
 
+        //Toutes les coordonnées du joueur sur la case
+        public double XJ1 { get; set; } = 0.0;
+        public double YJ1 { get; set; } = 0.0;
+        public double XJ2 { get; set; } = 0.0;
+        public double YJ2 { get; set; } = 0.0;
+        public double XJ3 { get; set; } = 0.0;
+        public double YJ3 { get; set; } = 0.0;
+        public double XJ4 { get; set; } = 0.0;
+        public double YJ4 { get; set; } = 0.0;
+
         //TODOCORENTIN LOYER + HYPOTHEQUE A AJOUTER
 
         #endregion
@@ -76,7 +86,8 @@ namespace MonopolyVS.Modeles
 
         }
 
-        public Propriete(int numero, string nom, string couleur, int prixTerrain, int prixMaison, double[] loyer)
+        public Propriete(int numero, string nom, string couleur, int prixTerrain, int prixMaison, double[] loyer, double xJ1, double yJ1, double xJ2, double yJ2, double xJ3,
+            double yJ3, double xJ4, double yJ4)
         {
             Numero = numero;
             Nom = nom;
@@ -84,11 +95,57 @@ namespace MonopolyVS.Modeles
             PrixTerrain = prixTerrain;
             PrixMaison = prixMaison;
             Loyer = loyer;
+            XJ1 = xJ1;
+            YJ1 = yJ1;
+            XJ2 = xJ2;
+            YJ2 = yJ2;
+            XJ3 = xJ3;
+            YJ3 = yJ3;
+            XJ4 = xJ4;
+            YJ4 = yJ4;
         }
 
         #endregion
 
         #region Méthodes
+
+        /// <summary>
+        /// Récupère la position du joueur sur la case
+        /// </summary>
+        /// <param name="j"></param>
+        /// <returns></returns>
+        public double[] getPositions(Joueur j)
+        {
+            double[] tab = new double[2];
+            double x = 0.0;
+            double y = 0.0;
+
+            if (j.Numero == 1)
+            {
+                x = XJ1;
+                y = YJ1;
+            }
+            else if (j.Numero == 2)
+            {
+                x = XJ2;
+                y = YJ2;
+            }
+            else if (j.Numero == 3)
+            {
+                x = XJ3;
+                y = YJ3;
+            }
+            else
+            {
+                x = XJ4;
+                y = YJ4;
+            }
+
+            tab[0] = x;
+            tab[1] = y;
+
+            return tab;
+        }
 
         /// <summary>
         /// Configuration d'un donjon

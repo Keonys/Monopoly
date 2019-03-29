@@ -38,7 +38,6 @@ namespace MonopolyVS
         public MainWindow()
         {
             InitializeComponent();
-            //TODOLORENZO le contenu de la fonction initAppli() sera à mettre dans la fonction de ton bouton "jouer"
             initAppli();
             afficheFormulaire();
         }
@@ -50,7 +49,7 @@ namespace MonopolyVS
         /// </summary>
         private void prepareInvisible()
         {
-            c.initAppli(lblTour, lblNomJoueur, lblPion, btnDk, btnMage, btnLanceDes, lblArgent, lblArgentJoueur, btnListe1, btnListe2
+            c.initAppli(lblTour, lblNomJoueur, lblPion, btnLanceDes, lblArgent, lblArgentJoueur, btnListe1, btnListe2
                 , btnListe3, btnListe4);
         }
 
@@ -59,7 +58,7 @@ namespace MonopolyVS
         /// </summary>
         private void afficheFormulaire()
         {
-            c.afficheFormulaire(this);
+            c.afficheFormulaire(this, pion1, pion2, pion3, pion4);
         }
 
         private void btnLanceDes_Click(object sender, RoutedEventArgs e)
@@ -67,22 +66,10 @@ namespace MonopolyVS
             c.clicBtnLanceDes(txtboxConsole, pion1, pion2, lblNomJoueur, lblArgentJoueur, listeCases, imgSortie);
         }
 
-        private void btnDk_Click(object sender, RoutedEventArgs e)
-        {
-            c.clicbtnDk(pion1, pion2, txtboxConsole, btnDk, lblPion, btnLanceDes, lblNomJoueur, lblArgent, lblArgentJoueur, btnListe1, btnListe2
-                , btnListe3, btnListe4, imgSortie);
-        }
- 
-        private void btnMage_Click(object sender, RoutedEventArgs e)
-        {
-            c.clicbtnMage(pion1, pion2, txtboxConsole, btnMage, lblPion, btnLanceDes, lblNomJoueur, lblArgent, lblArgentJoueur, btnListe1, btnListe2
-                , btnListe3, btnListe4, imgSortie);
-        }
-
         private void BtnTour_Click(object sender, RoutedEventArgs e)
         {
-            c.clicbtnTour(txtboxConsole, btnTour, lblTour, lblNomJoueur, lblPion, btnDk, btnMage, lblArgentJoueur,
-                btnListe1, btnListe2, btnListe3, btnListe4, imgSortie, pion1, pion2);
+            c.clicbtnTour(txtboxConsole, btnTour, lblTour, lblNomJoueur, lblPion, lblArgentJoueur,
+                btnListe1, btnListe2, btnListe3, btnListe4, imgSortie, pion1, pion2, pion3, pion4, btnLanceDes, lblArgent);
         }
 
         private void BtnListe1_Click(object sender, RoutedEventArgs e)
@@ -95,6 +82,16 @@ namespace MonopolyVS
             c.clicListe2(listboxBien);
         }
 
+        private void BtnListe3_Click(object sender, RoutedEventArgs e)
+        {
+            c.clicListe3(listboxBien);
+        }
+
+        private void BtnListe4_Click(object sender, RoutedEventArgs e)
+        {
+            c.clicListe4(listboxBien);
+        }
+
         #endregion Events
 
         /// <summary>
@@ -102,7 +99,7 @@ namespace MonopolyVS
         /// </summary>
         private void initAppli()
         {
-            c.initAppli(lblTour, lblNomJoueur, lblPion, btnDk, btnMage, btnLanceDes, lblArgent, lblArgentJoueur, btnListe1, btnListe2,
+            c.initAppli(lblTour, lblNomJoueur, lblPion, btnLanceDes, lblArgent, lblArgentJoueur, btnListe1, btnListe2,
                 btnListe3, btnListe4);
 
             listeCases.Add(new Case(1, Maison1_1, Maison1_2, Maison1_3, Maison1_4, Hotel1));

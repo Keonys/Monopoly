@@ -74,7 +74,15 @@ namespace MonopolyVS.Controleurs
                     node.Attributes["couleur"].Value,
                     int.Parse(node.Attributes["terrain"].Value),
                     int.Parse(node.Attributes["maison"].Value),
-                    loyer
+                    loyer,
+                    double.Parse(node.Attributes["XJ1"].Value),
+                    double.Parse(node.Attributes["YJ1"].Value),
+                    double.Parse(node.Attributes["XJ2"].Value),
+                    double.Parse(node.Attributes["YJ2"].Value),
+                    double.Parse(node.Attributes["XJ3"].Value),
+                    double.Parse(node.Attributes["YJ3"].Value),
+                    double.Parse(node.Attributes["XJ4"].Value),
+                    double.Parse(node.Attributes["YJ4"].Value)
                     ));
             }
         }
@@ -118,8 +126,9 @@ namespace MonopolyVS.Controleurs
         /// <param name="joueur2"></param>
         /// <param name="joueur3"></param>
         /// <param name="joueur4"></param>
-        public void AddJoueurs(string joueur1, Rectangle j1, string joueur2, Rectangle j2, string joueur3, Rectangle j3,
-            string joueur4, Rectangle j4, int nbrJ)
+        public void AddJoueurs(string joueur1, string joueur2, string joueur3, string joueur4, int nbrJ,
+            Rectangle pion1, Rectangle pion2, Rectangle pion3, Rectangle pion4, ComboBox ComboIcones1, ComboBox ComboIcones2,
+            ComboBox ComboIcones3, ComboBox ComboIcones4)
         {
             nbrJoueurs = nbrJ;
 
@@ -129,34 +138,95 @@ namespace MonopolyVS.Controleurs
                     for (int i = 1; i <= 2; i++)
                     {
                         if (i == 1)
-                            listeJoueurs.Add(new Joueur(i, joueur1, 0, 1500, j1));
+                            listeJoueurs.Add(new Joueur(i, joueur1, 0, 1500, pion1, ComboIcones1));
                         if (i == 2)
-                            listeJoueurs.Add(new Joueur(i, joueur2, 0, 1500, j2));
+                            listeJoueurs.Add(new Joueur(i, joueur2, 0, 1500, pion2, ComboIcones2));
                     }
                     break;
                 case (3):
                     for (int i = 1; i <= 3; i++)
                     {
                         if (i == 1)
-                            listeJoueurs.Add(new Joueur(i, joueur1, 0, 1500, j1));
+                            listeJoueurs.Add(new Joueur(i, joueur1, 0, 1500, pion1, ComboIcones1));
                         if (i == 2)
-                            listeJoueurs.Add(new Joueur(i, joueur2, 0, 1500, j2));
+                            listeJoueurs.Add(new Joueur(i, joueur2, 0, 1500, pion2, ComboIcones2));
                         if (i == 3)
-                            listeJoueurs.Add(new Joueur(i, joueur3, 0, 1500, j3));
+                            listeJoueurs.Add(new Joueur(i, joueur3, 0, 1500, pion3, ComboIcones3));
                     }
                     break;
                 case (4):
-                    for (int i = 1; i <= 3; i++)
+                    for (int i = 1; i <= 4; i++)
                     {
                         if (i == 1)
-                            listeJoueurs.Add(new Joueur(i, joueur1, 0, 1500, j1));
+                            listeJoueurs.Add(new Joueur(i, joueur1, 0, 1500, pion1, ComboIcones1));
                         if (i == 2)
-                            listeJoueurs.Add(new Joueur(i, joueur2, 0, 1500, j2));
+                            listeJoueurs.Add(new Joueur(i, joueur2, 0, 1500, pion2, ComboIcones2));
                         if (i == 3)
-                            listeJoueurs.Add(new Joueur(i, joueur3, 0, 1500, j3));
+                            listeJoueurs.Add(new Joueur(i, joueur3, 0, 1500, pion3, ComboIcones3));
                         if (i == 4)
-                            listeJoueurs.Add(new Joueur(i, joueur4, 0, 1500, j4));
+                            listeJoueurs.Add(new Joueur(i, joueur4, 0, 1500, pion4, ComboIcones4));
                     }
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Affiche le Pion dans le pré-menu, au choix d'une classe
+        /// </summary>
+        public void choixPion(ComboBox ComboIcones, Rectangle ImageIcone)
+        {
+            switch (ComboIcones.SelectedIndex)
+            {
+                //CASE DeathKnight
+                case 0:
+                    ImageIcone.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_deathknight.png", UriKind.Relative)));
+                    break;
+                //CASE DemonHunter
+                case 1:
+                    ImageIcone.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_demon_hunter.png", UriKind.Relative)));
+                    break;
+                //CASE Druid
+                case 2:
+                    ImageIcone.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_druid.png", UriKind.Relative)));
+                    break;
+                //CASE Hunter
+                case 3:
+                    ImageIcone.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_hunter.png", UriKind.Relative)));
+                    break;
+                //CASE Mage
+                case 4:
+                    ImageIcone.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_mage.png", UriKind.Relative)));
+                    break;
+                //CASE Monk
+                case 5:
+                    ImageIcone.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_monk.png", UriKind.Relative)));
+                    break;
+                //CASE Paladin
+                case 6:
+                    ImageIcone.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_paladin.png", UriKind.Relative)));
+                    break;
+                //CASE Priest
+                case 7:
+                    ImageIcone.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_priest.png", UriKind.Relative)));
+                    break;
+                //CASE Rogue
+                case 8:
+                    ImageIcone.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_rogue.png", UriKind.Relative)));
+                    break;
+                //CASE Shaman
+                case 9:
+                    ImageIcone.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_shaman.png", UriKind.Relative)));
+                    break;
+                //CASE Warlock
+                case 10:
+                    ImageIcone.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_warlock.png", UriKind.Relative)));
+                    break;
+                //CASE Warrior
+                case 11:
+                    ImageIcone.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_warrior.png", UriKind.Relative)));
+                    break;
+                default:
+                    ImageIcone.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/vide.png", UriKind.Relative)));
                     break;
             }
         }
@@ -164,15 +234,13 @@ namespace MonopolyVS.Controleurs
         /// <summary>
         /// Initialise l'application
         /// </summary>
-        public void initAppli(Label lblTour, Label lblNomJoueur, Label lblPion, Button btnDk, Button btnMage, 
+        public void initAppli(Label lblTour, Label lblNomJoueur, Label lblPion, 
             Button btnLanceDes, Label lblArgent, Label lblArgentJoueur, Button btnListe1, Button btnListe2, 
             Button btnListe3, Button btnListe4)
         {
             lblTour.Visibility = Visibility.Hidden;
             lblNomJoueur.Visibility = Visibility.Hidden;
             lblPion.Visibility = Visibility.Hidden;
-            btnDk.Visibility = Visibility.Hidden;
-            btnMage.Visibility = Visibility.Hidden;
             btnLanceDes.Visibility = Visibility.Hidden;
             lblArgent.Visibility = Visibility.Hidden;
             lblArgentJoueur.Visibility = Visibility.Hidden;
@@ -201,11 +269,29 @@ namespace MonopolyVS.Controleurs
         }
 
         /// <summary>
+        /// Affiche la liste de propriété du Joueur 3
+        /// </summary>
+        public void clicListe3(ListBox listboxBien)
+        {
+            Joueur j = listeJoueurs[2];
+            j.afficheProp(listboxBien);
+        }
+
+        /// <summary>
+        /// Affiche la liste de propriété du Joueur 4
+        /// </summary>
+        public void clicListe4(ListBox listboxBien)
+        {
+            Joueur j = listeJoueurs[3];
+            j.afficheProp(listboxBien);
+        }
+
+        /// <summary>
         /// Affichage de l'écran d'accueil (avant l'affichage du plateau)
         /// </summary>
-        public void afficheFormulaire(MainWindow m)
+        public void afficheFormulaire(MainWindow m, Rectangle pion1, Rectangle pion2, Rectangle pion3, Rectangle pion4)
         {
-            FormulaireJoueur Menu = new FormulaireJoueur(m, this);
+            FormulaireJoueur Menu = new FormulaireJoueur(m, this, pion1, pion2, pion3, pion4);
 
             m.Visibility = Visibility.Hidden;
             Menu.Show();
@@ -215,12 +301,10 @@ namespace MonopolyVS.Controleurs
         /// Evénement lors du clic sur btnTour
         /// </summary>
         public void clicbtnTour(TextBox textBox, Button btnTour, Label lblTour, Label lblNomJoueur, Label lblPion, 
-            Button btnDk, Button btnMage, Label lblArgentJoueur, Button btnListe1, Button btnListe2, Button btnListe3, Button btnListe4, Image imgSortie, 
-            Rectangle pion1, Rectangle pion2)
+            Label lblArgentJoueur, Button btnListe1, Button btnListe2, Button btnListe3, Button btnListe4, Image imgSortie, 
+            Rectangle pion1, Rectangle pion2, Rectangle pion3, Rectangle pion4, Button btnLanceDes, Label lblArgent)
         {
             //Initialisation des Joueurs et des Propriétés
-            //ATTENTION LA METHODE EN DESSOUS NE FONCTIONNERA PLUS AVEC CES ARGUMENTS
-            //AddJoueurs(nbrJoueurs, pion1, pion2);
             initPropriete();
             initCarte();
 
@@ -251,14 +335,56 @@ namespace MonopolyVS.Controleurs
                     j.changeTour(listeJoueurs, 0, lblNomJoueur, lblArgentJoueur, imgSortie);
             }
 
-            nomBtnListe(listeJoueurs, btnListe1, btnListe2, btnListe3, btnListe4);
+            foreach(Joueur j in listeJoueurs)
+            {
+                if (j.Numero == 1)
+                {
+                    j.Pion = pion1;
+                    j.affichePion(j.NumClasse);
+                }
+                else if (j.Numero == 2)
+                {
+                    j.Pion = pion2;
+                    j.affichePion(j.NumClasse);
+                }
+                else if (j.Numero == 3)
+                {
+                    j.Pion = pion3;
+                    j.affichePion(j.NumClasse);
+                }
+                else if (j.Numero == 4)
+                {
+                    j.Pion = pion4;
+                    j.affichePion(j.NumClasse);
+                }
+            }
 
+            listeVisibility(btnLanceDes, lblArgent, lblArgentJoueur, btnListe1, btnListe2, btnListe3, btnListe4, lblPion, btnTour, lblTour,
+                lblNomJoueur);
+            nomBtnListe(listeJoueurs, btnListe1, btnListe2, btnListe3, btnListe4);
+        }
+
+        /// <summary>
+        /// Nom des boutonsListe et rend visible certain control
+        /// </summary>
+        public void listeVisibility(Button btnLanceDes, Label lblArgent, Label lblArgentJoueur, Button btnListe1, Button btnListe2
+            , Button btnListe3, Button btnListe4, Label lblPion, Button btnTour, Label lblTour, Label lblNomJoueur)
+        {
+            btnLanceDes.Visibility = Visibility.Visible;
+            lblArgent.Visibility = Visibility.Visible;
+            lblPion.Visibility = Visibility.Visible;
+            lblArgentJoueur.Visibility = Visibility.Visible;
             btnTour.Visibility = Visibility.Hidden;
             lblTour.Visibility = Visibility.Visible;
             lblNomJoueur.Visibility = Visibility.Visible;
-            lblPion.Visibility = Visibility.Visible;
-            btnDk.Visibility = Visibility.Visible;
-            btnMage.Visibility = Visibility.Visible;
+            if (nbrJoueurs >= 1)
+                btnListe1.Visibility = Visibility.Visible;
+            if (nbrJoueurs >= 2)
+                btnListe2.Visibility = Visibility.Visible;
+            if (nbrJoueurs >= 3)
+                btnListe3.Visibility = Visibility.Visible;
+            if (nbrJoueurs >= 4)
+                btnListe4.Visibility = Visibility.Visible;
         }
 
         /// <summary>
@@ -431,93 +557,6 @@ namespace MonopolyVS.Controleurs
             return position;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public void listeVisibility(Button btnLanceDes, Label lblArgent, Label lblArgentJoueur, Button btnListe1, Button btnListe2
-            , Button btnListe3, Button btnListe4, Label lblPion)
-        {
-            btnLanceDes.Visibility = Visibility.Visible;
-            lblArgent.Visibility = Visibility.Visible;
-            lblArgentJoueur.Visibility = Visibility.Visible;
-            if (nbrJoueurs >= 1)
-                btnListe1.Visibility = Visibility.Visible;
-            if (nbrJoueurs >= 2)
-                btnListe2.Visibility = Visibility.Visible;
-            if (nbrJoueurs >= 3)
-                btnListe3.Visibility = Visibility.Visible;
-            if (nbrJoueurs >= 4)
-                btnListe4.Visibility = Visibility.Visible;
-            lblPion.Content = "Listes : ";
-        }
-
-        /// <summary>
-        /// Evénement lors du clic sur btnDk
-        /// </summary>
-        public void clicbtnDk(Rectangle pion1, Rectangle pion2, TextBox txtboxConsole, Button btnDk, Label lblPion, Button btnLanceDes,
-            Label lblNomJoueur, Label lblArgent, Label lblArgentJoueur, Button btnListe1, Button btnListe2, Button btnListe3,
-            Button btnListe4, Image imgSortie)
-        {
-            foreach(Joueur j in listeJoueurs)
-            {
-                if(j.sonTour == true)
-                {
-                    //TODOCORENTIN Fonctionne pour 2 joueurs uniquement
-                    if(j.Numero == 1 && j.sonTour == true)
-                    {
-                        pion1.Fill = new ImageBrush(new BitmapImage(new Uri(@"..\..\Images\39px-ClassIcon_deathknightFOND.png", UriKind.Relative)));
-                        txtboxConsole.AppendText(j.Nom + " a choisi le chevalier de la mort." + "\n");
-                        txtboxConsole.AppendText("Le joueur 2 choisit son pion : " + "\n");
-                        j.finTour(listeJoueurs, nbrJoueurs, lblNomJoueur, lblArgentJoueur, imgSortie);
-                        btnDk.Visibility = Visibility.Hidden;
-                        break;
-                    }
-                    else if(j.Numero == 2 && j.sonTour == true)
-                    {
-                        pion2.Fill = new ImageBrush(new BitmapImage(new Uri(@"..\..\Images\39px-ClassIcon_deathknightFOND.png", UriKind.Relative)));
-                        txtboxConsole.AppendText(j.Nom + " a choisi le chevalier de la mort." + "\n");
-                        listeVisibility(btnLanceDes, lblArgent, lblArgentJoueur, btnListe1, btnListe2, btnListe3, btnListe4, lblPion);
-                        j.finTour(listeJoueurs, nbrJoueurs, lblNomJoueur, lblArgentJoueur, imgSortie);
-                        btnDk.Visibility = Visibility.Hidden;
-                        break;
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Evénement lors du clic sur btnMage
-        /// </summary>
-        public void clicbtnMage(Rectangle pion1, Rectangle pion2, TextBox txtboxConsole, Button btnMage, Label lblPion, Button btnLanceDes, 
-            Label lblNomJoueur, Label lblArgent, Label lblArgentJoueur, Button btnListe1, Button btnListe2, Button btnListe3,
-            Button btnListe4, Image imgSortie)
-        {
-            foreach (Joueur j in listeJoueurs)
-            {
-                if (j.sonTour == true)
-                {
-                    //TODOCORENTIN Fonctionne pour 2 joueurs uniquement
-                    if (j.Numero == 1 && j.sonTour == true)
-                    {
-                        pion1.Fill = new ImageBrush(new BitmapImage(new Uri(@"..\..\Images\39px-ClassIcon_mageFOND.png", UriKind.Relative)));
-                        txtboxConsole.AppendText(j.Nom + " a choisi le mage." + "\n");
-                        txtboxConsole.AppendText("Le joueur 2 choisit son pion : " + "\n");
-                        j.finTour(listeJoueurs, nbrJoueurs, lblNomJoueur, lblArgentJoueur, imgSortie);
-                        btnMage.Visibility = Visibility.Hidden;
-                        break;
-                    }
-                    else if (j.Numero == 2 && j.sonTour == true)
-                    {
-                        pion2.Fill = new ImageBrush(new BitmapImage(new Uri(@"..\..\Images\39px-ClassIcon_mageFOND.png", UriKind.Relative)));
-                        txtboxConsole.AppendText(j.Nom + " a choisi le mage." + "\n");
-                        listeVisibility(btnLanceDes, lblArgent, lblArgentJoueur, btnListe1, btnListe2, btnListe3, btnListe4, lblPion);
-                        j.finTour(listeJoueurs, nbrJoueurs, lblNomJoueur, lblArgentJoueur, imgSortie);
-                        btnMage.Visibility = Visibility.Hidden;
-                        break;
-                    }
-                }
-            }
-        }
         #endregion
     }
 }

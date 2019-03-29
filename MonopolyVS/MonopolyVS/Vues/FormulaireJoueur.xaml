@@ -91,7 +91,6 @@
                         <ComboBoxItem x:Name="Shaman3" Content="Shaman"/>
                         <ComboBoxItem x:Name="Warlock3" Content="Warlock"/>
                         <ComboBoxItem x:Name="Warrior3" Content="Warrior"/>
-                        <System:String>Button</System:String>
                     </ComboBox>
                     <Rectangle x:Name="ImageIcone4" Margin="670,260,0,0" Width="50" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                     <Label x:Name="LabelJetons" HorizontalAlignment="Center" FontFamily="Matura MT Script Capitals" FontSize="36" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="0,0,0,95" Width="600" Height="300" IsHitTestVisible="False" Visibility="Hidden"/>
