@@ -111,11 +111,15 @@ namespace MonopolyVS.Modeles
         /// <param name="Vendeur">Joueur vendeur</param>
         /// <param name="Acheteur">Joueur aquereur</param>
         /// <param name="Prix"></param>
-        public void VendPropriete(Propriete AVendre, Joueur Vendeur, List<Joueur> joueursEnJeu)
+        public void initVendPropriete(Propriete AVendre, Joueur Vendeur, List<Joueur> joueursEnJeu)
         {
-            FormulaireVente modalites = new FormulaireVente(Vendeur, joueursEnJeu, this, AVendre.Nom);
+            FormulaireVente modalites = new FormulaireVente(Vendeur, joueursEnJeu, this, AVendre);
             modalites.Show();
-            Joueur acheteur = modalites.GetVendeur();
+        }
+
+        public void VendPropriete(FormulaireVente form, Propriete AVendre, Joueur Vendeur)
+        {
+            Joueur acheteur = form.GetAcheteur();
             if (AVendre.Numero == 5 || AVendre.Numero == 15 || AVendre.Numero == 25 || AVendre.Numero == 35)
             {
                 acheteur.nbrDonjons++;
