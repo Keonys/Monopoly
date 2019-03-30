@@ -70,7 +70,7 @@ namespace MonopolyVS
         private void BtnTour_Click(object sender, RoutedEventArgs e)
         {
             c.clicbtnTour(txtboxConsole, btnTour, lblTour, lblNomJoueur, lblPion, lblArgentJoueur,
-                btnListe1, btnListe2, btnListe3, btnListe4, imgSortie, pion1, pion2, pion3, pion4, btnLanceDes, lblArgent);
+                btnListe1, btnListe2, btnListe3, btnListe4, imgSortie, pion1, pion2, pion3, pion4, btnLanceDes, lblArgent, btnFinPartie, pionWin, lblWin);
         }
 
         private void BtnListe1_Click(object sender, RoutedEventArgs e)

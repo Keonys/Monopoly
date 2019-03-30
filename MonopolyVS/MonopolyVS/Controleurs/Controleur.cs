@@ -469,7 +469,7 @@ namespace MonopolyVS.Controleurs
             Label lblArgentJoueur, List<Case> listeCases, Image imgSortie, Button btnListe1, Button btnListe2, Button btnListe3, Button btnListe4, Button btnLanceDes,
             Label lblArgent, Label lblPion, Button btnTour, Label lblTour, System.Windows.Controls.Button btnFinPartie, Rectangle pionWin, Label lblWin)
         {
-            this.listeCases = Cases;
+            this.listeCases = listeCases;
             int resultat = 0;
             int position = 0;
 
