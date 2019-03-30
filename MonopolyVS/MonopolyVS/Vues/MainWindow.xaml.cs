@@ -96,7 +96,8 @@ namespace MonopolyVS
 
         private void ListboxBien_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            c.debuterVente(listboxBien.SelectedItem);
+            if (c.CheckPropriete(listboxBien.SelectedItem) == true)
+                c.debuterVente(listboxBien.SelectedItem);
         }
 
         private void btnFinPartie_Click(object sender, RoutedEventArgs e)
