@@ -422,7 +422,6 @@ namespace MonopolyVS.Modeles
                 }
             }
         }
-
         #endregion
     }
 }
