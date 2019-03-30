@@ -331,7 +331,7 @@ namespace MonopolyVS
             {
                 if (p.Couleur == "Donjon")
                 {
-                    listboxBien.Items.Add(p.Nom + " \n");
+                    listboxBien.Items.Add(p.Nom);
                 }
             }
 
@@ -349,7 +349,7 @@ namespace MonopolyVS
             {
                 if (p.Couleur != "Donjon")
                 {
-                    listboxBien.Items.Add(p.Nom + " \n");
+                    listboxBien.Items.Add(p.Nom);
                 }
             }
 

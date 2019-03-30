@@ -1,4 +1,5 @@
 ﻿#region NAMESPACE
+using MonopolyVS.Vues;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -101,6 +102,29 @@ namespace MonopolyVS.Modeles
         {
             //PerdsArgent(joueur, (propriete.Prix[4] * 1.1)); //mise à jour du solde du joueur qui lève hypothèque la case
             //propriete.EstHypotheque = false;    //déverrouillage de la case hypothèquée
+        }
+
+        /// <summary>
+        /// Vend la propriétée d'un joueur spécifié à un autre joueur
+        /// </summary>
+        /// <param name="AVendre">Propriété à vendre</param>
+        /// <param name="Vendeur">Joueur vendeur</param>
+        /// <param name="Acheteur">Joueur aquereur</param>
+        /// <param name="Prix"></param>
+        public void VendPropriete(Propriete AVendre, Joueur Vendeur, List<Joueur> joueursEnJeu)
+        {
+            FormulaireVente modalites = new FormulaireVente(Vendeur, joueursEnJeu, this, AVendre.Nom);
+            modalites.Show();
+            Joueur acheteur = modalites.GetVendeur();
+            if (AVendre.Numero == 5 || AVendre.Numero == 15 || AVendre.Numero == 25 || AVendre.Numero == 35)
+            {
+                acheteur.nbrDonjons++;
+                Vendeur.nbrDonjons--;
+            }
+
+            AVendre.Proprietaire = acheteur;
+            Vendeur.Patrimoine.Remove(AVendre);
+            acheteur.Patrimoine.Add(AVendre);
         }
     }
 }

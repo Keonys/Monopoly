@@ -93,6 +93,11 @@ namespace MonopolyVS
             c.clicListe4(listboxBien);
         }
 
+        private void ListboxBien_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            c.debuterVente(listboxBien.SelectedItem);
+        }
+
         private void btnFinPartie_Click(object sender, RoutedEventArgs e)
         {
             c.clicFinPartie();
@@ -108,6 +113,7 @@ namespace MonopolyVS
             c.initAppli(lblTour, lblNomJoueur, lblPion, btnLanceDes, lblArgent, lblArgentJoueur, btnListe1, btnListe2,
                 btnListe3, btnListe4, lblWin, pionWin, btnFinPartie);
 
+            #region INITIALISATION DES CASES
             listeCases.Add(new Case(1, Maison1_1, Maison1_2, Maison1_3, Maison1_4, Hotel1, RectAppartBrun1));
             listeCases.Add(new Case(3, Maison3_1, Maison3_2, Maison3_3, Maison3_4, Hotel3, RectAppartBrun2));
             listeCases.Add(new Case(5, RectAppartDonjon1));
@@ -146,6 +152,7 @@ namespace MonopolyVS
                     c.NomHotel.Visibility = Visibility.Hidden;
                 }
             }
+            #endregion
 
             imgSortie.Visibility = Visibility.Hidden;
         }
