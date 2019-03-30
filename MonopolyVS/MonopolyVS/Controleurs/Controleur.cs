@@ -45,6 +45,8 @@ namespace MonopolyVS.Controleurs
 
         Des Des = new Des();
 
+        Banque banque = new Banque();
+        
         /// <summary>
         /// Nombre de joueur dans la partie, géré dans AddJoueurs
         /// </summary>
