@@ -627,7 +627,22 @@ namespace MonopolyVS.Controleurs
                     AVendre = prop;
                 }
             }
-            banque.VendPropriete(AVendre, proprietaire, listeJoueurs);
+            banque.initVendPropriete(AVendre, proprietaire, listeJoueurs);
+        }
+
+        public bool CheckPropriete(object aVerifier)
+        {
+            bool resultat = false;
+            foreach (Propriete prop in listePropriete)
+            {
+                if (aVerifier != null)
+                {
+                    if (prop.Nom == aVerifier.ToString())
+                        resultat = true;
+                }
+            }
+
+            return resultat;
         }
         #endregion
     }
