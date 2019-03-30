@@ -22,7 +22,7 @@ namespace MonopolyVS.Modeles
         void AllerPrison(Joueur joueur)
         {
             joueur.Position = -1; //VALEUR A REMPLACER PAR LE NUMERO DE CASE CORRESPONDANT A LA PRISON
-            joueur.Peine = 3; //met la peine du joueur à 3 tours
+            //joueur.Peine = 3; //met la peine du joueur à 3 tours
             joueur.EstEnPrison = true; //verrouille le joueur dans l'état prisonnier
             sPrisoniers.Add(joueur.Nom);    //ajoute le joueur à la liste des prisonniers
         }

@@ -40,9 +40,10 @@ namespace MonopolyVS.Controleurs
 
         Des Des = new Des();
 
-        //TODOLORENZO nbrJoueur à mettre en dynamique ci-dessous 
-        //(L APPLI NE FONCTIONNE QUE POUR 2 JOUEURS POUR LE MOMENT, et un joueur ne peut pas jouer seul)
-        int nbrJoueurs = 2;
+        /// <summary>
+        /// Nombre de joueur dans la partie, géré dans AddJoueurs
+        /// </summary>
+        public int nbrJoueurs { get; set; } = 2;
 
         #endregion
 
@@ -236,7 +237,7 @@ namespace MonopolyVS.Controleurs
         /// </summary>
         public void initAppli(Label lblTour, Label lblNomJoueur, Label lblPion, 
             Button btnLanceDes, Label lblArgent, Label lblArgentJoueur, Button btnListe1, Button btnListe2, 
-            Button btnListe3, Button btnListe4)
+            Button btnListe3, Button btnListe4, Label lblWin, Rectangle pionWin, Button btnFinPartie)
         {
             lblTour.Visibility = Visibility.Hidden;
             lblNomJoueur.Visibility = Visibility.Hidden;
@@ -248,6 +249,9 @@ namespace MonopolyVS.Controleurs
             btnListe2.Visibility = Visibility.Hidden;
             btnListe3.Visibility = Visibility.Hidden;
             btnListe4.Visibility = Visibility.Hidden;
+            pionWin.Visibility = Visibility.Hidden;
+            lblWin.Visibility = Visibility.Hidden;
+            btnFinPartie.Visibility = Visibility.Hidden;
         }
 
         /// <summary>
@@ -287,6 +291,14 @@ namespace MonopolyVS.Controleurs
         }
 
         /// <summary>
+        /// Termine la partie et ferme la fenêtre
+        /// </summary>
+        public void clicFinPartie()
+        {
+            Application.Current.Shutdown();
+        }
+
+        /// <summary>
         /// Affichage de l'écran d'accueil (avant l'affichage du plateau)
         /// </summary>
         public void afficheFormulaire(MainWindow m, Rectangle pion1, Rectangle pion2, Rectangle pion3, Rectangle pion4)
@@ -302,7 +314,8 @@ namespace MonopolyVS.Controleurs
         /// </summary>
         public void clicbtnTour(TextBox textBox, Button btnTour, Label lblTour, Label lblNomJoueur, Label lblPion, 
             Label lblArgentJoueur, Button btnListe1, Button btnListe2, Button btnListe3, Button btnListe4, Image imgSortie, 
-            Rectangle pion1, Rectangle pion2, Rectangle pion3, Rectangle pion4, Button btnLanceDes, Label lblArgent)
+            Rectangle pion1, Rectangle pion2, Rectangle pion3, Rectangle pion4, Button btnLanceDes, Label lblArgent, System.Windows.Controls.Button btnFinPartie,
+            Rectangle pionWin, Label lblWin)
         {
             //Initialisation des Joueurs et des Propriétés
             initPropriete();
@@ -332,7 +345,7 @@ namespace MonopolyVS.Controleurs
             foreach(Joueur j in listeJoueurs)
             {
                 if(j.Numero == 1)
-                    j.changeTour(listeJoueurs, 0, lblNomJoueur, lblArgentJoueur, imgSortie);
+                    j.changeTour(listeJoueurs, 0, lblNomJoueur, lblArgentJoueur, imgSortie, textBox, this, btnLanceDes, btnFinPartie, pionWin, lblWin);
             }
 
             foreach(Joueur j in listeJoueurs)
@@ -378,13 +391,33 @@ namespace MonopolyVS.Controleurs
             lblTour.Visibility = Visibility.Visible;
             lblNomJoueur.Visibility = Visibility.Visible;
             if (nbrJoueurs >= 1)
+            {
                 btnListe1.Visibility = Visibility.Visible;
+                btnListe2.Visibility = Visibility.Hidden;
+                btnListe3.Visibility = Visibility.Hidden;
+                btnListe4.Visibility = Visibility.Hidden;
+            }
             if (nbrJoueurs >= 2)
+            {
+                btnListe1.Visibility = Visibility.Visible;
                 btnListe2.Visibility = Visibility.Visible;
+                btnListe3.Visibility = Visibility.Hidden;
+                btnListe4.Visibility = Visibility.Hidden;
+            }
             if (nbrJoueurs >= 3)
+            {
+                btnListe1.Visibility = Visibility.Visible;
+                btnListe2.Visibility = Visibility.Visible;
                 btnListe3.Visibility = Visibility.Visible;
+                btnListe4.Visibility = Visibility.Hidden;
+            }
             if (nbrJoueurs >= 4)
+            {
+                btnListe1.Visibility = Visibility.Visible;
+                btnListe2.Visibility = Visibility.Visible;
+                btnListe3.Visibility = Visibility.Visible;
                 btnListe4.Visibility = Visibility.Visible;
+            }
         }
 
         /// <summary>
@@ -415,10 +448,14 @@ namespace MonopolyVS.Controleurs
         /// </summary>
         /// <param name="txtboxConsole"></param>
         public void clicBtnLanceDes(TextBox txtboxConsole, Rectangle pion1, Rectangle pion2, Label lblNomJoueur, 
-            Label lblArgentJoueur, List<Case> listeCases, Image imgSortie)
+            Label lblArgentJoueur, List<Case> listeCases, Image imgSortie, Button btnListe1, Button btnListe2, Button btnListe3, Button btnListe4, Button btnLanceDes,
+            Label lblArgent, Label lblPion, Button btnTour, Label lblTour, System.Windows.Controls.Button btnFinPartie, Rectangle pionWin, Label lblWin)
         {
             int resultat = 0;
             int position = 0;
+
+            listeVisibility(btnLanceDes, lblArgent, lblArgentJoueur, btnListe1, btnListe2, btnListe3, btnListe4, lblPion, btnTour, lblTour, lblNomJoueur);
+            nomBtnListe(listeJoueurs, btnListe1, btnListe2, btnListe3, btnListe4);
 
             foreach (Joueur j in listeJoueurs)
             {
@@ -511,7 +548,7 @@ namespace MonopolyVS.Controleurs
                         break;
                     else
                     {
-                        j.finTour(listeJoueurs, nbrJoueurs, lblNomJoueur, lblArgentJoueur, imgSortie);
+                        j.finTour(listeJoueurs, nbrJoueurs, lblNomJoueur, lblArgentJoueur, imgSortie, txtboxConsole, this, btnLanceDes, btnFinPartie, pionWin, lblWin);
                         break;
                     }
                 }
