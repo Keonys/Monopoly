@@ -21,11 +21,12 @@ namespace MonopolyVS.Vues
     /// </summary>
     public partial class FormulaireVente : Window
     {
-        private readonly Joueur vendeur;
+        private readonly Joueur Vendeur;
+        private Joueur Acheteur;
 
-        List<Joueur> listeJoueurs;
+        List<Joueur> listeAcheteurs = new List<Joueur>();
         Banque banque;
-        private string prop;
+        private Propriete prop;
 
         public FormulaireVente()
         {
@@ -39,12 +40,15 @@ namespace MonopolyVS.Vues
         /// <param name="v">Joueur vendeur</param>
         /// <param name="joueursEnJeu">Liste des joueurs en jeu</param>
         /// <param name="b">Banque de la partie</param>
-        public FormulaireVente(Joueur v, List<Joueur> joueursEnJeu, Banque b, string nomProp)
+        public FormulaireVente(Joueur v, List<Joueur> joueursEnJeu, Banque b, Propriete nomProp)
         {
             InitializeComponent();
-            
-            vendeur = v;
-            listeJoueurs = joueursEnJeu;
+            Vendeur = v;
+            foreach(Joueur j in joueursEnJeu)
+            {
+                if (j != Vendeur)
+                    listeAcheteurs.Add(j);
+            }
             banque = b;
             prop = nomProp;
 
@@ -55,8 +59,9 @@ namespace MonopolyVS.Vues
         {
             if (ComboJoueur.SelectedIndex >= 0 && CheckPrix(TextBoxPrix.Text))
             {
-                Joueur acheteur = listeJoueurs[ComboJoueur.SelectedIndex];
-                banque.Transaction(acheteur, GetVendeur(), int.Parse(TextBoxPrix.Text));
+                Acheteur = listeAcheteurs[ComboJoueur.SelectedIndex];
+                banque.Transaction(Acheteur, GetVendeur(), int.Parse(TextBoxPrix.Text));
+                banque.VendPropriete(this, prop, Vendeur);
                 Close();
             }
             else if (ComboJoueur.SelectedIndex <= 0)
@@ -66,10 +71,10 @@ namespace MonopolyVS.Vues
         private void QuestionVente()
         {
             this.Visibility = Visibility.Hidden;
-            DialogResult vente = System.Windows.Forms.MessageBox.Show("Voulez-vous vendre la propriété : " + prop + " ?", "", MessageBoxButtons.YesNo);
+            DialogResult vente = System.Windows.Forms.MessageBox.Show("Voulez-vous vendre la propriété : " + prop.Nom + " ?", "", MessageBoxButtons.YesNo);
             if (vente == System.Windows.Forms.DialogResult.Yes)
             {
-                foreach (Joueur j in listeJoueurs)
+                foreach (Joueur j in listeAcheteurs)
                 {
                     ComboJoueur.Items.Add(j.Nom);
                 }
@@ -103,7 +108,12 @@ namespace MonopolyVS.Vues
 
         public Joueur GetVendeur()
         {
-            return vendeur;
+            return Vendeur;
+        }
+
+        public Joueur GetAcheteur()
+        {
+            return Acheteur;
         }
     }
 }
