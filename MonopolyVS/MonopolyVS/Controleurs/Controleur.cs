@@ -45,10 +45,11 @@ namespace MonopolyVS.Controleurs
 
         Des Des = new Des();
 
-        //TODOLORENZO nbrJoueur à mettre en dynamique ci-dessous 
-        //(L APPLI NE FONCTIONNE QUE POUR 2 JOUEURS POUR LE MOMENT, et un joueur ne peut pas jouer seul)
+        Banque banque = new Banque();
+        //2 JOUEURS PAR DEFAUT
         int nbrJoueurs = 2;
 
+        int patriJoueurAff = -1;
         #endregion
 
         #region Méthodes
@@ -263,6 +264,7 @@ namespace MonopolyVS.Controleurs
         {
             Joueur j = listeJoueurs[0];
             j.afficheProp(listboxBien);
+            patriJoueurAff = 0;
         }
 
         /// <summary>
@@ -272,6 +274,7 @@ namespace MonopolyVS.Controleurs
         {
             Joueur j = listeJoueurs[1];
             j.afficheProp(listboxBien);
+            patriJoueurAff = 1;
         }
 
         /// <summary>
@@ -281,6 +284,7 @@ namespace MonopolyVS.Controleurs
         {
             Joueur j = listeJoueurs[2];
             j.afficheProp(listboxBien);
+            patriJoueurAff = 2;
         }
 
         /// <summary>
@@ -290,11 +294,17 @@ namespace MonopolyVS.Controleurs
         {
             Joueur j = listeJoueurs[3];
             j.afficheProp(listboxBien);
+            patriJoueurAff = 3;
         }
 
         /// <summary>
         /// Affichage de l'écran d'accueil (avant l'affichage du plateau)
         /// </summary>
+        /// <param name="m">Fenêtre du plateau</param>
+        /// <param name="pion1">Pion 1 sur plateau</param>
+        /// <param name="pion2">Pion 2 sur plateau</param>
+        /// <param name="pion3">Pion 3 sur plateau</param>
+        /// <param name="pion4">Pion 4 sur plateau</param>
         public void afficheFormulaire(MainWindow m, Rectangle pion1, Rectangle pion2, Rectangle pion3, Rectangle pion4)
         {
             FormulaireJoueur Menu = new FormulaireJoueur(m, this, pion1, pion2, pion3, pion4);
@@ -567,6 +577,20 @@ namespace MonopolyVS.Controleurs
         public void afficheAppartenance(List<Case> aAfficher, List<Case> surPlateau)
         {
             surPlateau = aAfficher;
+        }
+
+        public void debuterVente(object propriete)
+        {
+            Joueur proprietaire = listeJoueurs[patriJoueurAff];
+            Propriete AVendre = new Propriete();
+            foreach (Propriete prop in proprietaire.Patrimoine)
+            {
+                if(prop.Nom == propriete.ToString())
+                {
+                    AVendre = prop;
+                }
+            }
+            banque.VendPropriete(AVendre, proprietaire, listeJoueurs);
         }
         #endregion
     }

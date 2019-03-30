@@ -14,7 +14,7 @@
                 <DropShadowEffect/>
             </Image.Effect>
         </Image>
-        <ListBox x:Name="listboxBien" Margin="926,353,31.4,251.4" FontSize="14"/>
+        <ListBox x:Name="listboxBien" Margin="926,353,31.4,251.4" FontSize="14" SelectionChanged="ListboxBien_SelectionChanged"/>
         <Label x:Name="lblTour" Content="Tour :" HorizontalAlignment="Left" Margin="939,20,0,0" VerticalAlignment="Top" Height="43" Width="91" FontSize="24"/>
         <Label x:Name="lblNomJoueur" Content="JOUEUR" HorizontalAlignment="Left" Margin="1034,20,0,0" VerticalAlignment="Top" Height="43" Width="317" FontSize="24"/>
         <Label x:Name="lblArgent" Content="Argent :    €" HorizontalAlignment="Left" Margin="939,129,0,0" VerticalAlignment="Top" Height="43" Width="131" FontSize="24"/>

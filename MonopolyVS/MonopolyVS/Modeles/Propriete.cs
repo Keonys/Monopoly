@@ -113,12 +113,6 @@ namespace MonopolyVS.Modeles
         #endregion
 
         #region Méthodes
-
-        /*public void AfficheAppartenance(Joueur acheteur, Propriete caseAchetee)
-        {
-
-        }*/
-
         /// <summary>
         /// Récupère la position du joueur sur la case
         /// </summary>
@@ -462,7 +456,6 @@ namespace MonopolyVS.Modeles
                 }
             }
         }
-
         #endregion
     }
 }
