@@ -50,7 +50,7 @@ namespace MonopolyVS
         private void prepareInvisible()
         {
             c.initAppli(lblTour, lblNomJoueur, lblPion, btnLanceDes, lblArgent, lblArgentJoueur, btnListe1, btnListe2
-                , btnListe3, btnListe4);
+                , btnListe3, btnListe4, lblWin, pionWin, btnFinPartie);
         }
 
         /// <summary>
@@ -63,13 +63,14 @@ namespace MonopolyVS
 
         private void btnLanceDes_Click(object sender, RoutedEventArgs e)
         {
-            c.clicBtnLanceDes(txtboxConsole, pion1, pion2, lblNomJoueur, lblArgentJoueur, listeCases, imgSortie);
+            c.clicBtnLanceDes(txtboxConsole, pion1, pion2, lblNomJoueur, lblArgentJoueur, listeCases, imgSortie, btnListe1, btnListe2, btnListe3, btnListe4,
+                btnLanceDes, lblArgent, lblPion, btnTour, lblTour, btnFinPartie, pionWin, lblWin);
         }
 
         private void BtnTour_Click(object sender, RoutedEventArgs e)
         {
             c.clicbtnTour(txtboxConsole, btnTour, lblTour, lblNomJoueur, lblPion, lblArgentJoueur,
-                btnListe1, btnListe2, btnListe3, btnListe4, imgSortie, pion1, pion2, pion3, pion4, btnLanceDes, lblArgent);
+                btnListe1, btnListe2, btnListe3, btnListe4, imgSortie, pion1, pion2, pion3, pion4, btnLanceDes, lblArgent, btnFinPartie, pionWin, lblWin);
             c.afficheAppartenance(listeCases, c.listeCases);
         }
 
@@ -93,6 +94,11 @@ namespace MonopolyVS
             c.clicListe4(listboxBien);
         }
 
+        private void btnFinPartie_Click(object sender, RoutedEventArgs e)
+        {
+            c.clicFinPartie();
+        }
+
         #endregion Events
 
         /// <summary>
@@ -101,7 +107,7 @@ namespace MonopolyVS
         private void initAppli()
         {
             c.initAppli(lblTour, lblNomJoueur, lblPion, btnLanceDes, lblArgent, lblArgentJoueur, btnListe1, btnListe2,
-                btnListe3, btnListe4);
+                btnListe3, btnListe4, lblWin, pionWin, btnFinPartie);
 
             listeCases.Add(new Case(1, Maison1_1, Maison1_2, Maison1_3, Maison1_4, Hotel1, RectAppartBrun1));
             listeCases.Add(new Case(3, Maison3_1, Maison3_2, Maison3_3, Maison3_4, Hotel3, RectAppartBrun2));

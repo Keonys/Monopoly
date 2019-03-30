@@ -1,4 +1,5 @@
 ﻿#region NAMESPACE
+using MonopolyVS.Controleurs;
 using MonopolyVS.Modeles;
 using System;
 using System.Collections.Generic;
@@ -41,12 +42,7 @@ namespace MonopolyVS
         /// <summary>
         /// Position du joueur
         /// </summary>
-        public int Position { get; set; }
-
-        /// <summary>
-        /// Nombre de tour à rester en prison
-        /// </summary>
-        public int Peine { get; set; }
+        public int Position { get; set; } = 0;
 
         /// <summary>
         /// Listes des propriétés du joueur
@@ -61,38 +57,43 @@ namespace MonopolyVS
         /// <summary>
         /// Nombre de tour passé en prison
         /// </summary>
-        public int nbrTourPrison = 0;
+        public int nbrTourPrison { get; set; } = 0;
 
         /// <summary>
         /// Indique si le joueur est en prison
         /// </summary>
-        public bool EstEnPrison = false;
+        public bool EstEnPrison { get; set; } = false;
 
         /// <summary>
         /// Nombre de doubles effectués à l'affilé
         /// </summary>
-        public int nbrDouble = 0;
+        public int nbrDouble { get; set; } = 0;
 
         /// <summary>
         /// Indique si le joueur vient de faire un doublé
         /// </summary>
-        public bool estDouble = false;
+        public bool estDouble { get; set; } = false;
 
         /// <summary>
         /// Indique le tour du joueur
         /// </summary>
-        public bool sonTour = false;
+        public bool sonTour { get; set; } = false;
 
         /// <summary>
         /// Indique le nbr de donjons en possession du joueur
         /// </summary>
-        public int nbrDonjons = 0;
+        public int nbrDonjons { get; set; } = 0;
 
         /// <summary>
         /// Indique le nombre de carte de sortie possédé par le joueur 
         /// (il y en a 2 dans le jeu, une dans les cartes chance et une dans les cartes caisse de communautée)
         /// </summary>
-        public int Sortie = 0;
+        public int Sortie { get; set; } = 0;
+
+        /// <summary>
+        /// Le joueur est en banqueroute, il a perdu
+        /// </summary>
+        public bool isBanqueroute { get; set; } = false;
 
         /// <summary>
         /// Pion du Joueur
@@ -205,16 +206,17 @@ namespace MonopolyVS
         /// <param name="nbrMax"></param>
         /// <param name="lblNomJoueur"></param>
         public void finTour(List<Joueur> listeJoueurs, int nbrMax, System.Windows.Controls.Label lblNomJoueur,
-            System.Windows.Controls.Label lblArgentJoueur, Image imgSortie)
+            System.Windows.Controls.Label lblArgentJoueur, Image imgSortie, System.Windows.Controls.TextBox txtboxConsole, Controleur c,
+            System.Windows.Controls.Button btnLanceDes, System.Windows.Controls.Button btnFinPartie, Rectangle pionWin, System.Windows.Controls.Label lblWin)
         {
             foreach(Joueur j in listeJoueurs)
             {
                 if (j.sonTour == true)
                 {
                     if(j.Numero == nbrMax)
-                        changeTour(listeJoueurs, 0, lblNomJoueur, lblArgentJoueur, imgSortie);
+                        changeTour(listeJoueurs, 0, lblNomJoueur, lblArgentJoueur, imgSortie, txtboxConsole, c, btnLanceDes, btnFinPartie, pionWin, lblWin);
                     else
-                        changeTour(listeJoueurs, j.Numero, lblNomJoueur, lblArgentJoueur, imgSortie);
+                        changeTour(listeJoueurs, j.Numero, lblNomJoueur, lblArgentJoueur, imgSortie, txtboxConsole, c, btnLanceDes, btnFinPartie, pionWin, lblWin);
                     break;
                 }
             }
@@ -225,7 +227,8 @@ namespace MonopolyVS
         /// </summary>
         /// <param name="nbr">Numero du Joueur</param>
         public void changeTour(List<Joueur> listeJoueurs, int nbr, System.Windows.Controls.Label lblNomJoueur,
-            System.Windows.Controls.Label lblArgentJoueur, Image imgSortie)
+            System.Windows.Controls.Label lblArgentJoueur, Image imgSortie, System.Windows.Controls.TextBox txtboxConsole, Controleur c,
+            System.Windows.Controls.Button btnLanceDes, System.Windows.Controls.Button btnFinPartie, Rectangle pionWin, System.Windows.Controls.Label lblWin)
         {
             nbr++;
             foreach(Joueur j in listeJoueurs)
@@ -234,16 +237,76 @@ namespace MonopolyVS
                 {
                     j.sonTour = true;
                     lblNomJoueur.Content = j.Nom;
-                    //TODOCORENTIN Utiliser fonction "GagnerArgent"
                     lblArgentJoueur.Content = j.Argent;
                     if (j.Sortie > 0)
                         imgSortie.Visibility = Visibility.Visible;
                     else
                         imgSortie.Visibility = Visibility.Hidden;
+
+                    if (j.Argent <= 0)
+                        banqueroute(j, txtboxConsole, listeJoueurs, c, lblNomJoueur, lblArgentJoueur, imgSortie, btnLanceDes, btnFinPartie, pionWin, lblWin);
+                    break;
                 }
                 else
                     j.sonTour = false;
             }
+        }
+
+        /// <summary>
+        /// Perte de la partie pour le joueur si il n'arrive pas à payer ses dettes
+        /// </summary>
+        /// <param name="j"></param>
+        public void banqueroute(Joueur j, System.Windows.Controls.TextBox txtboxConsole, List<Joueur> listeJoueurs, Controleur c,
+            System.Windows.Controls.Label lblNomJoueur, System.Windows.Controls.Label lblArgentJoueur, Image imgSortie, System.Windows.Controls.Button btnLanceDes,
+            System.Windows.Controls.Button btnFinPartie, Rectangle pionWin, System.Windows.Controls.Label lblWin)
+        {
+            txtboxConsole.AppendText(j.Nom + " n'as plus d'argent. Il faudra vendre un terrain, un bâtiment, ou perdre la partie. \n");
+            //Faire ici la banqueroute, il faudra utiliser le système de vente de bâtiment et de terrain pour rembourser les dettes
+            //Sinon le joueur perd et il faudra le sortir de la partie
+            foreach (Propriete p in j.Patrimoine)
+            {
+                p.Proprietaire = null;
+                p.NbrMaison = 0;
+                p.Hotel = false;
+            }
+
+            j.isBanqueroute = true;
+            j.Position = 0;
+            j.Pion.Fill = null;
+            c.nbrJoueurs--;
+
+            listeJoueurs.Remove(j);
+            foreach(Joueur jo in listeJoueurs)
+            {
+                if (jo.Numero > j.Numero)
+                    jo.Numero--;
+            }
+            foreach(Joueur jo in listeJoueurs)
+            {
+                if (jo.Numero == j.Numero)
+                    jo.sonTour = true;
+            }
+            finTour(listeJoueurs, c.nbrJoueurs, lblNomJoueur, lblArgentJoueur, imgSortie, txtboxConsole, c, btnLanceDes, btnFinPartie, pionWin, lblWin);
+
+            if (c.nbrJoueurs < 2)
+            {
+                listeJoueurs[0].gagnePartie(txtboxConsole, btnLanceDes, btnFinPartie, pionWin, lblWin);
+            }
+        }
+
+        /// <summary>
+        /// Le joueur en question gagne la partie
+        /// </summary>
+        public void gagnePartie(System.Windows.Controls.TextBox txtboxConsole, System.Windows.Controls.Button btnLanceDes, System.Windows.Controls.Button btnFinPartie,
+            Rectangle pionWin, System.Windows.Controls.Label lblWin)
+        {
+            txtboxConsole.AppendText(this.Nom + " gagne la partie. \n");
+            btnLanceDes.Visibility = Visibility.Hidden;
+            btnFinPartie.Visibility = Visibility.Visible;
+            pionWin.Visibility = Visibility.Visible;
+            lblWin.Visibility = Visibility.Visible;
+
+            //this.NumClasse
         }
 
         /// <summary>
@@ -523,28 +586,5 @@ namespace MonopolyVS
         }
 
         #endregion
-
-        /// <summary>
-        /// Permet d'acheter une propriété et l'ajoute au patrimoine
-        /// </summary>
-        /// <param name="proprieteAchetee">Propriété achetée</param>
-        public void AcheterUnePropriete(Propriete proprieteAchetee, Banque banquier)
-        {
-            //banquier.PerdsArgent(this, proprieteAchetee.Prix[0]);   //le solde est mis à jour
-            //Patrimoine.Add(proprieteAchetee.Nom);                   //la liste des propriétés est mise à jour
-            //proprieteAchetee.EstAchetee = true;                     //verrouille l'achat de la case
-            //proprieteAchetee.Proprietaire = Nom;                    //met à jour le nom du propriétaire dans la case
-        }
-
-        //TODOLORENZO VOIR COMMENT CE DEROULE UNE PARTIE POUR REMPLIR CES 2 METHODES
-        void PerdrePartie()
-        {
-
-        }
-
-        void GagnerPartie()
-        {
-
-        }
     }
 }
