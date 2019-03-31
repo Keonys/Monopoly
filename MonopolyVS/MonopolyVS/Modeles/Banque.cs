@@ -13,18 +13,22 @@ namespace MonopolyVS.Modeles
 {
     public class Banque
     {
-
+        #region MEMBRES
         //Nombre maisons et hôtels pour 1 partie
         //int nbrMaison = 32;
         //int nbrHotel = 12;
         //Lorsque la banque ne peut plus proposer de maisons, une crise du batiment est déclenchée
         public static bool Crise { get; } = false;
+        #endregion
 
+        #region CONSTRUCTEURS
         public Banque()
         {
 
         }
+        #endregion
 
+        #region METHODES
         /// <summary>
         /// Met à jour le solde d'un joueur lors d'un gain d'argent
         /// </summary>
@@ -113,11 +117,11 @@ namespace MonopolyVS.Modeles
         /// <param name="Vendeur">Joueur vendeur</param>
         /// <param name="Acheteur">Joueur aquereur</param>
         /// <param name="Prix"></param>
-        public void initVendPropriete(Propriete AVendre, Joueur Vendeur, List<Joueur> joueursEnJeu, Controleur c, Window plateau)
+        public void initVendPropriete(Propriete AVendre, Joueur Vendeur, List<Joueur> joueursEnJeu, Controleur c)
         {
 
-            c.SwitchVerrouFenetre(plateau);
-            FormulaireVente modalites = new FormulaireVente(Vendeur, joueursEnJeu, this, AVendre, c, plateau);
+            c.SwitchVerrouFenetre();
+            FormulaireVente modalites = new FormulaireVente(Vendeur, joueursEnJeu, this, AVendre, c);
             modalites.Show();
 
         }
@@ -135,5 +139,6 @@ namespace MonopolyVS.Modeles
             Vendeur.Patrimoine.Remove(AVendre);
             acheteur.Patrimoine.Add(AVendre);
         }
+        #endregion
     }
 }
