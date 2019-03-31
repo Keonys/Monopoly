@@ -100,7 +100,7 @@ namespace MonopolyVS
         {
             if (c.CheckPropriete(listboxBien.SelectedItem) == true)
             {
-                c.debuterVente(listboxBien.SelectedItem);
+                c.debuterOperation(listboxBien.SelectedItem);
             }
         }
 
