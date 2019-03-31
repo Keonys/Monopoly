@@ -51,10 +51,6 @@ namespace MonopolyVS.Vues
                 B.initAchatMaison(Prop, Vendeur, JoueursEnJeu, ListeProp, C);
                 Close();
             }
-            if (RadioHypotheque.IsChecked == true)
-            {
-                
-            }
         }
 
         private void ButtonAnnuler_Click(object sender, RoutedEventArgs e)
