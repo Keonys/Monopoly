@@ -65,13 +65,13 @@ namespace MonopolyVS
 
         private void btnLanceDes_Click(object sender, RoutedEventArgs e)
         {
-            c.clicBtnLanceDes(txtboxConsole, pion1, pion2, lblNomJoueur, lblArgentJoueur, listeCases, imgSortie, btnListe1, btnListe2, btnListe3, btnListe4,
+            c.clicBtnLanceDes(pion1, pion2, lblNomJoueur, lblArgentJoueur, listeCases, imgSortie, btnListe1, btnListe2, btnListe3, btnListe4,
                 btnLanceDes, lblArgent, lblPion, btnTour, lblTour, btnFinPartie, pionWin, lblWin);
         }
 
         private void BtnTour_Click(object sender, RoutedEventArgs e)
         {
-            c.clicbtnTour(txtboxConsole, btnTour, lblTour, lblNomJoueur, lblPion, lblArgentJoueur,
+            c.clicbtnTour(btnTour, lblTour, lblNomJoueur, lblPion, lblArgentJoueur,
                 btnListe1, btnListe2, btnListe3, btnListe4, imgSortie, pion1, pion2, pion3, pion4, btnLanceDes, lblArgent, btnFinPartie, pionWin, lblWin);
             c.afficheAppartenance(listeCases, c.listeCases);
         }

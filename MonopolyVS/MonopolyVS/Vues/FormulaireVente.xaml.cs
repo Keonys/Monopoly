@@ -69,9 +69,10 @@ namespace MonopolyVS.Vues
             if (ComboJoueur.SelectedIndex >= 0 && CheckPrix(TextBoxPrix.Text))
             {
                 Acheteur = listeAcheteurs[ComboJoueur.SelectedIndex];
-                banque.Transaction(Acheteur, GetVendeur(), int.Parse(TextBoxPrix.Text));
+                banque.Transaction(Acheteur, Vendeur, int.Parse(TextBoxPrix.Text));
                 banque.VendPropriete(this, prop, Vendeur);
                 C.SwitchVerrouFenetre();
+                C.C.VentePropriete(Vendeur.Nom, prop.Nom, Acheteur.Nom, int.Parse(TextBoxPrix.Text));
                 Close();
             }
             else if (ComboJoueur.SelectedIndex <= 0)

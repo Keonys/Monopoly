@@ -214,7 +214,7 @@ namespace MonopolyVS
         /// <param name="pionWin"></param>
         /// <param name="lblWin"></param>
         public void finTour(List<Joueur> listeJoueurs, int nbrMax, System.Windows.Controls.Label lblNomJoueur,
-            System.Windows.Controls.Label lblArgentJoueur, Image imgSortie, System.Windows.Controls.TextBox txtboxConsole, Controleur c,
+            System.Windows.Controls.Label lblArgentJoueur, Image imgSortie, Controleur c,
             System.Windows.Controls.Button btnLanceDes, System.Windows.Controls.Button btnFinPartie, Rectangle pionWin, System.Windows.Controls.Label lblWin,
             System.Windows.Controls.Label lblPion, System.Windows.Controls.Button btnListe1, System.Windows.Controls.Button btnListe2)
         {
@@ -223,10 +223,10 @@ namespace MonopolyVS
                 if (j.sonTour == true)
                 {
                     if(j.Numero == nbrMax)
-                        changeTour(listeJoueurs, 0, lblNomJoueur, lblArgentJoueur, imgSortie, txtboxConsole, c, btnLanceDes, btnFinPartie, pionWin, lblWin,
+                        changeTour(listeJoueurs, 0, lblNomJoueur, lblArgentJoueur, imgSortie, c, btnLanceDes, btnFinPartie, pionWin, lblWin,
                             lblPion, btnListe1, btnListe2);
                     else
-                        changeTour(listeJoueurs, j.Numero, lblNomJoueur, lblArgentJoueur, imgSortie, txtboxConsole, c, btnLanceDes, btnFinPartie, pionWin, lblWin,
+                        changeTour(listeJoueurs, j.Numero, lblNomJoueur, lblArgentJoueur, imgSortie, c, btnLanceDes, btnFinPartie, pionWin, lblWin,
                             lblPion, btnListe1, btnListe2);
                     break;
                 }
@@ -238,7 +238,7 @@ namespace MonopolyVS
         /// </summary>
         /// <param name="nbr">Numero du Joueur</param>
         public void changeTour(List<Joueur> listeJoueurs, int nbr, System.Windows.Controls.Label lblNomJoueur,
-            System.Windows.Controls.Label lblArgentJoueur, Image imgSortie, System.Windows.Controls.TextBox txtboxConsole, Controleur c,
+            System.Windows.Controls.Label lblArgentJoueur, Image imgSortie, Controleur c,
             System.Windows.Controls.Button btnLanceDes, System.Windows.Controls.Button btnFinPartie, Rectangle pionWin, System.Windows.Controls.Label lblWin,
             System.Windows.Controls.Label lblPion, System.Windows.Controls.Button btnListe1, System.Windows.Controls.Button btnListe2)
         {
@@ -256,7 +256,7 @@ namespace MonopolyVS
                         imgSortie.Visibility = Visibility.Hidden;
 
                     if (j.Argent <= 0)
-                        banqueroute(j, txtboxConsole, listeJoueurs, c, lblNomJoueur, lblArgentJoueur, imgSortie, btnLanceDes, btnFinPartie, pionWin, lblWin,
+                        banqueroute(j, listeJoueurs, c, lblNomJoueur, lblArgentJoueur, imgSortie, btnLanceDes, btnFinPartie, pionWin, lblWin,
                             lblPion, btnListe1, btnListe2);
                     break;
                 }
@@ -269,12 +269,11 @@ namespace MonopolyVS
         /// Perte de la partie pour le joueur si il n'arrive pas à payer ses dettes
         /// </summary>
         /// <param name="j"></param>
-        public void banqueroute(Joueur j, System.Windows.Controls.TextBox txtboxConsole, List<Joueur> listeJoueurs, Controleur c,
+        public void banqueroute(Joueur j, List<Joueur> listeJoueurs, Controleur c,
             System.Windows.Controls.Label lblNomJoueur, System.Windows.Controls.Label lblArgentJoueur, Image imgSortie, System.Windows.Controls.Button btnLanceDes,
             System.Windows.Controls.Button btnFinPartie, Rectangle pionWin, System.Windows.Controls.Label lblWin,
             System.Windows.Controls.Label lblPion, System.Windows.Controls.Button btnListe1, System.Windows.Controls.Button btnListe2)
         {
-            //txtboxConsole.AppendText(j.Nom + " n'as plus d'argent. Il faudra vendre un terrain, un bâtiment, ou perdre la partie. \n"); //à implémenter
             control.C.Perdre(j.Nom);
             //Faire ici la banqueroute, il faudra utiliser le système de vente de bâtiment et de terrain pour rembourser les dettes
             //Sinon le joueur perd et il faudra le sortir de la partie
@@ -309,23 +308,22 @@ namespace MonopolyVS
                 if (jo.Numero == j.Numero)
                     jo.sonTour = true;
             }
-            finTour(listeJoueurs, c.nbrJoueurs, lblNomJoueur, lblArgentJoueur, imgSortie, txtboxConsole, c, btnLanceDes, btnFinPartie, pionWin, lblWin,
+            finTour(listeJoueurs, c.nbrJoueurs, lblNomJoueur, lblArgentJoueur, imgSortie, c, btnLanceDes, btnFinPartie, pionWin, lblWin,
                 lblPion, btnListe1, btnListe2);
 
             if (c.nbrJoueurs < 2)
             {
-                listeJoueurs[0].gagnePartie(txtboxConsole, btnLanceDes, btnFinPartie, pionWin, lblWin, lblPion, btnListe1, btnListe2);
+                listeJoueurs[0].gagnePartie(btnLanceDes, btnFinPartie, pionWin, lblWin, lblPion, btnListe1, btnListe2);
             }
         }
 
         /// <summary>
         /// Le joueur en question gagne la partie
         /// </summary>
-        public void gagnePartie(System.Windows.Controls.TextBox txtboxConsole, System.Windows.Controls.Button btnLanceDes, System.Windows.Controls.Button btnFinPartie,
+        public void gagnePartie(System.Windows.Controls.Button btnLanceDes, System.Windows.Controls.Button btnFinPartie,
             Rectangle pionWin, System.Windows.Controls.Label lblWin, System.Windows.Controls.Label lblPion, System.Windows.Controls.Button btnListe1,
             System.Windows.Controls.Button btnListe2)
         {
-            //txtboxConsole.AppendText(this.Nom + " gagne la partie. \n");    //à implémenter
             control.C.Victoire(this.Nom);
             
             btnLanceDes.Visibility = Visibility.Hidden;
@@ -404,14 +402,14 @@ namespace MonopolyVS
         /// </summary>
         /// <param name="position">Case où ce trouve le pion à la fin du tour</param>
         public void Placement(int position, Joueur j, Rectangle pion1, Rectangle pion2, List<Propriete> listePropriete,
-            System.Windows.Controls.TextBox txtboxConsole, List<Case> listeCases, List<Carte> listeChance, Image imgSortie, List<Carte> listeCaisse)
+            List<Case> listeCases, List<Carte> listeChance, Image imgSortie, List<Carte> listeCaisse)
         {
             int couleur = 0;
             int couleurTotal = 0;
             bool maison = true;
             bool hotel = true;
             Propriete p = listePropriete[position];
-            Carte c = new Carte();
+            Carte c = new Carte(control);
 
             double[] tab = listePropriete[position].getPositions(j);
 
@@ -427,45 +425,44 @@ namespace MonopolyVS
                     break;
                 case (1):
                     //Cross Roads
-                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configPropriete(j, listePropriete, couleurTotal, couleur, maison, hotel);
                     p.configMaison(listeCases);
                     break;
                 case (2):
                     //Coffre
-                    c.piocheCaisse(imgSortie, j, listeChance, txtboxConsole, pion1, pion2, listePropriete, listeCases, listeCaisse);
+                    c.piocheCaisse(imgSortie, j, listeChance, pion1, pion2, listePropriete, listeCases, listeCaisse);
                     break;
                 case (3):
                     //Goldshire
-                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configPropriete(j, listePropriete, couleurTotal, couleur, maison, hotel);
                     p.configMaison(listeCases);
                     break;
                 case (4):
                     //Impot -- -200€
                     j.Argent -= 200;
-                    //txtboxConsole.AppendText(j.Nom + " paie 200€ à l'entraîneur. \n");   //à implémenter
                     control.C.Evenements(4, j.Nom);
                     break;
                 case (5):
                     //Donjon -- -200€
-                    p.configDonjon(j, txtboxConsole);
+                    p.configDonjon(j);
                     break;
                 case (6):
                     //Auberdine
-                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configPropriete(j, listePropriete, couleurTotal, couleur, maison, hotel);
                     p.configMaison(listeCases);
                     break;
                 case (7):
                     //Chance
-                    c.piocheChance(imgSortie, j, listeChance, txtboxConsole, pion1, pion2, listePropriete, listeCases, listeCaisse);
+                    c.piocheChance(imgSortie, j, listeChance, pion1, pion2, listePropriete, listeCases, listeCaisse);
                     break;
                 case (8):
                     //Senuin
-                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configPropriete(j, listePropriete, couleurTotal, couleur, maison, hotel);
                     p.configMaison(listeCases);
                     break;
                 case (9):
                     //Ambermill
-                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configPropriete(j, listePropriete, couleurTotal, couleur, maison, hotel);
                     p.configMaison(listeCases);
                     break;
                 case (10):
@@ -474,46 +471,45 @@ namespace MonopolyVS
                     break;
                 case (11):
                     //Nighthaven
-                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configPropriete(j, listePropriete, couleurTotal, couleur, maison, hotel);
                     p.configMaison(listeCases);
                     break;
                 case (12):
                     //Impot -- -150€
                     j.Argent -= 150;
-                    //txtboxConsole.AppendText(j.Nom + " doit 150€ au service postal. \n");   //à implémenter
                     control.C.Evenements(12, j.Nom);
                     break;
                 case (13):
                     //Freewind Post
-                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configPropriete(j, listePropriete, couleurTotal, couleur, maison, hotel);
                     p.configMaison(listeCases);
                     break;
                 case (14):
                     //Astranaar
-                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configPropriete(j, listePropriete,couleurTotal, couleur, maison, hotel);
                     p.configMaison(listeCases);
                     break;
                 case (15):
                     //Donjon -- 200€
-                    p.configDonjon(j, txtboxConsole);
+                    p.configDonjon(j);
                     break;
                 case (16):
                     //Booty Bay
-                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configPropriete(j, listePropriete, couleurTotal, couleur, maison, hotel);
                     p.configMaison(listeCases);
                     break;
                 case (17):
                     //Coffre
-                    c.piocheCaisse(imgSortie, j, listeChance, txtboxConsole, pion1, pion2, listePropriete, listeCases, listeCaisse);
+                    c.piocheCaisse(imgSortie, j, listeChance, pion1, pion2, listePropriete, listeCases, listeCaisse);
                     break;
                 case (18):
                     //Tarren Mill
-                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configPropriete(j, listePropriete, couleurTotal, couleur, maison, hotel);
                     p.configMaison(listeCases);
                     break;
                 case (19):
                     //Southshore
-                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configPropriete(j, listePropriete, couleurTotal, couleur, maison, hotel);
                     p.configMaison(listeCases);
                     break;
                 case (20):
@@ -521,97 +517,94 @@ namespace MonopolyVS
                     break;
                 case (21):
                     //Gadgetzan
-                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configPropriete(j, listePropriete, couleurTotal, couleur, maison, hotel);
                     p.configMaison(listeCases);
                     break;
                 case (22):
                     //Chance
-                    c.piocheChance(imgSortie, j, listeChance, txtboxConsole, pion1, pion2, listePropriete, listeCases, listeCaisse);
+                    c.piocheChance(imgSortie, j, listeChance, pion1, pion2, listePropriete, listeCases, listeCaisse);
                     break;
                 case (23):
                     //Camp Mojache
-                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configPropriete(j, listePropriete, couleurTotal, couleur, maison, hotel);
                     p.configMaison(listeCases);
                     break;
                 case (24):
                     //Aerie Peak
-                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configPropriete(j, listePropriete, couleurTotal, couleur, maison, hotel);
                     p.configMaison(listeCases);
                     break;
                 case (25):
                     //Donjon -- 200€
-                    p.configDonjon(j, txtboxConsole);
+                    p.configDonjon(j);
                     break;
                 case (26):
                     //Everlook
-                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configPropriete(j, listePropriete, couleurTotal, couleur, maison, hotel);
                     p.configMaison(listeCases);
                     break;
                 case (27):
                     //Lights Hope Chapel
-                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configPropriete(j, listePropriete, couleurTotal, couleur, maison, hotel);
                     p.configMaison(listeCases);
                     break;
                 case (28):
                     //Impot -- 150€
                     j.Argent -= 150;
-                    //txtboxConsole.AppendText(j.Nom + " paie 150€ de barbier. Superbe barbe ! \n");   //à implémenter
                     control.C.Evenements(28, j.Nom);
                     break;
                 case (29):
                     //Stormwind City
-                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configPropriete(j, listePropriete, couleurTotal, couleur, maison, hotel);
                     p.configMaison(listeCases);
                     break;
                 case (30):
                     //Vers la Prison
                     this.Position = 40;
-                    this.Placement(40, j, pion1, pion2, listePropriete, txtboxConsole, listeCases, listeChance, imgSortie, listeCaisse);
+                    this.Placement(40, j, pion1, pion2, listePropriete,  listeCases, listeChance, imgSortie, listeCaisse);
                     j.EstEnPrison = true;
-                    //txtboxConsole.AppendText(j.Nom + " rentre sur le champ de bataille ! \n");   //à implémenter
                     control.C.Evenements(30, j.Nom);
                     break;
                 case (31):
                     //Thunderbluff
-                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configPropriete(j, listePropriete, couleurTotal, couleur, maison, hotel);
                     p.configMaison(listeCases);
                     break;
                 case (32):
                     //Ironforge
-                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configPropriete(j, listePropriete, couleurTotal, couleur, maison, hotel);
                     p.configMaison(listeCases);
                     break;
                 case (33):
                     //Coffre
-                    c.piocheCaisse(imgSortie, j, listeChance, txtboxConsole, pion1, pion2, listePropriete, listeCases, listeCaisse);
+                    c.piocheCaisse(imgSortie, j, listeChance, pion1, pion2, listePropriete, listeCases, listeCaisse);
                     break;
                 case (34):
                     //Dalaran
-                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configPropriete(j, listePropriete, couleurTotal, couleur, maison, hotel);
                     p.configMaison(listeCases);
                     break;
                 case (35):
                     //Donjon -- 200€
-                    p.configDonjon(j, txtboxConsole);
+                    p.configDonjon(j);
                     break;
                 case (36):
                     //Chance
-                    c.piocheChance(imgSortie, j, listeChance, txtboxConsole, pion1, pion2, listePropriete, listeCases, listeCaisse);
+                    c.piocheChance(imgSortie, j, listeChance, pion1, pion2, listePropriete, listeCases, listeCaisse);
                     break;
                 case (37):
                     //Orgrimmar
-                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configPropriete(j, listePropriete, couleurTotal, couleur, maison, hotel);
                     p.configMaison(listeCases);
                     break;
                 case (38):
                     //Impot -- 200€
                     j.Argent -= 200;
-                    //txtboxConsole.AppendText(j.Nom + " répare son équipement pour 200€. \n");   //à implémenter
                     control.C.Evenements(38, j.Nom);
                     break;
                 case (39):
                     //Darnassus
-                    p.configPropriete(j, listePropriete, txtboxConsole, couleurTotal, couleur, maison, hotel);
+                    p.configPropriete(j, listePropriete, couleurTotal, couleur, maison, hotel);
                     p.configMaison(listeCases);
                     break;
                 case (40):
