@@ -1,0 +1,16 @@
+﻿<Window x:Name="FromAchVent1" x:Class="MonopolyVS.Vues.FormChoixAchatVente"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MonopolyVS.Vues"
+        mc:Ignorable="d"
+        Title="FormChoixAchatVente" Height="250" Width="530" ShowInTaskbar="False" WindowStyle="None">
+    <Grid>
+        <Label Content="Quelle opération souhaitez-vous effectuer ?" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="502" Height="40" FontFamily="Matura MT Script Capitals" FontSize="26"/>
+        <RadioButton x:Name="RadioVente" Content="Vente (Propriétés ou Maisons/Hôtels)" HorizontalAlignment="Center" Margin="0,60,0,0" VerticalAlignment="Top" FontSize="24" VerticalContentAlignment="Center"/>
+        <RadioButton x:Name="RadioAchat" Content="Achat de Maisons/Hôtels" HorizontalAlignment="Center" Margin="0,102,0,0" VerticalAlignment="Top" FontSize="24" VerticalContentAlignment="Center"/>
+        <RadioButton x:Name="RadioHypotheque" Content="Hypothêque" HorizontalAlignment="Center" Margin="0,144,0,0" VerticalAlignment="Top" FontSize="24" VerticalContentAlignment="Center"/>
+
+    </Grid>
+</Window>
