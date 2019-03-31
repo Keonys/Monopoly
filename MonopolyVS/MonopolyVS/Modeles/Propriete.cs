@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MonopolyVS.Controleurs;
 #endregion
 
 namespace MonopolyVS.Modeles
@@ -67,7 +68,7 @@ namespace MonopolyVS.Modeles
         /// </summary>
         public bool Hotel { get; set; } = false;
 
-        Controleurs.Controleur controleur;
+        Controleur controleur;
 
         //Toutes les coordonnées du joueur sur la case
         public double XJ1 { get; set; } = 0.0;
@@ -78,6 +79,7 @@ namespace MonopolyVS.Modeles
         public double YJ3 { get; set; } = 0.0;
         public double XJ4 { get; set; } = 0.0;
         public double YJ4 { get; set; } = 0.0;
+        public Controleur Controleur { get => controleur; set => controleur = value; }
 
         /// <summary>
         /// Prix d'hypothèque (vente), pour obtenir le prix de rachat, il faut multiplier ce prix par 1.1
@@ -107,6 +109,7 @@ namespace MonopolyVS.Modeles
             PrixTerrain = prixTerrain;
             PrixMaison = prixMaison;
             Loyer = loyer;
+            controleur = c;
             XJ1 = xJ1;
             YJ1 = yJ1;
             XJ2 = xJ2;
@@ -173,13 +176,14 @@ namespace MonopolyVS.Modeles
                 if (dialogResult == DialogResult.Yes)
                 {
                     //CAS ACCEPTE ACHAT
-                    txtboxConsole.AppendText(j.Nom + " a acheté le donjon : " + this.Nom + ". \n"); //à implémenter
+                    //txtboxConsole.AppendText(j.Nom + " a acheté le donjon : " + this.Nom + ". \n"); //à implémenter
+                    controleur.C.AchatVentePropriete(true, true, j.Nom, this.Nom, false);
                     j.nbrDonjons++;
                     j.Argent -= this.PrixTerrain;
                     this.Proprietaire = j;
                     j.Patrimoine.Add(this);
                     
-                    foreach (Case ca in controleur.listeCases)
+                    foreach (Case ca in Controleur.listeCases)
                     {
                         if (ca.Num == Numero)
                         {
@@ -190,13 +194,15 @@ namespace MonopolyVS.Modeles
                 else if (dialogResult == DialogResult.No)
                 {
                     //CAS REFUS ACHAT
-                    txtboxConsole.AppendText(j.Nom + " a choisi de ne pas acheter le donjon : " + this.Nom + ". \n"); //à implémenter
+                    //txtboxConsole.AppendText(j.Nom + " a choisi de ne pas acheter le donjon : " + this.Nom + ". \n"); //à implémenter
+                    controleur.C.AchatVentePropriete(true, false, j.Nom, this.Nom, false);
                 }
             }
             else
             {
                 j.Argent -= this.Loyer[this.Proprietaire.nbrDonjons];
-                txtboxConsole.AppendText(j.Nom + " paie " + this.Loyer[this.Proprietaire.nbrDonjons] + "€ de loyer à " + this.Proprietaire.Nom + ". \n"); //à implémenter
+                //txtboxConsole.AppendText(j.Nom + " paie " + this.Loyer[this.Proprietaire.nbrDonjons] + "€ de loyer à " + this.Proprietaire.Nom + ". \n"); //à implémenter
+                controleur.C.Paie(j.Nom, this.Proprietaire.Nom, true, this.Loyer[this.Proprietaire.nbrDonjons]);
             }
         }
 
@@ -233,12 +239,13 @@ namespace MonopolyVS.Modeles
                 if (dialogResult == DialogResult.Yes)
                 {
                     //CAS ACCEPTE ACHAT
-                    txtboxConsole.AppendText(j.Nom + " a acheté " + this.Nom + ". \n"); //à implémenter
+                    //txtboxConsole.AppendText(j.Nom + " a acheté " + this.Nom + ". \n"); //à implémenter
+                    controleur.C.AchatVentePropriete(false, true, j.Nom, this.Nom, false);
                     this.Proprietaire = j;
                     j.Patrimoine.Add(this);
                     j.Argent -= this.PrixTerrain;
 
-                    foreach (Case ca in controleur.listeCases)
+                    foreach (Case ca in Controleur.listeCases)
                     {
                         if (ca.Num == Numero)
                         {
@@ -249,7 +256,9 @@ namespace MonopolyVS.Modeles
                 else if (dialogResult == DialogResult.No)
                 {
                     //CAS REFUS ACHAT
-                    txtboxConsole.AppendText(j.Nom + " a choisi de ne pas acheter " + this.Nom + ". \n");
+                    //txtboxConsole.AppendText(j.Nom + " a choisi de ne pas acheter " + this.Nom + ". \n"); //à implémenter
+                    controleur.C.AchatVentePropriete(false, false, j.Nom, this.Nom, false);
+                    //TODOCORENTIN Vente aux enchères à créer
                 }
             }
             else if (this.Proprietaire == j && couleur == couleurTotal && maison == true)
@@ -259,31 +268,36 @@ namespace MonopolyVS.Modeles
                     DialogResult dialogResult = System.Windows.Forms.MessageBox.Show("Voulez-vous acheter un hotel pour " + this.Nom + " ?", "Achat d'Hotel", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        txtboxConsole.AppendText(j.Nom + " a acheté un hotel pour " + this.Nom + ". \n");
+                        //txtboxConsole.AppendText(j.Nom + " a acheté un hotel pour " + this.Nom + ". \n"); //à implémenter
+                        controleur.C.AchatVenteMaison(true, true, j.Nom, this.Nom);
                         this.Hotel = true;
                         j.Argent -= this.PrixMaison;
                     }
                     else if (dialogResult == DialogResult.No)
                     {
-                        txtboxConsole.AppendText(j.Nom + " a choisi de ne pas acheter d'hotel pour " + this.Nom + ". \n");
+                        //txtboxConsole.AppendText(j.Nom + " a choisi de ne pas acheter d'hotel pour " + this.Nom + ". \n"); //à implémenter
+                        controleur.C.AchatVenteMaison(true, false, j.Nom, this.Nom);
                     }
                 }
-                else if(this.NbrMaison == 4 && this.Hotel)
+                else if (this.NbrMaison == 4 && this.Hotel) //PEUT ETRE INUTILE A L'AVENIR
                 {
-                    txtboxConsole.AppendText(j.Nom + " ne peut plus rien placer sur " + this.Nom + ". \n");
+                    //txtboxConsole.AppendText(j.Nom + " ne peut plus rien placer sur " + this.Nom + ". \n"); //à implémenter
+                    controleur.C.ImpossibleConstruire(j.Nom, this.Nom);
                 }
                 else
                 {
                     DialogResult dialogResult = System.Windows.Forms.MessageBox.Show("Voulez-vous acheter une maison pour " + this.Nom + " ?", "Achat de Maison", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        txtboxConsole.AppendText(j.Nom + " a acheté une maison pour " + this.Nom + ". \n");
+                        //txtboxConsole.AppendText(j.Nom + " a acheté une maison pour " + this.Nom + ". \n"); //à implémenter
+                        controleur.C.AchatVenteMaison(false, true, j.Nom, this.Nom);
                         this.NbrMaison++;
                         j.Argent -= this.PrixMaison;
                     }
                     else if (dialogResult == DialogResult.No)
                     {
-                        txtboxConsole.AppendText(j.Nom + " a choisi de ne pas acheter de maison pour " + this.Nom + ". \n");
+                        //txtboxConsole.AppendText(j.Nom + " a choisi de ne pas acheter de maison pour " + this.Nom + ". \n"); //à implémenter
+                        controleur.C.AchatVenteMaison(false, false, j.Nom, this.Nom);
                     }
                 }
             }
@@ -291,11 +305,13 @@ namespace MonopolyVS.Modeles
             {
                 j.Argent -= this.Loyer[this.NbrMaison];
                 this.Proprietaire.Argent += this.Loyer[this.NbrMaison];
-                txtboxConsole.AppendText(j.Nom + " paie " + this.Loyer[this.NbrMaison] + "€ de loyer à " + this.Proprietaire.Nom + ". \n");
+                //txtboxConsole.AppendText(j.Nom + " paie " + this.Loyer[this.NbrMaison] + "€ de loyer à " + this.Proprietaire.Nom + ". \n"); //à implémenter
+                controleur.C.Paie(j.Nom, this.Proprietaire.Nom, true, this.Loyer[this.NbrMaison]);
             }
             else
             {
-                txtboxConsole.AppendText(this.Nom + " vous appartient déjà " + j.Nom + " ! \n");
+                //txtboxConsole.AppendText(this.Nom + " vous appartient déjà " + j.Nom + " ! \n"); //à implémenter
+                controleur.C.AchatVentePropriete(false, false, j.Nom, this.Nom, true);
             }
         }
 

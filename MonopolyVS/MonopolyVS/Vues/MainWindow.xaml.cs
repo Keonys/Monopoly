@@ -39,7 +39,7 @@ namespace MonopolyVS
         public MainWindow()
         {
             InitializeComponent();
-            c = new Controleur(this);
+            c = new Controleur(this, txtboxConsole);
             initAppli();
             afficheFormulaire();
         }

@@ -7,9 +7,9 @@ using System.Windows.Controls;
 
 namespace MonopolyVS.Controleurs
 {
-    class Console
+    public class Console
     {
-        #region
+        #region MEMBRES
         private TextBox Afficheur;
         #endregion
         
@@ -21,7 +21,7 @@ namespace MonopolyVS.Controleurs
 
         public Console(TextBox console)
         {
-
+            Afficheur = console;
         }
         #endregion
 
@@ -152,7 +152,7 @@ namespace MonopolyVS.Controleurs
             Print(joueur + " ne peut plus rien construire sur " + propriete + ".\n");
         }
 
-        public void Paie(string payeur, string paye, bool loyer, int prix)
+        public void Paie(string payeur, string paye, bool loyer, double prix)
         {
             if (loyer)
                 Print(payeur + " paie " + prix + "PO de loyer à " + paye + ".\n");
