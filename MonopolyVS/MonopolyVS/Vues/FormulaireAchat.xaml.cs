@@ -82,6 +82,7 @@ namespace MonopolyVS.Vues
             Acheteur.Argent -= Constructible.PrixMaison * Convert.ToInt32(ComboMaisons.SelectedItem);
             Constructible.NbrMaison += Convert.ToInt32(ComboMaisons.SelectedItem);
             Constructible.configMaison(control.listeCases);
+            control.C.AchatMaisonHotel(false, Acheteur.Nom, Constructible.PrixMaison * Convert.ToInt32(ComboMaisons.SelectedItem));
             control.SwitchVerrouFenetre();
             Close();
         }
@@ -92,6 +93,7 @@ namespace MonopolyVS.Vues
             Acheteur.Argent -= Constructible.PrixMaison;
             Constructible.Hotel = true;
             Constructible.configMaison(control.listeCases);
+            control.C.AchatMaisonHotel(true, Acheteur.Nom, Constructible.PrixMaison);
             control.SwitchVerrouFenetre();
             Close();
         }

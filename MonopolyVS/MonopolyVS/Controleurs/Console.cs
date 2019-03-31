@@ -194,6 +194,19 @@ namespace MonopolyVS.Controleurs
             }
         }
 
+        public void AchatMaisonHotel(bool hotel, string joueur, int prix)
+        {
+            if (hotel)
+                Print(joueur + " a acheté un hôtel pour " + prix + " PO.\n");
+            else Print(joueur + " a acheté une maison pour " + prix + " PO.\n");
+        }
+
+        public void VenteMaisonHotel(bool hotel, string joueur, int prix)
+        {
+            if (hotel)
+                Print(joueur + " a vendu un hôtel pour " + prix + " PO.\n");
+            else Print(joueur + " a vendu une maison pour " + prix + " PO.\n");
+        }
         #region VICTOIRE DEFAITE
         public void Perdre(string joueur)
         {
