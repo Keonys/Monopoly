@@ -109,7 +109,7 @@ namespace MonopolyVS.Modeles
             PrixTerrain = prixTerrain;
             PrixMaison = prixMaison;
             Loyer = loyer;
-            controleur = c;
+            Controleur = c;
             XJ1 = xJ1;
             YJ1 = yJ1;
             XJ2 = xJ2;
