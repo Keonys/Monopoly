@@ -55,6 +55,13 @@ namespace MonopolyVS.Controleurs
         int patriJoueurAff = -1;
         #endregion
 
+        #region CONSTRUCTEURS
+        public Controleur()
+        {
+
+        }
+        #endregion
+
         #region Méthodes
 
         /// <summary>
@@ -618,7 +625,7 @@ namespace MonopolyVS.Controleurs
             surPlateau = aAfficher;
         }
 
-        public void debuterVente(object propriete)
+        public void debuterVente(object propriete, Window plateau)
         {
             Joueur proprietaire = listeJoueurs[patriJoueurAff];
             Propriete AVendre = new Propriete();
@@ -629,7 +636,7 @@ namespace MonopolyVS.Controleurs
                     AVendre = prop;
                 }
             }
-            banque.initVendPropriete(AVendre, proprietaire, listeJoueurs);
+            banque.initVendPropriete(AVendre, proprietaire, listeJoueurs, this, plateau);
         }
 
         public bool CheckPropriete(object aVerifier)
@@ -645,6 +652,16 @@ namespace MonopolyVS.Controleurs
             }
 
             return resultat;
+        }
+
+        /// <summary>
+        /// Verrouille ou dévérouille une fenêtre
+        /// </summary>
+        public void SwitchVerrouFenetre(Window ABloquer)
+        {
+            if (ABloquer.IsEnabled == true)
+                ABloquer.IsEnabled = false;
+            else ABloquer.IsEnabled = true;
         }
         #endregion
     }

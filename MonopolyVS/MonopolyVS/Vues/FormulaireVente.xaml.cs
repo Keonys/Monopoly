@@ -1,4 +1,5 @@
-﻿using MonopolyVS.Modeles;
+﻿using MonopolyVS.Controleurs;
+using MonopolyVS.Modeles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,11 @@ namespace MonopolyVS.Vues
         Banque banque;
         private Propriete prop;
 
+        private Controleur C;
+
+        private Window Plateau;
+
+        #region CONSTRUCTEURS
         public FormulaireVente()
         {
             InitializeComponent();
@@ -40,7 +46,7 @@ namespace MonopolyVS.Vues
         /// <param name="v">Joueur vendeur</param>
         /// <param name="joueursEnJeu">Liste des joueurs en jeu</param>
         /// <param name="b">Banque de la partie</param>
-        public FormulaireVente(Joueur v, List<Joueur> joueursEnJeu, Banque b, Propriete nomProp)
+        public FormulaireVente(Joueur v, List<Joueur> joueursEnJeu, Banque b, Propriete nomProp , Controleur c, Window plateau)
         {
             InitializeComponent();
             Vendeur = v;
@@ -51,9 +57,12 @@ namespace MonopolyVS.Vues
             }
             banque = b;
             prop = nomProp;
+            C = c;
+            Plateau = plateau;
 
             QuestionVente();
         }
+        #endregion
 
         private void ButtonValider_Click(object sender, RoutedEventArgs e)
         {
@@ -62,6 +71,7 @@ namespace MonopolyVS.Vues
                 Acheteur = listeAcheteurs[ComboJoueur.SelectedIndex];
                 banque.Transaction(Acheteur, GetVendeur(), int.Parse(TextBoxPrix.Text));
                 banque.VendPropriete(this, prop, Vendeur);
+                C.SwitchVerrouFenetre(Plateau);
                 Close();
             }
             else if (ComboJoueur.SelectedIndex <= 0)

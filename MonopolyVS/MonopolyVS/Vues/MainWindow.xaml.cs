@@ -96,7 +96,9 @@ namespace MonopolyVS
         private void ListboxBien_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (c.CheckPropriete(listboxBien.SelectedItem) == true)
-                c.debuterVente(listboxBien.SelectedItem);
+            {
+                c.debuterVente(listboxBien.SelectedItem, this);
+            }
         }
 
         private void btnFinPartie_Click(object sender, RoutedEventArgs e)
@@ -156,6 +158,12 @@ namespace MonopolyVS
             #endregion
 
             imgSortie.Visibility = Visibility.Hidden;
+        }
+
+        private void FenetrePrincipale_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (this.IsEnabled == false)
+                e.Cancel = true;
         }
     }
 }
