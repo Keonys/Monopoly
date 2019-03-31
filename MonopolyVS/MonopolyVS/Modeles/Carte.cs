@@ -16,17 +16,22 @@ namespace MonopolyVS.Modeles
         public string Type;
         public int Valeur;
         public string Contenu;
-        Controleur control;
-        List<Carte> listeChanceTampon = new List<Carte>();
-        List<Carte> listeCaisseTampon = new List<Carte>();
-
-        public Controleur Control { get => control; set => control = value; }
+        public Controleur Control;
+        List<Carte> listeChanceTamponCarte = new List<Carte>();
+        List<Carte> listeCaisseTamponCarte = new List<Carte>();
+        
         #endregion
 
         #region CONSTRUCTEURS
+
         public Carte()
         {
 
+        }
+
+        public Carte(Controleur c)
+        {
+            Control = c;
         }
 
         public Carte(int id, string type, int valeur, string contenu, Controleur c)
@@ -37,10 +42,12 @@ namespace MonopolyVS.Modeles
             Contenu = contenu;
             Control = c;
         }
+
         #endregion
 
 
         #region METHODES
+
         /// <summary>
         /// Pioche une carte chance et effectue un effet
         /// </summary>
@@ -53,38 +60,44 @@ namespace MonopolyVS.Modeles
         /// <param name="listePropriete"></param>
         /// <param name="listeCases"></param>
         /// <param name="listeCaisse"></param>
-        public void piocheChance(Image imgSortie, Joueur j, List<Carte> listeChance, TextBox txtboxConsole, Rectangle pion1, Rectangle pion2, 
+        public void piocheChance(Image imgSortie, Joueur j, List<Carte> listeChance, Rectangle pion1, Rectangle pion2, 
             List<Propriete> listePropriete, List<Case> listeCases, List<Carte> listeCaisse)
         {
-            listeChanceTampon = listeChance;
             Random alea = new Random();
             int i = 0;
-            if(listeChanceTampon != null)
-                i = alea.Next(0, listeChanceTampon.Count);
+            listeChanceTamponCarte = Control.listeChanceTampon;
+
+            if (listeChanceTamponCarte.Count != 0)
+                i = alea.Next(0, listeChanceTamponCarte.Count);
             else
             {
-                listeChanceTampon = listeChance;
-                i = alea.Next(0, listeChanceTampon.Count);
+                if (Control.listeChanceTampon.Count == 0)
+                    Control.remplirListeChanceTampon();
+                listeChanceTamponCarte = Control.listeChanceTampon;
+
+                i = alea.Next(0, listeChanceTamponCarte.Count);
             }
 
-            Carte c = listeChanceTampon[i];
-            //txtboxConsole.AppendText("Carte Chance : \n");  //à implémenter
-            //txtboxConsole.AppendText(c.Contenu + " \n");  //à implémenter
-            control.C.Carte(true, c.Contenu);
-            
-            if (c.Type == "Ajout")
-                j.Argent += c.Valeur;
-            else if (c.Type == "Perte")
-                j.Argent -= c.Valeur;
-            else if (c.Type == "Sortie")
-                j.Sortie++;
-            else if(c.Type == "Prison")
+            if(listeChanceTamponCarte.Count != 0)
             {
-                j.Position = 40;
-                j.Placement(40, j, pion1, pion2, listePropriete, txtboxConsole, listeCases, listeChance, imgSortie, listeCaisse);
-                j.EstEnPrison = true;
-                //txtboxConsole.AppendText(j.Nom + " rentre sur le champ de bataille ! \n");  //à implémenter
-                control.C.ChampBataille(j.Nom);
+                Carte c = listeChanceTamponCarte[i];
+                Control.C.Carte(true, c.Contenu);
+
+                if (c.Type == "Ajout")
+                    j.Argent += c.Valeur;
+                else if (c.Type == "Perte")
+                    j.Argent -= c.Valeur;
+                else if (c.Type == "Sortie")
+                    j.Sortie++;
+                else if (c.Type == "Prison")
+                {
+                    j.Position = 40;
+                    j.Placement(40, j, pion1, pion2, listePropriete, listeCases, listeChance, imgSortie, listeCaisse);
+                    j.EstEnPrison = true;
+                    Control.C.ChampBataille(j.Nom);
+                }
+
+                listeChanceTamponCarte.Remove(listeChanceTamponCarte[i]);
             }
         }
 
@@ -100,37 +113,44 @@ namespace MonopolyVS.Modeles
         /// <param name="listePropriete"></param>
         /// <param name="listeCases"></param>
         /// <param name="listeCaisse"></param>
-        public void piocheCaisse(Image imgSortie, Joueur j, List<Carte> listeChance, TextBox txtboxConsole, Rectangle pion1, Rectangle pion2,
+        public void piocheCaisse(Image imgSortie, Joueur j, List<Carte> listeChance, Rectangle pion1, Rectangle pion2,
             List<Propriete> listePropriete, List<Case> listeCases, List<Carte> listeCaisse)
         {
-            listeCaisseTampon = listeCaisse;
             Random alea = new Random();
             int i = 0;
-            if (listeCaisseTampon != null)
-                i = alea.Next(0, listeCaisseTampon.Count);
+            listeCaisseTamponCarte = Control.listeCaisseTampon;
+
+            if (listeCaisseTamponCarte.Count != 0)
+                i = alea.Next(0, listeCaisseTamponCarte.Count);
             else
             {
-                listeCaisseTampon = listeCaisse;
-                i = alea.Next(0, listeCaisseTampon.Count);
+                if(Control.listeCaisseTampon.Count == 0)
+                    Control.remplirListeCaisseTampon();
+                listeCaisseTamponCarte = Control.listeCaisseTampon;
+
+                i = alea.Next(0, listeCaisseTamponCarte.Count);
             }
 
-            Carte c = listeCaisseTampon[i];
-            //txtboxConsole.AppendText("Carte Chance : \n");  //à implémenter
-            //txtboxConsole.AppendText(c.Contenu + " \n");  //à implémenter
-            control.C.Carte(false, c.Contenu);
-            if (c.Type == "Ajout")
-                j.Argent += c.Valeur;
-            else if (c.Type == "Perte")
-                j.Argent -= c.Valeur;
-            else if (c.Type == "Sortie")
-                j.Sortie++;
-            else if (c.Type == "Prison")
+            if(listeCaisseTamponCarte.Count != 0)
             {
-                j.Position = 40;
-                j.Placement(40, j, pion1, pion2, listePropriete, txtboxConsole, listeCases, listeChance, imgSortie, listeCaisse);
-                j.EstEnPrison = true;
-                //txtboxConsole.AppendText(j.Nom + " rentre sur le champ de bataille ! \n");  //à implémenter
-                control.C.ChampBataille(j.Nom);
+                Carte c = listeCaisseTamponCarte[i];
+                Control.C.Carte(false, c.Contenu);
+
+                if (c.Type == "Ajout")
+                    j.Argent += c.Valeur;
+                else if (c.Type == "Perte")
+                    j.Argent -= c.Valeur;
+                else if (c.Type == "Sortie")
+                    j.Sortie++;
+                else if (c.Type == "Prison")
+                {
+                    j.Position = 40;
+                    j.Placement(40, j, pion1, pion2, listePropriete, listeCases, listeChance, imgSortie, listeCaisse);
+                    j.EstEnPrison = true;
+                    Control.C.ChampBataille(j.Nom);
+                }
+
+                listeCaisseTamponCarte.Remove(listeCaisseTamponCarte[i]);
             }
         }
         #endregion

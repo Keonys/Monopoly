@@ -32,6 +32,11 @@ namespace MonopolyVS.Controleurs
             Afficheur.ScrollToEnd();
         }
 
+        public void SautLigne()
+        {
+            Print("\n");
+        }
+
         public void AfficheDe(int result1, int result2)
         {
             Print("Le premier dé affiche un " + Convert.ToString(result1) + ".\n" +
@@ -109,7 +114,7 @@ namespace MonopolyVS.Controleurs
             Print(contenu + "\n");
         }
 
-        public void AchatVentePropriete(bool donjon, bool vendu, string joueur, string propriete, bool achete)
+        public void AchatPropriete(bool donjon, bool vendu, string joueur, string propriete, bool achete)
         {
             if (vendu)
             {
@@ -128,6 +133,11 @@ namespace MonopolyVS.Controleurs
             {
                 Print(propriete + " vous appartient déjà " + joueur + " !\n");
             }
+        }
+
+        public void VentePropriete(string vendeur, string propriete, string acheteur, int prix)
+        {
+            Print(vendeur + " a vendu " + propriete + " pour " + Convert.ToString(prix) + " PO à " + acheteur + ".\n");
         }
 
         public void AchatVenteMaison(bool hotel, bool vendu, string joueur, string propriete)
