@@ -67,10 +67,17 @@
     <Compile Include="Vues\FormChoixAchatVente.xaml.cs">
       <DependentUpon>FormChoixAchatVente.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vues\FormulaireAchat.xaml.cs">
+      <DependentUpon>FormulaireAchat.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vues\FormulaireVente.xaml.cs">
       <DependentUpon>FormulaireVente.xaml</DependentUpon>
     </Compile>
     <Page Include="Vues\FormChoixAchatVente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vues\FormulaireAchat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

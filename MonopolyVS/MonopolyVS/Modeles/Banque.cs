@@ -15,16 +15,24 @@ namespace MonopolyVS.Modeles
     {
         #region MEMBRES
         //Nombre maisons et hôtels pour 1 partie
-        //int nbrMaison = 32;
-        //int nbrHotel = 12;
+        int nbrMaison = 32;
+        int nbrHotel = 12;
         //Lorsque la banque ne peut plus proposer de maisons, une crise du batiment est déclenchée
         public static bool Crise { get; } = false;
+
+        Controleur control;
+
         #endregion
 
         #region CONSTRUCTEURS
         public Banque()
         {
 
+        }
+
+        public Banque(Controleur c)
+        {
+            control = c;
         }
         #endregion
 
@@ -67,11 +75,14 @@ namespace MonopolyVS.Modeles
         /// <param name="nomJoueur">Joueur construisant les maisons</param>
         /// <param name="propriete">Case où sont construit les maisons</param>
         /// <param name="nombre">Nombre de maisons à construire</param>
-        void ConstruireMaison(Joueur nomJoueur, Propriete propriete, int nombre)
+        public void ConstruireMaison(int nbr)
         {
-            //PerdsArgent(nomJoueur, propriete.Prix[1] * nombre);   //mise à jour du solde du joueur achetant une maison
-            //nbrMaison -= nombre;    //mise à jour du solde de maisons en banque
-            //propriete.NbrMaison += nombre;  //construction de la maison sur la case
+            nbrMaison -= nbr;
+        }
+
+        public void DetruireMaison(int nbr)
+        {
+            nbrMaison += nbr;
         }
 
         /// <summary>
@@ -79,13 +90,14 @@ namespace MonopolyVS.Modeles
         /// </summary>
         /// <param name="nomJoueur">Joueur construisant l'hôtel</param>
         /// <param name="propriete">Case où est construit l'hôtel</param>
-        void ConstruireHotel(Joueur nomJoueur, Propriete propriete)
+        public void ConstruireHotel(int nbr)
         {
-            //PerdsArgent(nomJoueur, propriete.Prix[2]);  //mise à jour du solde du joueur achetant un hôtel
-            //propriete.NbrMaison -= 4;   //echange des maisons pour construire hôtel
-            //nbrMaison += 4; //mise à jour du solde de maisons en banque
-            //nbrHotel -= 1;  //mise à jour du solde de'hôtels en banque
-            //propriete.NbrHotel = true;  //construction de l'hôtel sur la case
+            nbrHotel -= nbr;
+        }
+
+        public void DetruireHotel(int nbr)
+        {
+            nbrHotel += nbr;
         }
 
         /// <summary>
@@ -113,7 +125,7 @@ namespace MonopolyVS.Modeles
         public void initOperation(Propriete AVendre, Joueur Vendeur, List<Joueur> joueursEnJeu, Controleur c)
         {
             c.SwitchVerrouFenetre();
-            FormChoixAchatVente operation = new FormChoixAchatVente(Vendeur, joueursEnJeu, this, AVendre, c);
+            FormChoixAchatVente operation = new FormChoixAchatVente(Vendeur, joueursEnJeu, this, AVendre, c.listePropriete, c);
             operation.Show();
         }
 
@@ -130,6 +142,25 @@ namespace MonopolyVS.Modeles
             modalites.Show();
         }
 
+        public void initAchatMaison(Propriete constructible, Joueur acheteur, List<Joueur> joueursEnJeu, List<Propriete> listeProp, Controleur c)
+        {
+            switch (CheckAchatMaison(constructible,acheteur, listeProp))
+            {
+                default :
+                    MessageBox.Show("Aucune opération de construction est disponible en l'état.");
+                    c.SwitchVerrouFenetre();
+                    break;
+                case 0 :
+                    FormulaireAchat modalitesMaison = new FormulaireAchat(0, this, acheteur, constructible, c);
+                    modalitesMaison.Show();
+                    break;
+                case 1 :
+                    FormulaireAchat modalitesHotel = new FormulaireAchat(1, this, acheteur, constructible, c);
+                    modalitesHotel.Show();
+                    break;
+            }
+        }
+
         public void VendPropriete(FormulaireVente form, Propriete AVendre, Joueur Vendeur)
         {
             Joueur acheteur = form.GetAcheteur();
@@ -142,6 +173,70 @@ namespace MonopolyVS.Modeles
             AVendre.Proprietaire = acheteur;
             Vendeur.Patrimoine.Remove(AVendre);
             acheteur.Patrimoine.Add(AVendre);
+        }
+
+        /// <summary>
+        /// Vérifie la disponibilité de la construction d'hôtel ou de maisons
+        /// </summary>
+        /// <param name="constructible">Terrain sur lequel on souhaite construire</param>
+        /// <param name="proprietaire">Propriétaire du terrain</param>
+        /// <param name="listePropriete">Liste des propriétés du plateau</param>
+        /// <returns></returns>
+        private int CheckAchatMaison(Propriete constructible, Joueur proprietaire, List<Propriete> listePropriete)
+        {
+            bool hotel = true;
+            bool maison = true;
+            int couleurTotal = 0, couleur = 0;
+            foreach (Propriete prop in listePropriete)
+            {
+                //Vérifie si tout les terrain sont possédé (si couleur == couleurTotal)
+                if (prop.Couleur == constructible.Couleur)
+                    couleurTotal++;
+                if (prop.Couleur == constructible.Couleur && prop.Proprietaire == proprietaire)
+                    couleur++;
+
+                if (prop.Couleur == constructible.Couleur && constructible.NbrMaison != 4 && (prop.NbrMaison != 4 || !prop.Hotel))
+                    hotel = false;
+                if (prop.Couleur == constructible.Couleur && constructible.NbrMaison > prop.NbrMaison)
+                    maison = false;
+            }
+
+            if (couleur != couleurTotal)
+            {
+                hotel = false;
+                maison = false;
+            }
+
+            if (constructible.Hotel == true)
+                hotel = false;
+
+            if (nbrHotel == 0)
+                hotel = false;
+
+            if (nbrMaison == 0)
+                maison = false;
+
+            if (hotel)
+                return 1;
+            else if (maison)
+                return 0;
+            else return -1;
+        }
+
+        public int NbrMaisonAchetable(Joueur proprietaire, Propriete aComparer, List<Propriete> listeProp)
+        {
+            int nombreMin = 999;
+            foreach (Propriete prop in listeProp)
+            {
+                if (prop.Couleur == aComparer.Couleur)
+                {
+                    if (prop.Hotel != true && prop.NbrMaison < nombreMin)
+                        nombreMin = prop.NbrMaison;
+                }
+            }
+            if (aComparer.NbrMaison <= nombreMin)
+                return 1;
+            else return 0;
         }
         #endregion
     }

@@ -202,7 +202,7 @@ namespace MonopolyVS.Controleurs
 
         public void Defaite(string joueur)
         {
-            Print(joueur + "a perdu la partie.\n");
+            Print(joueur + " a perdu la partie.\n");
         }
 
         public void Victoire(string joueur)

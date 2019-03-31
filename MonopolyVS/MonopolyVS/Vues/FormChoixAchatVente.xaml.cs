@@ -24,16 +24,18 @@ namespace MonopolyVS.Vues
         Joueur Vendeur;
         List<Joueur> JoueursEnJeu;
         Propriete Prop;
+        List<Propriete> ListeProp;
         Banque B;
         Controleur C;
 
-        public FormChoixAchatVente(Joueur v, List<Joueur> joueursEnJeu, Banque banque, Propriete nomProp, Controleur c)
+        public FormChoixAchatVente(Joueur v, List<Joueur> joueursEnJeu, Banque banque, Propriete nomProp, List<Propriete> listeprop, Controleur c)
         {
             InitializeComponent();
             Vendeur = v;
             JoueursEnJeu = joueursEnJeu;
             B = banque;
             Prop = nomProp;
+            ListeProp = listeprop;
             C = c;
         }
 
@@ -46,7 +48,8 @@ namespace MonopolyVS.Vues
             }
             if (RadioAchat.IsChecked == true)
             {
-                
+                B.initAchatMaison(Prop, Vendeur, JoueursEnJeu, ListeProp, C);
+                Close();
             }
             if (RadioHypotheque.IsChecked == true)
             {
