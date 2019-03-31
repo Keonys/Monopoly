@@ -8,9 +8,8 @@
         Title="FormChoixAchatVente" Height="250" Width="530" ShowInTaskbar="False" WindowStyle="None">
     <Grid>
         <Label Content="Quelle opération souhaitez-vous effectuer ?" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="502" Height="40" FontFamily="Matura MT Script Capitals" FontSize="26"/>
-        <RadioButton x:Name="RadioVente" Content="Vente (Propriétés ou Maisons/Hôtels)" HorizontalAlignment="Center" Margin="0,60,0,0" VerticalAlignment="Top" FontSize="24" VerticalContentAlignment="Center" IsChecked="True"/>
-        <RadioButton x:Name="RadioAchat" Content="Achat de Maisons/Hôtels" HorizontalAlignment="Center" Margin="0,102,0,0" VerticalAlignment="Top" FontSize="24" VerticalContentAlignment="Center" IsChecked="True"/>
-        <RadioButton x:Name="RadioHypotheque" Content="Hypothèque" HorizontalAlignment="Center" Margin="0,144,0,0" VerticalAlignment="Top" FontSize="24" VerticalContentAlignment="Center"/>
+        <RadioButton x:Name="RadioVente" Content="Vente (Propriétés ou Maisons/Hôtels)" HorizontalAlignment="Center" Margin="55,76,55.2,0" VerticalAlignment="Top" FontSize="24" VerticalContentAlignment="Center" IsChecked="True"/>
+        <RadioButton x:Name="RadioAchat" Content="Achat de Maisons/Hôtels" HorizontalAlignment="Center" Margin="120,118,119.2,0" VerticalAlignment="Top" FontSize="24" VerticalContentAlignment="Center" IsChecked="True"/>
         <Button x:Name="ButtonValider" Content="Valider" HorizontalAlignment="Center" Margin="141,0,257.2,10.2" VerticalAlignment="Bottom" Width="119" Height="40" FontSize="24" Click="ButtonValider_Click"/>
         <Button x:Name="ButtonAnnuler" Content="Annuler" HorizontalAlignment="Center" Margin="285,0,113.2,10.2" VerticalAlignment="Bottom" Width="119" Height="40" FontSize="24" Click="ButtonAnnuler_Click"/>
 
