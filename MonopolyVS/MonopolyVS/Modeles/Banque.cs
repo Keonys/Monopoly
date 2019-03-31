@@ -1,10 +1,12 @@
 ﻿#region NAMESPACE
+using MonopolyVS.Controleurs;
 using MonopolyVS.Vues;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 #endregion
 
 namespace MonopolyVS.Modeles
@@ -111,10 +113,13 @@ namespace MonopolyVS.Modeles
         /// <param name="Vendeur">Joueur vendeur</param>
         /// <param name="Acheteur">Joueur aquereur</param>
         /// <param name="Prix"></param>
-        public void initVendPropriete(Propriete AVendre, Joueur Vendeur, List<Joueur> joueursEnJeu)
+        public void initVendPropriete(Propriete AVendre, Joueur Vendeur, List<Joueur> joueursEnJeu, Controleur c, Window plateau)
         {
-            FormulaireVente modalites = new FormulaireVente(Vendeur, joueursEnJeu, this, AVendre);
+
+            c.SwitchVerrouFenetre(plateau);
+            FormulaireVente modalites = new FormulaireVente(Vendeur, joueursEnJeu, this, AVendre, c, plateau);
             modalites.Show();
+
         }
 
         public void VendPropriete(FormulaireVente form, Propriete AVendre, Joueur Vendeur)

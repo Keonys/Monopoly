@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MonopolyVS"
         mc:Ignorable="d"
         Title="Monopoly World of Warcraft" Height="792" Width="1540.8"
-        WindowStartupLocation="CenterScreen" WindowState="Maximized">
+        WindowStartupLocation="CenterScreen" WindowState="Maximized" Closing="FenetrePrincipale_Closing">
     <Grid>
         <!--Visuel n'étant pas sur l'image-->
         <Image x:Name="imgSortie" Margin="1372,34,92.4,665.4" Source="/MonopolyVS;component/Images/Jeton-Wow.png" Opacity="0.995">
