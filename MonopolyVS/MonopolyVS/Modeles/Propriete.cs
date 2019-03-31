@@ -196,10 +196,14 @@ namespace MonopolyVS.Modeles
                     controleur.C.AchatPropriete(true, false, j.Nom, this.Nom, false);
                 }
             }
-            else
+            else if (this.Proprietaire != j)
             {
                 j.Argent -= this.Loyer[this.Proprietaire.nbrDonjons];
                 controleur.C.Paie(j.Nom, this.Proprietaire.Nom, true, this.Loyer[this.Proprietaire.nbrDonjons]);
+            }
+            else
+            {
+                controleur.C.AchatPropriete(false, false, j.Nom, this.Nom, true);
             }
         }
 
