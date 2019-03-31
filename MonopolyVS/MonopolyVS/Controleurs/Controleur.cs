@@ -89,7 +89,8 @@ namespace MonopolyVS.Controleurs
                     double.Parse(node.Attributes["YJ3"].Value),
                     double.Parse(node.Attributes["XJ4"].Value),
                     double.Parse(node.Attributes["YJ4"].Value),
-                    this
+                    this,
+                    int.Parse(node.Attributes["hypotheque"].Value)
                     ));
             }
         }
@@ -351,7 +352,8 @@ namespace MonopolyVS.Controleurs
             foreach(Joueur j in listeJoueurs)
             {
                 if(j.Numero == 1)
-                    j.changeTour(listeJoueurs, 0, lblNomJoueur, lblArgentJoueur, imgSortie, textBox, this, btnLanceDes, btnFinPartie, pionWin, lblWin);
+                    j.changeTour(listeJoueurs, 0, lblNomJoueur, lblArgentJoueur, imgSortie, textBox, this, btnLanceDes, btnFinPartie, pionWin, lblWin, 
+                        lblPion, btnListe1, btnListe2);
             }
 
             foreach(Joueur j in listeJoueurs)
@@ -454,10 +456,10 @@ namespace MonopolyVS.Controleurs
         /// </summary>
         /// <param name="txtboxConsole"></param>
         public void clicBtnLanceDes(TextBox txtboxConsole, Rectangle pion1, Rectangle pion2, Label lblNomJoueur, 
-            Label lblArgentJoueur, List<Case> listeCases, Image imgSortie, Button btnListe1, Button btnListe2, Button btnListe3, Button btnListe4, Button btnLanceDes,
-            Label lblArgent, Label lblPion, Button btnTour, Label lblTour, System.Windows.Controls.Button btnFinPartie, Rectangle pionWin, Label lblWin)
+            Label lblArgentJoueur, List<Case> lCases, Image imgSortie, Button btnListe1, Button btnListe2, Button btnListe3, Button btnListe4, Button btnLanceDes,
+            Label lblArgent, Label lblPion, Button btnTour, Label lblTour, Button btnFinPartie, Rectangle pionWin, Label lblWin)
         {
-            this.listeCases = Cases;
+            this.listeCases = lCases;
             int resultat = 0;
             int position = 0;
 
@@ -547,7 +549,7 @@ namespace MonopolyVS.Controleurs
 
                     j.Position = Move(position, j, resultat, txtboxConsole);
                     position = j.Position;
-                    j.Placement(position, j, pion1, pion2, listePropriete, txtboxConsole, listeCases, listeChance, imgSortie, listeCaisse);
+                    j.Placement(position, j, pion1, pion2, listePropriete, txtboxConsole, lCases, listeChance, imgSortie, listeCaisse);
 
                     lblArgentJoueur.Content = j.Argent;
 
@@ -555,7 +557,8 @@ namespace MonopolyVS.Controleurs
                         break;
                     else
                     {
-                        j.finTour(listeJoueurs, nbrJoueurs, lblNomJoueur, lblArgentJoueur, imgSortie, txtboxConsole, this, btnLanceDes, btnFinPartie, pionWin, lblWin);
+                        j.finTour(listeJoueurs, nbrJoueurs, lblNomJoueur, lblArgentJoueur, imgSortie, txtboxConsole, this, btnLanceDes, btnFinPartie, pionWin, lblWin, 
+                            lblPion, btnListe1, btnListe2);
                         break;
                     }
                 }

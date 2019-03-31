@@ -207,16 +207,19 @@ namespace MonopolyVS
         /// <param name="lblNomJoueur"></param>
         public void finTour(List<Joueur> listeJoueurs, int nbrMax, System.Windows.Controls.Label lblNomJoueur,
             System.Windows.Controls.Label lblArgentJoueur, Image imgSortie, System.Windows.Controls.TextBox txtboxConsole, Controleur c,
-            System.Windows.Controls.Button btnLanceDes, System.Windows.Controls.Button btnFinPartie, Rectangle pionWin, System.Windows.Controls.Label lblWin)
+            System.Windows.Controls.Button btnLanceDes, System.Windows.Controls.Button btnFinPartie, Rectangle pionWin, System.Windows.Controls.Label lblWin,
+            System.Windows.Controls.Label lblPion, System.Windows.Controls.Button btnListe1, System.Windows.Controls.Button btnListe2)
         {
             foreach(Joueur j in listeJoueurs)
             {
                 if (j.sonTour == true)
                 {
                     if(j.Numero == nbrMax)
-                        changeTour(listeJoueurs, 0, lblNomJoueur, lblArgentJoueur, imgSortie, txtboxConsole, c, btnLanceDes, btnFinPartie, pionWin, lblWin);
+                        changeTour(listeJoueurs, 0, lblNomJoueur, lblArgentJoueur, imgSortie, txtboxConsole, c, btnLanceDes, btnFinPartie, pionWin, lblWin,
+                            lblPion, btnListe1, btnListe2);
                     else
-                        changeTour(listeJoueurs, j.Numero, lblNomJoueur, lblArgentJoueur, imgSortie, txtboxConsole, c, btnLanceDes, btnFinPartie, pionWin, lblWin);
+                        changeTour(listeJoueurs, j.Numero, lblNomJoueur, lblArgentJoueur, imgSortie, txtboxConsole, c, btnLanceDes, btnFinPartie, pionWin, lblWin,
+                            lblPion, btnListe1, btnListe2);
                     break;
                 }
             }
@@ -228,7 +231,8 @@ namespace MonopolyVS
         /// <param name="nbr">Numero du Joueur</param>
         public void changeTour(List<Joueur> listeJoueurs, int nbr, System.Windows.Controls.Label lblNomJoueur,
             System.Windows.Controls.Label lblArgentJoueur, Image imgSortie, System.Windows.Controls.TextBox txtboxConsole, Controleur c,
-            System.Windows.Controls.Button btnLanceDes, System.Windows.Controls.Button btnFinPartie, Rectangle pionWin, System.Windows.Controls.Label lblWin)
+            System.Windows.Controls.Button btnLanceDes, System.Windows.Controls.Button btnFinPartie, Rectangle pionWin, System.Windows.Controls.Label lblWin,
+            System.Windows.Controls.Label lblPion, System.Windows.Controls.Button btnListe1, System.Windows.Controls.Button btnListe2)
         {
             nbr++;
             foreach(Joueur j in listeJoueurs)
@@ -244,7 +248,8 @@ namespace MonopolyVS
                         imgSortie.Visibility = Visibility.Hidden;
 
                     if (j.Argent <= 0)
-                        banqueroute(j, txtboxConsole, listeJoueurs, c, lblNomJoueur, lblArgentJoueur, imgSortie, btnLanceDes, btnFinPartie, pionWin, lblWin);
+                        banqueroute(j, txtboxConsole, listeJoueurs, c, lblNomJoueur, lblArgentJoueur, imgSortie, btnLanceDes, btnFinPartie, pionWin, lblWin,
+                            lblPion, btnListe1, btnListe2);
                     break;
                 }
                 else
@@ -258,7 +263,8 @@ namespace MonopolyVS
         /// <param name="j"></param>
         public void banqueroute(Joueur j, System.Windows.Controls.TextBox txtboxConsole, List<Joueur> listeJoueurs, Controleur c,
             System.Windows.Controls.Label lblNomJoueur, System.Windows.Controls.Label lblArgentJoueur, Image imgSortie, System.Windows.Controls.Button btnLanceDes,
-            System.Windows.Controls.Button btnFinPartie, Rectangle pionWin, System.Windows.Controls.Label lblWin)
+            System.Windows.Controls.Button btnFinPartie, Rectangle pionWin, System.Windows.Controls.Label lblWin,
+            System.Windows.Controls.Label lblPion, System.Windows.Controls.Button btnListe1, System.Windows.Controls.Button btnListe2)
         {
             txtboxConsole.AppendText(j.Nom + " n'as plus d'argent. Il faudra vendre un terrain, un bâtiment, ou perdre la partie. \n");
             //Faire ici la banqueroute, il faudra utiliser le système de vente de bâtiment et de terrain pour rembourser les dettes
@@ -268,6 +274,12 @@ namespace MonopolyVS
                 p.Proprietaire = null;
                 p.NbrMaison = 0;
                 p.Hotel = false;
+
+                foreach(Case ca in c.listeCases)
+                {
+                    if (ca.Num == p.Numero)
+                        ca.RectAppart.Fill = null;
+                }
             }
 
             j.isBanqueroute = true;
@@ -286,11 +298,12 @@ namespace MonopolyVS
                 if (jo.Numero == j.Numero)
                     jo.sonTour = true;
             }
-            finTour(listeJoueurs, c.nbrJoueurs, lblNomJoueur, lblArgentJoueur, imgSortie, txtboxConsole, c, btnLanceDes, btnFinPartie, pionWin, lblWin);
+            finTour(listeJoueurs, c.nbrJoueurs, lblNomJoueur, lblArgentJoueur, imgSortie, txtboxConsole, c, btnLanceDes, btnFinPartie, pionWin, lblWin,
+                lblPion, btnListe1, btnListe2);
 
             if (c.nbrJoueurs < 2)
             {
-                listeJoueurs[0].gagnePartie(txtboxConsole, btnLanceDes, btnFinPartie, pionWin, lblWin);
+                listeJoueurs[0].gagnePartie(txtboxConsole, btnLanceDes, btnFinPartie, pionWin, lblWin, lblPion, btnListe1, btnListe2);
             }
         }
 
@@ -298,15 +311,19 @@ namespace MonopolyVS
         /// Le joueur en question gagne la partie
         /// </summary>
         public void gagnePartie(System.Windows.Controls.TextBox txtboxConsole, System.Windows.Controls.Button btnLanceDes, System.Windows.Controls.Button btnFinPartie,
-            Rectangle pionWin, System.Windows.Controls.Label lblWin)
+            Rectangle pionWin, System.Windows.Controls.Label lblWin, System.Windows.Controls.Label lblPion, System.Windows.Controls.Button btnListe1,
+            System.Windows.Controls.Button btnListe2)
         {
             txtboxConsole.AppendText(this.Nom + " gagne la partie. \n");
             btnLanceDes.Visibility = Visibility.Hidden;
+            lblPion.Visibility = Visibility.Hidden;
+            btnListe1.Visibility = Visibility.Hidden;
+            btnListe2.Visibility = Visibility.Hidden;
             btnFinPartie.Visibility = Visibility.Visible;
             pionWin.Visibility = Visibility.Visible;
             lblWin.Visibility = Visibility.Visible;
-
-            //this.NumClasse
+            this.Pion = pionWin;
+            affichePion(this.NumClasse);
         }
 
         /// <summary>
