@@ -63,6 +63,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controleurs\Console.cs" />
     <Compile Include="Vues\FormulaireVente.xaml.cs">
       <DependentUpon>FormulaireVente.xaml</DependentUpon>
     </Compile>
