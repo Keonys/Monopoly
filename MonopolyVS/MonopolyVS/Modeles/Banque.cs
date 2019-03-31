@@ -14,6 +14,7 @@ namespace MonopolyVS.Modeles
     public class Banque
     {
         #region MEMBRES
+
         //Nombre maisons et hôtels pour 1 partie
         int nbrMaison = 32;
         int nbrHotel = 12;
@@ -164,6 +165,7 @@ namespace MonopolyVS.Modeles
         public void VendPropriete(FormulaireVente form, Propriete AVendre, Joueur Vendeur)
         {
             Joueur acheteur = form.GetAcheteur();
+
             if (AVendre.Numero == 5 || AVendre.Numero == 15 || AVendre.Numero == 25 || AVendre.Numero == 35)
             {
                 acheteur.nbrDonjons++;
@@ -173,6 +175,14 @@ namespace MonopolyVS.Modeles
             AVendre.Proprietaire = acheteur;
             Vendeur.Patrimoine.Remove(AVendre);
             acheteur.Patrimoine.Add(AVendre);
+
+            foreach (Case ca in control.listeCases)
+            {
+                if (ca.Num == AVendre.Numero)
+                {
+                    AVendre.afficheAppartenanceCase(acheteur, ca);
+                }
+            }
         }
 
         /// <summary>

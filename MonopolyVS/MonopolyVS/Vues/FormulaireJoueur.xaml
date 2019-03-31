@@ -6,16 +6,25 @@
         xmlns:local="clr-namespace:MonopolyVS.Modeles"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Name="FormulaireJoueur1" x:Class="MonopolyVS.Modeles.FormulaireJoueur"
         mc:Ignorable="d"
-        Title="Monopoly World of Warcraft" Height="678.548" Width="991.56" Closing="FormulaireJoueur1_Closing" WindowState="Maximized">
+        Title="Monopoly World of Warcraft" Height="678.548" Width="991.56" Closing="FormulaireJoueur1_Closing" WindowState="Maximized" Background="#FF906556">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="67*"/>
             <ColumnDefinition Width="432*"/>
             <ColumnDefinition Width="486*"/>
         </Grid.ColumnDefinitions>
-        <TabControl x:Name="TabMenuPrinc" HorizontalAlignment="Center" Height="671" VerticalAlignment="Top" Width="985" Margin="2,0" Grid.ColumnSpan="3" IsSynchronizedWithCurrentItem="False" BorderBrush="White">
+        <TabControl x:Name="TabMenuPrinc" HorizontalAlignment="Center" Height="671" VerticalAlignment="Top" Width="985" Margin="2,0" Grid.ColumnSpan="3" IsSynchronizedWithCurrentItem="False" BorderBrush="White" Background="Black">
+            <TabControl.Effect>
+                <DropShadowEffect/>
+            </TabControl.Effect>
             <TabItem x:Name="TabMenu" Header="TabItem" Visibility="Hidden">
-                <Grid Background="White">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                        <GradientStop Color="#FF562C1F" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FF562C1F">
                     <Image x:Name="ImageLogo" VerticalAlignment="Top" Source="/Images/logo_MonoWoW.png" Margin="0" HorizontalAlignment="Center"/>
                     <Button x:Name="ButtonEntrer" Content="JOUER" VerticalAlignment="Bottom" Click="ButtonEntrer_Click_1" HorizontalAlignment="Center" Width="500" Height="70" FontSize="36" Margin="0,0,0,100"/>
                 </Grid>
@@ -27,8 +36,8 @@
                         <GradientStop Color="White" Offset="1"/>
                     </LinearGradientBrush>
                 </TabItem.Background>
-                <Grid Background="White">
-                    <Label x:Name="LabelNom" Content="Entrez les noms des joueur :" HorizontalAlignment="Center" Height="59.512" Width="450" FontFamily="Matura MT Script Capitals" FontSize="36" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="-208.8,0,-208.8,-59.512"/>
+                <Grid Background="#FF562C1F">
+                    <Label x:Name="LabelNom" Content="Entrez les noms des joueur :" HorizontalAlignment="Center" Height="59.512" Width="450" FontSize="36" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="-208.8,0,-208.8,-59.512"/>
                     <TextBox x:Name="TextBoxNom1" HorizontalAlignment="Center" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" VerticalContentAlignment="Center" FontSize="20" Margin="150,80,0,0" FontFamily="Matura MT Script Capitals" TextChanged="TextBoxNom1_TextChanged"/>
                     <ComboBox x:Name="ComboIcones1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Margin="0,80,500,0" Height="50" FontFamily="Matura MT Script Capitals" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectionChanged="ComboIcones1_SelectionChanged">
                         <ComboBoxItem x:Name="DeathKnight" Content="Death Knight"/>
