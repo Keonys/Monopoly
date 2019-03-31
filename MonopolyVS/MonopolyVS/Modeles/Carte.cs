@@ -10,14 +10,16 @@ namespace MonopolyVS.Modeles
 {
     public class Carte
     {
+        #region MEMBRES
         public int Id;
         public string Type;
         public int Valeur;
         public string Contenu;
         List<Carte> listeChanceTampon = new List<Carte>();
         List<Carte> listeCaisseTampon = new List<Carte>();
+        #endregion
 
-
+        #region CONSTRUCTEURS
         public Carte()
         {
 
@@ -30,13 +32,22 @@ namespace MonopolyVS.Modeles
             Valeur = valeur;
             Contenu = contenu;
         }
+        #endregion
 
+
+        #region METHODES
         /// <summary>
         /// Pioche une carte chance et effectue un effet
         /// </summary>
-        /// <param name="p"></param>
+        /// <param name="imgSortie"></param>
         /// <param name="j"></param>
+        /// <param name="listeChance"></param>
+        /// <param name="txtboxConsole"></param>
+        /// <param name="pion1"></param>
+        /// <param name="pion2"></param>
+        /// <param name="listePropriete"></param>
         /// <param name="listeCases"></param>
+        /// <param name="listeCaisse"></param>
         public void piocheChance(Image imgSortie, Joueur j, List<Carte> listeChance, TextBox txtboxConsole, Rectangle pion1, Rectangle pion2, 
             List<Propriete> listePropriete, List<Case> listeCases, List<Carte> listeCaisse)
         {
@@ -52,8 +63,8 @@ namespace MonopolyVS.Modeles
             }
 
             Carte c = listeChanceTampon[i];
-            txtboxConsole.AppendText("Carte Chance : \n");
-            txtboxConsole.AppendText(c.Contenu + " \n");
+            txtboxConsole.AppendText("Carte Chance : \n");  //à implémenter
+            txtboxConsole.AppendText(c.Contenu + " \n");  //à implémenter
             if (c.Type == "Ajout")
                 j.Argent += c.Valeur;
             else if (c.Type == "Perte")
@@ -65,7 +76,7 @@ namespace MonopolyVS.Modeles
                 j.Position = 40;
                 j.Placement(40, j, pion1, pion2, listePropriete, txtboxConsole, listeCases, listeChance, imgSortie, listeCaisse);
                 j.EstEnPrison = true;
-                txtboxConsole.AppendText(j.Nom + " rentre sur le champ de bataille ! \n");
+                txtboxConsole.AppendText(j.Nom + " rentre sur le champ de bataille ! \n");  //à implémenter
             }
         }
 
@@ -96,8 +107,8 @@ namespace MonopolyVS.Modeles
             }
 
             Carte c = listeCaisseTampon[i];
-            txtboxConsole.AppendText("Carte Chance : \n");
-            txtboxConsole.AppendText(c.Contenu + " \n");
+            txtboxConsole.AppendText("Carte Chance : \n");  //à implémenter
+            txtboxConsole.AppendText(c.Contenu + " \n");  //à implémenter
             if (c.Type == "Ajout")
                 j.Argent += c.Valeur;
             else if (c.Type == "Perte")
@@ -109,8 +120,9 @@ namespace MonopolyVS.Modeles
                 j.Position = 40;
                 j.Placement(40, j, pion1, pion2, listePropriete, txtboxConsole, listeCases, listeChance, imgSortie, listeCaisse);
                 j.EstEnPrison = true;
-                txtboxConsole.AppendText(j.Nom + " rentre sur le champ de bataille ! \n");
+                txtboxConsole.AppendText(j.Nom + " rentre sur le champ de bataille ! \n");  //à implémenter
             }
         }
+        #endregion
     }
 }

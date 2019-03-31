@@ -163,7 +163,7 @@ namespace MonopolyVS.Modeles
                 if (dialogResult == DialogResult.Yes)
                 {
                     //CAS ACCEPTE ACHAT
-                    txtboxConsole.AppendText(j.Nom + " a acheté le donjon : " + this.Nom + ". \n");
+                    txtboxConsole.AppendText(j.Nom + " a acheté le donjon : " + this.Nom + ". \n"); //à implémenter
                     j.nbrDonjons++;
                     j.Argent -= this.PrixTerrain;
                     this.Proprietaire = j;
@@ -233,13 +233,13 @@ namespace MonopolyVS.Modeles
                 else if (dialogResult == DialogResult.No)
                 {
                     //CAS REFUS ACHAT
-                    txtboxConsole.AppendText(j.Nom + " a choisi de ne pas acheter le donjon : " + this.Nom + ". \n");
+                    txtboxConsole.AppendText(j.Nom + " a choisi de ne pas acheter le donjon : " + this.Nom + ". \n"); //à implémenter
                 }
             }
             else
             {
                 j.Argent -= this.Loyer[this.Proprietaire.nbrDonjons];
-                txtboxConsole.AppendText(j.Nom + " paie " + this.Loyer[this.Proprietaire.nbrDonjons] + "€ de loyer à " + this.Proprietaire.Nom + ". \n");
+                txtboxConsole.AppendText(j.Nom + " paie " + this.Loyer[this.Proprietaire.nbrDonjons] + "€ de loyer à " + this.Proprietaire.Nom + ". \n"); //à implémenter
             }
         }
 
@@ -276,7 +276,7 @@ namespace MonopolyVS.Modeles
                 if (dialogResult == DialogResult.Yes)
                 {
                     //CAS ACCEPTE ACHAT
-                    txtboxConsole.AppendText(j.Nom + " a acheté " + this.Nom + ". \n");
+                    txtboxConsole.AppendText(j.Nom + " a acheté " + this.Nom + ". \n"); //à implémenter
                     this.Proprietaire = j;
                     j.Patrimoine.Add(this);
                     j.Argent -= this.PrixTerrain;
@@ -345,7 +345,7 @@ namespace MonopolyVS.Modeles
                 else if (dialogResult == DialogResult.No)
                 {
                     //CAS REFUS ACHAT
-                    txtboxConsole.AppendText(j.Nom + " a choisi de ne pas acheter " + this.Nom + ". \n");
+                    txtboxConsole.AppendText(j.Nom + " a choisi de ne pas acheter " + this.Nom + ". \n"); //à implémenter
                     //TODOCORENTIN Vente aux enchères à créer
                 }
             }
@@ -356,31 +356,31 @@ namespace MonopolyVS.Modeles
                     DialogResult dialogResult = System.Windows.Forms.MessageBox.Show("Voulez-vous acheter un hotel pour " + this.Nom + " ?", "Achat d'Hotel", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        txtboxConsole.AppendText(j.Nom + " a acheté un hotel pour " + this.Nom + ". \n");
+                        txtboxConsole.AppendText(j.Nom + " a acheté un hotel pour " + this.Nom + ". \n"); //à implémenter
                         this.Hotel = true;
                         j.Argent -= this.PrixMaison;
                     }
                     else if (dialogResult == DialogResult.No)
                     {
-                        txtboxConsole.AppendText(j.Nom + " a choisi de ne pas acheter d'hotel pour " + this.Nom + ". \n");
+                        txtboxConsole.AppendText(j.Nom + " a choisi de ne pas acheter d'hotel pour " + this.Nom + ". \n"); //à implémenter
                     }
                 }
-                else if(this.NbrMaison == 4 && this.Hotel)
+                else if(this.NbrMaison == 4 && this.Hotel) //PEUT ETRE INUTILE A L'AVENIR
                 {
-                    txtboxConsole.AppendText(j.Nom + " ne peut plus rien placer sur " + this.Nom + ". \n");
+                    txtboxConsole.AppendText(j.Nom + " ne peut plus rien placer sur " + this.Nom + ". \n"); //à implémenter
                 }
                 else
                 {
                     DialogResult dialogResult = System.Windows.Forms.MessageBox.Show("Voulez-vous acheter une maison pour " + this.Nom + " ?", "Achat de Maison", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        txtboxConsole.AppendText(j.Nom + " a acheté une maison pour " + this.Nom + ". \n");
+                        txtboxConsole.AppendText(j.Nom + " a acheté une maison pour " + this.Nom + ". \n"); //à implémenter
                         this.NbrMaison++;
                         j.Argent -= this.PrixMaison;
                     }
                     else if (dialogResult == DialogResult.No)
                     {
-                        txtboxConsole.AppendText(j.Nom + " a choisi de ne pas acheter de maison pour " + this.Nom + ". \n");
+                        txtboxConsole.AppendText(j.Nom + " a choisi de ne pas acheter de maison pour " + this.Nom + ". \n"); //à implémenter
                     }
                 }
             }
@@ -388,11 +388,11 @@ namespace MonopolyVS.Modeles
             {
                 j.Argent -= this.Loyer[this.NbrMaison];
                 this.Proprietaire.Argent += this.Loyer[this.NbrMaison];
-                txtboxConsole.AppendText(j.Nom + " paie " + this.Loyer[this.NbrMaison] + "€ de loyer à " + this.Proprietaire.Nom + ". \n");
+                txtboxConsole.AppendText(j.Nom + " paie " + this.Loyer[this.NbrMaison] + "€ de loyer à " + this.Proprietaire.Nom + ". \n"); //à implémenter
             }
             else
             {
-                txtboxConsole.AppendText(this.Nom + " vous appartient déjà " + j.Nom + " ! \n");
+                txtboxConsole.AppendText(this.Nom + " vous appartient déjà " + j.Nom + " ! \n"); //à implémenter
             }
         }
 
