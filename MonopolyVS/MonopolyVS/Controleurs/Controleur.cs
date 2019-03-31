@@ -201,9 +201,9 @@ namespace MonopolyVS.Controleurs
                     for (int i = 1; i <= 2; i++)
                     {
                         if (i == 1)
-                            listeJoueurs.Add(new Joueur(i, joueur1, 0, 15000, pion1, ComboIcones1, this));
+                            listeJoueurs.Add(new Joueur(i, joueur1, 0, 1500, pion1, ComboIcones1, this));
                         if (i == 2)
-                            listeJoueurs.Add(new Joueur(i, joueur2, 0, 15000, pion2, ComboIcones2, this));
+                            listeJoueurs.Add(new Joueur(i, joueur2, 0, 1500, pion2, ComboIcones2, this));
                     }
                     break;
                 case (3):
