@@ -62,6 +62,13 @@ namespace MonopolyVS.Vues
             prop = nomProp;
             C = c;
 
+            if (prop.Hotel == true)
+            {
+                ButtonVendreMaison.IsEnabled = true;
+                ButtonVendreMaison.Content = "Vendre l'Hôtel";
+            }
+            else if (prop.NbrMaison != 0)
+                ButtonVendreMaison.IsEnabled = true;
             foreach (Joueur j in listeAcheteurs)
             {
                 ComboJoueur.Items.Add(j.Nom);
@@ -121,5 +128,27 @@ namespace MonopolyVS.Vues
         #endregion
 
         #endregion
+
+        private void ButtonVendreMaison_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (prop.Hotel == true)
+            {
+                prop.Hotel = false;
+                banque.DetruireHotel(1);
+                Vendeur.Argent += prop.PrixMaison / 2;
+                C.C.VenteMaisonHotel(true, Vendeur.Nom, prop.PrixMaison / 2);
+                C.SwitchVerrouFenetre();
+                Close();
+            }
+            else
+            {
+                prop.NbrMaison--;
+                banque.DetruireMaison(1);
+                Vendeur.Argent += prop.PrixMaison / 2;
+                C.C.VenteMaisonHotel(false, Vendeur.Nom, prop.PrixMaison / 2);
+                C.SwitchVerrouFenetre();
+                Close();
+            }
+        }
     }
 }
