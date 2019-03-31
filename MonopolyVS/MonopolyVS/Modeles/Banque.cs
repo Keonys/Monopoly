@@ -110,6 +110,13 @@ namespace MonopolyVS.Modeles
             //propriete.EstHypotheque = false;    //déverrouillage de la case hypothèquée
         }
 
+        public void initOperation(Propriete AVendre, Joueur Vendeur, List<Joueur> joueursEnJeu, Controleur c)
+        {
+            c.SwitchVerrouFenetre();
+            FormChoixAchatVente operation = new FormChoixAchatVente(Vendeur, joueursEnJeu, this, AVendre, c);
+            operation.Show();
+        }
+
         /// <summary>
         /// Vend la propriétée d'un joueur spécifié à un autre joueur
         /// </summary>
@@ -119,11 +126,8 @@ namespace MonopolyVS.Modeles
         /// <param name="Prix"></param>
         public void initVendPropriete(Propriete AVendre, Joueur Vendeur, List<Joueur> joueursEnJeu, Controleur c)
         {
-
-            c.SwitchVerrouFenetre();
             FormulaireVente modalites = new FormulaireVente(Vendeur, joueursEnJeu, this, AVendre, c);
             modalites.Show();
-
         }
 
         public void VendPropriete(FormulaireVente form, Propriete AVendre, Joueur Vendeur)

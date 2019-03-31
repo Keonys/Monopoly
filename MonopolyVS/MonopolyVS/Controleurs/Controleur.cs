@@ -670,21 +670,22 @@ namespace MonopolyVS.Controleurs
         }
 
         /// <summary>
-        /// Lance la procedure de vente d'une propriété
+        /// Lance la procedure d'opération sur une propriété
         /// </summary>
         /// <param name="propriete">Propriété selectionnée dans la listBox</param>
-        public void debuterVente(object propriete)
+        public void debuterOperation(object propriete)
         {
             Joueur proprietaire = listeJoueurs[patriJoueurAff];
-            Propriete AVendre = new Propriete();
+            Propriete AOperer = new Propriete();
             foreach (Propriete prop in proprietaire.Patrimoine)
             {
                 if(prop.Nom == propriete.ToString())
                 {
-                    AVendre = prop;
+                    AOperer = prop;
                 }
             }
-            banque.initVendPropriete(AVendre, proprietaire, listeJoueurs, this);
+            banque.initOperation(AOperer, proprietaire, listeJoueurs, this);
+            //banque.initVendPropriete(AOperer, proprietaire, listeJoueurs, this);
         }
 
         /// <summary>

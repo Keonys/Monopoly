@@ -37,7 +37,10 @@ namespace MonopolyVS.Vues
         public FormulaireVente()
         {
             InitializeComponent();
-            QuestionVente();
+            foreach (Joueur j in listeAcheteurs)
+            {
+                ComboJoueur.Items.Add(j.Nom);
+            }
         }
 
         /// <summary>
@@ -59,7 +62,10 @@ namespace MonopolyVS.Vues
             prop = nomProp;
             C = c;
 
-            QuestionVente();
+            foreach (Joueur j in listeAcheteurs)
+            {
+                ComboJoueur.Items.Add(j.Nom);
+            }
         }
         #endregion
 
@@ -79,7 +85,7 @@ namespace MonopolyVS.Vues
                 LabelInfo.Content = "Choisissez un acheteur.";
         }
 
-        private void QuestionVente()
+        /*private void QuestionVente()
         {
             this.Visibility = Visibility.Hidden;
             DialogResult vente = System.Windows.Forms.MessageBox.Show("Voulez-vous vendre la propriété : " + prop.Nom + " ?", "", MessageBoxButtons.YesNo);
@@ -92,7 +98,7 @@ namespace MonopolyVS.Vues
                 this.Visibility = Visibility.Visible;
             }
             else Close();
-        }
+        }*/
         
         /// <summary>
         /// Vérifie si le prix en paramètre est un nombre non signé
