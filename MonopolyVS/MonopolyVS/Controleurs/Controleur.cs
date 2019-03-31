@@ -362,7 +362,7 @@ namespace MonopolyVS.Controleurs
             foreach (Joueur j in listeJoueursTampon)
             {
                 mapJoueurs.Add(j, Des.Lancer());
-                textBox.AppendText(j.Nom + " a fait un " + Convert.ToString(Des.Resultat) + "\n");
+                textBox.AppendText(j.Nom + " a fait un " + Convert.ToString(Des.Resultat) + "\n"); //à implementer
             }
 
             var sortedMap = from entry in mapJoueurs orderby entry.Value descending select entry;
@@ -372,7 +372,7 @@ namespace MonopolyVS.Controleurs
                 entry.Key.Numero = i;
                 i++;
 
-                textBox.AppendText(entry.Key.Nom + " jouera en position " + entry.Key.Numero + "\n");
+                textBox.AppendText(entry.Key.Nom + " jouera en position " + entry.Key.Numero + "\n"); //à implementer
             }
 
             foreach(Joueur j in listeJoueurs)
@@ -500,27 +500,27 @@ namespace MonopolyVS.Controleurs
                     resultat = Des.Resultat;
 
                     //Affichage à la suite du résultat du lancé et affiche si le lanceur fait un doublé
-                    txtboxConsole.AppendText("\nLe premier dé affiche un " + Convert.ToString(Des.Premier) + "\n");
-                    txtboxConsole.AppendText("Le deuxième dé affiche un " + Convert.ToString(Des.Deuxieme) + "\n");
-                    if(!j.EstEnPrison)
-                        txtboxConsole.AppendText(j.Nom + " avance de : " + resultat + " cases. \n");
+                    txtboxConsole.AppendText("\nLe premier dé affiche un " + Convert.ToString(Des.Premier) + "\n"); //à implementer
+                    txtboxConsole.AppendText("Le deuxième dé affiche un " + Convert.ToString(Des.Deuxieme) + "\n"); //à implementer
+                    if (!j.EstEnPrison)
+                        txtboxConsole.AppendText(j.Nom + " avance de : " + resultat + " cases. \n"); //à implementer
 
                     if (Des.EstDouble() && j.EstEnPrison)
                     {
-                        txtboxConsole.AppendText("Doublé, vous pouvez sortir du champ de bataille et rejouer !\n");
-                        txtboxConsole.AppendText(j.Nom + " avance de : " + resultat + " cases. \n");
+                        txtboxConsole.AppendText("Doublé, vous pouvez sortir du champ de bataille et rejouer !\n"); //à implementer
+                        txtboxConsole.AppendText(j.Nom + " avance de : " + resultat + " cases. \n"); //à implementer
                         j.estDouble = true;
                         j.nbrDouble++;
                     }
                     else if(Des.EstDouble())
                     {
-                        txtboxConsole.AppendText("Doublé !\n");
+                        txtboxConsole.AppendText("Doublé !\n"); //à implementer
                         j.estDouble = true;
                         j.nbrDouble++;
                     }
                     else if(j.EstEnPrison)
                     {
-                        txtboxConsole.AppendText("Vous devez faire un doublé pour sortir de prison. \n");
+                        txtboxConsole.AppendText("Vous devez faire un doublé pour sortir de prison. \n"); //à implementer
                         j.estDouble = false;
                         j.nbrDouble = 0;
                         j.nbrTourPrison++;
@@ -532,15 +532,15 @@ namespace MonopolyVS.Controleurs
                             "Champ de Bataille", System.Windows.Forms.MessageBoxButtons.YesNo);
                             if (dialogResult == System.Windows.Forms.DialogResult.Yes)
                             {
-                                txtboxConsole.AppendText("Jeton utilisé !\n");
-                                txtboxConsole.AppendText(j.Nom + " avance de : " + resultat + " cases. \n");
+                                txtboxConsole.AppendText("Jeton utilisé !\n"); //à implementer
+                                txtboxConsole.AppendText(j.Nom + " avance de : " + resultat + " cases. \n"); //à implementer
                                 j.estDouble = true;
                                 j.nbrDouble++;
                                 j.Sortie--;
                             }
                             else if (dialogResult == System.Windows.Forms.DialogResult.No)
                             {
-                                txtboxConsole.AppendText(j.Nom + " a choisi de rester ce battre ! \n");
+                                txtboxConsole.AppendText(j.Nom + " a choisi de rester ce battre ! \n"); //à implementer
                                 resultat = 0;
                             }
                         }
@@ -551,15 +551,15 @@ namespace MonopolyVS.Controleurs
                             "Champ de Bataille", System.Windows.Forms.MessageBoxButtons.YesNo);
                             if (dialogResult == System.Windows.Forms.DialogResult.Yes)
                             {
-                                txtboxConsole.AppendText("Vous avez payé un pot de vin, sortez du champ de bataille. \n");
-                                txtboxConsole.AppendText(j.Nom + " avance de : " + resultat + " cases. \n");
+                                txtboxConsole.AppendText("Vous avez payé un pot de vin, sortez du champ de bataille. \n"); //à implementer
+                                txtboxConsole.AppendText(j.Nom + " avance de : " + resultat + " cases. \n"); //à implementer
                                 j.estDouble = true;
                                 j.nbrDouble++;
                                 j.Argent -= 50;
                             }
                             else if (dialogResult == System.Windows.Forms.DialogResult.No)
                             {
-                                txtboxConsole.AppendText(j.Nom + " a choisi de rester ce battre ! \n");
+                                txtboxConsole.AppendText(j.Nom + " a choisi de rester ce battre ! \n"); //à implementer
                                 resultat = 0;
                             }
                         }
@@ -613,8 +613,7 @@ namespace MonopolyVS.Controleurs
             }
             else if(j.nbrDouble >= 3)
             {
-                txtboxConsole.AppendText("C'est votre 3ème double ! Direction le champ de bataille, vous pourrez retenter un double au prochain tour," +
-                    " pour sortir du champ de bataille. \n");
+                txtboxConsole.AppendText("C'est votre 3ème double ! Direction le champ de bataille. \n Vous pourrez retenter un double au prochain tour, pour sortir du champ de bataille. \n"); //à implementer
                 position = 40;
                 j.EstEnPrison = true;
                 j.nbrDouble = 0;
@@ -622,7 +621,7 @@ namespace MonopolyVS.Controleurs
             }
             else if(position > 39 && j.EstEnPrison == false)
             {
-                txtboxConsole.AppendText(j.Nom + " gagne 200€. \n");
+                txtboxConsole.AppendText(j.Nom + " gagne 200€. \n"); //à implementer
                 position -= 40;
                 j.Argent += 200;
             }

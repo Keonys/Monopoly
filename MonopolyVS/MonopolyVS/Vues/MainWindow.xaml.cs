@@ -35,6 +35,7 @@ namespace MonopolyVS
         /// </summary>
         List<Case> listeCases = new List<Case>();
 
+        #region CONSTRUCTEUR
         public MainWindow()
         {
             InitializeComponent();
@@ -42,9 +43,9 @@ namespace MonopolyVS
             initAppli();
             afficheFormulaire();
         }
+        #endregion
 
         #region Events
-
         /// <summary>
         /// Rend invisible certaines partie de la fenêtre
         /// </summary>
@@ -108,6 +109,11 @@ namespace MonopolyVS
             c.clicFinPartie();
         }
 
+        private void FenetrePrincipale_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (this.IsEnabled == false)
+                e.Cancel = true;
+        }
         #endregion Events
 
         /// <summary>
@@ -160,12 +166,6 @@ namespace MonopolyVS
             #endregion
 
             imgSortie.Visibility = Visibility.Hidden;
-        }
-
-        private void FenetrePrincipale_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (this.IsEnabled == false)
-                e.Cancel = true;
         }
     }
 }

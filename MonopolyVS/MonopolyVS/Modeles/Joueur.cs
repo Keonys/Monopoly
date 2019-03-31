@@ -18,17 +18,21 @@ namespace MonopolyVS
 {
     public class Joueur
     {
+        #region MEMBRES
         #region Objets
-
         Banque Banque = new Banque();
         Des Des = new Des();
-        bool donjon = false;
-        bool prop = false;
-
+        /// <summary>
+        /// Pion du Joueur
+        /// </summary>
+        public Rectangle Pion;
+        /// <summary>
+        /// Listes des propriétés du joueur
+        /// </summary>
+        public List<Propriete> Patrimoine { get; set; } = new List<Propriete>();
         #endregion
 
         #region Propriétés et variables
-
         /// <summary>
         /// Nom du joueur
         /// </summary>
@@ -43,11 +47,6 @@ namespace MonopolyVS
         /// Position du joueur
         /// </summary>
         public int Position { get; set; } = 0;
-
-        /// <summary>
-        /// Listes des propriétés du joueur
-        /// </summary>
-        public List<Propriete> Patrimoine { get; set; } = new List<Propriete>();
 
         /// <summary>
         /// Numéro du joueur
@@ -94,17 +93,16 @@ namespace MonopolyVS
         /// Le joueur est en banqueroute, il a perdu
         /// </summary>
         public bool isBanqueroute { get; set; } = false;
-
-        /// <summary>
-        /// Pion du Joueur
-        /// </summary>
-        public Rectangle Pion;
-
+        
         /// <summary>
         /// Voir dans la méthode "affichePion()", chaque classe possède un numéro
         /// </summary>
         public int NumClasse;
 
+        bool donjon = false;
+
+        bool prop = false;
+        #endregion
         #endregion
 
         #region Constructeurs
@@ -205,6 +203,14 @@ namespace MonopolyVS
         /// <param name="listeJoueurs"></param>
         /// <param name="nbrMax"></param>
         /// <param name="lblNomJoueur"></param>
+        /// <param name="lblArgentJoueur"></param>
+        /// <param name="imgSortie"></param>
+        /// <param name="txtboxConsole"></param>
+        /// <param name="c"></param>
+        /// <param name="btnLanceDes"></param>
+        /// <param name="btnFinPartie"></param>
+        /// <param name="pionWin"></param>
+        /// <param name="lblWin"></param>
         public void finTour(List<Joueur> listeJoueurs, int nbrMax, System.Windows.Controls.Label lblNomJoueur,
             System.Windows.Controls.Label lblArgentJoueur, Image imgSortie, System.Windows.Controls.TextBox txtboxConsole, Controleur c,
             System.Windows.Controls.Button btnLanceDes, System.Windows.Controls.Button btnFinPartie, Rectangle pionWin, System.Windows.Controls.Label lblWin,
@@ -266,7 +272,7 @@ namespace MonopolyVS
             System.Windows.Controls.Button btnFinPartie, Rectangle pionWin, System.Windows.Controls.Label lblWin,
             System.Windows.Controls.Label lblPion, System.Windows.Controls.Button btnListe1, System.Windows.Controls.Button btnListe2)
         {
-            txtboxConsole.AppendText(j.Nom + " n'as plus d'argent. Il faudra vendre un terrain, un bâtiment, ou perdre la partie. \n");
+            txtboxConsole.AppendText(j.Nom + " n'as plus d'argent. Il faudra vendre un terrain, un bâtiment, ou perdre la partie. \n"); //à implémenter
             //Faire ici la banqueroute, il faudra utiliser le système de vente de bâtiment et de terrain pour rembourser les dettes
             //Sinon le joueur perd et il faudra le sortir de la partie
             foreach (Propriete p in j.Patrimoine)
@@ -314,7 +320,7 @@ namespace MonopolyVS
             Rectangle pionWin, System.Windows.Controls.Label lblWin, System.Windows.Controls.Label lblPion, System.Windows.Controls.Button btnListe1,
             System.Windows.Controls.Button btnListe2)
         {
-            txtboxConsole.AppendText(this.Nom + " gagne la partie. \n");
+            txtboxConsole.AppendText(this.Nom + " gagne la partie. \n");    //à implémenter
             btnLanceDes.Visibility = Visibility.Hidden;
             lblPion.Visibility = Visibility.Hidden;
             btnListe1.Visibility = Visibility.Hidden;
@@ -429,7 +435,7 @@ namespace MonopolyVS
                 case (4):
                     //Impot -- -200€
                     j.Argent -= 200;
-                    txtboxConsole.AppendText(j.Nom + " paie 200€ à l'entraîneur. \n");
+                    txtboxConsole.AppendText(j.Nom + " paie 200€ à l'entraîneur. \n");   //à implémenter
                     break;
                 case (5):
                     //Donjon -- -200€
@@ -465,7 +471,7 @@ namespace MonopolyVS
                 case (12):
                     //Impot -- -150€
                     j.Argent -= 150;
-                    txtboxConsole.AppendText(j.Nom + " doit 150€ au service postal. \n");
+                    txtboxConsole.AppendText(j.Nom + " doit 150€ au service postal. \n");   //à implémenter
                     break;
                 case (13):
                     //Freewind Post
@@ -539,7 +545,7 @@ namespace MonopolyVS
                 case (28):
                     //Impot -- 150€
                     j.Argent -= 150;
-                    txtboxConsole.AppendText(j.Nom + " paie 150€ de barbier. Superbe barbe ! \n");
+                    txtboxConsole.AppendText(j.Nom + " paie 150€ de barbier. Superbe barbe ! \n");   //à implémenter
                     break;
                 case (29):
                     //Stormwind City
@@ -551,7 +557,7 @@ namespace MonopolyVS
                     this.Position = 40;
                     this.Placement(40, j, pion1, pion2, listePropriete, txtboxConsole, listeCases, listeChance, imgSortie, listeCaisse);
                     j.EstEnPrison = true;
-                    txtboxConsole.AppendText(j.Nom + " rentre sur le champ de bataille ! \n");
+                    txtboxConsole.AppendText(j.Nom + " rentre sur le champ de bataille ! \n");   //à implémenter
                     break;
                 case (31):
                     //Thunderbluff
@@ -588,7 +594,7 @@ namespace MonopolyVS
                 case (38):
                     //Impot -- 200€
                     j.Argent -= 200;
-                    txtboxConsole.AppendText(j.Nom + " répare son équipement pour 200€. \n");
+                    txtboxConsole.AppendText(j.Nom + " répare son équipement pour 200€. \n");   //à implémenter
                     break;
                 case (39):
                     //Darnassus
@@ -601,7 +607,6 @@ namespace MonopolyVS
                     break;
             }
         }
-
         #endregion
     }
 }

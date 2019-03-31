@@ -173,7 +173,7 @@ namespace MonopolyVS.Modeles
                 if (dialogResult == DialogResult.Yes)
                 {
                     //CAS ACCEPTE ACHAT
-                    txtboxConsole.AppendText(j.Nom + " a acheté le donjon : " + this.Nom + ". \n");
+                    txtboxConsole.AppendText(j.Nom + " a acheté le donjon : " + this.Nom + ". \n"); //à implémenter
                     j.nbrDonjons++;
                     j.Argent -= this.PrixTerrain;
                     this.Proprietaire = j;
@@ -190,13 +190,13 @@ namespace MonopolyVS.Modeles
                 else if (dialogResult == DialogResult.No)
                 {
                     //CAS REFUS ACHAT
-                    txtboxConsole.AppendText(j.Nom + " a choisi de ne pas acheter le donjon : " + this.Nom + ". \n");
+                    txtboxConsole.AppendText(j.Nom + " a choisi de ne pas acheter le donjon : " + this.Nom + ". \n"); //à implémenter
                 }
             }
             else
             {
                 j.Argent -= this.Loyer[this.Proprietaire.nbrDonjons];
-                txtboxConsole.AppendText(j.Nom + " paie " + this.Loyer[this.Proprietaire.nbrDonjons] + "€ de loyer à " + this.Proprietaire.Nom + ". \n");
+                txtboxConsole.AppendText(j.Nom + " paie " + this.Loyer[this.Proprietaire.nbrDonjons] + "€ de loyer à " + this.Proprietaire.Nom + ". \n"); //à implémenter
             }
         }
 
@@ -233,7 +233,7 @@ namespace MonopolyVS.Modeles
                 if (dialogResult == DialogResult.Yes)
                 {
                     //CAS ACCEPTE ACHAT
-                    txtboxConsole.AppendText(j.Nom + " a acheté " + this.Nom + ". \n");
+                    txtboxConsole.AppendText(j.Nom + " a acheté " + this.Nom + ". \n"); //à implémenter
                     this.Proprietaire = j;
                     j.Patrimoine.Add(this);
                     j.Argent -= this.PrixTerrain;

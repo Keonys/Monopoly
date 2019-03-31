@@ -10,13 +10,15 @@ namespace MonopolyVS.Modeles
 {
     public class Des
     {
+        #region MEMBRES
         //initialisation des variables contenant le résultat des dés
         public int Premier { get; set; } = -1;
         public int Deuxieme { get; set; } = -1;
         public int Resultat { get; set; }
         Random alea = new Random(); //initialisation du générateur de valeurs aléatoires
-        
-        
+        #endregion
+
+        #region METHODES
         /// <summary>
         /// Lance les 2 dés.
         /// </summary>
@@ -41,5 +43,6 @@ namespace MonopolyVS.Modeles
             else
                 return false;
         }
+        #endregion
     }
 }

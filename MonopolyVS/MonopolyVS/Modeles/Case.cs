@@ -9,6 +9,7 @@ namespace MonopolyVS.Modeles
 {
     public class Case
     {
+        #region MEMBRES
         public int Num;
         public Rectangle Maison1;
         public Rectangle Maison2;
@@ -16,8 +17,9 @@ namespace MonopolyVS.Modeles
         public Rectangle Maison4;
         public Rectangle NomHotel;
         public Rectangle RectAppart;
+        #endregion
 
-
+        #region CONSTRUCTEURS
         public Case()
         {
 
@@ -39,5 +41,6 @@ namespace MonopolyVS.Modeles
             NomHotel = hotel;
             RectAppart = rectAppart;
         }
+        #endregion
     }
 }
