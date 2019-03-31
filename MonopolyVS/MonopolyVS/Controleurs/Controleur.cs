@@ -46,6 +46,8 @@ namespace MonopolyVS.Controleurs
         Des Des = new Des();
 
         Banque banque = new Banque();
+
+        private Window Plateau;
         
         /// <summary>
         /// Nombre de joueur dans la partie, géré dans AddJoueurs
@@ -59,6 +61,11 @@ namespace MonopolyVS.Controleurs
         public Controleur()
         {
 
+        }
+
+        public Controleur(Window plateau)
+        {
+            Plateau = plateau;
         }
         #endregion
 
@@ -628,7 +635,11 @@ namespace MonopolyVS.Controleurs
             surPlateau = aAfficher;
         }
 
-        public void debuterVente(object propriete, Window plateau)
+        /// <summary>
+        /// Lance la procedure de vente d'une propriété
+        /// </summary>
+        /// <param name="propriete">Propriété selectionnée dans la listBox</param>
+        public void debuterVente(object propriete)
         {
             Joueur proprietaire = listeJoueurs[patriJoueurAff];
             Propriete AVendre = new Propriete();
@@ -639,9 +650,14 @@ namespace MonopolyVS.Controleurs
                     AVendre = prop;
                 }
             }
-            banque.initVendPropriete(AVendre, proprietaire, listeJoueurs, this, plateau);
+            banque.initVendPropriete(AVendre, proprietaire, listeJoueurs, this);
         }
 
+        /// <summary>
+        /// Verifie si un objet fait bien référence à une propriété
+        /// </summary>
+        /// <param name="aVerifier">Objet à vérifier</param>
+        /// <returns></returns>
         public bool CheckPropriete(object aVerifier)
         {
             bool resultat = false;
@@ -658,13 +674,13 @@ namespace MonopolyVS.Controleurs
         }
 
         /// <summary>
-        /// Verrouille ou dévérouille une fenêtre
+        /// Verrouille ou dévérouille la fenêtre du plateau
         /// </summary>
-        public void SwitchVerrouFenetre(Window ABloquer)
+        public void SwitchVerrouFenetre()
         {
-            if (ABloquer.IsEnabled == true)
-                ABloquer.IsEnabled = false;
-            else ABloquer.IsEnabled = true;
+            if (Plateau.IsEnabled == true)
+                Plateau.IsEnabled = false;
+            else Plateau.IsEnabled = true;
         }
         #endregion
     }

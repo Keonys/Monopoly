@@ -28,7 +28,7 @@ namespace MonopolyVS
         /// <summary>
         /// Permet les appels de la vue vers le controleur
         /// </summary>
-        Controleur c = new Controleur();
+        Controleur c;
 
         /// <summary>
         /// Liste des cases
@@ -38,6 +38,7 @@ namespace MonopolyVS
         public MainWindow()
         {
             InitializeComponent();
+            c = new Controleur(this);
             initAppli();
             afficheFormulaire();
         }
@@ -98,7 +99,7 @@ namespace MonopolyVS
         {
             if (c.CheckPropriete(listboxBien.SelectedItem) == true)
             {
-                c.debuterVente(listboxBien.SelectedItem, this);
+                c.debuterVente(listboxBien.SelectedItem);
             }
         }
 

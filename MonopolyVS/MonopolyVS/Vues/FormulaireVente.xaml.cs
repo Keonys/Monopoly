@@ -22,6 +22,7 @@ namespace MonopolyVS.Vues
     /// </summary>
     public partial class FormulaireVente : Window
     {
+        #region MEMBRES
         private readonly Joueur Vendeur;
         private Joueur Acheteur;
 
@@ -30,8 +31,7 @@ namespace MonopolyVS.Vues
         private Propriete prop;
 
         private Controleur C;
-
-        private Window Plateau;
+        #endregion
 
         #region CONSTRUCTEURS
         public FormulaireVente()
@@ -46,7 +46,7 @@ namespace MonopolyVS.Vues
         /// <param name="v">Joueur vendeur</param>
         /// <param name="joueursEnJeu">Liste des joueurs en jeu</param>
         /// <param name="b">Banque de la partie</param>
-        public FormulaireVente(Joueur v, List<Joueur> joueursEnJeu, Banque b, Propriete nomProp , Controleur c, Window plateau)
+        public FormulaireVente(Joueur v, List<Joueur> joueursEnJeu, Banque b, Propriete nomProp , Controleur c)
         {
             InitializeComponent();
             Vendeur = v;
@@ -58,12 +58,12 @@ namespace MonopolyVS.Vues
             banque = b;
             prop = nomProp;
             C = c;
-            Plateau = plateau;
 
             QuestionVente();
         }
         #endregion
 
+        #region METHODES
         private void ButtonValider_Click(object sender, RoutedEventArgs e)
         {
             if (ComboJoueur.SelectedIndex >= 0 && CheckPrix(TextBoxPrix.Text))
@@ -71,7 +71,7 @@ namespace MonopolyVS.Vues
                 Acheteur = listeAcheteurs[ComboJoueur.SelectedIndex];
                 banque.Transaction(Acheteur, GetVendeur(), int.Parse(TextBoxPrix.Text));
                 banque.VendPropriete(this, prop, Vendeur);
-                C.SwitchVerrouFenetre(Plateau);
+                C.SwitchVerrouFenetre();
                 Close();
             }
             else if (ComboJoueur.SelectedIndex <= 0)
@@ -116,6 +116,7 @@ namespace MonopolyVS.Vues
             }
         }
 
+        #region ACCESSEURS & MUTATEURS
         public Joueur GetVendeur()
         {
             return Vendeur;
@@ -125,5 +126,8 @@ namespace MonopolyVS.Vues
         {
             return Acheteur;
         }
+        #endregion
+
+        #endregion
     }
 }
