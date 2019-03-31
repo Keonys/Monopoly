@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MonopolyVS"
         mc:Ignorable="d"
         Title="Monopoly World of Warcraft" Height="792" Width="1540.8"
-        WindowStartupLocation="CenterScreen" WindowState="Maximized" Closing="FenetrePrincipale_Closing">
+        WindowStartupLocation="CenterScreen" WindowState="Maximized" Closing="FenetrePrincipale_Closing" Background="#FF906556">
     <Grid>
         <!--Visuel n'étant pas sur l'image-->
         <Image x:Name="imgSortie" Margin="1372,34,92.4,665.4" Source="/MonopolyVS;component/Images/Jeton-Wow.png" Opacity="0.995">
@@ -14,11 +14,11 @@
                 <DropShadowEffect/>
             </Image.Effect>
         </Image>
-        <ListBox x:Name="listboxBien" Margin="926,353,31.4,251.4" FontSize="14" SelectionChanged="ListboxBien_SelectionChanged"/>
+        <ListBox x:Name="listboxBien" Margin="926,353,31.4,251.4" FontSize="20" SelectionChanged="ListboxBien_SelectionChanged" Background="#FF258911" Foreground="#FFE4D519"/>
         <Label x:Name="lblTour" Content="Tour :" HorizontalAlignment="Left" Margin="939,20,0,0" VerticalAlignment="Top" Height="43" Width="91" FontSize="24"/>
         <Label x:Name="lblNomJoueur" Content="JOUEUR" HorizontalAlignment="Left" Margin="1034,20,0,0" VerticalAlignment="Top" Height="43" Width="317" FontSize="24"/>
-        <Label x:Name="lblArgent" Content="Argent :    €" HorizontalAlignment="Left" Margin="939,129,0,0" VerticalAlignment="Top" Height="43" Width="131" FontSize="24"/>
-        <Label x:Name="lblArgentJoueur" Content="ARGENTJOUEUR" HorizontalAlignment="Left" Margin="1070,129,0,0" VerticalAlignment="Top" Height="43" Width="229" FontSize="24"/>
+        <Label x:Name="lblArgent" Content="PO : " HorizontalAlignment="Left" Margin="939,129,0,0" VerticalAlignment="Top" Height="43" Width="131" FontSize="24"/>
+        <Label x:Name="lblArgentJoueur" Content="ARGENTJOUEUR" HorizontalAlignment="Left" Margin="1004,129,0,0" VerticalAlignment="Top" Height="43" Width="229" FontSize="24" RenderTransformOrigin="0.495,0.54"/>
         <Button x:Name="btnLanceDes" Content="Lancer les Dés" Click="btnLanceDes_Click" VerticalAlignment="Top" Height="50" FontSize="24" HorizontalAlignment="Left" Width="420" Canvas.Left="1004" Canvas.Top="167" Margin="939,69,0,0"/>
         <Button x:Name="btnFinPartie" Content="Finir la Partie" Click="btnFinPartie_Click" VerticalAlignment="Top" Height="66" FontSize="24" HorizontalAlignment="Left" Width="354" Canvas.Left="1004" Canvas.Top="167" Margin="984,63,0,0"/>
         <Button x:Name="btnTour" Content="Choix du Tour" Click="BtnTour_Click" Margin="1075,164,0,0" VerticalAlignment="Top" Height="82" FontSize="24" HorizontalAlignment="Left" Width="263"/>
@@ -75,26 +75,6 @@
         <Rectangle x:Name="caseViolet1" HorizontalAlignment="Left" Height="59" Margin="784,475,0,0" Stroke="Black" VerticalAlignment="Top" Width="123"/>
         <Rectangle x:Name="caseImpot4" HorizontalAlignment="Left" Height="62" Margin="784,534,0,0" Stroke="Black" VerticalAlignment="Top" Width="123"/>
         <Rectangle x:Name="caseViolet2" HorizontalAlignment="Left" Height="61" Margin="784,596,0,0" Stroke="Black" VerticalAlignment="Top" Width="123"/>
-        <Rectangle x:Name="carteChance" HorizontalAlignment="Left" Height="102" Margin="601,507,0,0" Stroke="Black" VerticalAlignment="Top" Width="143" RenderTransformOrigin="0.504,0.506">
-            <Rectangle.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-44.476"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Rectangle.RenderTransform>
-        </Rectangle>
-        <Rectangle x:Name="carteCc" HorizontalAlignment="Left" Height="97" Margin="173,158,0,0" Stroke="Black" VerticalAlignment="Top" Width="146" RenderTransformOrigin="0.5,0.5">
-            <Rectangle.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-43.331"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Rectangle.RenderTransform>
-        </Rectangle>
         <!--Nom : MaisonNUMERODECASE_NUMEROMAISON-->
         <Rectangle x:Name="Maison1_1" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="712,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
         <Rectangle x:Name="Maison1_2" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="730,657,0,0" Stroke="Black" VerticalAlignment="Top" Width="18" RadiusY="6.7" RadiusX="6.7"/>
@@ -709,8 +689,8 @@
             <Rectangle Canvas.Left="843" Canvas.Top="683" x:Name="pion2" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="35" RadiusY="11.333" RadiusX="11.333" Panel.ZIndex="1"/>
             <Rectangle Canvas.Left="808" Canvas.Top="715" Panel.ZIndex="1" x:Name="pion3" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="35" RadiusY="8.933" RadiusX="8.933"/>
             <Rectangle Canvas.Left="843" Canvas.Top="715" Panel.ZIndex="1" x:Name="pion4" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="35" RadiusY="8.933" RadiusX="8.933"/>
-            <Rectangle Canvas.Left="388" Canvas.Top="376" Panel.ZIndex="1" x:Name="pionWin" HorizontalAlignment="Left" Height="147" VerticalAlignment="Top" Width="175" RadiusY="8.933" RadiusX="8.933"/>
-            <Label x:Name="lblWin" Content="Vainqueur :" HorizontalAlignment="Left" VerticalAlignment="Top" Height="108" Width="431" FontSize="72" Canvas.Left="272" Canvas.Top="246" FontWeight="Bold" Foreground="#FFE5D5D5" Background="#FF9A4229"/>
+            <Rectangle Canvas.Left="390" Canvas.Top="382" Panel.ZIndex="1" x:Name="pionWin" HorizontalAlignment="Left" Height="129" VerticalAlignment="Top" Width="147" RadiusY="8.933" RadiusX="8.933"/>
+            <Label x:Name="lblWin" Content="Vainqueur :" HorizontalAlignment="Left" VerticalAlignment="Top" Height="108" Width="431" FontSize="72" Canvas.Left="261" Canvas.Top="246" FontWeight="Bold" Foreground="#FFE5D5D5" Background="#FF9A4229"/>
         </Canvas>
         <Rectangle x:Name="RectAppartBrun1" HorizontalAlignment="Left" Height="30" Margin="733,636,0,0" Stroke="Black" VerticalAlignment="Top" Width="30" StrokeThickness="0"/>
         <Rectangle x:Name="RectAppartBrun2" HorizontalAlignment="Left" Height="30" Margin="588,636,0,0" Stroke="Black" VerticalAlignment="Top" Width="30" StrokeThickness="0"/>

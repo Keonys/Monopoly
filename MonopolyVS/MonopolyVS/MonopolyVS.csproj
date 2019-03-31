@@ -90,7 +90,6 @@
     <Compile Include="Vues\FormulaireJoueur.xaml.cs">
       <DependentUpon>FormulaireJoueur.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Modeles\Gestion.cs" />
     <Compile Include="Modeles\Joueur.cs" />
     <Compile Include="Vues\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -106,7 +105,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Modeles\Prison.cs" />
     <Compile Include="Modeles\Propriete.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

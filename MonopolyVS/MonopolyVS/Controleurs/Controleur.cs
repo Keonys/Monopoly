@@ -55,7 +55,7 @@ namespace MonopolyVS.Controleurs
 
         Des Des = new Des();
 
-        Banque banque = new Banque();
+        Banque banque;
 
         private Window Plateau;
 
@@ -72,13 +72,14 @@ namespace MonopolyVS.Controleurs
         #region CONSTRUCTEURS
         public Controleur()
         {
-
+            banque = new Banque(this);
         }
 
         public Controleur(Window plateau, TextBox console)
         {
             Plateau = plateau;
             C = new Console(console);
+            banque = new Banque(this);
         }
         #endregion
 
@@ -624,6 +625,11 @@ namespace MonopolyVS.Controleurs
                 }
             }
             C.SautLigne();
+
+            if (nbrJoueurs < 2)
+            {
+                listeJoueurs[0].gagnePartie(btnLanceDes, btnFinPartie, pionWin, lblWin, lblPion, btnListe1, btnListe2);
+            }
         }
 
         /// <summary>

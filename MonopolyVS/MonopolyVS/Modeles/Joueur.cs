@@ -20,7 +20,6 @@ namespace MonopolyVS
     {
         #region MEMBRES
         #region Objets
-        Banque Banque = new Banque();
         Des Des = new Des();
         /// <summary>
         /// Pion du Joueur
@@ -296,8 +295,8 @@ namespace MonopolyVS
             j.Position = 0;
             j.Pion.Fill = null;
             c.nbrJoueurs--;
-
             listeJoueurs.Remove(j);
+
             foreach(Joueur jo in listeJoueurs)
             {
                 if (jo.Numero > j.Numero)
@@ -308,6 +307,7 @@ namespace MonopolyVS
                 if (jo.Numero == j.Numero)
                     jo.sonTour = true;
             }
+
             finTour(listeJoueurs, c.nbrJoueurs, lblNomJoueur, lblArgentJoueur, imgSortie, c, btnLanceDes, btnFinPartie, pionWin, lblWin,
                 lblPion, btnListe1, btnListe2);
 
@@ -333,8 +333,58 @@ namespace MonopolyVS
             btnFinPartie.Visibility = Visibility.Visible;
             pionWin.Visibility = Visibility.Visible;
             lblWin.Visibility = Visibility.Visible;
-            this.Pion = pionWin;
-            affichePion(this.NumClasse);
+            //this.Pion = pionWin;
+            switch (NumClasse)
+            {
+                //CASE DeathKnight
+                case 0:
+                    pionWin.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_deathknightFOND.png", UriKind.Relative)));
+                    break;
+                //CASE DemonHunter
+                case 1:
+                    pionWin.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_demon_hunterFOND.png", UriKind.Relative)));
+                    break;
+                //CASE Druid
+                case 2:
+                    pionWin.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_druidFOND.png", UriKind.Relative)));
+                    break;
+                //CASE Hunter
+                case 3:
+                    pionWin.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_hunterFOND.png", UriKind.Relative)));
+                    break;
+                //CASE Mage
+                case 4:
+                    pionWin.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_mageFOND.png", UriKind.Relative)));
+                    break;
+                //CASE Monk
+                case 5:
+                    pionWin.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_monkFOND.png", UriKind.Relative)));
+                    break;
+                //CASE Paladin
+                case 6:
+                    pionWin.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_paladinFOND.png", UriKind.Relative)));
+                    break;
+                //CASE Priest
+                case 7:
+                    pionWin.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_priestFOND.png", UriKind.Relative)));
+                    break;
+                //CASE Rogue
+                case 8:
+                    pionWin.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_rogueFOND.png", UriKind.Relative)));
+                    break;
+                //CASE Shaman
+                case 9:
+                    pionWin.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_shamanFOND.png", UriKind.Relative)));
+                    break;
+                //CASE Warlock
+                case 10:
+                    pionWin.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_warlockFOND.png", UriKind.Relative)));
+                    break;
+                //CASE Warrior
+                case 11:
+                    pionWin.Fill = new ImageBrush(new BitmapImage(new Uri(@"../../Images/39px-ClassIcon_warriorFOND.png", UriKind.Relative)));
+                    break;
+            }
         }
 
         /// <summary>
