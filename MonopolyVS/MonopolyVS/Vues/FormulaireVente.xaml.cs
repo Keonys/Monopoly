@@ -84,21 +84,6 @@ namespace MonopolyVS.Vues
             else if (ComboJoueur.SelectedIndex <= 0)
                 LabelInfo.Content = "Choisissez un acheteur.";
         }
-
-        /*private void QuestionVente()
-        {
-            this.Visibility = Visibility.Hidden;
-            DialogResult vente = System.Windows.Forms.MessageBox.Show("Voulez-vous vendre la propriété : " + prop.Nom + " ?", "", MessageBoxButtons.YesNo);
-            if (vente == System.Windows.Forms.DialogResult.Yes)
-            {
-                foreach (Joueur j in listeAcheteurs)
-                {
-                    ComboJoueur.Items.Add(j.Nom);
-                }
-                this.Visibility = Visibility.Visible;
-            }
-            else Close();
-        }*/
         
         /// <summary>
         /// Vérifie si le prix en paramètre est un nombre non signé

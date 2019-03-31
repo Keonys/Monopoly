@@ -383,10 +383,10 @@ namespace MonopolyVS.Modeles
             if (this.Hotel)
             {
                 c.NomHotel.Visibility = Visibility.Visible;
-                c.Maison1.Visibility = Visibility.Visible;
-                c.Maison2.Visibility = Visibility.Visible;
-                c.Maison3.Visibility = Visibility.Visible;
-                c.Maison4.Visibility = Visibility.Visible;
+                c.Maison1.Visibility = Visibility.Hidden;
+                c.Maison2.Visibility = Visibility.Hidden;
+                c.Maison3.Visibility = Visibility.Hidden;
+                c.Maison4.Visibility = Visibility.Hidden;
             }
             else
             {
